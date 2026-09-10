@@ -1,8 +1,8 @@
 #Settings
-WIDTH = 1440
-HEIGHT = 720
 RESPAWN_TIMER = 0.5
 FPS = 240
 
 #Game rules
+WIDTH = 1440
+HEIGHT = 720
 PLAYER_X = 360

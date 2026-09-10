@@ -15,20 +15,21 @@ class Game():
         py.init()
         self.running = True
 
+        self.levels = levels
         self.current_level = 0
         self.level_amount = len(levels)
         self.width = WIDTH
         self.height = HEIGHT
         self.last_frame_time = time.perf_counter()
         self.clicking = 0
-        self.building = False #! Add building levels
+        self.building = False
+        self.layer = 2
         self.debug = False
         self.paused = False
-        self.show_heading = False
         self.show_hitboxes = False
         self.noclip = False
 
-        self.player = Object("square", (0, 0, 0), (0,)*3, 0, 40, 40, 0, 0)
+        self.player = Object("square", (0, 255, 0), (0,)*3, 0, 40, 40, 0, 0)
         self.load_level()
 
         self.text_cache = TextCache(py.font.SysFont("Arial", 24))
@@ -44,18 +45,18 @@ class Game():
 
     def load_level(self):
         self.level_data = levels[self.current_level % len(levels)]
+        self.background_color = self.level_data[0][2]
         self.background = self.level_data[1]
         self.objects = self.level_data[2]
         self.decoration = self.level_data[3]
         self.end = self.level_data[4]
         self.speed = self.level_data[0][1]
+        self.title = [self.level_data[0][3], FPS * 2]
         
         self.background_points = [obj.get_points() for obj in self.background]
         self.object_points = [obj.get_points() for obj in self.objects]
         self.decoration_points = [obj.get_points() for obj in self.decoration]
         self.end_points = self.end.get_points()
-
-
 
         self.restart()
 
@@ -76,7 +77,7 @@ class Game():
     def run(self):
         while self.running:
             handle_input(self)
-            if not self.paused or self.frame_steps == 1 or self.frame_steps >= FPS // 3:
+            if not self.paused and not self.building or self.frame_steps == 1 or self.frame_steps >= FPS // 3:
                 update(self)
             draw(self)
             py.display.flip()

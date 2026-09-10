@@ -15,7 +15,7 @@ def update(game):
             game.player.y += game.speed * 120/FPS
         elif game.wave_trail[-1][1] != game.player.y:
             game.wave_trail.append((game.player.x + 20, game.player.y))
-
+        
         #Collision
         game.player_points = game.player.get_points()
         hitbox_color = (0, 255, 0)

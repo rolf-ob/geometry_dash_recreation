@@ -4,7 +4,7 @@ from constants import HEIGHT
 levels = [
     [
         [
-            680, 4, "Blank level" #! Display level title
+            680, 4, (255,)*3, "Blank level"
         ], [
 
         ], [
@@ -17,7 +17,7 @@ levels = [
 
     [
         [
-            680, 4, "120fp twice spikes"
+            680, 4, (255,)*3, "120fp twice spikes"
         ], [
             
         ], [
@@ -33,7 +33,7 @@ levels = [
 
     [
         [
-            680, 4, "120fp twice triple spikes"
+            680, 4, (255,)*3, "120fp twice triple spikes"
         ], [
             
         ], [
@@ -51,7 +51,7 @@ levels = [
 
     [
         [
-            430, 4, "120fp consistancy spam"
+            430, 4, (255,)*3, "120fp consistancy spam"
         ], [
             
         ], [
@@ -81,7 +81,7 @@ levels = [
 
     [
         [
-            680, 4, "120fp twice slope"
+            680, 4, (255,)*3, "120fp twice slope"
         ], [
             
         ], [
@@ -98,7 +98,7 @@ levels = [
 
     [
         [
-            680, 4, "Blind 240fp slope"
+            680, 4, (255,)*3, "Blind 240fp slope"
         ], [
             
         ], [
@@ -115,7 +115,7 @@ levels = [
 
     [
         [
-            680, 4, "40 frame gap wave spam"
+            680, 4, (255,)*3, "40 frame gap wave spam"
         ], [
             
         ], [
@@ -131,7 +131,7 @@ levels = [
 
     [
         [
-            680, 4, "Incline"
+            680, 4, (255,)*3, "Incline"
         ], [
             
         ], [
@@ -147,9 +147,9 @@ levels = [
 
     [
         [
-            680, 4, "Guessing game"
+            680, 4, (255, 0, 0), "Guessing game"
         ], [
-            Object("square", (255, 0, 0), (0,)*3, 0, 5000, 730, -5, -5)
+            
         ], [
             Object("square", (255,)*3, (0,)*3, 0, 400, 60, 1000, 0),
             Object("square", (0,)*3, (0,)*3, 0, 40, 120, 1000, 60),
@@ -179,7 +179,7 @@ levels = [
 
     [
         [
-            680, 4, "30 fps required slope"
+            680, 4, (255,)*3, "30 fps required slope"
         ], [
             
         ], [
@@ -197,7 +197,7 @@ levels = [
 
     [
         [
-            680, 6, "Long consistancy spam"
+            680, 6, (255,)*3, "Long consistancy spam"
         ], [
             
         ], [
