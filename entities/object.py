@@ -11,6 +11,7 @@ class Object:
     height: int
     x: int
     y: int
+    selected: bool = False
     
     def get_points(self):
         center_x = self.x + self.width / 2

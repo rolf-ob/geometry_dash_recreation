@@ -4,7 +4,7 @@ from constants import HEIGHT
 levels = [
     [
         [
-            680, 4, (255,)*3, "Blank level"
+            "wave", 680, 4, 0, (255,)*3, "Blank level"
         ], [
 
         ], [
@@ -17,7 +17,7 @@ levels = [
 
     [
         [
-            680, 4, (255,)*3, "120fp twice spikes"
+            "wave", 680, 4, 0, (255,)*3, "120fp twice spikes"
         ], [
             
         ], [
@@ -33,7 +33,7 @@ levels = [
 
     [
         [
-            680, 4, (255,)*3, "120fp twice triple spikes"
+            "wave", 680, 4, 0, (255,)*3, "120fp twice triple spikes"
         ], [
             
         ], [
@@ -51,7 +51,7 @@ levels = [
 
     [
         [
-            430, 4, (255,)*3, "120fp consistancy spam"
+            "wave", 430, 4, 0, (255,)*3, "120fp consistancy spam"
         ], [
             
         ], [
@@ -81,7 +81,7 @@ levels = [
 
     [
         [
-            680, 4, (255,)*3, "120fp twice slope"
+            "wave", 680, 4, 0, (255,)*3, "120fp twice slope"
         ], [
             
         ], [
@@ -98,7 +98,7 @@ levels = [
 
     [
         [
-            680, 4, (255,)*3, "Blind 240fp slope"
+            "wave", 680, 4, 0, (255,)*3, "Blind 240fp slope"
         ], [
             
         ], [
@@ -110,12 +110,12 @@ levels = [
         ], [
             
         ],
-        Object("end", (255, 255, 255), (255, 0, 0), 0, 1, HEIGHT, 1200, 0)
+        Object("end", (255,)*3, (255, 0, 0), 0, 1, HEIGHT, 1200, 0)
     ],
 
     [
         [
-            680, 4, (255,)*3, "40 frame gap wave spam"
+            "wave", 680, 4, 0, (255,)*3, "40 frame gap wave spam"
         ], [
             
         ], [
@@ -131,7 +131,7 @@ levels = [
 
     [
         [
-            680, 4, (255,)*3, "Incline"
+            "wave", 680, 4, 0, (255,)*3, "Incline"
         ], [
             
         ], [
@@ -147,7 +147,7 @@ levels = [
 
     [
         [
-            680, 4, (255, 0, 0), "Guessing game"
+            "wave", 680, 4, 0, (255, 0, 0), "Guessing game"
         ], [
             
         ], [
@@ -179,7 +179,7 @@ levels = [
 
     [
         [
-            680, 4, (255,)*3, "30 fps required slope"
+            "wave", 680, 4, 0, (255,)*3, "30 fps required slope"
         ], [
             
         ], [
@@ -197,7 +197,7 @@ levels = [
 
     [
         [
-            680, 6, (255,)*3, "Long consistancy spam"
+            "wave", 680, 5, 0, (255,)*3, "Long consistancy spam"
         ], [
             
         ], [

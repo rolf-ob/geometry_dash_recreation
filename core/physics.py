@@ -1,18 +1,18 @@
 from entities.collision import polygons_collide
 from entities.object import Object
-from constants import HEIGHT, RESPAWN_TIMER, FPS
+from constants import HEIGHT
 
 def update(game):
     if not game.completed and game.dead == 0:
         #Update position
-        game.camera_x += game.speed * 120/FPS
-        game.player.x += game.speed * 120/FPS
+        game.camera_x += game.speed * 120/game.settings["fps"]
+        game.player.x += game.speed * 120/game.settings["fps"]
 
         #Go up or down
         if game.clicking > 0 and game.player.y > 0:
-            game.player.y -= game.speed * 120/FPS
+            game.player.y = max(0, (game.player.y - game.speed * 120/game.settings["fps"]))
         elif game.clicking == 0 and game.player.y < HEIGHT - 40:
-            game.player.y += game.speed * 120/FPS
+            game.player.y = min(680, (game.player.y + game.speed * 120/game.settings["fps"]))
         elif game.wave_trail[-1][1] != game.player.y:
             game.wave_trail.append((game.player.x + 20, game.player.y))
         
@@ -40,7 +40,13 @@ def update(game):
         game.hitbox_trail_points.append(hitbox.get_points())
 
     elif game.dead > 0:
-        if game.dead >= RESPAWN_TIMER * FPS:
-            game.restart()
+        if not game.speedhack:
+            if game.dead >= game.settings["respawn time"] * game.settings["fps"]:
+                game.restart()
+            else:
+                game.dead += 1
         else:
-            game.dead += 1
+            if game.dead >= game.settings["respawn time"] * game.settings["fps"] * game.settings["speedhack multiplier"]:
+                game.restart()
+            else:
+                game.dead += 1
