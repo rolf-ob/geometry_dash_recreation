@@ -1,5 +1,5 @@
-- Scroll pan zoom tutorial
-- Building tutorial
+- Fix fullscreen lag
+- Deleting levels as an attribute in level settings
 - Disabling building
 - Low FPS doesn't slow down gameplay
 - Safe to slide on blocks

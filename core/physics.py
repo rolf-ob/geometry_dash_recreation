@@ -21,17 +21,18 @@ def update(game):
         hitbox_color = (0, 255, 0)
 
         for points in game.object_points:
-            if polygons_collide(game.player_points, points):
-                if not game.noclip:
-                    game.dead = 1
-                    hitbox_color = (255, 0, 0)
-                    break
-                else:
-                    if game.hitbox_trail and game.hitbox_trail[-1].outline == (0, 255, 0):
-                        game.cheated = True
-                        game.noclip_deaths += 1
-                    hitbox_color = (255, 0, 0)
-                    break
+            if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in points):
+                if polygons_collide(game.player_points, points):
+                    if not game.noclip:
+                        game.dead = 1
+                        hitbox_color = (255, 0, 0)
+                        break
+                    else:
+                        if game.hitbox_trail and game.hitbox_trail[-1].outline == (0, 255, 0):
+                            game.cheated = True
+                            game.noclip_deaths += 1
+                        hitbox_color = (255, 0, 0)
+                        break
             
         if polygons_collide(game.player_points, game.end_points):
             game.completed = True

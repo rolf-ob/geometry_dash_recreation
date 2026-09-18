@@ -48,6 +48,7 @@ def switch_checkpoint(game, way):
     elif way == "next":
         game.checkpoint -= 1
     game.restart()
+    game.title = [f"Checkpoint {game.checkpoint % len(game.checkpoints)}/{len(game.checkpoints) - 1}", game.fps // 2]
 
 def switch_level(game, way):
     if way == "previous":
@@ -125,7 +126,8 @@ def handle_input(game):
                                 for i, obj in enumerate(layer):
                                     if obj.selected:
                                         game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                        layer_points[i] = obj.get_points()
+                                        if obj.shape != "checkpoint":
+                                            layer_points[i] = obj.get_points()
                         else:
                             game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
                     else:
@@ -229,10 +231,10 @@ def handle_input(game):
                     game.cheated = True
                     game.show_hitboxes = not game.show_hitboxes
 
-                elif any(event.key == key for key in game.controls["create level"]):
+                elif any(event.key == key for key in game.controls["create level"]) and game.operator:
                     create_level(game)
                     
-                elif any(event.key == key for key in game.controls["toggle building"]):
+                elif any(event.key == key for key in game.controls["toggle building"]) and game.operator:
                     toggle_building(game)
 
         elif event.type == py.KEYUP:

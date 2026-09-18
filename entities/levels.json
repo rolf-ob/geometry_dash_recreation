@@ -9,7 +9,7 @@
         255,
         255
       ],
-      "title": "Leaderboard",
+      "title": "Main Menu",
       "points": 0
     },
     "background": [],
@@ -147,8 +147,9 @@
       ]
     },
     "victors": {
-      "Rolf": 20,
-      "Masuud": 1
+      "Rolf": 22,
+      "Masuud": 1,
+      "Anouar": 3
     }
   },
   {
@@ -510,6 +511,24 @@
           255,
           255
         ]
+      },
+      {
+        "x": 640,
+        "y": 282,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
       }
     ],
     "end": {
@@ -531,7 +550,7 @@
       ]
     },
     "victors": {
-      "Rolf": 2
+      "Rolf": 6
     }
   },
   {
@@ -792,7 +811,9 @@
         0
       ]
     },
-    "victors": {}
+    "victors": {
+      "Rolf": 1
+    }
   },
   {
     "meta": {

@@ -1,10 +1,10 @@
 import pygame as py
 
-from constants import WIDTH, HEIGHT, controls_tutorial, settings_tutorial
+from constants import WIDTH, HEIGHT, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
-    screen_x = ((x - game.camera_x - WIDTH / 2) * game.camera_zoom + WIDTH / 2) * game.height / HEIGHT
-    screen_y = ((y - game.camera_y - HEIGHT / 2) * game.camera_zoom + HEIGHT / 2) * game.height / HEIGHT
+    screen_x = ((x - game.camera_x - WIDTH / 2) * game.camera_zoom + WIDTH / 2)
+    screen_y = ((y - game.camera_y - HEIGHT / 2) * game.camera_zoom + HEIGHT / 2)
     return int(screen_x), int(screen_y)
 
 def screen_to_world(game, x, y):
@@ -12,13 +12,18 @@ def screen_to_world(game, x, y):
     world_y = (y / (game.height / HEIGHT) - HEIGHT / 2) / game.camera_zoom + HEIGHT / 2 + game.camera_y
     return int(world_x), int(world_y)
 
+def within_view(game, points):
+    all_left = all(point[0] < game.camera_x for point in points)
+    all_right = all(point[0] > game.camera_x + game.view_width for point in points)
+    return False if all_left or all_right else True
+
 def draw_polygon(game, screen, points, color, width):
     screen_points = [world_to_screen(game, x, y) for x, y in points]
     py.draw.polygon(screen, color, screen_points, width)
 
 def draw_background(game, screen):
     for obj, points in zip(game.background, game.background_points):
-        if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in points):
+        if within_view(game, points):
             color = (200, 255, 200) if obj.selected else obj.color
             draw_polygon(game, screen, points, color, 0)
             draw_polygon(game, screen, points, obj.outline, 1)
@@ -26,14 +31,14 @@ def draw_background(game, screen):
 def draw_objects(game, screen):
     for obj, points in zip(game.objects, game.object_points):
         if obj.shape != "checkpoint":
-            if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in points):
+            if within_view(game, points):
                 color = (200, 255, 200) if obj.selected else obj.color
                 outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
                 draw_polygon(game, screen, points, color, 0)
                 draw_polygon(game, screen, points, outline_color, 1)
 
 def draw_end(game,screen):
-    if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in game.end_points):
+    if within_view(game, game.end_points):
         if not game.cheated:
             color = (200, 255, 200) if game.end.selected else game.end.color
         else:
@@ -42,7 +47,7 @@ def draw_end(game,screen):
 
 def draw_decoration(game, screen):
     for obj, points in zip(game.decoration, game.decoration_points):
-        if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in points):
+        if within_view(game, points):
             color = (200, 255, 200) if obj.selected else obj.color
             draw_polygon(game, screen, points, color, 0)
             draw_polygon(game, screen, points, obj.outline, 1)
@@ -50,7 +55,7 @@ def draw_decoration(game, screen):
 def draw_checkpoints(game, screen):
     for obj, points in zip(game.checkpoints, game.checkpoint_points):
         if obj != game.checkpoints[0]:
-            if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in points):
+            if within_view(game, points):
                 color = (200, 255, 200) if obj.selected else obj.color
                 draw_polygon(game, screen, points, color, 0)
                 draw_polygon(game, screen, points, obj.outline, 1)
@@ -58,7 +63,7 @@ def draw_checkpoints(game, screen):
 
 def draw_hitbox_trail(game, screen):
     for box, points in zip(game.hitbox_trail[:-1], game.hitbox_trail_points[:-1]):
-        if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in points):
+        if within_view(game, points):
             draw_polygon(game, screen, points, box.outline, 1)
     
     draw_polygon(game, screen, game.hitbox_trail_points[-1], game.player.color, 1)
@@ -135,9 +140,19 @@ def draw_leaderboard(game, screen):
         screen.blit(game.text_cache.get_surface(f"Total Points Leaderboard:", (0,)*3), world_to_screen(game, 50, 60))
         for i, (player, points) in enumerate(sorted_players.items()):
             screen.blit(game.text_cache.get_surface(f"{i+1}: {player} | Points: {points}", (0,)*3), world_to_screen(game, 50, 85 + 25*i))
+        
+        if not game.building:
+            for i, line in enumerate(controls_tutorial):
+                screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 350, 60 + 25*i))
+            
+            if game.operator:
+                for i, line in enumerate(operator_tutorial):
+                    screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 350, 60 + 25*(len(controls_tutorial)+1) + 25*i))
 
-        for i, line in enumerate(controls_tutorial):
-            screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 350, 60 + 25*i))
+        else:
+            for i, line in enumerate(building_tutorial):
+                screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 350, 60 + 25*i))
+        
         for i, line in enumerate(settings_tutorial):
             screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 850, 60 + 25*i))
 

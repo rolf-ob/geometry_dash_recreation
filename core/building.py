@@ -5,11 +5,12 @@ from core.textbox import TextBox
 from entities.object import Object
 from entities.collision import polygons_collide
 from rendering.rendering import screen_to_world
-from constants import HEIGHT
+from constants import PLAYER_X, HEIGHT
 
 def toggle_building(game):
     game.building = not game.building
     if game.building:
+        game.clicking = 0
         game.layer = 1
         game.title = ["Objects", -1]
 
@@ -286,7 +287,16 @@ def reset_camera(game):
     game.camera_zoom = 1
 
 def create_level(game):
-    game.levels.append([["wave", 680, 4, 0, (255,)*3, "Unnamed level", 0], [], [], [], [Object(0, 0, 0, 0, 0, "checkpoint", (255,)*3, (255,)*3)], Object(1000, 0, 1, HEIGHT, 0, "end", (0, 255, 0), (255, 0, 0)), {}])
+    game.levels.insert((game.current_level % len(game.levels)) + 1, {
+        "meta": {"gamemode": "wave", "speed": 4, "gravity": 0, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
+        "background": [],
+        "objects": [],
+        "decoration": [],
+        "checkpoints": [Object(PLAYER_X, 680, 0, 0, 0, "checkpoint", (255,)*3, (255,)*3)],
+        "end": Object(1000, 0, 1, HEIGHT, 0, "end", (0, 255, 0), (255, 0, 0)),
+        "victors": {}
+    })
+    game.title = [f"Created New Level", game.fps * 2]
 
 def edit_level(game):
     game.editing_level = not game.editing_level

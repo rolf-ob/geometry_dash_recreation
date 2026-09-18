@@ -26,6 +26,7 @@ class Game():
         
         self.running = True
 
+        self.operator = False
         self.name = self.accessibility["name"]
         self.player = Object(0, 0, 40, 40, 0, "square", tuple(self.accessibility["player color"]), (0,)*3)
         self.fps = self.accessibility["fps"]
@@ -58,7 +59,7 @@ class Game():
 
         self.font = py.font.SysFont("Arial", 24)
         self.text_cache = TextCache(self.font)
-        self.screen = py.display.set_mode((WIDTH, HEIGHT), py.RESIZABLE | py.SCALED)
+        self.screen = py.display.set_mode((WIDTH, HEIGHT), py.RESIZABLE)
         self.fps_counter = FpsCounter()
         py.display.set_caption("Geometry Dash")
         py.key.stop_text_input()
@@ -93,9 +94,9 @@ class Game():
             if self.building:
                 if not self.editing_level:
                     if field_name == "width":
-                        setattr(obj, field_name, max(1, min(1440, int(text))))
+                        setattr(obj, field_name, max(0, int(text)))
                     elif field_name == "height":
-                        setattr(obj, field_name, max(1, min(720, int(text))))
+                        setattr(obj, field_name, max(0, int(text)))
                     elif field_name == "rotation":
                         setattr(obj, field_name, int(text))
                         self.rotation = int(text)
@@ -163,7 +164,7 @@ class Game():
         self.player.x = self.checkpoints[self.checkpoint % len(self.checkpoints)].x
         self.player.y = self.checkpoints[self.checkpoint % len(self.checkpoints)].y
         self.player_points = self.player.get_points()
-        if self.checkpoint != 0:
+        if self.checkpoint % len(self.checkpoints) != 0:
             self.cheated = True
         else:
             self.cheated = self.show_hitboxes or self.speedhack
