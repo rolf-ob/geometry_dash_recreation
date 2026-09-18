@@ -1,13 +1,8 @@
-- Json
-- Level dicts
-- Readable levels file
-- Better level management
-
-- Switch pos with dimentions in Object
-- Text width
-
-- User friendlyness
-- Leaderboard/score
-
-- Start positions
+- Scroll pan zoom tutorial
+- Building tutorial
+- Disabling building
+- Low FPS doesn't slow down gameplay
+- Safe to slide on blocks
+- Changing controls
+- Gravity switching
 - New gamemodes

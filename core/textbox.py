@@ -1,7 +1,7 @@
 import pygame as py
 
 class TextBox:
-    def __init__(self, width, height, x, y, field_name):
+    def __init__(self, x, y, width, height, field_name):
         self.rect = py.Rect(x, y, width, height)
         self.field_name = field_name
         self.text = ""
@@ -18,11 +18,6 @@ class TextBox:
     def handle_event(self, event):
         if event.type == py.TEXTINPUT:
             self.text += event.text
-        elif event.type == py.KEYDOWN:
-            if event.key == py.K_BACKSPACE:
-                self.text = self.text[:-1]
-            elif event.key == py.K_RETURN:
-                self.text = ""
         return False
 
     def draw(self, screen, font):

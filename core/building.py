@@ -1,4 +1,5 @@
 import pygame as py
+import math
 
 from core.textbox import TextBox
 from entities.object import Object
@@ -6,15 +7,52 @@ from entities.collision import polygons_collide
 from rendering.rendering import screen_to_world
 from constants import HEIGHT
 
+def toggle_building(game):
+    game.building = not game.building
+    if game.building:
+        game.layer = 1
+        game.title = ["Objects", -1]
+
+        game.textboxes = []
+        if game.active_textbox:
+            game.active_textbox.deactivate()
+            game.active_textbox = None
+
+    else:
+        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+            for obj in layer:
+                obj.selected = False
+
+        game.textboxes = []
+        if game.active_textbox:
+            game.active_textbox.deactivate()
+            game.active_textbox = None
+        game.editing_level = False
+
+        if game.paused:
+            game.textboxes = [
+                TextBox(20, 20, 200, 40, "Name"),
+                TextBox(20, 60, 200, 40, "Player Color"),
+                TextBox(20, 100, 200, 40, "Speedhack"),
+                TextBox(20, 140, 200, 40, "FPS"),
+                TextBox(20, 180, 200, 40, "Respawn Time")
+            ]
+            game.textboxes[0].text = game.name
+        
+        game.load_level()
+
 def place_object(game):
     mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
     mouse_pos = [(mouse_x - 1, mouse_y), (mouse_x, mouse_y), (mouse_x + 1, mouse_y)]
     mouse_x -= mouse_x % 40
     mouse_y -= mouse_y % 40
+    layer = (game.background, game.objects, game.decoration)[game.layer]
+    layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
-    if not any(polygons_collide(mouse_pos, points) for points in (game.background_points, game.object_points, game.decoration_points)[game.layer]):
-        game.level_data[game.layer + 1].append(Object(game.shape, (255,)*3, (0,)*3, game.rotation, 40, 40, mouse_x, mouse_y))
-        (game.background_points, game.object_points, game.decoration_points)[game.layer].append((game.background, game.objects, game.decoration)[game.layer][-1].get_points())
+    if not any(polygons_collide(mouse_pos, points) for points in layer_points):
+        new_obj = Object(mouse_x, mouse_y, 40, 40, game.rotation, game.shape, (255,)*3, (0,)*3)
+        layer.append(new_obj)
+        layer_points.append(new_obj.get_points())
 
 def select_object(game, shifting):
     mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
@@ -27,71 +65,182 @@ def select_object(game, shifting):
             game.end.selected = not game.end.selected
         if game.end.selected and game.textboxes == []:
                 game.textboxes = [
-                    TextBox(200, 40, 20, 20, "shape"),
-                    TextBox(200, 40, 20, 60, "color"),
-                    TextBox(200, 40, 20, 100, "outline"),
-                    TextBox(200, 40, 20, 140, "rotation"),
-                    TextBox(200, 40, 20, 180, "width"),
-                    TextBox(200, 40, 20, 220, "height")
+                    TextBox(20, 20, 200, 40, "Shape"),
+                    TextBox(20, 60, 200, 40, "Color"),
+                    TextBox(20, 100, 200, 40, "Outline"),
+                    TextBox(20, 140, 200, 40, "Rotation"),
+                    TextBox(20, 180, 200, 40, "Width"),
+                    TextBox(20, 220, 200, 40, "Height")
                 ]
     
-    for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for obj, points in zip(layer, layer_points):
-            if polygons_collide(mouse_pos, points) and obj in (game.background, game.objects, game.decoration)[game.layer] and not game.editing_level:
+            if polygons_collide(mouse_pos, points) and (obj in (game.background, game.objects, game.decoration)[game.layer] or obj.shape == "checkpoint") and not game.editing_level:
                 if shifting:
                     obj.selected = True
                 else:
                     obj.selected = not obj.selected
                 if obj.selected and game.textboxes == []:
                         game.textboxes = [
-                            TextBox(200, 40, 20, 20, "shape"),
-                            TextBox(200, 40, 20, 60, "color"),
-                            TextBox(200, 40, 20, 100, "outline"),
-                            TextBox(200, 40, 20, 140, "rotation"),
-                            TextBox(200, 40, 20, 180, "width"),
-                            TextBox(200, 40, 20, 220, "height")
+                            TextBox(20, 20, 200, 40, "Shape"),
+                            TextBox(20, 60, 200, 40, "Color"),
+                            TextBox(20, 100, 200, 40, "Outline"),
+                            TextBox(20, 140, 200, 40, "Rotation"),
+                            TextBox(20, 180, 200, 40, "Width"),
+                            TextBox(20, 220, 200, 40, "Height")
                         ]
 
-    if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)) and not game.editing_level:
+    if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints)) and not game.editing_level:
         game.textboxes = []
         if game.active_textbox:
             game.active_textbox.deactivate()
             game.active_textbox = None
 
-def move_object(game, direction, shift, ctrl):
-    if game.building:
-        if shift:
-            distance = 1
-        elif ctrl:
-            distance = 200
-        else:
-            distance = 40
-        add_x = 0
-        add_y = 0
-        
-        if direction == "up":
-            add_y = -distance
-        elif direction == "left":
-            add_x = -distance
-        elif direction == "down":
-            add_y = distance
-        elif direction == "right":
-            add_x = distance
+def move_objects(game, direction, shift, ctrl, alt):
+    if shift:
+        distance = 1
+    elif ctrl:
+        distance = 200
+    elif alt:
+        distance = 20
+    else:
+        distance = 40
+    add_x = 0
+    add_y = 0
+    if direction == "up":
+        add_y = -distance
+    elif direction == "left":
+        add_x = -distance
+    elif direction == "down":
+        add_y = distance
+    elif direction == "right":
+        add_x = distance
 
-        if game.end.selected:
-            game.end.x += add_x
-            game.end.y += add_y
-            game.end_points = game.end.get_points()
+    if game.end.selected:
+        game.end.x += add_x
+        game.end.y += add_y
+        game.end_points = game.end.get_points()
+
+    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
+        for i, obj in enumerate(layer):
+            if obj.selected:
+                obj.x += add_x
+                obj.y += add_y
+                layer_points[i] = obj.get_points()
+
+def rotate_objects(game, way):
+    if way == "counter clockwise":
+        rotation = -90
+    elif way == "clockwise":
+        rotation = 90
+
+    x_positions = []
+    y_positions = []
+
+    for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+        for i, obj in enumerate(layer):
+            if obj.selected:
+                for point in layer_points[i]:
+                    x_positions.append(point[0])
+                    y_positions.append(point[1])
+
+    if x_positions:
+        min_x = min(x_positions)
+        max_x = max(x_positions)
+        min_y = min(y_positions)
+        max_y = max(y_positions)
+        center_x = min_x + (max_x - min_x) / 2
+        center_y = min_y + (max_y - min_y) / 2
 
         for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
             for i, obj in enumerate(layer):
                 if obj.selected:
-                    obj.x += add_x
-                    obj.y += add_y
+                    angle = math.radians(rotation)
+                    cos_a, sin_a = math.cos(angle), math.sin(angle)
+
+                    point_x = obj.x + obj.width / 2
+                    point_y = obj.y + obj.height / 2
+                    delta_x, delta_y = point_x - center_x, point_y - center_y
+                    rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
+                    rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
+
+                    obj.rotation = (obj.rotation + rotation) % 360
+                    obj.x = rotated_x - obj.width / 2
+                    obj.y = rotated_y - obj.height / 2
                     layer_points[i] = obj.get_points()
 
-def delete_object(game):
+def flip_objects(game, way):
+    if way == "horizontally":
+        axis = 0
+    elif way == "vertically":
+        axis = 1
+    positions = []
+
     for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+        for i, obj in enumerate(layer):
+            if obj.selected:
+                for point in layer_points[i]:
+                    positions.append(point[axis])
+
+    if positions:
+        min_pos = min(positions)
+        max_pos = max(positions)
+        center_pos = min_pos + (max_pos - min_pos) / 2
+
+        for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+            for i, obj in enumerate(layer):
+                if obj.selected:
+                    if way == "horizontally":
+                        center = obj.x + obj.width / 2
+                        flipped_center = center_pos - (center - center_pos)
+                        obj.x = flipped_center - obj.width / 2
+
+                        if obj.shape == "square":
+                            obj.rotation -= obj.rotation * 2
+                            
+                        elif obj.shape == "slope":
+                            obj.rotation -= (90 + obj.rotation * 2) % 360
+                        
+                        elif obj.shape == "spike":
+                            obj.rotation -= obj.rotation * 2
+
+                        layer_points[i] = obj.get_points()
+                    
+                    elif way == "vertically":
+                        center = obj.y + obj.height / 2
+                        flipped_center = center_pos - (center - center_pos)
+                        obj.y = flipped_center - obj.height / 2
+
+                        if obj.shape == "square":
+                            obj.rotation -= 180 + obj.rotation * 2
+                            
+                        elif obj.shape == "slope":
+                            obj.rotation -= 270 + obj.rotation * 2
+                        
+                        elif obj.shape == "spike":
+                            obj.rotation -= 180 + obj.rotation * 2
+
+                        layer_points[i] = obj.get_points()
+
+def deselect_objects(game):
+    game.end.selected = False
+    for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+        for obj in layer:
+            obj.selected = False
+    game.textboxes = []
+    if game.active_textbox:
+        game.active_textbox.deactivate()
+        game.active_textbox = None
+
+def duplicate_objects(game):
+    for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+        for obj in layer.copy():
+            if obj.selected:
+                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline))
+                layer_points.append(layer[-1].get_points())
+
+def delete_objects(game):
+    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for obj, points in zip(layer.copy(), layer_points.copy()):
             if obj.selected:
                 layer.remove(obj)
@@ -102,185 +251,65 @@ def delete_object(game):
         game.active_textbox.deactivate()
         game.active_textbox = None
 
-def duplicate(game):
-    for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
-        for obj in layer.copy():
+def snap_grid_objects(game):
+    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
+        for i, obj in enumerate(layer):
             if obj.selected:
-                layer.append(Object(obj.shape, obj.color, obj.outline, obj.rotation, obj.width, obj.height, obj.x, obj.y))
-                layer_points.append(layer[-1].get_points())
-
-def unselect_all(game):
-    game.end.selected = False
-    for layer in (game.background, game.objects, game.decoration):
-        for obj in layer:
-            obj.selected = False
-    game.textboxes = []
-    if game.active_textbox:
-        game.active_textbox.deactivate()
-        game.active_textbox = None
-
-def switch_attribute(game, way):
-    if game.textboxes != []:
-        if way == "up":
-            if not game.active_textbox:
-                game.active_textbox = game.textboxes[-1]
-                game.active_textbox.activate()
-            else:
-                game.active_textbox.deactivate()
-                game.active_textbox = game.textboxes[(game.textboxes.index(game.active_textbox) - 1) % len(game.textboxes)]
-                game.active_textbox.activate()
-
-        elif way == "down":
-            if not game.active_textbox:
-                game.active_textbox = game.textboxes[0]
-                game.active_textbox.activate()
-            else:
-                game.active_textbox.deactivate()
-                game.active_textbox = game.textboxes[(game.textboxes.index(game.active_textbox) + 1) % len(game.textboxes)]
-                game.active_textbox.activate()
-
-        elif way == "deselect":
-            if game.active_textbox:
-                game.active_textbox.deactivate()
-                game.active_textbox = None
-
-def apply_edit(game, obj, field_name, text):
-    try:
-        if game.building:
-            if not game.editing_level:
-                if field_name in ("rotation", "width", "height"):
-                    setattr(obj, field_name, min(720, max(1, int(text))))
-                    if field_name == "rotation":
-                        game.rotation = int(text)
+                if obj.x % 40 > 20:
+                    obj.x += 40 - obj.x % 40
+                else:
+                    obj.x -= obj.x % 40
                 
-                elif field_name in ("color", "outline"):
-                    r, g, b = (max(0, min(255, int(value))) for value in text.split(","))
-                    setattr(obj, field_name, (r, g, b))
+                if obj.y % 40 > 20:
+                    obj.y += 40 - obj.y % 40
+                else:
+                    obj.y -= obj.y % 40
 
-                elif field_name == "shape" and text in ("square", "spike", "slope"):
-                    setattr(obj, field_name, text)
-                    game.shape = text
+                if obj.rotation % 90 > 45:
+                    obj.rotation += 90 - obj.rotation % 90
+                else:
+                    obj.rotation -= obj.rotation % 90
 
-            else:
-                if field_name == "gamemode" and text in ("wave"):
-                    game.level_data[0][0] = text
-
-                elif field_name == "starting height":
-                    game.level_data[0][1] = max(0, min(680, int(text)))
-
-                elif field_name == "speed":
-                    game.level_data[0][2] = int(text)
-
-                elif field_name == "gravity":
-                    game.level_data[0][3] = int(text)
-
-                elif field_name == "background":
-                    r, g, b = (max(0, min(255, int(value))) for value in text.split(","))
-                    game.level_data[0][4] = (r, g, b)
-                    game.background_color = game.level_data[0][4]
-
-                elif field_name == "title":
-                    game.level_data[0][5] = text
-
-        else:
-            if field_name == "player color":
-                r, g, b = (max(0, min(255, int(value))) for value in text.split(","))
-                game.player.color = (r, g, b)
-
-            elif field_name == "speedhack":
-                game.settings["speedhack multiplier"] = max(0, float(text))
-
-            elif field_name == "fps":
-                game.settings["fps"] = int(text)
-
-            elif field_name == "respawn time":
-                game.settings["respawn time"] = float(text)
-
-    except ValueError:
-        pass
-
-def create_level(game):
-    game.levels.append([["wave", 680, 4, 0, (255,)*3, "Unnamed level"], [], [], [], Object("end", (0, 255, 0), (255, 0, 0), 0, 1, HEIGHT, 500, 0)])
-
-def edit(game):
-    if game.building:
-        game.editing_level = not game.editing_level
-        if game.editing_level:
-
-            for layer in (game.background, game.objects, game.decoration):
-                for obj in layer:
-                    obj.selected = False
-            game.textboxes = [
-                TextBox(200, 40, 20, 20, "gamemode"),
-                TextBox(200, 40, 20, 60, "starting height"),
-                TextBox(200, 40, 20, 100, "speed"),
-                TextBox(200, 40, 20, 140, "gravity"),
-                TextBox(200, 40, 20, 180, "background"),
-                TextBox(200, 40, 20, 220, "title")
-            ]
-            if game.active_textbox:     
-                game.active_textbox.deactivate()
-                game.active_textbox = None
-
-        else:
-            game.textboxes = []
-            if game.active_textbox:
-                game.active_textbox.deactivate()
-                game.active_textbox = None
-
-    else:
-        game.editing_settings = not game.editing_settings
-        if game.editing_settings:
-            game.textboxes = [
-                TextBox(200, 40, 20, 20, "player color"),
-                TextBox(200, 40, 20, 60, "speedhack"),
-                TextBox(200, 40, 20, 100, "fps"),
-                TextBox(200, 40, 20, 140, "respawn time")
-            ]
-        else:
-            game.textboxes = []
-            if game.active_textbox:
-                game.active_textbox.deactivate()
-                game.active_textbox = None
+                layer_points[i] = obj.get_points()
 
 def switch_layer(game, way):
-    if game.building:
-        if way == "back":
-            game.layer = max(0, game.layer - 1)
-        if way == "forth":
-            game.layer = min(2, game.layer + 1)
-        
-        game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
+    if way == "previous":
+        game.layer = max(0, game.layer - 1)
+    if way == "next":
+        game.layer = min(2, game.layer + 1)
+    
+    game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
 
-def toggle_building(game):
-    game.building = not game.building
-    if game.building:
-        game.player.y = game.level_data[0][1]
-        game.noclip_deaths = 0
-        game.hitbox_trail = []
-        game.hitbox_trail_points = []
-        game.wave_trail = []
-        game.layer = 1
-        game.title = ["Objects", -1]
+def reset_camera(game):
+    game.camera_x = 0
+    game.camera_y = 0
+    game.camera_zoom = 1
 
-        game.textboxes = []
-        if game.active_textbox:
+def create_level(game):
+    game.levels.append([["wave", 680, 4, 0, (255,)*3, "Unnamed level", 0], [], [], [], [Object(0, 0, 0, 0, 0, "checkpoint", (255,)*3, (255,)*3)], Object(1000, 0, 1, HEIGHT, 0, "end", (0, 255, 0), (255, 0, 0)), {}])
+
+def edit_level(game):
+    game.editing_level = not game.editing_level
+    if game.editing_level:
+
+        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+            for obj in layer:
+                obj.selected = False
+        game.textboxes = [
+            TextBox(20, 20, 200, 40, "Gamemode"),
+            TextBox(20, 60, 200, 40, "Starting Height"),
+            TextBox(20, 100, 200, 40, "Speed"),
+            TextBox(20, 140, 200, 40, "Gravity"),
+            TextBox(20, 180, 200, 40, "Background"),
+            TextBox(20, 220, 200, 40, "Title"),
+            TextBox(20, 260, 200, 40, "Points")
+        ]
+        if game.active_textbox:     
             game.active_textbox.deactivate()
             game.active_textbox = None
-        game.editing_settings = False
 
     else:
-        for obj in game.background:
-            obj.selected = False
-        for obj in game.objects:
-            obj.selected = False
-        for obj in game.decoration:
-            obj.selected = False
-
         game.textboxes = []
         if game.active_textbox:
             game.active_textbox.deactivate()
             game.active_textbox = None
-        game.editing_level = False
-        
-        game.load_level()

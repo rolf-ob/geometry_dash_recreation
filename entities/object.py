@@ -1,23 +1,23 @@
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 
 @dataclass
 class Object:
+    x: int
+    y: int
+    width: int
+    height: int
+    rotation: int
     shape: str
     color: tuple[int, int, int]
     outline: tuple[int, int, int]
-    rotation: int
-    width: int
-    height: int
-    x: int
-    y: int
     selected: bool = False
     
     def get_points(self):
         center_x = self.x + self.width / 2
         center_y = self.y + self.height / 2
 
-        if self.shape in ("end", "square"):
+        if self.shape in ("square", "end", "checkpoint"):
             corners = [
                 (self.x, self.y),
                 (self.x + self.width, self.y),
@@ -37,7 +37,6 @@ class Object:
                 (self.x, self.y + self.height)
             ]
 
-
         if self.rotation == 0:
             return corners
         
@@ -50,3 +49,17 @@ class Object:
             rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
             rotated.append((rotated_x, rotated_y))
         return rotated
+
+    def to_dict(self): #! Understand
+        d = asdict(self)
+        del d["selected"]
+        d["color"] = list(d["color"])
+        d["outline"] = list(d["outline"])
+        return d
+
+    @classmethod #! Understand
+    def from_dict(cls, d):
+        return cls(
+            x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
+            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"])
+        )

@@ -1,13 +1,8 @@
 import pygame as py
 
-from core.building import place_object, select_object, move_object, delete_object, duplicate, unselect_all, switch_attribute, apply_edit, create_level, edit, switch_layer, toggle_building
-from constants import PLAYER_X
-
-def step_frame(game):
-    if game.paused:
-        if game.frame_steps >= game.settings["fps"] // 3:
-            game.frame_steps = game.settings["fps"] // 3 - 2
-        game.frame_steps += 1
+from core.building import toggle_building, place_object, select_object, move_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, switch_layer, reset_camera, create_level, edit_level
+from core.textbox import TextBox
+from constants import PLAYER_X, HEIGHT
 
 def click(game, type, button, shift):
     if button in (0, 1) and not game.building:
@@ -31,26 +26,43 @@ def toggle_pause(game):
         game.camera_y = 0
         game.camera_zoom = 1
 
+    if not game.building:
+        if game.paused:
+            game.textboxes = [
+                TextBox(20, 20, 200, 40, "Name"),
+                TextBox(20, 60, 200, 40, "Player Color"),
+                TextBox(20, 100, 200, 40, "Speedhack"),
+                TextBox(20, 140, 200, 40, "FPS"),
+                TextBox(20, 180, 200, 40, "Respawn Time")
+            ]
+            game.textboxes[0].text = game.name
+        else:
+            game.textboxes = []
+            if game.active_textbox:
+                game.active_textbox.deactivate()
+                game.active_textbox = None
+
+def switch_checkpoint(game, way):
+    if way == "previous":
+        game.checkpoint += 1
+    elif way == "next":
+        game.checkpoint -= 1
+    game.restart()
+
 def switch_level(game, way):
-    if way == "back":
-        if game.current_level % len(game.levels) == 0 and game.levels[-1][2] != []:
-            create_level(game)
+    if way == "previous":
         game.current_level -= 1
-    
-    elif way == "forth":
-        if game.current_level % len(game.levels) == len(game.levels) - 1 and game.levels[-1][2] != []:
-            create_level(game)
+    elif way == "next":
         game.current_level += 1
     
     game.load_level()
 
-def restart(game):
-    if not game.building:
-        game.restart()
-    else:
-        game.camera_x = 0
-        game.camera_y = 0
-        game.camera_zoom = 1
+def step_frame(game):
+    if game.paused:
+        game.cheated = True
+        if game.frame_steps >= game.fps // 3:
+            game.frame_steps = game.fps // 3 - 2
+        game.frame_steps += 1
 
 def scroll(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
@@ -73,23 +85,28 @@ def zoom(game, y):
 def handle_input(game):
     keys = py.key.get_pressed()
 
-    if keys[py.K_c] and game.paused:
+    shift = True if keys[py.K_LSHIFT] else False
+    ctrl = True if keys[py.K_LCTRL] else False
+    alt = True if keys[py.K_LALT] else False
+
+    #Held events
+    if any(keys[key] for key in game.controls["step frame"]) and not game.building:
         step_frame(game)
     else:
         game.frame_steps = 0
 
-    if keys[py.K_LSHIFT] and py.mouse.get_pressed()[0] and game.building:
+    if shift and py.mouse.get_pressed()[0] and game.building:
         place_object(game)
-    if keys[py.K_LSHIFT] and py.mouse.get_pressed()[2] and game.building:
-        select_object(game, True)
-    
-    for event in py.event.get():
+    if shift and py.mouse.get_pressed()[2] and game.building:
+        select_object(game, shift)
 
+    for event in py.event.get():
         if event.type == py.QUIT:
             game.running = False
 
         elif event.type == py.VIDEORESIZE:
             game.width, game.height = event.size
+            game.view_width = game.width * (HEIGHT / game.height)
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
         elif event.type == py.TEXTINPUT:
@@ -99,117 +116,138 @@ def handle_input(game):
             if game.active_textbox:
                 if event.key == py.K_RETURN:
                     if game.building:
-
                         if not game.editing_level:
-                            if not game.active_textbox.field_name in ("shape", "rotation", "height") and game.end.selected:
-                                apply_edit(game, game.end, game.active_textbox.field_name, game.active_textbox.text)
+                            if not game.active_textbox.field_name in ("Shape", "Rotation", "Height") and game.end.selected:
+                                game.apply_edit(game.end, game.active_textbox.field_name.lower(), game.active_textbox.text)
                                 game.end_points = game.end.get_points()
 
                             for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
                                 for i, obj in enumerate(layer):
                                     if obj.selected:
-                                        apply_edit(game, obj, game.active_textbox.field_name, game.active_textbox.text)
+                                        game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
                                         layer_points[i] = obj.get_points()
                         else:
-                            apply_edit(game, None, game.active_textbox.field_name, game.active_textbox.text)
-
+                            game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
                     else:
-                        apply_edit(game, None, game.active_textbox.field_name, game.active_textbox.text)
-
-                    game.active_textbox.handle_event(event)
+                        game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                    
+                    if game.active_textbox.field_name != "Name":
+                        game.active_textbox.text = ""
 
                 elif event.key == py.K_BACKSPACE:
-                    game.active_textbox.handle_event(event)
+                    game.active_textbox.text = game.active_textbox.text[:-1]
                 
                 else:
-                    for key, way in zip((py.K_UP, py.K_DOWN, py.K_RSHIFT), ("up", "down", "deselect")):
-                        if event.key == key:
-                            switch_attribute(game, way)
+                    if any(event.key == key for key in game.controls["previous attribute"]):
+                        game.switch_attribute("previous")
+                    elif any(event.key == key for key in game.controls["next attribute"]):
+                        game.switch_attribute("next")
+                    elif any(event.key == key for key in game.controls["deselect attribute"]):
+                        game.switch_attribute("deselect")
 
             else:
-                if event.key == py.K_RETURN:
-                    click(game, "click", 0, keys[py.K_LSHIFT])
-                elif event.key == py.K_w:
-                    move_object(game, "up", keys[py.K_LSHIFT], keys[py.K_LCTRL])
-                    click(game, "click", 0, keys[py.K_LSHIFT])
-                elif event.key == py.K_KP_ENTER:
-                    click(game, "click", 0, keys[py.K_LSHIFT])
-                
-                elif event.key == py.K_F3:
-                    game.debug = not game.debug
-                
-                elif event.key == py.K_SPACE:
-                    toggle_pause(game)
-                
-                elif event.key == py.K_LEFT:
-                    switch_level(game, "back")
-                elif event.key == py.K_RIGHT:
-                    switch_level(game, "forth")
-                
-                elif event.key == py.K_UP:
-                    switch_attribute(game, "up")
-                elif event.key == py.K_DOWN:
-                    switch_attribute(game, "down")
-                
-                elif event.key == py.K_r:
-                    restart(game)
+                if not game.building: #Playing controls
+                    if any(event.key == key for key in game.controls["click"]):
+                        click(game, "click", 0, shift)
+                    
+                    elif any(event.key == key for key in game.controls["toggle pause"]):
+                        toggle_pause(game)
+                    
+                    elif any(event.key == key for key in game.controls["restart level"]):
+                        game.restart()
 
-                elif event.key == py.K_z:
-                    game.speedhack = not game.speedhack
-                
-                elif event.key == py.K_x:
+                    elif any(event.key == key for key in game.controls["previous checkpoint"]):
+                        switch_checkpoint(game, "previous")
+                    elif any(event.key == key for key in game.controls["next checkpoint"]):
+                        switch_checkpoint(game, "next")
+                    
+                    elif any(event.key == key for key in game.controls["previous level"]):
+                        switch_level(game, "previous")
+                    elif any(event.key == key for key in game.controls["next level"]):
+                        switch_level(game, "next")
+
+                    elif any(event.key == key for key in game.controls["toggle speedhack"]):
+                        game.cheated = True
+                        game.speedhack = not game.speedhack
+                    
+                    elif any(event.key == key for key in game.controls["toggle noclip"]):
+                        game.noclip = not game.noclip
+
+                else: #Building controls
+                    if any(event.key == key for key in game.controls["move up"]):
+                        move_objects(game, "up", shift, ctrl, alt)
+                    elif any(event.key == key for key in game.controls["move left"]):
+                        move_objects(game, "left", shift, ctrl, alt)
+                    elif any(event.key == key for key in game.controls["move down"]):
+                        move_objects(game, "down", shift, ctrl, alt)
+                    elif any(event.key == key for key in game.controls["move right"]):
+                        move_objects(game, "right", shift, ctrl, alt)
+
+                    elif any(event.key == key for key in game.controls["rotate counter clockwise"]):
+                        rotate_objects(game, "counter clockwise")
+                    elif any(event.key == key for key in game.controls["rotate clockwise"]):
+                        rotate_objects(game, "clockwise")
+
+                    elif any(event.key == key for key in game.controls["flip horizontally"]):
+                        flip_objects(game, "horizontally")
+                    elif any(event.key == key for key in game.controls["flip vertically"]):
+                        flip_objects(game, "vertically")
+                    
+                    elif any(event.key == key for key in game.controls["deselect objects"]):
+                        deselect_objects(game)
+                    elif any(event.key == key for key in game.controls["duplicate objects"]):
+                        duplicate_objects(game)
+                    elif any(event.key == key for key in game.controls["delete objects"]):
+                        delete_objects(game)
+
+                    elif any(event.key == key for key in game.controls["snap grid objects"]):
+                        snap_grid_objects(game)
+                    
+                    elif any(event.key == key for key in game.controls["previous layer"]):
+                        switch_layer(game, "previous")
+                    elif any(event.key == key for key in game.controls["next layer"]):
+                        switch_layer(game, "next")
+
+                    elif any(event.key == key for key in game.controls["reset camera"]):
+                        reset_camera(game)
+                    
+                    elif any(event.key == key for key in game.controls["edit level"]):
+                        edit_level(game)
+
+                #Universal controls
+                if any(event.key == key for key in game.controls["toggle debug"]):
+                    game.debug = not game.debug
+                elif any(event.key == key for key in game.controls["save to file"]):
+                    game.save_to_file()
+                    
+                elif any(event.key == key for key in game.controls["previous attribute"]):
+                    game.switch_attribute("previous")
+                elif any(event.key == key for key in game.controls["next attribute"]):
+                    game.switch_attribute("next")
+
+                elif any(event.key == key for key in game.controls["toggle hitboxes"]):
+                    game.cheated = True
                     game.show_hitboxes = not game.show_hitboxes
-                
-                elif event.key == py.K_v:
-                    game.noclip = not game.noclip
-                
-                elif event.key == py.K_a:
-                    move_object(game, "left", keys[py.K_LSHIFT], keys[py.K_LCTRL])
-                elif event.key == py.K_s:
-                    move_object(game, "down", keys[py.K_LSHIFT], keys[py.K_LCTRL])
-                elif event.key == py.K_d:
-                    move_object(game, "right", keys[py.K_LSHIFT], keys[py.K_LCTRL])
-                
-                elif event.key == py.K_BACKSPACE:
-                    delete_object(game)
-                
-                elif event.key == py.K_y:
-                    duplicate(game)
-                
-                elif event.key == py.K_u:
-                    unselect_all(game)
-                
-                elif event.key == py.K_t:
-                    edit(game)
-                
-                elif event.key == py.K_q:
-                    switch_layer(game, "back")
-                elif event.key == py.K_e:
-                    switch_layer(game, "forth")
-                
-                elif event.key == py.K_b:
+
+                elif any(event.key == key for key in game.controls["create level"]):
+                    create_level(game)
+                    
+                elif any(event.key == key for key in game.controls["toggle building"]):
                     toggle_building(game)
 
-                elif event.key == py.K_f:
-                    game.save_to_file()
-
         elif event.type == py.KEYUP:
-            if event.key == py.K_RETURN:
-                click(game, "release", 0, keys[py.K_LSHIFT])
-            elif event.key == py.K_w:
-                click(game, "release", 0, keys[py.K_LSHIFT])
-            elif event.key == py.K_KP_ENTER:
-                click(game, "release", 0, keys[py.K_LSHIFT])
+            if any(event.key == key for key in game.controls["click"]):
+                click(game, "release", 0, shift)
         
         elif event.type == py.MOUSEBUTTONDOWN:
-            click(game, "click", event.button, keys[py.K_LSHIFT])
+            click(game, "click", event.button, shift)
         elif event.type == py.MOUSEBUTTONUP:
-            click(game, "release", event.button, keys[py.K_LSHIFT])
+            click(game, "release", event.button, shift)
         
         elif event.type == py.MOUSEWHEEL:
-            if keys[py.K_LCTRL]:
+            if ctrl:
                 scroll(game, event.y)
-            elif keys[py.K_LSHIFT]:
+            elif shift:
                 pan(game, event.y)
             else:
                 zoom(game, event.y)

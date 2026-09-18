@@ -1,0 +1,121 @@
+{
+  "accessibility": {
+    "name": "Rolf",
+    "player color": [
+      0,
+      255,
+      255
+    ],
+    "speedhack multiplier": 0.8,
+    "fps": 240,
+    "respawn time": 0.5
+  },
+  "controls": {
+    "click": [
+      "space",
+      "w",
+      "return",
+      "enter"
+    ],
+    "toggle pause": [
+      "escape",
+      "s"
+    ],
+    "restart level": [
+      "r"
+    ],
+    "previous checkpoint": [
+      "1"
+    ],
+    "next checkpoint": [
+      "3"
+    ],
+    "previous level": [
+      "q"
+    ],
+    "next level": [
+      "e"
+    ],
+    "toggle speedhack": [
+      "z"
+    ],
+    "toggle noclip": [
+      "c"
+    ],
+    "step frame": [
+      "v"
+    ],
+    "move up": [
+      "w"
+    ],
+    "move left": [
+      "a"
+    ],
+    "move down": [
+      "s"
+    ],
+    "move right": [
+      "d"
+    ],
+    "rotate counter clockwise": [
+      "z"
+    ],
+    "rotate clockwise": [
+      "c"
+    ],
+    "flip horizontally": [
+      "i"
+    ],
+    "flip vertically": [
+      "o"
+    ],
+    "deselect objects": [
+      "u"
+    ],
+    "duplicate objects": [
+      "y"
+    ],
+    "delete objects": [
+      "backspace"
+    ],
+    "snap grid objects": [
+      "g"
+    ],
+    "previous layer": [
+      "q"
+    ],
+    "next layer": [
+      "e"
+    ],
+    "reset camera": [
+      "r"
+    ],
+    "edit level": [
+      "t"
+    ],
+    "toggle debug": [
+      "f3"
+    ],
+    "save to file": [
+      "f"
+    ],
+    "previous attribute": [
+      "up"
+    ],
+    "next attribute": [
+      "down"
+    ],
+    "deselect attribute": [
+      "tab"
+    ],
+    "toggle hitboxes": [
+      "x"
+    ],
+    "create level": [
+      "h"
+    ],
+    "toggle building": [
+      "b"
+    ]
+  }
+}

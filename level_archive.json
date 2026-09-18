@@ -1,0 +1,1059 @@
+[
+    {
+    "meta": {
+      "gamemode": "wave",
+      "speed": 4,
+      "gravity": 0,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "120fp twice spikes"
+    },
+    "background": [],
+    "objects": [
+      {
+        "x": 800,
+        "y": 600,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 800,
+        "y": 0,
+        "width": 40,
+        "height": 452,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 800,
+        "y": 560,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 800,
+        "y": 452,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "decoration": [],
+    "end": {
+      "x": 1000,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "gamemode": "wave",
+      "speed": 4,
+      "gravity": 0,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "120fp twice triple spikes"
+    },
+    "background": [],
+    "objects": [
+      {
+        "x": 800,
+        "y": 0,
+        "width": 40,
+        "height": 444,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 800,
+        "y": 444,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 840,
+        "y": 570,
+        "width": 40,
+        "height": 150,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 840,
+        "y": 530,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 880,
+        "y": 0,
+        "width": 40,
+        "height": 444,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 880,
+        "y": 444,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "decoration": [],
+    "end": {
+      "x": 1200,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "gamemode": "wave",
+      "speed": 4,
+      "gravity": 0,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "120fp twice slope"
+    },
+    "background": [],
+    "objects": [
+      {
+        "x": 840,
+        "y": 600,
+        "width": 120,
+        "height": 120,
+        "rotation": 270,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 800,
+        "y": 514,
+        "width": 160,
+        "height": 160,
+        "rotation": 90,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 800,
+        "y": 0,
+        "width": 40,
+        "height": 514,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 960,
+        "y": 600,
+        "width": 120,
+        "height": 120,
+        "rotation": 0,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 960,
+        "y": 514,
+        "width": 160,
+        "height": 160,
+        "rotation": 180,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "decoration": [],
+    "end": {
+      "x": 1200,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "gamemode": "wave",
+      "speed": 4,
+      "gravity": 0,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "Blind 240fp slope"
+    },
+    "background": [],
+    "objects": [
+      {
+        "x": 0,
+        "y": 639,
+        "width": 550,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "x": 900,
+        "y": 0,
+        "width": 40,
+        "height": 320,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 900,
+        "y": 320,
+        "width": 40,
+        "height": 40,
+        "rotation": 90,
+        "shape": "slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 900,
+        "y": 404,
+        "width": 40,
+        "height": 40,
+        "rotation": 270,
+        "shape": "slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 900,
+        "y": 444,
+        "width": 40,
+        "height": 276,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "decoration": [],
+    "end": {
+      "x": 1200,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "gamemode": "wave",
+      "speed": 4,
+      "gravity": 0,
+      "background color": [
+        255,
+        0,
+        0
+      ],
+      "title": "Guessing game"
+    },
+    "background": [],
+    "objects": [
+      {
+        "x": 1000,
+        "y": 0,
+        "width": 400,
+        "height": 60,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 1000,
+        "y": 60,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 1000,
+        "y": 180,
+        "width": 400,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 1000,
+        "y": 420,
+        "width": 400,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 1000,
+        "y": 540,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 1000,
+        "y": 660,
+        "width": 400,
+        "height": 60,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 2000,
+        "y": 0,
+        "width": 400,
+        "height": 60,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 2000,
+        "y": 60,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 2000,
+        "y": 180,
+        "width": 400,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 2000,
+        "y": 300,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 2000,
+        "y": 420,
+        "width": 400,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 2000,
+        "y": 660,
+        "width": 400,
+        "height": 60,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 3000,
+        "y": 0,
+        "width": 400,
+        "height": 60,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 3000,
+        "y": 60,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 3000,
+        "y": 180,
+        "width": 400,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 3000,
+        "y": 300,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 3000,
+        "y": 420,
+        "width": 400,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 3000,
+        "y": 660,
+        "width": 400,
+        "height": 60,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "decoration": [
+      {
+        "x": 1000,
+        "y": 300,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 2000,
+        "y": 540,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 3000,
+        "y": 540,
+        "width": 40,
+        "height": 120,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "end": {
+      "x": 3400,
+      "y": 0,
+      "width": 20,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "gamemode": "wave",
+      "speed": 4,
+      "gravity": 0,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "30 fps required slope"
+    },
+    "background": [],
+    "objects": [
+      {
+        "x": 834,
+        "y": 600,
+        "width": 120,
+        "height": 120,
+        "rotation": 270,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 794,
+        "y": 514,
+        "width": 160,
+        "height": 160,
+        "rotation": 90,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 794,
+        "y": 0,
+        "width": 40,
+        "height": 514,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 956,
+        "y": 600,
+        "width": 120,
+        "height": 120,
+        "rotation": 0,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 956,
+        "y": 514,
+        "width": 160,
+        "height": 160,
+        "rotation": 180,
+        "shape": "slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 850,
+        "y": 690,
+        "width": 40,
+        "height": 30,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "decoration": [],
+    "end": {
+      "x": 1200,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ]
+    }
+  }
+]
