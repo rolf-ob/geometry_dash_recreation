@@ -7,7 +7,7 @@ from rendering.rendering import draw
 from entities.object import Object
 from entities.serialization import levels_to_data, data_to_levels
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X
+from constants import WIDTH, HEIGHT, PLAYER_X, FIXED_STEP
 from core.fps_counter import FpsCounter
 
 class Game():
@@ -26,7 +26,7 @@ class Game():
         
         self.running = True
 
-        self.operator = False
+        self.operator = True
         self.name = self.accessibility["name"]
         self.player = Object(0, 0, 40, 40, 0, "square", tuple(self.accessibility["player color"]), (0,)*3)
         self.fps = self.accessibility["fps"]
@@ -36,6 +36,7 @@ class Game():
         self.width = WIDTH
         self.height = HEIGHT
         self.view_width = WIDTH
+        self.scale = 1
         self.last_frame_time = time.perf_counter()
         self.clicking = 0
 
@@ -109,19 +110,12 @@ class Game():
                         setattr(obj, field_name, text)
                         self.shape = text
 
-                    elif field_name == "shape" and text == "checkpoint" and self.layer == 1:
-                        setattr(obj, field_name, text)
-                        self.objects.remove(obj)
-                        self.object_points.remove(obj.get_points())
-                        self.checkpoints.append(obj)
-                        self.checkpoint_points.append(obj.get_points())
-
                 else:
                     if field_name == "mode" and text in ("wave"):
                         self.level_data["meta"]["gamemode"] = text
 
                     elif field_name == "speed":
-                        self.level_data["meta"]["speed"] = int(text)
+                        self.level_data["meta"]["speed"] = float(text)
 
                     elif field_name == "gravity":
                         self.level_data["meta"]["gravity"] = int(text)
@@ -137,6 +131,10 @@ class Game():
                     elif field_name == "points":
                         self.level_data["meta"]["points"] = int(text)
 
+                    elif field_name == "delete" and text == "delete":
+                        self.current_level -= 1
+                        self.levels.pop(self.current_level+1)
+
             else:
                 if field_name == "name":
                     self.name = text
@@ -149,7 +147,7 @@ class Game():
                     self.speedhack_multiplier = max(0, float(text))
 
                 elif field_name == "fps":
-                    self.fps = int(text)
+                    self.fps = max(48, int(text))
 
                 elif field_name == "respawn time":
                     self.respawn_time = float(text)
@@ -161,6 +159,7 @@ class Game():
         self.camera_x = self.checkpoints[self.checkpoint % len(self.checkpoints)].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
+        self.zoom_center = self.camera_zoom + WIDTH / 2
         self.player.x = self.checkpoints[self.checkpoint % len(self.checkpoints)].x
         self.player.y = self.checkpoints[self.checkpoint % len(self.checkpoints)].y
         self.player_points = self.player.get_points()
@@ -186,9 +185,9 @@ class Game():
         self.victors = self.level_data["victors"]
         self.speed = self.level_data["meta"]["speed"]
         if self.level_data["meta"]["points"] == 0:
-            self.title = [self.level_data["meta"]["title"], self.fps * 2]
+            self.title = [self.level_data["meta"]["title"], 2]
         else:
-            self.title = [self.level_data["meta"]["title"] + " | Points: " + str(self.level_data["meta"]["points"]), self.fps * 2]
+            self.title = [self.level_data["meta"]["title"] + " | Points: " + str(self.level_data["meta"]["points"]), 2]
         self.checkpoint = 0
         
         self.background_points = [obj.get_points() for obj in self.background]
@@ -216,7 +215,7 @@ class Game():
         with open("settings.json", "w") as f:
             json.dump(settings, f, indent=2)
 
-        self.title = ["Settings and levels saved", self.fps * 2]
+        self.title = ["Settings and levels saved", 2]
 
     def limit_fps(self, target_fps):
         frame_duration = 1 / target_fps
@@ -225,17 +224,33 @@ class Game():
         self.last_frame_time = time.perf_counter()
 
     def run(self):
+        accumulator = 0
+        previous = time.perf_counter()
+
         while self.running:
-            handle_input(self)
-            if (not self.paused or self.frame_steps == 1 or self.frame_steps >= self.fps // 3) and not self.building and not (self.current_level % len(self.levels) == 0):
-                update(self)
-            draw(self)
-            py.display.flip()
+            now = time.perf_counter()
+            frame_time = now - previous
+            previous = now
+
+            if frame_time > 0.02:
+                self.restart()
+                self.title = ["You're too laggy!", 2]
 
             if self.speedhack:
-                self.limit_fps(self.fps * self.speedhack_multiplier)
-            else:
-                self.limit_fps(self.fps)
+                frame_time *= self.speedhack_multiplier
+            accumulator += frame_time
+
+            handle_input(self)
+
+            can_update = (not self.paused or self.frame_steps == 1 or self.frame_steps >= self.fps // 3) and not self.building and not (self.current_level % len(self.levels) == 0)
+            while accumulator >= FIXED_STEP:
+                if can_update:
+                    update(self)
+                accumulator -= FIXED_STEP
+            
+            draw(self)
+            py.display.flip()
+            self.limit_fps(self.fps * self.speedhack_multiplier if self.speedhack else self.fps)
             self.fps_counter.tick()
 
         self.save_to_file()

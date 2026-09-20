@@ -1,22 +1,19 @@
 from entities.collision import polygons_collide
 from entities.object import Object
-from constants import HEIGHT
+from constants import HEIGHT, FIXED_STEP
 
 def update(game):
     if not game.completed and game.dead == 0:
-        #Update position
-        game.camera_x += game.speed * 120/game.fps
-        game.player.x += game.speed * 120/game.fps
+        game.camera_x += game.speed
+        game.player.x += game.speed
 
-        #Go up or down
         if game.clicking > 0 and game.player.y > 0:
-            game.player.y = max(0, (game.player.y - game.speed * 120/game.fps))
+            game.player.y = max(0, (game.player.y - game.speed))
         elif game.clicking == 0 and game.player.y < HEIGHT - 40:
-            game.player.y = min(680, (game.player.y + game.speed * 120/game.fps))
+            game.player.y = min(680, (game.player.y + game.speed))
         elif game.wave_trail[-1][1] != game.player.y:
             game.wave_trail.append((game.player.x + 20, game.player.y))
         
-        #Collision
         game.player_points = game.player.get_points()
         hitbox_color = (0, 255, 0)
 
@@ -24,7 +21,7 @@ def update(game):
             if any(game.camera_x < point[0] < game.camera_x + game.view_width for point in points):
                 if polygons_collide(game.player_points, points):
                     if not game.noclip:
-                        game.dead = 1
+                        game.dead = FIXED_STEP
                         hitbox_color = (255, 0, 0)
                         break
                     else:
@@ -47,12 +44,12 @@ def update(game):
 
     elif game.dead > 0:
         if not game.speedhack:
-            if game.dead >= game.respawn_time * game.fps:
+            if game.dead >= game.respawn_time:
                 game.restart()
             else:
-                game.dead += 1
+                game.dead += FIXED_STEP
         else:
-            if game.dead >= game.respawn_time * game.fps * game.speedhack_multiplier:
+            if game.dead >= game.respawn_time * game.speedhack_multiplier:
                 game.restart()
             else:
-                game.dead += 1
+                game.dead += FIXED_STEP

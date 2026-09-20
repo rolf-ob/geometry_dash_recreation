@@ -50,16 +50,16 @@ class Object:
             rotated.append((rotated_x, rotated_y))
         return rotated
 
-    def to_dict(self): #! Understand
+    def to_dict(self):
         d = asdict(self)
         del d["selected"]
         d["color"] = list(d["color"])
         d["outline"] = list(d["outline"])
         return d
 
-    @classmethod #! Understand
-    def from_dict(cls, d):
+    @classmethod
+    def from_dict(cls, dict):
         return cls(
-            x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
-            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"])
+            x=dict["x"], y=dict["y"], width=dict["width"], height=dict["height"], rotation=dict["rotation"],
+            shape=dict["shape"], color=tuple(dict["color"]), outline=tuple(dict["outline"])
         )

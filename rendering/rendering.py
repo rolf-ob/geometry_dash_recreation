@@ -1,10 +1,10 @@
 import pygame as py
 
-from constants import WIDTH, HEIGHT, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
+from constants import WIDTH, HEIGHT, FIXED_STEP, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
-    screen_x = ((x - game.camera_x - WIDTH / 2) * game.camera_zoom + WIDTH / 2)
-    screen_y = ((y - game.camera_y - HEIGHT / 2) * game.camera_zoom + HEIGHT / 2)
+    screen_x = ((x - game.camera_x - WIDTH / 2) * game.camera_zoom + WIDTH / 2) * game.scale
+    screen_y = ((y - game.camera_y - HEIGHT / 2) * game.camera_zoom + HEIGHT / 2) * game.scale
     return int(screen_x), int(screen_y)
 
 def screen_to_world(game, x, y):
@@ -54,12 +54,12 @@ def draw_decoration(game, screen):
 
 def draw_checkpoints(game, screen):
     for obj, points in zip(game.checkpoints, game.checkpoint_points):
-        if obj != game.checkpoints[0]:
-            if within_view(game, points):
-                color = (200, 255, 200) if obj.selected else obj.color
-                draw_polygon(game, screen, points, color, 0)
-                draw_polygon(game, screen, points, obj.outline, 1)
-                screen.blit(game.text_cache.get_surface(f"C", (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+        text = "S" if obj == game.checkpoints[0] else "C"
+        if within_view(game, points):
+            color = (200, 255, 200) if obj.selected else obj.color
+            draw_polygon(game, screen, points, color, 0)
+            draw_polygon(game, screen, points, obj.outline, 1)
+            screen.blit(game.text_cache.get_surface(text, (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
 
 def draw_hitbox_trail(game, screen):
     for box, points in zip(game.hitbox_trail[:-1], game.hitbox_trail_points[:-1]):
@@ -168,12 +168,16 @@ def draw_title(game, screen):
 def draw_debug(game, screen):
     py.draw.rect(game.screen, (255,)*3, (0, game.height - 150, 150, 150))
     py.draw.rect(game.screen, (0,)*3, (0, game.height - 150, 150, 150), 2)
-    screen.blit(game.text_cache.get_surface(f"FPS: {game.fps_counter.get_fps()}", (0,)*3), (10, game.height - 140))
-    screen.blit(game.text_cache.get_surface(f"Clicking: {game.clicking}", (0,)*3), (10, game.height - 120))
-    screen.blit(game.text_cache.get_surface(f"Level: {game.current_level % len(game.levels)}", (0,)*3), (10, game.height - 100))
-    screen.blit(game.text_cache.get_surface(f"Zoom: {round(game.camera_zoom, 1)}", (0,)*3), (10, game.height - 80))
-    screen.blit(game.text_cache.get_surface(f"Cheated: {game.cheated}", (0,)*3), (10, game.height - 60))
-    screen.blit(game.text_cache.get_surface(f"Deaths: {game.noclip_deaths}", (0,)*3), (10, game.height - 40))
+    debug_items = [
+        f"Deaths: {game.noclip_deaths}",
+        f"Cheated: {game.cheated}",
+        f"Zoom: {round(game.camera_zoom, 1)}",
+        f"Level: {game.current_level % len(game.levels)}",
+        f"Clicking: {game.clicking}",
+        f"FPS: {game.fps_counter.get_fps()}"
+    ]
+    for i, item in enumerate(debug_items):
+        screen.blit(game.text_cache.get_surface(item, (0,)*3), (10, game.height - (40 + 20*i)))
 
 def draw(game):
     game.screen.fill(game.background_color)
@@ -196,13 +200,13 @@ def draw(game):
 
     if game.completed or game.current_level % len(game.levels) == 0:
         draw_leaderboard(game, screen)
-
-    if game.title[1] != 0:
+    
+    if game.title[1] > 0 or game.title[1] == -1:
         draw_title(game, screen)
-        game.title[1] = -1 if game.title[1] == -1 else game.title[1] - 1
+        game.title[1] = -1 if game.title[1] == -1 else game.title[1] - FIXED_STEP
     elif game.building:
         game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
-
+    
     for box in game.textboxes:
         box.draw(screen, game.font)
 

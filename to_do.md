@@ -1,8 +1,6 @@
-- Fix fullscreen lag
-- Deleting levels as an attribute in level settings
-- Disabling building
-- Low FPS doesn't slow down gameplay
 - Safe to slide on blocks
 - Changing controls
 - Gravity switching
 - New gamemodes
+- Portals, speed changers, orbs etc
+- Camera going up and down with player

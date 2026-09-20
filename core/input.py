@@ -2,7 +2,7 @@ import pygame as py
 
 from core.building import toggle_building, place_object, select_object, move_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, switch_layer, reset_camera, create_level, edit_level
 from core.textbox import TextBox
-from constants import PLAYER_X, HEIGHT
+from constants import PLAYER_X, WIDTH, HEIGHT
 
 def click(game, type, button, shift):
     if button in (0, 1) and not game.building:
@@ -25,6 +25,7 @@ def toggle_pause(game):
         game.camera_x = game.player.x - PLAYER_X
         game.camera_y = 0
         game.camera_zoom = 1
+        game.zoom_center = game.camera_zoom + WIDTH / 2
 
     if not game.building:
         if game.paused:
@@ -48,7 +49,7 @@ def switch_checkpoint(game, way):
     elif way == "next":
         game.checkpoint -= 1
     game.restart()
-    game.title = [f"Checkpoint {game.checkpoint % len(game.checkpoints)}/{len(game.checkpoints) - 1}", game.fps // 2]
+    game.title = [f"Checkpoint {game.checkpoint % len(game.checkpoints)}/{len(game.checkpoints) - 1}", 0.5]
 
 def switch_level(game, way):
     if way == "previous":
@@ -70,18 +71,21 @@ def scroll(game, y):
         game.camera_y -= 100 / game.camera_zoom
     elif y < 0 and (game.paused or game.completed or game.building):
         game.camera_y += 100 / game.camera_zoom
+    game.zoom_center = game.camera_zoom + WIDTH / 2
 
 def pan(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
         game.camera_x -= 100 / game.camera_zoom
     elif y < 0 and (game.paused or game.completed or game.building):
         game.camera_x += 100 / game.camera_zoom
+    game.zoom_center = game.camera_zoom + WIDTH / 2
 
 def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
         game.camera_zoom += 0.1
     elif y < 0 and (game.paused or game.completed or game.building) and game.camera_zoom > 1:
         game.camera_zoom -= 0.1
+    game.zoom_center = game.camera_zoom + WIDTH / 2
 
 def handle_input(game):
     keys = py.key.get_pressed()
@@ -108,6 +112,7 @@ def handle_input(game):
         elif event.type == py.VIDEORESIZE:
             game.width, game.height = event.size
             game.view_width = game.width * (HEIGHT / game.height)
+            game.scale = game.height / HEIGHT
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
         elif event.type == py.TEXTINPUT:
@@ -126,15 +131,42 @@ def handle_input(game):
                                 for i, obj in enumerate(layer):
                                     if obj.selected:
                                         game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                        if obj.shape != "checkpoint":
-                                            layer_points[i] = obj.get_points()
+                                        layer_points[i] = obj.get_points()
+                        
                         else:
                             game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
                     else:
                         game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
                     
-                    if game.active_textbox.field_name != "Name":
+                    if game.active_textbox.field_name == "Delete" and game.active_textbox.text == "delete":
+                        game.building = False
+                
+                        game.textboxes = []
+                        if game.active_textbox:
+                            game.active_textbox.deactivate()
+                            game.active_textbox = None
+                        game.editing_level = False
+                        
+                        if game.paused:
+                            game.textboxes = [
+                                TextBox(20, 20, 200, 40, "Name"),
+                                TextBox(20, 60, 200, 40, "Player Color"),
+                                TextBox(20, 100, 200, 40, "Speedhack"),
+                                TextBox(20, 140, 200, 40, "FPS"),
+                                TextBox(20, 180, 200, 40, "Respawn Time")
+                            ]
+                            game.textboxes[0].text = game.name
+                        
+                        game.load_level()
+
+                    elif game.active_textbox.field_name != "Name":
                         game.active_textbox.text = ""
+                            
+                    elif not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)) and not game.editing_level:
+                        game.textboxes = []
+                        if game.active_textbox:
+                            game.active_textbox.deactivate()
+                            game.active_textbox = None
 
                 elif event.key == py.K_BACKSPACE:
                     game.active_textbox.text = game.active_textbox.text[:-1]

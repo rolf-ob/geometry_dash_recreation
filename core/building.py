@@ -5,7 +5,7 @@ from core.textbox import TextBox
 from entities.object import Object
 from entities.collision import polygons_collide
 from rendering.rendering import screen_to_world
-from constants import PLAYER_X, HEIGHT
+from constants import PLAYER_X, WIDTH, HEIGHT
 
 def toggle_building(game):
     game.building = not game.building
@@ -91,7 +91,7 @@ def select_object(game, shifting):
                             TextBox(20, 220, 200, 40, "Height")
                         ]
 
-    if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints)) and not game.editing_level:
+    if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)) and not game.editing_level:
         game.textboxes = []
         if game.active_textbox:
             game.active_textbox.deactivate()
@@ -234,7 +234,7 @@ def deselect_objects(game):
         game.active_textbox = None
 
 def duplicate_objects(game):
-    for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for obj in layer.copy():
             if obj.selected:
                 layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline))
@@ -244,8 +244,9 @@ def delete_objects(game):
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for obj, points in zip(layer.copy(), layer_points.copy()):
             if obj.selected:
-                layer.remove(obj)
-                layer_points.remove(points)
+                if obj != game.checkpoints[0]:
+                    layer.remove(obj)
+                    layer_points.remove(points)
     
     game.textboxes = []
     if game.active_textbox:
@@ -285,18 +286,19 @@ def reset_camera(game):
     game.camera_x = 0
     game.camera_y = 0
     game.camera_zoom = 1
+    game.zoom_center = game.camera_zoom + WIDTH / 2
 
 def create_level(game):
     game.levels.insert((game.current_level % len(game.levels)) + 1, {
-        "meta": {"gamemode": "wave", "speed": 4, "gravity": 0, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
+        "meta": {"gamemode": "wave", "speed": 2, "gravity": 0, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 0, 0, 0, "checkpoint", (255,)*3, (255,)*3)],
+        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3)],
         "end": Object(1000, 0, 1, HEIGHT, 0, "end", (0, 255, 0), (255, 0, 0)),
         "victors": {}
     })
-    game.title = [f"Created New Level", game.fps * 2]
+    game.title = ["Created New Level", 2]
 
 def edit_level(game):
     game.editing_level = not game.editing_level
@@ -307,12 +309,12 @@ def edit_level(game):
                 obj.selected = False
         game.textboxes = [
             TextBox(20, 20, 200, 40, "Gamemode"),
-            TextBox(20, 60, 200, 40, "Starting Height"),
-            TextBox(20, 100, 200, 40, "Speed"),
-            TextBox(20, 140, 200, 40, "Gravity"),
-            TextBox(20, 180, 200, 40, "Background"),
-            TextBox(20, 220, 200, 40, "Title"),
-            TextBox(20, 260, 200, 40, "Points")
+            TextBox(20, 60, 200, 40, "Speed"),
+            TextBox(20, 100, 200, 40, "Gravity"),
+            TextBox(20, 140, 200, 40, "Background"),
+            TextBox(20, 180, 200, 40, "Title"),
+            TextBox(20, 220, 200, 40, "Points"),
+            TextBox(20, 260, 200, 40, "Delete")
         ]
         if game.active_textbox:     
             game.active_textbox.deactivate()

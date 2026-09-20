@@ -2,7 +2,7 @@
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 4,
+      "speed": 2.0,
       "gravity": 0,
       "background color": [
         255,
@@ -19,8 +19,8 @@
       {
         "x": 360,
         "y": 680,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -29,9 +29,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       }
     ],
@@ -58,7 +58,7 @@
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 4,
+      "speed": 2.0,
       "gravity": 0,
       "background color": [
         255,
@@ -110,10 +110,10 @@
     "decoration": [],
     "checkpoints": [
       {
-        "x": 360,
+        "x": 440,
         "y": 680,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -122,9 +122,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       }
     ],
@@ -147,7 +147,7 @@
       ]
     },
     "victors": {
-      "Rolf": 22,
+      "Rolf": 94,
       "Masuud": 1,
       "Anouar": 3
     }
@@ -155,7 +155,7 @@
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 4,
+      "speed": 2.0,
       "gravity": 0,
       "background color": [
         255,
@@ -497,8 +497,8 @@
       {
         "x": 360,
         "y": 430,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -507,9 +507,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       },
       {
@@ -550,13 +550,13 @@
       ]
     },
     "victors": {
-      "Rolf": 6
+      "Rolf": 28
     }
   },
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 4,
+      "speed": 2.0,
       "gravity": 0,
       "background color": [
         255,
@@ -646,8 +646,8 @@
       {
         "x": 360,
         "y": 680,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -656,9 +656,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       }
     ],
@@ -681,13 +681,13 @@
       ]
     },
     "victors": {
-      "Rolf": 1
+      "Rolf": 2
     }
   },
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 4,
+      "speed": 2.0,
       "gravity": 0,
       "background color": [
         255,
@@ -777,8 +777,8 @@
       {
         "x": 360,
         "y": 680,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -787,9 +787,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       }
     ],
@@ -818,7 +818,7 @@
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 5,
+      "speed": 2.5,
       "gravity": 0,
       "background color": [
         255,
@@ -1520,8 +1520,8 @@
       {
         "x": 360,
         "y": 680,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -1530,9 +1530,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       }
     ],
@@ -1555,13 +1555,13 @@
       ]
     },
     "victors": {
-      "Rolf": 1
+      "Rolf": 2
     }
   },
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 6,
+      "speed": 3,
       "gravity": 0,
       "background color": [
         0,
@@ -2048,8 +2048,8 @@
       {
         "x": 360,
         "y": 680,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -2058,9 +2058,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       }
     ],
@@ -2087,7 +2087,7 @@
   {
     "meta": {
       "gamemode": "wave",
-      "speed": 5,
+      "speed": 2.5,
       "gravity": 0,
       "background color": [
         255,
@@ -3006,8 +3006,8 @@
       {
         "x": 360,
         "y": 100,
-        "width": 0,
-        "height": 0,
+        "width": 40,
+        "height": 40,
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
@@ -3016,9 +3016,9 @@
           255
         ],
         "outline": [
-          255,
-          255,
-          255
+          0,
+          0,
+          0
         ]
       }
     ],

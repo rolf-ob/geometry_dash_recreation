@@ -1,6 +1,7 @@
 WIDTH = 1440
 HEIGHT = 720
 PLAYER_X = 360
+FIXED_STEP = 1 / 240
 
 controls_tutorial = [
     "NAVIGATION",
@@ -53,4 +54,8 @@ building_tutorial = [
     "Switch Building Layer - Q, E",
     "Reset Camera Position - R",
     "Edit Level Settings - T"
+    "",
+    "SHAPES",
+    "Building shapes - square, triangle, slope",
+    "Functional shapes - checkpoint",
 ]
