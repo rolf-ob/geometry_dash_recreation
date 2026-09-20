@@ -4,7 +4,7 @@ def level_to_dict(level):
     return {
         "meta": level["meta"],
         "background": [obj.to_dict() for obj in level["background"]],
-        "objects": [obj.to_dict() for obj in level["objects"]],
+        "objs": [obj.to_dict() for obj in level["objects"]],
         "decoration": [obj.to_dict() for obj in level["decoration"]],
         "checkpoints": [obj.to_dict() for obj in level["checkpoints"]],
         "end": level["end"].to_dict(),
@@ -14,10 +14,10 @@ def level_to_dict(level):
 def dict_to_level(level):
     return {
         "meta": level["meta"],
-        "background": [Object.from_dict(object) for object in level["background"]],
-        "objects": [Object.from_dict(object) for object in level["objects"]],
-        "decoration": [Object.from_dict(object) for object in level["decoration"]],
-        "checkpoints": [Object.from_dict(object) for object in level["checkpoints"]],
+        "background": [Object.from_dict(obj) for obj in level["background"]],
+        "objs": [Object.from_dict(obj) for obj in level["objects"]],
+        "decoration": [Object.from_dict(obj) for obj in level["decoration"]],
+        "checkpoints": [Object.from_dict(obj) for obj in level["checkpoints"]],
         "end": Object.from_dict(level["end"]),
         "victors": level["victors"]
     }

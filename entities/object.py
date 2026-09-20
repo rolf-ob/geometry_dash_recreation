@@ -58,8 +58,8 @@ class Object:
         return d
 
     @classmethod
-    def from_dict(cls, dict):
+    def from_dict(cls, d):
         return cls(
-            x=dict["x"], y=dict["y"], width=dict["width"], height=dict["height"], rotation=dict["rotation"],
-            shape=dict["shape"], color=tuple(dict["color"]), outline=tuple(dict["outline"])
+            x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
+            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"])
         )

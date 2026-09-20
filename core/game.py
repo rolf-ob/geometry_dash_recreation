@@ -159,7 +159,6 @@ class Game():
         self.camera_x = self.checkpoints[self.checkpoint % len(self.checkpoints)].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
-        self.zoom_center = self.camera_zoom + WIDTH / 2
         self.player.x = self.checkpoints[self.checkpoint % len(self.checkpoints)].x
         self.player.y = self.checkpoints[self.checkpoint % len(self.checkpoints)].y
         self.player_points = self.player.get_points()
@@ -232,10 +231,6 @@ class Game():
             frame_time = now - previous
             previous = now
 
-            if frame_time > 0.02:
-                self.restart()
-                self.title = ["You're too laggy!", 2]
-
             if self.speedhack:
                 frame_time *= self.speedhack_multiplier
             accumulator += frame_time
@@ -247,6 +242,11 @@ class Game():
                 if can_update:
                     update(self)
                 accumulator -= FIXED_STEP
+
+            if frame_time > 0.02 and can_update:
+                self.restart()
+                accumulator = 0
+                self.title = ["You're too laggy!", 2]
             
             draw(self)
             py.display.flip()

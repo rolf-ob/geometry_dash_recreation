@@ -203,7 +203,7 @@ def draw(game):
     
     if game.title[1] > 0 or game.title[1] == -1:
         draw_title(game, screen)
-        game.title[1] = -1 if game.title[1] == -1 else game.title[1] - FIXED_STEP
+        game.title[1] = -1 if game.title[1] == -1 else game.title[1] - FIXED_STEP #! Only works if FPS is at 240, doesn't work like update()
     elif game.building:
         game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
     

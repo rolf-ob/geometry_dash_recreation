@@ -14,31 +14,16 @@ def toggle_building(game):
         game.layer = 1
         game.title = ["Objects", -1]
 
-        game.textboxes = []
-        if game.active_textbox:
-            game.active_textbox.deactivate()
-            game.active_textbox = None
-
     else:
         for layer in (game.background, game.objects, game.decoration, game.checkpoints):
             for obj in layer:
                 obj.selected = False
 
-        game.textboxes = []
-        if game.active_textbox:
-            game.active_textbox.deactivate()
-            game.active_textbox = None
+        close_menu(game)
         game.editing_level = False
 
         if game.paused:
-            game.textboxes = [
-                TextBox(20, 20, 200, 40, "Name"),
-                TextBox(20, 60, 200, 40, "Player Color"),
-                TextBox(20, 100, 200, 40, "Speedhack"),
-                TextBox(20, 140, 200, 40, "FPS"),
-                TextBox(20, 180, 200, 40, "Respawn Time")
-            ]
-            game.textboxes[0].text = game.name
+            open_menu(game, "settings")
         
         game.load_level()
 
@@ -65,14 +50,7 @@ def select_object(game, shifting):
         else:
             game.end.selected = not game.end.selected
         if game.end.selected and game.textboxes == []:
-                game.textboxes = [
-                    TextBox(20, 20, 200, 40, "Shape"),
-                    TextBox(20, 60, 200, 40, "Color"),
-                    TextBox(20, 100, 200, 40, "Outline"),
-                    TextBox(20, 140, 200, 40, "Rotation"),
-                    TextBox(20, 180, 200, 40, "Width"),
-                    TextBox(20, 220, 200, 40, "Height")
-                ]
+            open_menu(game, "object attributes")
     
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for obj, points in zip(layer, layer_points):
@@ -82,20 +60,10 @@ def select_object(game, shifting):
                 else:
                     obj.selected = not obj.selected
                 if obj.selected and game.textboxes == []:
-                        game.textboxes = [
-                            TextBox(20, 20, 200, 40, "Shape"),
-                            TextBox(20, 60, 200, 40, "Color"),
-                            TextBox(20, 100, 200, 40, "Outline"),
-                            TextBox(20, 140, 200, 40, "Rotation"),
-                            TextBox(20, 180, 200, 40, "Width"),
-                            TextBox(20, 220, 200, 40, "Height")
-                        ]
+                    open_menu(game, "object attributes")
 
     if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)) and not game.editing_level:
-        game.textboxes = []
-        if game.active_textbox:
-            game.active_textbox.deactivate()
-            game.active_textbox = None
+        close_menu(game)
 
 def move_objects(game, direction, shift, ctrl, alt):
     if shift:
@@ -228,10 +196,7 @@ def deselect_objects(game):
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer:
             obj.selected = False
-    game.textboxes = []
-    if game.active_textbox:
-        game.active_textbox.deactivate()
-        game.active_textbox = None
+    close_menu(game)
 
 def duplicate_objects(game):
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
@@ -248,10 +213,7 @@ def delete_objects(game):
                     layer.remove(obj)
                     layer_points.remove(points)
     
-    game.textboxes = []
-    if game.active_textbox:
-        game.active_textbox.deactivate()
-        game.active_textbox = None
+    close_menu(game)
 
 def snap_grid_objects(game):
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
@@ -286,7 +248,6 @@ def reset_camera(game):
     game.camera_x = 0
     game.camera_y = 0
     game.camera_zoom = 1
-    game.zoom_center = game.camera_zoom + WIDTH / 2
 
 def create_level(game):
     game.levels.insert((game.current_level % len(game.levels)) + 1, {
@@ -307,6 +268,29 @@ def edit_level(game):
         for layer in (game.background, game.objects, game.decoration, game.checkpoints):
             for obj in layer:
                 obj.selected = False
+        open_menu(game, "level settings")
+
+    else:
+        close_menu(game)
+
+def close_menu(game):
+    game.textboxes = []
+    if game.active_textbox:
+        game.active_textbox.deactivate()
+        game.active_textbox = None
+
+def open_menu(game, menu):
+    if menu == "settings":
+        game.textboxes = [
+            TextBox(20, 20, 200, 40, "Name"),
+            TextBox(20, 60, 200, 40, "Player Color"),
+            TextBox(20, 100, 200, 40, "Speedhack"),
+            TextBox(20, 140, 200, 40, "FPS"),
+            TextBox(20, 180, 200, 40, "Respawn Time")
+        ]
+        game.textboxes[0].text = game.name
+    
+    elif menu == "level settings":
         game.textboxes = [
             TextBox(20, 20, 200, 40, "Gamemode"),
             TextBox(20, 60, 200, 40, "Speed"),
@@ -316,12 +300,17 @@ def edit_level(game):
             TextBox(20, 220, 200, 40, "Points"),
             TextBox(20, 260, 200, 40, "Delete")
         ]
-        if game.active_textbox:     
-            game.active_textbox.deactivate()
-            game.active_textbox = None
 
-    else:
-        game.textboxes = []
-        if game.active_textbox:
-            game.active_textbox.deactivate()
-            game.active_textbox = None
+    elif menu == "object attributes":
+        game.textboxes = [
+            TextBox(20, 20, 200, 40, "Shape"),
+            TextBox(20, 60, 200, 40, "Color"),
+            TextBox(20, 100, 200, 40, "Outline"),
+            TextBox(20, 140, 200, 40, "Rotation"),
+            TextBox(20, 180, 200, 40, "Width"),
+            TextBox(20, 220, 200, 40, "Height")
+        ]
+
+    if game.active_textbox:     
+        game.active_textbox.deactivate()
+        game.active_textbox = None
