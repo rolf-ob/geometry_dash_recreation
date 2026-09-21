@@ -147,7 +147,7 @@
       ]
     },
     "victors": {
-      "Rolf": 101,
+      "Rolf": 106,
       "Masuud": 1,
       "Anouar": 3
     }
@@ -3006,6 +3006,24 @@
       {
         "x": 360,
         "y": 100,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "x": 1093,
+        "y": 352,
         "width": 40,
         "height": 40,
         "rotation": 0,

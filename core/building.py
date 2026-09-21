@@ -1,11 +1,11 @@
 import pygame as py
-import math
+import math, time
 
 from core.textbox import TextBox
 from entities.object import Object
 from entities.collision import polygons_collide
 from rendering.rendering import screen_to_world
-from constants import PLAYER_X, WIDTH, HEIGHT
+from constants import PLAYER_X, HEIGHT
 
 def toggle_building(game):
     game.building = not game.building
@@ -41,29 +41,24 @@ def place_object(game):
         layer_points.append(new_obj.get_points())
 
 def select_object(game, shifting):
-    mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
-    mouse_pos = [(mouse_x - 1, mouse_y), (mouse_x, mouse_y), (mouse_x + 1, mouse_y)]
+    if not game.editing_level:
+        mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
+        mouse_pos = [(mouse_x - 1, mouse_y), (mouse_x, mouse_y), (mouse_x + 1, mouse_y)]        
+        layer = (game.background, game.objects, game.decoration)[game.layer]
+        layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
-    if polygons_collide(mouse_pos, game.end_points) and not game.editing_level:
-        if shifting:
-                game.end.selected = True
-        else:
-            game.end.selected = not game.end.selected
-        if game.end.selected and game.textboxes == []:
-            open_menu(game, "object attributes")
-    
-    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
-        for obj, points in zip(layer, layer_points):
-            if polygons_collide(mouse_pos, points) and (obj in (game.background, game.objects, game.decoration)[game.layer] or obj.shape == "checkpoint") and not game.editing_level:
+        for obj, points in zip((*layer, *game.checkpoints, game.end), (*layer_points, *game.checkpoint_points, game.end_points)):
+            if polygons_collide(mouse_pos, points):
                 if shifting:
                     obj.selected = True
                 else:
                     obj.selected = not obj.selected
+                
                 if obj.selected and game.textboxes == []:
                     open_menu(game, "object attributes")
 
-    if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)) and not game.editing_level:
-        close_menu(game)
+        if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)):
+            close_menu(game)
 
 def move_objects(game, direction, shift, ctrl, alt):
     if shift:
@@ -259,7 +254,7 @@ def create_level(game):
         "end": Object(1000, 0, 1, HEIGHT, 0, "end", (0, 255, 0), (255, 0, 0)),
         "victors": {}
     })
-    game.title = ["Created New Level", 2]
+    game.title = ["Created New Level", time.perf_counter() + 2]
 
 def edit_level(game):
     game.editing_level = not game.editing_level

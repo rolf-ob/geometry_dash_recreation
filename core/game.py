@@ -55,6 +55,7 @@ class Game():
         self.show_hitboxes = False
         self.noclip = False
         self.speedhack = False
+        self.show_player = True
 
         self.load_level()
 
@@ -184,9 +185,9 @@ class Game():
         self.victors = self.level_data["victors"]
         self.speed = self.level_data["meta"]["speed"]
         if self.level_data["meta"]["points"] == 0:
-            self.title = [self.level_data["meta"]["title"], 2]
+            self.title = [self.level_data["meta"]["title"], time.perf_counter() + 2]
         else:
-            self.title = [self.level_data["meta"]["title"] + " | Points: " + str(self.level_data["meta"]["points"]), 2]
+            self.title = [self.level_data["meta"]["title"] + " | Points: " + str(self.level_data["meta"]["points"]), time.perf_counter() + 2]
         self.checkpoint = 0
         
         self.background_points = [obj.get_points() for obj in self.background]
@@ -214,7 +215,7 @@ class Game():
         with open("settings.json", "w") as f:
             json.dump(settings, f, indent=2)
 
-        self.title = ["Settings and levels saved", 2]
+        self.title = ["Settings and levels saved", time.perf_counter() + 2]
 
     def limit_fps(self, target_fps):
         frame_duration = 1 / target_fps
@@ -246,7 +247,7 @@ class Game():
             if frame_time > 0.02 and can_update:
                 self.restart()
                 accumulator = 0
-                self.title = ["You're too laggy!", 2]
+                self.title = ["You're too laggy!", time.perf_counter() + 2]
             
             draw(self)
             py.display.flip()

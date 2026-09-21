@@ -1,4 +1,5 @@
 import pygame as py
+import time
 
 from constants import WIDTH, HEIGHT, FIXED_STEP, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
@@ -194,16 +195,21 @@ def draw(game):
     if game.show_hitboxes and len(game.hitbox_trail) > 0:
         draw_hitbox_trail(game, screen)
     
-    if not (game.show_hitboxes and (game.completed or game.dead > 0 or game.paused)) and not (game.current_level % len(game.levels) == 0):
+    if game.show_player and game.current_level % len(game.levels) != 0:
         draw_wave_trail(game, screen)
         draw_player(game, screen)
 
     if game.completed or game.current_level % len(game.levels) == 0:
         draw_leaderboard(game, screen)
-    
-    if game.title[1] > 0 or game.title[1] == -1:
-        draw_title(game, screen)
-        game.title[1] = -1 if game.title[1] == -1 else game.title[1] - FIXED_STEP #! Only works if FPS is at 240, doesn't work like update()
+
+    if game.title:
+        if game.title[1] == -1:
+            draw_title(game, screen)
+        else:
+            if time.perf_counter() > game.title[1]:
+                game.title = ()
+            else:
+                draw_title(game, screen)
     elif game.building:
         game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
     

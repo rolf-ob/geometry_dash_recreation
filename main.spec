@@ -13,6 +13,7 @@ a = Analysis(
     excludes=[],
     noarchive=False,
     optimize=0,
+    distpath='.',
 )
 pyz = PYZ(a.pure)
 

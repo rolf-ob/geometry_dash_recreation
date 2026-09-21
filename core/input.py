@@ -1,7 +1,7 @@
 import pygame as py
+import time
 
 from core.building import toggle_building, place_object, select_object, move_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, switch_layer, reset_camera, create_level, edit_level, close_menu, open_menu
-from core.textbox import TextBox
 from constants import PLAYER_X, WIDTH, HEIGHT
 
 def click(game, type, button, shift):
@@ -38,7 +38,7 @@ def switch_checkpoint(game, way):
     elif way == "next":
         game.checkpoint -= 1
     game.restart()
-    game.title = [f"Checkpoint {game.checkpoint % len(game.checkpoints)}/{len(game.checkpoints) - 1}", 0.5]
+    game.title = [f"Checkpoint {game.checkpoint % len(game.checkpoints)}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
 
 def switch_level(game, way):
     if way == "previous":
@@ -179,6 +179,9 @@ def handle_input(game):
                     
                     elif any(event.key == key for key in game.controls["toggle noclip"]):
                         game.noclip = not game.noclip
+
+                    elif any(event.key == key for key in game.controls["toggle player visibility"]):
+                        game.show_player = not game.show_player
 
                 else: #Building controls
                     if any(event.key == key for key in game.controls["move up"]):

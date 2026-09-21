@@ -42,6 +42,9 @@
     "toggle noclip": [
       "c"
     ],
+    "toggle player visibility": [
+      "n"
+    ],
     "step frame": [
       "v"
     ],
