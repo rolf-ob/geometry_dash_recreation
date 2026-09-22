@@ -2,7 +2,7 @@ import pygame as py
 import time
 
 from core.building import toggle_building, place_object, select_object, move_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, switch_layer, reset_camera, create_level, edit_level, close_menu, open_menu
-from constants import PLAYER_X, WIDTH, HEIGHT
+from constants import HEIGHT, PLAYER_X, FONT_SIZE
 
 def click(game, type, button, shift):
     if button in (0, 1) and not game.building:
@@ -25,6 +25,8 @@ def toggle_pause(game):
         game.camera_x = game.player.x - PLAYER_X
         game.camera_y = 0
         game.camera_zoom = 1
+        game.text_cache.clear()
+        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
 
     if not game.building:
         if game.paused:
@@ -42,9 +44,9 @@ def switch_checkpoint(game, way):
 
 def switch_level(game, way):
     if way == "previous":
-        game.current_level -= 1
+        game.current_level = (game.current_level-1) % len(game.levels)
     elif way == "next":
-        game.current_level += 1
+        game.current_level = (game.current_level+1) % len(game.levels)
     
     game.load_level()
 
@@ -70,8 +72,10 @@ def pan(game, y):
 def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
         game.camera_zoom += 0.1
+        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
     elif y < 0 and (game.paused or game.completed or game.building) and game.camera_zoom > 1:
         game.camera_zoom -= 0.1
+        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
 
 def handle_input(game):
     keys = py.key.get_pressed()
@@ -99,47 +103,24 @@ def handle_input(game):
             game.width, game.height = event.size
             game.view_width = game.width * (HEIGHT / game.height)
             game.scale = game.height / HEIGHT
+            game.text_cache.clear()
+            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
         elif event.type == py.TEXTINPUT:
-            game.active_textbox.handle_event(event)
+            game.active_textbox.text += event.text
 
         elif event.type == py.KEYDOWN:
             if game.active_textbox:
                 if event.key == py.K_RETURN:
-                    if game.building:
-                        if not game.editing_level:
-                            if not game.active_textbox.field_name in ("Shape", "Rotation", "Height") and game.end.selected:
-                                game.apply_edit(game.end, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                game.end_points = game.end.get_points()
-
-                            for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
-                                for i, obj in enumerate(layer):
-                                    if obj.selected:
-                                        game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                        layer_points[i] = obj.get_points()
-                        
-                        else:
-                            game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                    if game.building and not game.editing_level:
+                        for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+                            for i, obj in enumerate(layer):
+                                if obj.selected:
+                                    game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                                    layer_points[i] = obj.get_points()
                     else:
                         game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                    
-                    if game.active_textbox.field_name == "Delete" and game.active_textbox.text == "delete":
-                        game.building = False
-                
-                        close_menu(game)
-                        game.editing_level = False
-                        
-                        if game.paused:
-                            open_menu(game, "settings")
-                        
-                        game.load_level()
-
-                    elif game.active_textbox.field_name != "Name":
-                        game.active_textbox.text = ""
-                            
-                    elif not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)) and not game.editing_level:
-                        close_menu(game)
 
                 elif event.key == py.K_BACKSPACE:
                     game.active_textbox.text = game.active_textbox.text[:-1]

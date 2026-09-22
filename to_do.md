@@ -4,4 +4,5 @@
 - New gamemodes
 - Portals, speed changers, orbs etc
 - Camera going up and down with player
-- ask claude When I use pyinstaller the main.exe gets put into dist so I have to drag it out into the main folder every time, what do I do about that? Also tell me how to add __pycache__and build into gitignore so they don't get uploaded to github
+- Percentage
+- CBF

@@ -1,6 +1,7 @@
 WIDTH = 1440
 HEIGHT = 720
 PLAYER_X = 360
+FONT_SIZE = 24
 FIXED_STEP = 1 / 240
 
 controls_tutorial = [
@@ -54,9 +55,9 @@ building_tutorial = [
     "Snap Objects To Grid - G",
     "Switch Building Layer - Q, E",
     "Reset Camera Position - R",
-    "Edit Level Settings - T"
+    "Edit Level Settings - T",
     "",
     "SHAPES",
-    "Building shapes - square, triangle, slope",
+    "Building shapes - square, end, triangle, slope",
     "Functional shapes - checkpoint",
 ]

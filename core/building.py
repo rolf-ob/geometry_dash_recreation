@@ -4,8 +4,8 @@ import math, time
 from core.textbox import TextBox
 from entities.object import Object
 from entities.collision import polygons_collide
-from rendering.rendering import screen_to_world
-from constants import PLAYER_X, HEIGHT
+from rendering.rendering import world_to_screen, screen_to_world
+from constants import HEIGHT, PLAYER_X, FONT_SIZE
 
 def toggle_building(game):
     game.building = not game.building
@@ -13,18 +13,17 @@ def toggle_building(game):
         game.clicking = 0
         game.layer = 1
         game.title = ["Objects", -1]
+        close_menu(game)
 
     else:
         for layer in (game.background, game.objects, game.decoration, game.checkpoints):
             for obj in layer:
                 obj.selected = False
 
-        close_menu(game)
         game.editing_level = False
-
+        close_menu(game)
         if game.paused:
             open_menu(game, "settings")
-        
         game.load_level()
 
 def place_object(game):
@@ -47,7 +46,7 @@ def select_object(game, shifting):
         layer = (game.background, game.objects, game.decoration)[game.layer]
         layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
-        for obj, points in zip((*layer, *game.checkpoints, game.end), (*layer_points, *game.checkpoint_points, game.end_points)):
+        for obj, points in zip((*layer, *game.checkpoints), (*layer_points, *game.checkpoint_points)):
             if polygons_collide(mouse_pos, points):
                 if shifting:
                     obj.selected = True
@@ -57,7 +56,7 @@ def select_object(game, shifting):
                 if obj.selected and game.textboxes == []:
                     open_menu(game, "object attributes")
 
-        if not game.end.selected and not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)):
+        if not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)):
             close_menu(game)
 
 def move_objects(game, direction, shift, ctrl, alt):
@@ -79,11 +78,6 @@ def move_objects(game, direction, shift, ctrl, alt):
         add_y = distance
     elif direction == "right":
         add_x = distance
-
-    if game.end.selected:
-        game.end.x += add_x
-        game.end.y += add_y
-        game.end_points = game.end.get_points()
 
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for i, obj in enumerate(layer):
@@ -159,7 +153,7 @@ def flip_objects(game, way):
                         flipped_center = center_pos - (center - center_pos)
                         obj.x = flipped_center - obj.width / 2
 
-                        if obj.shape == "square":
+                        if obj.shape in ("square", "end"):
                             obj.rotation -= obj.rotation * 2
                             
                         elif obj.shape == "slope":
@@ -175,7 +169,7 @@ def flip_objects(game, way):
                         flipped_center = center_pos - (center - center_pos)
                         obj.y = flipped_center - obj.height / 2
 
-                        if obj.shape == "square":
+                        if obj.shape in ("square", "end"):
                             obj.rotation -= 180 + obj.rotation * 2
                             
                         elif obj.shape == "slope":
@@ -187,7 +181,6 @@ def flip_objects(game, way):
                         layer_points[i] = obj.get_points()
 
 def deselect_objects(game):
-    game.end.selected = False
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer:
             obj.selected = False
@@ -243,15 +236,16 @@ def reset_camera(game):
     game.camera_x = 0
     game.camera_y = 0
     game.camera_zoom = 1
+    game.text_cache.clear()
+    game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
 
 def create_level(game):
-    game.levels.insert((game.current_level % len(game.levels)) + 1, {
+    game.levels.insert(game.current_level + 1, {
         "meta": {"gamemode": "wave", "speed": 2, "gravity": 0, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
         "background": [],
         "objects": [],
         "decoration": [],
         "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3)],
-        "end": Object(1000, 0, 1, HEIGHT, 0, "end", (0, 255, 0), (255, 0, 0)),
         "victors": {}
     })
     game.title = ["Created New Level", time.perf_counter() + 2]
@@ -277,33 +271,32 @@ def close_menu(game):
 def open_menu(game, menu):
     if menu == "settings":
         game.textboxes = [
-            TextBox(20, 20, 200, 40, "Name"),
-            TextBox(20, 60, 200, 40, "Player Color"),
-            TextBox(20, 100, 200, 40, "Speedhack"),
-            TextBox(20, 140, 200, 40, "FPS"),
-            TextBox(20, 180, 200, 40, "Respawn Time")
+            TextBox("Name", game.name),
+            TextBox("Player Color", game.player.color),
+            TextBox("Speedhack", game.speedhack_multiplier),
+            TextBox("FPS", game.fps),
+            TextBox("Respawn Time", game.respawn_time)
         ]
-        game.textboxes[0].text = game.name
     
     elif menu == "level settings":
         game.textboxes = [
-            TextBox(20, 20, 200, 40, "Gamemode"),
-            TextBox(20, 60, 200, 40, "Speed"),
-            TextBox(20, 100, 200, 40, "Gravity"),
-            TextBox(20, 140, 200, 40, "Background"),
-            TextBox(20, 180, 200, 40, "Title"),
-            TextBox(20, 220, 200, 40, "Points"),
-            TextBox(20, 260, 200, 40, "Delete")
+            TextBox("Gamemode", game.level_data["meta"]["gamemode"]),
+            TextBox("Speed", game.level_data["meta"]["speed"]),
+            TextBox("Gravity", game.level_data["meta"]["gravity"]),
+            TextBox("Background", game.level_data["meta"]["background color"]),
+            TextBox("Title", game.level_data["meta"]["title"]),
+            TextBox("Points", game.level_data["meta"]["points"]),
+            TextBox("Delete", "")
         ]
 
     elif menu == "object attributes":
         game.textboxes = [
-            TextBox(20, 20, 200, 40, "Shape"),
-            TextBox(20, 60, 200, 40, "Color"),
-            TextBox(20, 100, 200, 40, "Outline"),
-            TextBox(20, 140, 200, 40, "Rotation"),
-            TextBox(20, 180, 200, 40, "Width"),
-            TextBox(20, 220, 200, 40, "Height")
+            TextBox("Shape", ""),
+            TextBox("Color", ""),
+            TextBox("Outline", ""),
+            TextBox("Rotation", ""),
+            TextBox("Width", ""),
+            TextBox("Height", "")
         ]
 
     if game.active_textbox:     

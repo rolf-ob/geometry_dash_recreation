@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('entities', 'entities'), ('settings.json', '.')],
+    datas=[('entities', 'entities'), ('entities/settings.json', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -13,7 +13,6 @@ a = Analysis(
     excludes=[],
     noarchive=False,
     optimize=0,
-    distpath='.',
 )
 pyz = PYZ(a.pure)
 
@@ -36,4 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    distpath='.',
 )
