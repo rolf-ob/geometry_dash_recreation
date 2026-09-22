@@ -97,7 +97,7 @@ def draw_leaderboard(game, screen):
         text = game.text_cache.get_surface(f"Leaderboard:", (0,)*3)
         margin = 5
         width, height = game.text_cache.get_size(f"Leaderboard:", (0,)*3)
-        x, y = (game.width/2, 118)
+        x, y = (world_to_screen(game, game.level_length, 0)[0] + 40, 118)
         py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
         py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
@@ -106,7 +106,7 @@ def draw_leaderboard(game, screen):
             text = game.text_cache.get_surface(f"No victors yet", (0,)*3)
             margin = 5
             width, height = game.text_cache.get_size(f"No victors yet", (0,)*3)
-            x, y = (game.width/2, 125 + height)
+            x, y = (world_to_screen(game, game.level_length, 0)[0] + 40, 125 + height)
             py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
             py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
@@ -115,7 +115,7 @@ def draw_leaderboard(game, screen):
                 text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {completions}", (0,)*3)
                 margin = 5
                 width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {completions}", (0,)*3)
-                x, y = (game.width/2, 125 + i*(height + margin*2 - 2) + height)
+                x, y = (world_to_screen(game, game.level_length, 0)[0] + 40, 125 + i*(height + margin*2 - 2) + height)
                 py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
                 screen.blit(text, (x, y))
@@ -159,10 +159,18 @@ def draw_title(game, screen):
     text = game.text_cache.get_surface(f"{game.title[0]}", (0,)*3)
     margin = 10
     width, height = game.text_cache.get_size(f"{game.title[0]}", (0,)*3)
-    x, y = (game.width/2 - width/2, 15)
+    x, y = (game.width/2 - width/2, 20)
     py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
     py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
     screen.blit(text, (x, y))
+    if not game.building and game.current_level != 0:
+        text = game.text_cache.get_surface(f"{game.percent}%", (0,)*3)
+        margin = 10
+        width, height = game.text_cache.get_size("100.0%", (0,)*3)
+        x, y = (game.width - width - 20, 20)
+        py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
+        py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+        screen.blit(text, (x, y))
 
 def draw_textboxes(game, screen):
     for i, box in enumerate(game.textboxes):
@@ -187,18 +195,18 @@ def draw_textboxes(game, screen):
 
 def draw_debug(game, screen):
     debug_items = [
-        f"Deaths: {game.noclip_deaths}",
-        f"Cheated: {game.cheated}",
-        f"Zoom: {round(game.camera_zoom, 1)}",
-        f"Level: {game.current_level}",
+        f"FPS: {game.fps_counter.get_fps()}",
         f"Clicking: {game.clicking}",
-        f"FPS: {game.fps_counter.get_fps()}"
+        f"Level: {game.current_level}",
+        f"Zoom: {round(game.camera_zoom, 1)}",
+        f"Deaths: {game.noclip_deaths}",
+        f"Cheated: {game.cheated}"
     ]
     for i, item in enumerate(debug_items):
         text = game.text_cache.get_surface(item, (0,)*3)
         margin = 5
         width, height = game.text_cache.get_size(item, (0,)*3)
-        x, y = (0, 125 + i*(height + margin*2 - 2) + height)
+        x, y = (20, game.height - (len(debug_items)+1)*(height + margin*2 - 2) + i*(height + margin*2 - 2) + height)
         py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
         py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
@@ -229,16 +237,12 @@ def draw(game):
             draw_title(game, screen)
         else:
             if time.perf_counter() > game.title[1]:
-                game.title = ()
+                if not game.building:
+                    game.title = [game.level["meta"]["title"], -1] if game.current_level == 0 else [f"{game.level["meta"]["title"]} | Points: {str(game.level["meta"]["points"])}", -1]
+                else:
+                    game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
             else:
                 draw_title(game, screen)
-    elif not game.building:
-        if game.level_data["meta"]["points"] == 0:
-            game.title = [game.level_data["meta"]["title"], -1]
-        else:
-            game.title = [f"{game.level_data["meta"]["title"]} | Points: {str(game.level_data["meta"]["points"])} | {game.percent}%", -1]
-    else:
-        game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
     
     draw_textboxes(game, screen)
 

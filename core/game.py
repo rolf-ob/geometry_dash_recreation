@@ -105,33 +105,37 @@ class Game():
                         self.rotation = int(text)
                     
                     elif field_name in ("color", "outline"):
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split(","))
+                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                         setattr(obj, field_name, (r, g, b))
 
                     elif field_name == "shape" and text in ("square", "end", "spike", "slope"):
                         setattr(obj, field_name, text)
-                        self.shape = text
+                        if text != "end":
+                            self.shape = text
 
                 else:
                     if field_name == "mode" and text in ("wave"):
-                        self.level_data["meta"]["gamemode"] = text
+                        self.level["meta"]["gamemode"] = text
 
                     elif field_name == "speed":
-                        self.level_data["meta"]["speed"] = float(text)
+                        self.level["meta"]["speed"] = float(text)
 
                     elif field_name == "gravity":
-                        self.level_data["meta"]["gravity"] = int(text)
+                        self.level["meta"]["gravity"] = int(text)
+
+                    elif field_name == "length":
+                        self.level["meta"]["length"] = max(0, int(text))
 
                     elif field_name == "background":
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split(","))
-                        self.level_data["meta"]["background color"] = (r, g, b)
-                        self.background_color = self.level_data["meta"][3]
+                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
+                        self.level["meta"]["background color"] = (r, g, b)
+                        self.background_color = self.level["meta"]["background color"]
 
                     elif field_name == "title":
-                        self.level_data["meta"]["title"] = text
+                        self.level["meta"]["title"] = text
 
                     elif field_name == "points":
-                        self.level_data["meta"]["points"] = int(text)
+                        self.level["meta"]["points"] = int(text)
 
                     elif field_name == "delete" and text == "delete":
                         self.current_level -= 1
@@ -143,7 +147,7 @@ class Game():
                     self.name = text
 
                 elif field_name == "player color":
-                    r, g, b = (max(0, min(255, int(value))) for value in text.split(","))
+                    r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                     self.player.color = (r, g, b)
 
                 elif field_name == "speedhack":
@@ -159,13 +163,14 @@ class Game():
             pass
 
     def restart(self):
-        self.camera_x = self.checkpoints[self.checkpoint % len(self.checkpoints)].x - PLAYER_X
+        self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
-        self.player.x = self.checkpoints[self.checkpoint % len(self.checkpoints)].x
-        self.player.y = self.checkpoints[self.checkpoint % len(self.checkpoints)].y
+        self.player.x = self.checkpoints[self.checkpoint].x
+        self.player.y = self.checkpoints[self.checkpoint].y
         self.player_points = self.player.get_points()
-        if self.checkpoint % len(self.checkpoints) != 0:
+        self.percent = min(100.0, round((self.player.x - self.checkpoints[0].x) / (self.level_length - self.checkpoints[0].x - self.player.width)*100, 2))
+        if self.checkpoint != 0:
             self.cheated = True
         else:
             self.cheated = self.show_hitboxes or self.speedhack
@@ -177,18 +182,18 @@ class Game():
         self.wave_trail = [(self.player.x + 20, self.player.y)]
     
     def load_level(self):
-        self.level_data = self.levels[self.current_level]
-        self.background_color = self.level_data["meta"]["background color"]
-        self.background = self.level_data["background"]
-        self.objects = self.level_data["objects"]
-        self.decoration = self.level_data["decoration"]
-        self.checkpoints = self.level_data["checkpoints"]
-        self.victors = self.level_data["victors"]
-        self.speed = self.level_data["meta"]["speed"]
-        if self.level_data["meta"]["points"] == 0:
-            self.title = [self.level_data["meta"]["title"], -1]
-        else:
-            self.title = [f"{self.level_data["meta"]["title"]} | Points: {str(self.level_data["meta"]["points"])} | {self.percent}%", -1]#!
+        self.level = self.levels[self.current_level]
+        self.background = self.level["background"]
+        self.objects = self.level["objects"]
+        self.decoration = self.level["decoration"]
+        self.checkpoints = self.level["checkpoints"]
+        self.victors = self.level["victors"]
+        self.speed = self.level["meta"]["speed"]
+        self.gravity = self.level["meta"]["gravity"]
+        self.level_length = self.level["meta"]["length"]
+        self.background_color = self.level["meta"]["background color"]
+        self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
+
         self.checkpoint = 0
         
         self.background_points = [obj.get_points() for obj in self.background]

@@ -36,11 +36,11 @@ def toggle_pause(game):
 
 def switch_checkpoint(game, way):
     if way == "previous":
-        game.checkpoint += 1
+        game.checkpoint = game.checkpoint + 1 % len(game.checkpoints)
     elif way == "next":
-        game.checkpoint -= 1
+        game.checkpoint = game.checkpoint - 1 % len(game.checkpoints)
     game.restart()
-    game.title = [f"Checkpoint {game.checkpoint % len(game.checkpoints)}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
+    game.title = [f"Checkpoint {game.checkpoint}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
 
 def switch_level(game, way):
     if way == "previous":
@@ -119,6 +119,7 @@ def handle_input(game):
                                 if obj.selected:
                                     game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
                                     layer_points[i] = obj.get_points()
+                        game.active_textbox.text = ""
                     else:
                         game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
 
@@ -155,7 +156,8 @@ def handle_input(game):
                         switch_level(game, "next")
 
                     elif any(event.key == key for key in game.controls["toggle speedhack"]):
-                        game.cheated = True
+                        if not game.completed:
+                            game.cheated = True
                         game.speedhack = not game.speedhack
                     
                     elif any(event.key == key for key in game.controls["toggle noclip"]):
@@ -217,7 +219,8 @@ def handle_input(game):
                     game.switch_attribute("next")
 
                 elif any(event.key == key for key in game.controls["toggle hitboxes"]):
-                    game.cheated = True
+                    if not game.completed:
+                        game.cheated = True
                     game.show_hitboxes = not game.show_hitboxes
 
                 elif any(event.key == key for key in game.controls["create level"]) and game.operator:

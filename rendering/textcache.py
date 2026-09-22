@@ -13,7 +13,7 @@ class TextCache:
     def get_size(self, text, color):
         key = (text, color)
         if key not in self._sizes:
-            self._sizes[key] = tuple(self._cache[key].get_rect()[-2:])
+            self._sizes[key] = tuple(self.get_surface(*key).get_rect()[-2:])
         return self._sizes[key]
 
     def change_font(self, font):

@@ -25,10 +25,10 @@
       "r"
     ],
     "previous checkpoint": [
-      "1"
+      "a"
     ],
     "next checkpoint": [
-      "3"
+      "d"
     ],
     "previous level": [
       "q"
@@ -61,10 +61,10 @@
       "d"
     ],
     "rotate counter clockwise": [
-      "z"
+      "q"
     ],
     "rotate clockwise": [
-      "c"
+      "e"
     ],
     "flip horizontally": [
       "i"
@@ -85,10 +85,10 @@
       "g"
     ],
     "previous layer": [
-      "q"
+      "z"
     ],
     "next layer": [
-      "e"
+      "c"
     ],
     "reset camera": [
       "r"

@@ -5,7 +5,7 @@ from core.textbox import TextBox
 from entities.object import Object
 from entities.collision import polygons_collide
 from rendering.rendering import world_to_screen, screen_to_world
-from constants import HEIGHT, PLAYER_X, FONT_SIZE
+from constants import PLAYER_X, FONT_SIZE
 
 def toggle_building(game):
     game.building = not game.building
@@ -158,6 +158,10 @@ def flip_objects(game, way):
                             
                         elif obj.shape == "slope":
                             obj.rotation -= (90 + obj.rotation * 2) % 360
+                            width = obj.height
+                            height = obj.width
+                            obj.width = width
+                            obj.height = height
                         
                         elif obj.shape == "spike":
                             obj.rotation -= obj.rotation * 2
@@ -174,6 +178,10 @@ def flip_objects(game, way):
                             
                         elif obj.shape == "slope":
                             obj.rotation -= 270 + obj.rotation * 2
+                            width = obj.height
+                            height = obj.width
+                            obj.width = width
+                            obj.height = height
                         
                         elif obj.shape == "spike":
                             obj.rotation -= 180 + obj.rotation * 2
@@ -241,7 +249,7 @@ def reset_camera(game):
 
 def create_level(game):
     game.levels.insert(game.current_level + 1, {
-        "meta": {"gamemode": "wave", "speed": 2, "gravity": 0, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
+        "meta": {"gamemode": "wave", "speed": 2, "gravity": 1, "length": 100, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
         "background": [],
         "objects": [],
         "decoration": [],
@@ -251,16 +259,15 @@ def create_level(game):
     game.title = ["Created New Level", time.perf_counter() + 2]
 
 def edit_level(game):
-    game.editing_level = not game.editing_level
-    if game.editing_level:
-
-        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-            for obj in layer:
-                obj.selected = False
-        open_menu(game, "level settings")
-
-    else:
-        close_menu(game)
+    if game.current_level != 0:
+        game.editing_level = not game.editing_level
+        if game.editing_level:
+            for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+                for obj in layer:
+                    obj.selected = False
+            open_menu(game, "level settings")
+        else:
+            close_menu(game)
 
 def close_menu(game):
     game.textboxes = []
@@ -270,22 +277,25 @@ def close_menu(game):
 
 def open_menu(game, menu):
     if menu == "settings":
+        r, g, b = game.player.color
         game.textboxes = [
             TextBox("Name", game.name),
-            TextBox("Player Color", game.player.color),
+            TextBox("Player Color", f"{str(r)} {str(g)} {str(b)}"),
             TextBox("Speedhack", game.speedhack_multiplier),
             TextBox("FPS", game.fps),
             TextBox("Respawn Time", game.respawn_time)
         ]
     
     elif menu == "level settings":
+        r, g, b = game.level["meta"]["background color"]
         game.textboxes = [
-            TextBox("Gamemode", game.level_data["meta"]["gamemode"]),
-            TextBox("Speed", game.level_data["meta"]["speed"]),
-            TextBox("Gravity", game.level_data["meta"]["gravity"]),
-            TextBox("Background", game.level_data["meta"]["background color"]),
-            TextBox("Title", game.level_data["meta"]["title"]),
-            TextBox("Points", game.level_data["meta"]["points"]),
+            TextBox("Gamemode", game.level["meta"]["gamemode"]),
+            TextBox("Speed", game.level["meta"]["speed"]),
+            TextBox("Gravity", game.level["meta"]["gravity"]),
+            TextBox("Length", game.level["meta"]["length"]),
+            TextBox("Background", f"{str(r)} {str(g)} {str(b)}"),
+            TextBox("Title", game.level["meta"]["title"]),
+            TextBox("Points", game.level["meta"]["points"]),
             TextBox("Delete", "")
         ]
 
