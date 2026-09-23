@@ -38,12 +38,14 @@ def draw_objects(game, screen):
                 else:
                     color = obj.color if not game.cheated else obj.outline
                 draw_polygon(game, screen, points, color, 0)
-        elif obj.shape != "checkpoint":
-            if within_view(game, points):
-                color = (200, 255, 200) if obj.selected else obj.color
-                outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
-                draw_polygon(game, screen, points, color, 0)
-                draw_polygon(game, screen, points, outline_color, 1)
+                if obj.selected:
+                    screen.blit(game.text_cache.get_surface(str(obj.x), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+        
+        elif within_view(game, points):
+            color = (200, 255, 200) if obj.selected else obj.color
+            outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
+            draw_polygon(game, screen, points, color, 0)
+            draw_polygon(game, screen, points, outline_color, 1)
 
 def draw_decoration(game, screen):
     for obj, points in zip(game.decoration, game.decoration_points):
@@ -62,7 +64,7 @@ def draw_checkpoints(game, screen):
             screen.blit(game.text_cache.get_surface(text, (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
 
 def draw_hitbox_trail(game, screen):
-    for box, points in zip(game.hitbox_trail[:-1], game.hitbox_trail_points[:-1]):
+    for box, points in zip(game.hitbox_trail, game.hitbox_trail_points):
         if within_view(game, points):
             draw_polygon(game, screen, points, box.outline, 1)
     draw_polygon(game, screen, game.player_points, game.player.color, 1)
@@ -111,10 +113,10 @@ def draw_leaderboard(game, screen):
             py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
         else:
-            for i, (victor, completions) in enumerate(game.victors.items()):
-                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {completions}", (0,)*3)
+            for i, (victor, stats) in enumerate(game.victors.items()):
+                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
                 margin = 5
-                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {completions}", (0,)*3)
+                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
                 x, y = (world_to_screen(game, game.level_length, 0)[0] + 40, 125 + i*(height + margin*2 - 2) + height)
                 py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
@@ -123,11 +125,12 @@ def draw_leaderboard(game, screen):
     else:
         players = {}
         for level in game.levels:
-            for victor in level["victors"]:
-                if victor in players.keys():
-                    players[victor] += level["meta"]["points"]
-                else:
-                    players[victor] = level["meta"]["points"]
+            for (victor, stats) in level["victors"].items():
+                if stats[1] > 0:
+                    if victor in players.keys():
+                        players[victor] += level["meta"]["points"]
+                    else:
+                        players[victor] = level["meta"]["points"]
         
         sorted_players = {}
         for i in range(len(players)):

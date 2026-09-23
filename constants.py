@@ -58,6 +58,10 @@ building_tutorial = [
     "Edit Level Settings - T",
     "",
     "SHAPES",
-    "Building shapes - square, end, triangle, slope",
-    "Functional shapes - checkpoint",
+    "Building shapes - square, end, triangle, slope, circle",
+    "Functional shapes - gamemode, speed, gravity",
+    "",
+    "CHECKPOINTS",
+    "Checkpoints have to be duplicated from the start position marked with an S",
+    "Have only checkpoints selected to change their modifiers"
 ]

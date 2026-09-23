@@ -11,13 +11,14 @@ class Object:
     shape: str
     color: tuple[int, int, int]
     outline: tuple[int, int, int]
+    modifier: str = None
     selected: bool = False
     
     def get_points(self):
         center_x = self.x + self.width / 2
         center_y = self.y + self.height / 2
 
-        if self.shape in ("square", "end", "checkpoint"):
+        if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity"):
             corners = [
                 (self.x, self.y),
                 (self.x + self.width, self.y),
@@ -36,6 +37,19 @@ class Object:
                 (self.x + self.width, self.y + self.height),
                 (self.x, self.y + self.height)
             ]
+
+        elif self.shape == "circle":
+            sides = 20
+            radius = self.width / 2
+            center_x = self.x + radius
+            center_y = self.y + self.height / 2
+            corners = []
+            for i in range(sides):
+                angle = 2 * math.pi * i / sides
+                corners.append((
+                    center_x + radius * math.cos(angle),
+                    center_y + radius * math.sin(angle)
+                ))
 
         if self.rotation == 0:
             return corners
@@ -61,5 +75,5 @@ class Object:
     def from_dict(cls, d):
         return cls(
             x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
-            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"])
+            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]), modifier=d["modifier"]
         )

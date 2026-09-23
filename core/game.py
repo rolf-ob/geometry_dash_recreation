@@ -38,6 +38,8 @@ class Game():
         self.height = HEIGHT
         self.view_width = WIDTH
         self.scale = 1
+        self.min_height = 0
+        self.max_height = HEIGHT - 40
         self.last_frame_time = time.perf_counter()
         self.clicking = 0
 
@@ -108,22 +110,25 @@ class Game():
                         r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                         setattr(obj, field_name, (r, g, b))
 
-                    elif field_name == "shape" and text in ("square", "end", "spike", "slope"):
+                    elif field_name == "shape" and text in ("square", "end", "spike", "slope", "circle", "gamemode", "speed", "gravity"):
                         setattr(obj, field_name, text)
                         if text != "end":
                             self.shape = text
 
-                else:
-                    if field_name == "mode" and text in ("wave"):
-                        self.level["meta"]["gamemode"] = text
+                    elif field_name == "modifier":
+                        setattr(obj, field_name, text)
+                    
+                    elif field_name == "gamemode" and text in ("wave"):
+                        obj.modifier["gamemode"] = text
 
                     elif field_name == "speed":
-                        self.level["meta"]["speed"] = float(text)
+                        obj.modifier["speed"] = float(text)
 
                     elif field_name == "gravity":
-                        self.level["meta"]["gravity"] = int(text)
+                        obj.modifier["gravity"] = float(text)
 
-                    elif field_name == "length":
+                else:
+                    if field_name == "length":
                         self.level["meta"]["length"] = max(0, int(text))
 
                     elif field_name == "background":
@@ -136,6 +141,12 @@ class Game():
 
                     elif field_name == "points":
                         self.level["meta"]["points"] = int(text)
+
+                    elif field_name == "level number":
+                        self.levels.pop(self.current_level)
+                        self.levels.insert(int(text), self.level)
+                        self.current_level = int(text)
+                        self.load_level()
 
                     elif field_name == "delete" and text == "delete":
                         self.current_level -= 1
@@ -163,12 +174,20 @@ class Game():
             pass
 
     def restart(self):
+        if self.name not in self.victors.keys():
+            self.victors[self.name] = [1, 0]
+        else:
+            self.victors[self.name][0] += 1
+
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
         self.player_points = self.player.get_points()
+        self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
+        self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
+        self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
         self.percent = min(100.0, round((self.player.x - self.checkpoints[0].x) / (self.level_length - self.checkpoints[0].x - self.player.width)*100, 2))
         if self.checkpoint != 0:
             self.cheated = True
@@ -188,8 +207,6 @@ class Game():
         self.decoration = self.level["decoration"]
         self.checkpoints = self.level["checkpoints"]
         self.victors = self.level["victors"]
-        self.speed = self.level["meta"]["speed"]
-        self.gravity = self.level["meta"]["gravity"]
         self.level_length = self.level["meta"]["length"]
         self.background_color = self.level["meta"]["background color"]
         self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
@@ -200,6 +217,24 @@ class Game():
         self.object_points = [obj.get_points() for obj in self.objects]
         self.decoration_points = [obj.get_points() for obj in self.decoration]
         self.checkpoint_points = [obj.get_points() for obj in self.checkpoints]
+        
+        self.shapes = []
+        self.ends = []
+        self.gamemodes = []
+        self.speeds = []
+        self.gravitys = []
+
+        for obj, points in zip(self.objects, self.object_points):
+            if obj.shape in ("square", "spike", "slope", "circle"):
+                self.shapes.append((obj, points))
+            elif obj.shape == "end":
+                self.ends.append((obj, points))
+            elif obj.shape == "gamemode":
+                self.gamemodes.append((obj, points))
+            elif obj.shape == "speed":
+                self.speeds.append((obj, points))
+            elif obj.shape == "gravity":
+                self.gravitys.append((obj, points))
 
         self.restart()
 
@@ -243,11 +278,13 @@ class Game():
 
             handle_input(self)
 
-            can_update = (not self.paused or self.frame_steps == 1 or self.frame_steps >= self.fps // 3) and not self.building and self.current_level != 0
+            can_update = not self.paused and not self.building and self.current_level != 0
             while accumulator >= FIXED_STEP:
                 if can_update:
                     update(self)
                 accumulator -= FIXED_STEP
+            if self.frame_steps == 1 or self.frame_steps >= self.fps // 3:
+                update(self)
 
             if frame_time > 0.05 and can_update and not self.completed and self.dead == 0:
                 self.restart()

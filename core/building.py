@@ -46,17 +46,26 @@ def select_object(game, shifting):
         layer = (game.background, game.objects, game.decoration)[game.layer]
         layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
+        obj_selected = False
+        cp_selected = False
         for obj, points in zip((*layer, *game.checkpoints), (*layer_points, *game.checkpoint_points)):
             if polygons_collide(mouse_pos, points):
                 if shifting:
                     obj.selected = True
                 else:
                     obj.selected = not obj.selected
-                
-                if obj.selected and game.textboxes == []:
-                    open_menu(game, "object attributes")
+            
+            if obj.selected:
+                if obj.shape != "checkpoint":
+                    obj_selected = True
+                else:
+                    cp_selected = True
 
-        if not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration)):
+        if obj_selected:
+            open_menu(game, "object attributes")
+        elif cp_selected:
+            open_menu(game, "checkpoint attributes")
+        else:
             close_menu(game)
 
 def move_objects(game, direction, shift, ctrl, alt):
@@ -198,7 +207,7 @@ def duplicate_objects(game):
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for obj in layer.copy():
             if obj.selected:
-                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline))
+                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, obj.modifier))
                 layer_points.append(layer[-1].get_points())
 
 def delete_objects(game):
@@ -249,11 +258,11 @@ def reset_camera(game):
 
 def create_level(game):
     game.levels.insert(game.current_level + 1, {
-        "meta": {"gamemode": "wave", "speed": 2, "gravity": 1, "length": 100, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
+        "meta": {"length": 100, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3)],
+        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3), {"gamemode": "wave", "speed": 2, "gravity": 1}],
         "victors": {}
     })
     game.title = ["Created New Level", time.perf_counter() + 2]
@@ -289,13 +298,11 @@ def open_menu(game, menu):
     elif menu == "level settings":
         r, g, b = game.level["meta"]["background color"]
         game.textboxes = [
-            TextBox("Gamemode", game.level["meta"]["gamemode"]),
-            TextBox("Speed", game.level["meta"]["speed"]),
-            TextBox("Gravity", game.level["meta"]["gravity"]),
             TextBox("Length", game.level["meta"]["length"]),
             TextBox("Background", f"{str(r)} {str(g)} {str(b)}"),
             TextBox("Title", game.level["meta"]["title"]),
             TextBox("Points", game.level["meta"]["points"]),
+            TextBox("Level Number", game.current_level),
             TextBox("Delete", "")
         ]
 
@@ -306,7 +313,15 @@ def open_menu(game, menu):
             TextBox("Outline", ""),
             TextBox("Rotation", ""),
             TextBox("Width", ""),
-            TextBox("Height", "")
+            TextBox("Height", ""),
+            TextBox("Modifier", "")
+        ]
+
+    elif menu == "checkpoint attributes":
+        game.textboxes = [
+            TextBox("Gamemode", ""),
+            TextBox("Speed", ""),
+            TextBox("Gravity", "")
         ]
 
     if game.active_textbox:     

@@ -1,12 +1,8 @@
-- Switch checkpoint to A and D
-- Switch layer and rotate keybinds
-- Checkpoint tutorial
-- Seeing x and y for end objects when selected before level settings, put in tutorial
-- Circle shape
+- Fix objects not colliding with player
 - Safe to slide on blocks
-- Gravity switching
-- New gamemodes
-- Portals, speed changers, orbs etc
+- Cube gamemode
+- Ship gamemode
+- Orbs and pads
 - Camera going up and down with player
 - Changing controls in menu and changing tutorial with it
 - CBF

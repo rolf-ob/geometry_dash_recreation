@@ -36,9 +36,9 @@ def toggle_pause(game):
 
 def switch_checkpoint(game, way):
     if way == "previous":
-        game.checkpoint = game.checkpoint + 1 % len(game.checkpoints)
+        game.checkpoint = (game.checkpoint+1) % len(game.checkpoints)
     elif way == "next":
-        game.checkpoint = game.checkpoint - 1 % len(game.checkpoints)
+        game.checkpoint = (game.checkpoint-1) % len(game.checkpoints)
     game.restart()
     game.title = [f"Checkpoint {game.checkpoint}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
 
@@ -114,7 +114,7 @@ def handle_input(game):
             if game.active_textbox:
                 if event.key == py.K_RETURN:
                     if game.building and not game.editing_level:
-                        for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
+                        for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
                             for i, obj in enumerate(layer):
                                 if obj.selected:
                                     game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
@@ -162,9 +162,6 @@ def handle_input(game):
                     
                     elif any(event.key == key for key in game.controls["toggle noclip"]):
                         game.noclip = not game.noclip
-
-                    elif any(event.key == key for key in game.controls["toggle player visibility"]):
-                        game.show_player = not game.show_player
 
                 else: #Building controls
                     if any(event.key == key for key in game.controls["move up"]):
@@ -222,6 +219,9 @@ def handle_input(game):
                     if not game.completed:
                         game.cheated = True
                     game.show_hitboxes = not game.show_hitboxes
+
+                elif any(event.key == key for key in game.controls["toggle player visibility"]):
+                    game.show_player = not game.show_player
 
                 elif any(event.key == key for key in game.controls["create level"]) and game.operator:
                     create_level(game)
