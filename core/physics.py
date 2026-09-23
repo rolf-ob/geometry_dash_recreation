@@ -8,18 +8,23 @@ def check_collision(game):
 
     game.min_height = 0
     game.max_height = HEIGHT - 40
-    slide = False
+    game.on_ground = False
     for (obj, points) in game.shapes:
+        slide = False
         if within_view(game, points) and polygons_collide(game.player_points, points):
-            if obj.shape == "square" and obj.rotation % 90 == 0:
-                if game.player.y + 40 == obj.y and game.player.x != obj.x + obj.width:
+            if obj.shape == "square" and obj.rotation % 360 == 0:
+                if game.player.y+40 - game.speed < obj.y <= game.player.y+40 and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                     game.max_height = game.player.y
+                    game.on_ground = True
                     slide = True
-                elif game.player.y == obj.y + obj.height and game.player.x != obj.x + obj.width:
+                elif game.player.y <= obj.y+obj.height < game.player.y+game.speed and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                     game.min_height = game.player.y
                     slide = True
 
-            if not slide:
+            if game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                game.wave_trail.append((game.player.x + 20, game.player.y))
+
+            elif not slide:
                 if not game.noclip:
                         game.dead = FIXED_STEP
                         hitbox_color = (255, 0, 0)
@@ -55,6 +60,9 @@ def check_collision(game):
                 game.gravity = float(obj.modifier)
                 game.wave_trail.append((game.player.x + 20, game.player.y))
 
+    if game.player.y == game.max_height:
+        game.on_ground = True
+
     hitbox = Object(game.player.x, game.player.y, 40, 40, 0, "square", (0,)*3, hitbox_color)
     game.hitbox_trail.append(hitbox)
     game.hitbox_trail_points.append(hitbox.get_points())
@@ -62,14 +70,30 @@ def check_collision(game):
 def update_position(game):
     game.camera_x += game.speed
     game.player.x += game.speed
+    if game.gamemode == "wave":
+        if game.clicking > 0:
+            game.player.y = max(game.min_height, min(game.max_height, game.player.y - game.speed*game.gravity))
+        elif game.clicking == 0:
+            game.player.y = max(game.min_height, min(game.max_height, game.player.y + game.speed*game.gravity))
+        
+        if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - 40 or game.player.y == 0):
+            game.wave_trail.append((game.player.x + 20, game.player.y))
 
-    if game.clicking > 0:
-        game.player.y = max(game.min_height, min(game.max_height, (game.player.y - game.speed*game.gravity)))
-    elif game.clicking == 0:
-        game.player.y = max(game.min_height, min(game.max_height, (game.player.y + game.speed*game.gravity)))
-
-    if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - 40 or game.player.y == 0):
-        game.wave_trail.append((game.player.x + 20, game.player.y))
+    elif game.gamemode == "cube":
+        if game.clicking > 0 and game.on_ground:
+            game.y_vel = 12
+        
+        game.player.y = max(game.min_height, min(game.max_height, game.player.y - game.y_vel*game.speed*game.gravity))
+        if game.y_vel > 2.5:
+            game.y_vel = game.y_vel - game.y_vel / 3
+        elif game.y_vel < -2.5:
+            game.y_vel = game.y_vel + game.y_vel / 3
+        elif game.y_vel > 0.5:
+            game.y_vel = game.y_vel - game.y_vel / 5
+        elif game.y_vel < -0.5:
+            game.y_vel = game.y_vel + game.y_vel / 5
+        else:
+            game.y_vel -= 0.015
 
     game.player_points = game.player.get_points()
     game.percent = min(100.0, round((game.player.x - game.checkpoints[0].x) / (game.level_length - game.checkpoints[0].x - game.player.width)*100, 2))

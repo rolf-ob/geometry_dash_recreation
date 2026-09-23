@@ -40,6 +40,7 @@ class Game():
         self.scale = 1
         self.min_height = 0
         self.max_height = HEIGHT - 40
+        self.on_ground = False
         self.last_frame_time = time.perf_counter()
         self.clicking = 0
 
@@ -118,7 +119,7 @@ class Game():
                     elif field_name == "modifier":
                         setattr(obj, field_name, text)
                     
-                    elif field_name == "gamemode" and text in ("wave"):
+                    elif field_name == "gamemode" and text in ("wave", "cube"):
                         obj.modifier["gamemode"] = text
 
                     elif field_name == "speed":
@@ -184,6 +185,7 @@ class Game():
         self.camera_zoom = 1
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
+        self.y_vel = 0
         self.player_points = self.player.get_points()
         self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]

@@ -262,7 +262,7 @@ def create_level(game):
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3), {"gamemode": "wave", "speed": 2, "gravity": 1}],
+        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3, {"gamemode": "wave", "speed": 2, "gravity": 1})],
         "victors": {}
     })
     game.title = ["Created New Level", time.perf_counter() + 2]

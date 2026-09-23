@@ -99,7 +99,7 @@ def draw_leaderboard(game, screen):
         text = game.text_cache.get_surface(f"Leaderboard:", (0,)*3)
         margin = 5
         width, height = game.text_cache.get_size(f"Leaderboard:", (0,)*3)
-        x, y = (world_to_screen(game, game.level_length, 0)[0] + 40, 118)
+        x, y = (world_to_screen(game, game.level_length + 40, 118))
         py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
         py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
@@ -108,7 +108,7 @@ def draw_leaderboard(game, screen):
             text = game.text_cache.get_surface(f"No victors yet", (0,)*3)
             margin = 5
             width, height = game.text_cache.get_size(f"No victors yet", (0,)*3)
-            x, y = (world_to_screen(game, game.level_length, 0)[0] + 40, 125 + height)
+            x, y = (world_to_screen(game, game.level_length + 40, 125 + height))
             py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
             py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
@@ -117,7 +117,7 @@ def draw_leaderboard(game, screen):
                 text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
                 margin = 5
                 width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
-                x, y = (world_to_screen(game, game.level_length, 0)[0] + 40, 125 + i*(height + margin*2 - 2) + height)
+                x, y = (world_to_screen(game, game.level_length + 40, 125 + i*(height + margin*2 - 2) + height))
                 py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
                 screen.blit(text, (x, y))
@@ -200,6 +200,7 @@ def draw_debug(game, screen):
     debug_items = [
         f"FPS: {game.fps_counter.get_fps()}",
         f"Clicking: {game.clicking}",
+        f"Velocity: {game.y_vel}",
         f"Level: {game.current_level}",
         f"Zoom: {round(game.camera_zoom, 1)}",
         f"Deaths: {game.noclip_deaths}",
@@ -229,7 +230,8 @@ def draw(game):
         draw_hitbox_trail(game, screen)
     
     if game.show_player and game.current_level != 0:
-        draw_wave_trail(game, screen)
+        if game.gamemode == "wave":
+            draw_wave_trail(game, screen)
         draw_player(game, screen)
 
     if game.completed or game.current_level == 0:

@@ -60,8 +60,74 @@
     ],
     "victors": {
       "Rolf": [
-        54,
+        104,
         0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "length": 1440,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "First Cube",
+      "points": 0
+    },
+    "background": [],
+    "objects": [
+      {
+        "x": 1440.0,
+        "y": 0.0,
+        "width": 1,
+        "height": 720,
+        "rotation": 0,
+        "shape": "end",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          255,
+          0,
+          0
+        ],
+        "modifier": null
+      }
+    ],
+    "decoration": [],
+    "checkpoints": [
+      {
+        "x": 360,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": {
+          "gamemode": "cube",
+          "speed": 2,
+          "gravity": 1
+        }
+      }
+    ],
+    "victors": {
+      "Rolf": [
+        57,
+        7
       ]
     }
   },
@@ -98,25 +164,6 @@
         "modifier": null
       },
       {
-        "x": 1000,
-        "y": 480,
-        "width": 200,
-        "height": 240,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null
-      },
-      {
         "x": 1640,
         "y": 0,
         "width": 1,
@@ -130,6 +177,25 @@
         ],
         "outline": [
           255,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 1000,
+        "y": 480,
+        "width": 200,
+        "height": 240,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
           0,
           0
         ],
@@ -164,8 +230,8 @@
     ],
     "victors": {
       "Rolf": [
-        65,
-        12
+        112,
+        20
       ]
     }
   },
@@ -595,7 +661,7 @@
     ],
     "victors": {
       "Rolf": [
-        16,
+        17,
         0
       ]
     }
@@ -9127,14 +9193,14 @@
         ],
         "modifier": {
           "gamemode": "wave",
-          "speed": 2,
+          "speed": 3.0,
           "gravity": 1
         }
       }
     ],
     "victors": {
       "Rolf": [
-        35,
+        47,
         1
       ]
     }

@@ -1,6 +1,4 @@
-- Fix objects not colliding with player
-- Safe to slide on blocks
-- Cube gamemode
+- Less cube starting and ending velocity
 - Ship gamemode
 - Orbs and pads
 - Camera going up and down with player
