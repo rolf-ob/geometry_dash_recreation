@@ -4,18 +4,24 @@ import time
 from constants import WIDTH, HEIGHT, FIXED_STEP, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
-    screen_x = ((x - game.camera_x - WIDTH / 2) * game.camera_zoom + WIDTH / 2) * game.scale
-    screen_y = ((y - game.camera_y - HEIGHT / 2) * game.camera_zoom + HEIGHT / 2) * game.scale
+    camera_x = game.camera_x if not game.building else game.building_camera_x
+    camera_y = game.camera_y if not game.building else game.building_camera_y
+    screen_x = ((x - camera_x - WIDTH / 2) * game.camera_zoom + WIDTH / 2) * game.scale
+    screen_y = ((y - camera_y - HEIGHT / 2) * game.camera_zoom + HEIGHT / 2) * game.scale
     return int(screen_x), int(screen_y)
 
 def screen_to_world(game, x, y):
-    world_x = (x / game.scale - WIDTH / 2) / game.camera_zoom + WIDTH / 2 + game.camera_x
-    world_y = (y / game.scale - HEIGHT / 2) / game.camera_zoom + HEIGHT / 2 + game.camera_y
+    camera_x = game.camera_x if not game.building else game.building_camera_x
+    camera_y = game.camera_y if not game.building else game.building_camera_y
+    world_x = (x / game.scale - WIDTH / 2) / game.camera_zoom + WIDTH / 2 + camera_x
+    world_y = (y / game.scale - HEIGHT / 2) / game.camera_zoom + HEIGHT / 2 + camera_y
     return int(world_x), int(world_y)
 
 def within_view(game, points):
-    all_left = all(point[0] < game.camera_x for point in points)
-    all_right = all(point[0] > game.camera_x + game.view_width for point in points)
+    camera_x = game.camera_x if not game.building else game.building_camera_x
+    camera_y = game.camera_y if not game.building else game.building_camera_y
+    all_left = all(point[0] < camera_x for point in points)
+    all_right = all(point[0] > camera_x + game.view_width for point in points)
     return False if all_left or all_right else True
 
 def draw_polygon(game, screen, points, color, width):
@@ -81,7 +87,8 @@ def draw_wave_trail(game, screen):
             else:
                 end_top = game.wave_trail[i + 1]
 
-        if game.camera_x < end_top[0] < game.camera_x + game.view_width or game.camera_x < start_top[0] < game.camera_x + game.view_width:
+        camera_x = game.camera_x if not game.building else game.building_camera_x
+        if camera_x < end_top[0] < camera_x + game.view_width or camera_x < start_top[0] < camera_x + game.view_width:
             start_bottom = (point[0], point[1] + 40)
 
             end_bottom = (game.player.x + 20, game.player.y + 40) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + 40)

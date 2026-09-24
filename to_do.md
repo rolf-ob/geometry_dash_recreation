@@ -1,4 +1,4 @@
-- Save building camera position
+- Checkpoint attributes get applied to the wrong checkpoint
 - Resetting stats in level settings
 - Orbs and pads
 - Coins

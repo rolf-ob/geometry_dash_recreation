@@ -52,7 +52,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "wave",
+          "gamemode": "cube",
           "speed": 2,
           "gravity": 1
         }
@@ -60,7 +60,7 @@
     ],
     "victors": {
       "Rolf": [
-        247,
+        273,
         0
       ],
       "Dennis": [
@@ -3767,6 +3767,139 @@
           0
         ],
         "modifier": null
+      },
+      {
+        "x": 12440,
+        "y": 240,
+        "width": 40,
+        "height": 240,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 12400,
+        "y": 240,
+        "width": 40,
+        "height": 40,
+        "rotation": -90,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 12400,
+        "y": 280,
+        "width": 40,
+        "height": 40,
+        "rotation": -90,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 12400,
+        "y": 320,
+        "width": 40,
+        "height": 40,
+        "rotation": -90,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 12400,
+        "y": 360,
+        "width": 40,
+        "height": 40,
+        "rotation": -90,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 12400,
+        "y": 400,
+        "width": 40,
+        "height": 40,
+        "rotation": -90,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 12400,
+        "y": 440,
+        "width": 40,
+        "height": 40,
+        "rotation": -90,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
       }
     ],
     "decoration": [
@@ -3805,6 +3938,25 @@
           255,
           255,
           255
+        ],
+        "modifier": null
+      },
+      {
+        "x": 6760,
+        "y": 200,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "circle",
+        "color": [
+          255,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
         ],
         "modifier": null
       },
@@ -3876,7 +4028,7 @@
         }
       },
       {
-        "x": 3160,
+        "x": 3240,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -3893,7 +4045,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "cube",
+          "gamemode": "wave",
           "speed": 2,
           "gravity": 1
         }
@@ -3939,13 +4091,13 @@
           0
         ],
         "modifier": {
-          "gamemode": "ship",
+          "gamemode": "wave",
           "speed": 2,
           "gravity": 1
         }
       },
       {
-        "x": 10280,
+        "x": 10400,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -3962,7 +4114,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "ball",
+          "gamemode": "wave",
           "speed": 2,
           "gravity": 1
         }
@@ -3985,7 +4137,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "ball",
+          "gamemode": "wave",
           "speed": 2,
           "gravity": 1
         }
@@ -3993,7 +4145,7 @@
     ],
     "victors": {
       "Rolf": [
-        9,
+        178,
         1
       ],
       "Dennis": [

@@ -47,6 +47,8 @@ class Game():
         self.robot_fuel = 0
 
         self.building = False
+        self.building_camera_x = PLAYER_X
+        self.building_camera_y = 0
         self.shape = "square"
         self.layer = 1
         self.editing_level = False
@@ -209,12 +211,25 @@ class Game():
         self.background = self.level["background"]
         self.objects = self.level["objects"]
         self.decoration = self.level["decoration"]
-        self.checkpoints = self.level["checkpoints"]
         self.victors = self.level["victors"]
         self.level_length = self.level["meta"]["length"]
         self.background_color = self.level["meta"]["background color"]
         self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 
+        checkpoints = self.level["checkpoints"].copy()
+        self.level["checkpoints"] = [checkpoints[0]]
+        checkpoints.pop(0)
+        checkpoints_x = [cp.x for cp in checkpoints]
+        if checkpoints:
+            for i in range(len(checkpoints_x)):
+                for x in checkpoints_x.copy():
+                    if x == min(checkpoints_x):
+                        self.level["checkpoints"].append(checkpoints[checkpoints_x.index(x)])
+                        checkpoints.pop(checkpoints_x.index(x))
+                        checkpoints_x.remove(x)
+                        break
+        
+        self.checkpoints = self.level["checkpoints"]
         self.checkpoint = 0
         
         self.background_points = [obj.get_points() for obj in self.background]
@@ -275,7 +290,7 @@ class Game():
             now = time.perf_counter()
             frame_time = now - previous
             previous = now
-
+            
             if self.speedhack:
                 frame_time *= self.speedhack_multiplier
             accumulator += frame_time

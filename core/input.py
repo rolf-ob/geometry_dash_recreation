@@ -63,16 +63,28 @@ def step_frame(game):
         game.frame_steps += 1
 
 def scroll(game, y):
-    if y > 0 and (game.paused or game.completed or game.building):
-        game.camera_y -= 100 / game.camera_zoom
-    elif y < 0 and (game.paused or game.completed or game.building):
-        game.camera_y += 100 / game.camera_zoom
+    camera_y = game.camera_y if not game.building else game.building_camera_y
+    if y > 0 and (game.paused or game.completed):
+        camera_y -= 100 / game.camera_zoom
+    elif y < 0 and (game.paused or game.completed):
+        camera_y += 100 / game.camera_zoom
+
+    if game.building:
+        game.building_camera_y = camera_y
+    else:
+        game.camera_y = camera_y
 
 def pan(game, y):
-    if y > 0 and (game.paused or game.completed or game.building):
-        game.camera_x -= 100 / game.camera_zoom
-    elif y < 0 and (game.paused or game.completed or game.building):
-        game.camera_x += 100 / game.camera_zoom
+    camera_x = game.camera_x if not game.building else game.building_camera_x
+    if y > 0 and (game.paused or game.completed):
+        camera_x -= 100 / game.camera_zoom
+    elif y < 0 and (game.paused or game.completed):
+        camera_x += 100 / game.camera_zoom
+    
+    if game.building:
+        game.building_camera_x = camera_x
+    else:
+        game.camera_x = camera_x
 
 def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
