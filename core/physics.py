@@ -61,6 +61,20 @@ def check_collision(game):
                     game.wave_trail.append((game.player.x + 20, game.player.y))
                 
                 game.gamemode = obj.modifier
+                if game.gamemode == "wave":
+                    game.player.color = (0, 255, 255)
+                elif game.gamemode == "cube":
+                    game.player.color = (0, 0, 255)
+                elif game.gamemode == "ship":
+                    game.player.color = (255, 255, 0)
+                elif game.gamemode == "ball":
+                    game.player.color = (255, 0, 0)
+                elif game.gamemode == "ufo":
+                    game.player.color = (255, 128, 0)
+                elif game.gamemode == "robot":
+                    game.player.color = (255, 255, 255)
+                elif game.gamemode == "spider":
+                    game.player.color = (128, 0, 255)
 
                 if game.gamemode == "wave":
                     game.wave_trail = [(game.player.x + 20, game.player.y)]

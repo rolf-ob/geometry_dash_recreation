@@ -47,7 +47,7 @@ class Game():
         self.robot_fuel = 0
 
         self.building = False
-        self.building_camera_x = PLAYER_X
+        self.building_camera_x = 0
         self.building_camera_y = 0
         self.shape = "square"
         self.layer = 1
@@ -125,6 +125,21 @@ class Game():
                     else:
                         if field_name == "gamemode" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
                             obj.modifier["gamemode"] = text
+                            
+                            if text == "wave":
+                                obj.color = (0, 255, 255)
+                            elif text == "cube":
+                                obj.color = (0, 0, 255)
+                            elif text == "ship":
+                                obj.color = (255, 255, 0)
+                            elif text == "ball":
+                                obj.color = (255, 0, 0)
+                            elif text == "ufo":
+                                obj.color = (255, 128, 0)
+                            elif text == "robot":
+                                obj.color = (255, 255, 255)
+                            elif text == "spider":
+                                obj.color = (128, 0, 255)
 
                         elif field_name == "speed":
                             obj.modifier["speed"] = float(text)

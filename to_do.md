@@ -1,4 +1,4 @@
-- Checkpoint attributes get applied to the wrong checkpoint
+- Player color matches gamemode
 - Resetting stats in level settings
 - Orbs and pads
 - Coins

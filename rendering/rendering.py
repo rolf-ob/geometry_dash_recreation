@@ -1,7 +1,7 @@
 import pygame as py
 import time
 
-from constants import WIDTH, HEIGHT, FIXED_STEP, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
+from constants import WIDTH, HEIGHT, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
     camera_x = game.camera_x if not game.building else game.building_camera_x

@@ -42,8 +42,8 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          255,
-          255,
+          0,
+          0,
           255
         ],
         "outline": [
@@ -60,7 +60,7 @@
     ],
     "victors": {
       "Rolf": [
-        273,
+        296,
         0
       ],
       "Dennis": [
@@ -78,7 +78,7 @@
         255
       ],
       "title": "First Level",
-      "points": 0
+      "points": 20
     },
     "background": [],
     "objects": [
@@ -3989,8 +3989,8 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          255,
-          255,
+          0,
+          0,
           255
         ],
         "outline": [
@@ -4012,8 +4012,8 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          255,
-          255,
+          0,
+          0,
           255
         ],
         "outline": [
@@ -4035,8 +4035,8 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          255,
-          255,
+          0,
+          0,
           255
         ],
         "outline": [
@@ -4045,7 +4045,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "wave",
+          "gamemode": "cube",
           "speed": 2,
           "gravity": 1
         }
@@ -4058,7 +4058,7 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          255,
+          0,
           255,
           255
         ],
@@ -4083,7 +4083,7 @@
         "color": [
           255,
           255,
-          255
+          0
         ],
         "outline": [
           0,
@@ -4091,7 +4091,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "wave",
+          "gamemode": "ship",
           "speed": 2,
           "gravity": 1
         }
@@ -4105,8 +4105,8 @@
         "shape": "checkpoint",
         "color": [
           255,
-          255,
-          255
+          0,
+          0
         ],
         "outline": [
           0,
@@ -4114,7 +4114,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "wave",
+          "gamemode": "ball",
           "speed": 2,
           "gravity": 1
         }
@@ -4128,8 +4128,8 @@
         "shape": "checkpoint",
         "color": [
           255,
-          255,
-          255
+          0,
+          0
         ],
         "outline": [
           0,
@@ -4137,7 +4137,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "wave",
+          "gamemode": "ball",
           "speed": 2,
           "gravity": 1
         }
@@ -4145,7 +4145,7 @@
     ],
     "victors": {
       "Rolf": [
-        178,
+        239,
         1
       ],
       "Dennis": [
@@ -5864,18 +5864,18 @@
         "width": 40,
         "height": 120,
         "rotation": 0,
-        "shape": "square",
+        "shape": "gamemode",
         "color": [
-          0,
-          0,
-          255
+          255,
+          128,
+          0
         ],
         "outline": [
           0,
           0,
           0
         ],
-        "modifier": null
+        "modifier": "ufo"
       }
     ],
     "decoration": [],
@@ -5902,11 +5902,34 @@
           "speed": 2,
           "gravity": 1
         }
+      },
+      {
+        "x": 2240,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": {
+          "gamemode": "robot",
+          "speed": 2,
+          "gravity": 1
+        }
       }
     ],
     "victors": {
       "Rolf": [
-        52,
+        68,
         0
       ]
     }
@@ -9519,7 +9542,7 @@
       {
         "x": 4000.0,
         "y": 340.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": 0,
         "shape": "gravity",
@@ -9538,7 +9561,7 @@
       {
         "x": 1900.0,
         "y": 540.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": 0,
         "shape": "gravity",
@@ -9557,7 +9580,7 @@
       {
         "x": 2040.0,
         "y": 280.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": 0,
         "shape": "gravity",
@@ -9576,7 +9599,7 @@
       {
         "x": 2500.0,
         "y": 540.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": 0,
         "shape": "gravity",
@@ -9595,7 +9618,7 @@
       {
         "x": 2760.0,
         "y": 540.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": 0,
         "shape": "gravity",
@@ -9614,7 +9637,7 @@
       {
         "x": 4380.0,
         "y": 180.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": -20,
         "shape": "gravity",
@@ -10051,7 +10074,7 @@
       {
         "x": 2310.0,
         "y": 280.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": 0,
         "shape": "gravity",
@@ -10108,7 +10131,7 @@
       {
         "x": 4160.0,
         "y": 500.0,
-        "width": 40,
+        "width": 20,
         "height": 120,
         "rotation": 20,
         "shape": "gravity",
@@ -11731,7 +11754,7 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          255,
+          0,
           255,
           255
         ],
@@ -11754,7 +11777,7 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          255,
+          0,
           255,
           255
         ],
@@ -11772,7 +11795,7 @@
     ],
     "victors": {
       "Rolf": [
-        60,
+        64,
         1
       ],
       "Dennis": [
