@@ -1,11 +1,6 @@
 {
   "accessibility": {
     "name": "Rolf",
-    "player color": [
-      0,
-      255,
-      255
-    ],
     "speedhack multiplier": 0.8,
     "fps": 240,
     "respawn time": 0.5

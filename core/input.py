@@ -48,6 +48,8 @@ def switch_checkpoint(game, way):
     game.title = [f"Checkpoint {game.checkpoint}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
 
 def switch_level(game, way):
+    game.building_camera_x = 0
+    game.building_camera_y = 0
     if way == "previous":
         game.current_level = (game.current_level-1) % len(game.levels)
     elif way == "next":
@@ -124,7 +126,7 @@ def handle_input(game):
             game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
-        elif event.type == py.TEXTINPUT:
+        elif event.type == py.TEXTINPUT and game.active_textbox:
             game.active_textbox.text += event.text
 
         elif event.type == py.KEYDOWN:

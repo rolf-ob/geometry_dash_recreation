@@ -4,6 +4,22 @@ PLAYER_X = 360
 FONT_SIZE = 24
 FIXED_STEP = 1 / 240
 
+gamemode_colors = {
+    "wave": (0, 255, 255),
+    "cube": (0, 255, 0),
+    "ship": (255, 0, 255),
+    "ball": (255, 0, 0),
+    "ufo": (255, 128, 0),
+    "robot": (255, 255, 255),
+    "spider": (128, 0, 255)
+}
+
+gravity_colors = {
+    1: (0, 255, 0),
+    2: (255, 0, 255),
+    -1: (255, 255, 0)
+}
+
 controls_tutorial = [
     "NAVIGATION",
     "Go Up - Spacebar, W, Return/Enter, Left Mouse",
@@ -37,7 +53,6 @@ settings_tutorial = [
     "",
     "SETTING DESCRIPTION",
     "Name - Your leaderboard name",
-    "Player Color - Player color in R,G,B",
     "Speedhack - Speed multiplier for the speed changer",
     "FPS - Frames per second",
     "Respawn Time - How quickly you respawn"
@@ -56,6 +71,14 @@ building_tutorial = [
     "Switch Building Layer - Q, E",
     "Reset Camera Position - R",
     "Edit Level Settings - T",
+    "",
+    "LEVEL SETTINGS",
+    "Background- Sets the background color of the enire level",
+    "Title - The title of the level",
+    "Points - How many points you should get from completing the level",
+    "Level Number - Which order in the levels this level is",
+    "Reset stats - Type reset to clear all attempts and completions",
+    "Delete - Type delete to delete the entire level permanently",
     "",
     "SHAPES",
     "Building shapes - square, end, triangle, slope, circle",

@@ -8,7 +8,7 @@ from entities.object import Object
 from core.building import toggle_building
 from entities.serialization import levels_to_data, data_to_levels
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, gamemode_colors
 from core.fps_counter import FpsCounter
 
 class Game():
@@ -29,7 +29,6 @@ class Game():
 
         self.operator = True
         self.name = self.accessibility["name"]
-        self.player = Object(0, 0, 40, 40, 0, "square", tuple(self.accessibility["player color"]), (0,)*3)
         self.fps = self.accessibility["fps"]
         self.speedhack_multiplier = self.accessibility["speedhack multiplier"]
         self.respawn_time = self.accessibility["respawn time"]
@@ -119,27 +118,19 @@ class Game():
                             if text in ("square", "spike", "slope", "circle"):
                                 self.shape = text
 
-                        elif field_name == "modifier" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
+                        elif obj.shape == "gamemode" and field_name == "modifier" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
                             setattr(obj, field_name, text)
+
+                        elif obj.shape == "speed" and field_name == "modifier":
+                            setattr(obj, field_name, int(text))
+
+                        elif obj.shape == "gravity" and field_name == "modifier":
+                            setattr(obj, field_name, int(text))
 
                     else:
                         if field_name == "gamemode" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
                             obj.modifier["gamemode"] = text
-                            
-                            if text == "wave":
-                                obj.color = (0, 255, 255)
-                            elif text == "cube":
-                                obj.color = (0, 0, 255)
-                            elif text == "ship":
-                                obj.color = (255, 255, 0)
-                            elif text == "ball":
-                                obj.color = (255, 0, 0)
-                            elif text == "ufo":
-                                obj.color = (255, 128, 0)
-                            elif text == "robot":
-                                obj.color = (255, 255, 255)
-                            elif text == "spider":
-                                obj.color = (128, 0, 255)
+                            obj.color = gamemode_colors[text]
 
                         elif field_name == "speed":
                             obj.modifier["speed"] = float(text)
@@ -168,6 +159,9 @@ class Game():
                         self.current_level = int(text)
                         self.load_level()
 
+                    elif field_name == "reset stats" and text == "reset":
+                        self.level["victors"] = {}
+
                     elif field_name == "delete" and text == "delete":
                         self.current_level -= 1
                         self.levels.pop(self.current_level+1)
@@ -176,10 +170,6 @@ class Game():
             else:
                 if field_name == "name":
                     self.name = text
-
-                elif field_name == "player color":
-                    r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
-                    self.player.color = (r, g, b)
 
                 elif field_name == "speedhack":
                     self.speedhack_multiplier = max(0, float(text))
@@ -199,6 +189,10 @@ class Game():
         else:
             self.victors[self.name][0] += 1
 
+        self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
+        self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
+        self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
+        self.player = Object(0, 0, 40, 40, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
@@ -206,9 +200,6 @@ class Game():
         self.player.y = self.checkpoints[self.checkpoint].y
         self.y_vel = 0
         self.player_points = self.player.get_points()
-        self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
-        self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
-        self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
         self.percent = min(100.0, round((self.player.x - self.checkpoints[0].x) / (self.level_length - self.checkpoints[0].x - self.player.width)*100, 2))
         if self.checkpoint != 0:
             self.cheated = True
@@ -277,7 +268,6 @@ class Game():
             json.dump(levels_to_data(self.levels), f, indent=2)
 
         self.accessibility["name"] = self.name
-        self.accessibility["player color"] = list(self.player.color)
         self.accessibility["fps"] = self.fps
         self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
         self.accessibility["respawn time"] = self.respawn_time

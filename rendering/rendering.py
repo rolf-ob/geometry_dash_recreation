@@ -117,20 +117,30 @@ def draw_leaderboard(game, screen):
         py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
 
-        if game.victors == {}:
+        victors = game.victors.copy()
+        sorted_victors = {}
+        if victors:
+            for i in range(len(victors)):
+                for victor in victors.copy():
+                    values = [completions for (attempts, completions) in victors.values()]
+                    if victors[victor][1] == max(values):
+                        sorted_victors[victor] = victors[victor]
+                        del victors[victor]
+        
+        if sorted_victors == {}:
             text = game.text_cache.get_surface(f"No victors yet", (0,)*3)
             margin = 5
             width, height = game.text_cache.get_size(f"No victors yet", (0,)*3)
-            x, y = (world_to_screen(game, game.level_length + 40, 125 + height))
+            x, y = (world_to_screen(game, game.level_length + 40, 125 + height * HEIGHT / game.height))
             py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
             py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
         else:
-            for i, (victor, stats) in enumerate(game.victors.items()):
+            for i, (victor, stats) in enumerate(sorted_victors.items()):
                 text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
                 margin = 5
                 width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
-                x, y = (world_to_screen(game, game.level_length + 40, 125 + i*(height + margin*2 - 2) + height))
+                x, y = (world_to_screen(game, game.level_length + 40, 125 + (i*(height + margin*2 - 2) + height) * HEIGHT / game.height))
                 py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
                 screen.blit(text, (x, y))

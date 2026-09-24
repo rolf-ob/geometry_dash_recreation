@@ -263,7 +263,7 @@ def create_level(game):
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 0, 255), (0,)*3, {"gamemode": "cube", "speed": 2, "gravity": 1})],
+        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 255, 0), (0,)*3, {"gamemode": "cube", "speed": 2, "gravity": 1})],
         "victors": {}
     })
     game.title = ["Created New Level", time.perf_counter() + 2]
@@ -287,10 +287,8 @@ def close_menu(game):
 
 def open_menu(game, menu):
     if menu == "settings":
-        r, g, b = game.player.color
         game.textboxes = [
             TextBox("Name", game.name),
-            TextBox("Player Color", f"{str(r)} {str(g)} {str(b)}"),
             TextBox("Speedhack", game.speedhack_multiplier),
             TextBox("FPS", game.fps),
             TextBox("Respawn Time", game.respawn_time)
@@ -304,6 +302,7 @@ def open_menu(game, menu):
             TextBox("Title", game.level["meta"]["title"]),
             TextBox("Points", game.level["meta"]["points"]),
             TextBox("Level Number", game.current_level),
+            TextBox("Reset stats", ""),
             TextBox("Delete", "")
         ]
 

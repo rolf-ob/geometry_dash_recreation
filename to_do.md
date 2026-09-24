@@ -1,5 +1,3 @@
-- Player color matches gamemode
-- Resetting stats in level settings
 - Orbs and pads
 - Coins
 - Camera going up and down with player

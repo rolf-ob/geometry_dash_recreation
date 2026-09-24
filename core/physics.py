@@ -1,10 +1,10 @@
 from entities.collision import polygons_collide
 from entities.object import Object
 from rendering.rendering import within_view
-from constants import HEIGHT, FIXED_STEP
+from constants import HEIGHT, FIXED_STEP, gamemode_colors
 
 def check_collision(game):
-    hitbox_color = (0, 255, 0)
+    hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 0, 255)
 
     game.min_height = 0
     game.max_height = HEIGHT - 40
@@ -36,13 +36,13 @@ def check_collision(game):
             elif not slide and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                 if not game.noclip:
                         game.dead = FIXED_STEP
-                        hitbox_color = (255, 0, 0)
+                        hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
                 else:
                     if game.hitbox_trail and game.hitbox_trail[-1].outline == (0, 255, 0):
                         game.cheated = True
                         game.noclip_deaths += 1
-                    hitbox_color = (255, 0, 0)
+                    hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                     break
             elif game.gamemode == "wave" and game.wave_trail[-1][1] != game.player.y:
                 game.wave_trail.append((game.player.x + 20, game.player.y))
@@ -51,7 +51,10 @@ def check_collision(game):
         if within_view(game, points) and polygons_collide(game.player_points, points):
             game.completed = True
             if not game.cheated:
-                game.victors[game.name][1] += 1
+                if game.name in game.victors.keys():
+                    game.victors[game.name][1] += 1
+                else:
+                    game.victors[game.name] = (1, 1)
 
     for (obj, points) in game.gamemodes:
         if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier:
@@ -61,20 +64,7 @@ def check_collision(game):
                     game.wave_trail.append((game.player.x + 20, game.player.y))
                 
                 game.gamemode = obj.modifier
-                if game.gamemode == "wave":
-                    game.player.color = (0, 255, 255)
-                elif game.gamemode == "cube":
-                    game.player.color = (0, 0, 255)
-                elif game.gamemode == "ship":
-                    game.player.color = (255, 255, 0)
-                elif game.gamemode == "ball":
-                    game.player.color = (255, 0, 0)
-                elif game.gamemode == "ufo":
-                    game.player.color = (255, 128, 0)
-                elif game.gamemode == "robot":
-                    game.player.color = (255, 255, 255)
-                elif game.gamemode == "spider":
-                    game.player.color = (128, 0, 255)
+                game.player.color = gamemode_colors[game.gamemode]
 
                 if game.gamemode == "wave":
                     game.wave_trail = [(game.player.x + 20, game.player.y)]
