@@ -8,10 +8,15 @@ def click(game, type, button, shift):
     if button in (0, 1) and not game.building:
         if type == "click":
             game.clicking += 1
-            game.wave_trail.append((game.player.x + 20, game.player.y))
+            if game.gamemode == "wave":
+                game.wave_trail.append((game.player.x + 20, game.player.y))
         elif type == "release":
             game.clicking = max(0, game.clicking - 1)
-            game.wave_trail.append((game.player.x + 20, game.player.y))
+            if game.clicking == 0:
+                game.clicked = False
+            
+            if game.gamemode == "wave":
+                game.wave_trail.append((game.player.x + 20, game.player.y))
     
     elif button == 1 and type == "release" and not shift:
         place_object(game)
@@ -36,9 +41,9 @@ def toggle_pause(game):
 
 def switch_checkpoint(game, way):
     if way == "previous":
-        game.checkpoint = (game.checkpoint+1) % len(game.checkpoints)
-    elif way == "next":
         game.checkpoint = (game.checkpoint-1) % len(game.checkpoints)
+    elif way == "next":
+        game.checkpoint = (game.checkpoint+1) % len(game.checkpoints)
     game.restart()
     game.title = [f"Checkpoint {game.checkpoint}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
 

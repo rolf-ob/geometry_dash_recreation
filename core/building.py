@@ -11,6 +11,7 @@ def toggle_building(game):
     game.building = not game.building
     if game.building:
         game.clicking = 0
+        game.clicked = False
         game.layer = 1
         game.title = ["Objects", -1]
         close_menu(game)
@@ -35,7 +36,7 @@ def place_object(game):
     layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
     if not any(polygons_collide(mouse_pos, points) for points in layer_points):
-        new_obj = Object(mouse_x, mouse_y, 40, 40, game.rotation, game.shape, (255,)*3, (0,)*3)
+        new_obj = Object(mouse_x, mouse_y, 40, 40, 0, game.shape, (255,)*3, (0,)*3)
         layer.append(new_obj)
         layer_points.append(new_obj.get_points())
 
@@ -262,7 +263,7 @@ def create_level(game):
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3, {"gamemode": "wave", "speed": 2, "gravity": 1})],
+        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (255,)*3, (0,)*3, {"gamemode": "cube", "speed": 2, "gravity": 1})],
         "victors": {}
     })
     game.title = ["Created New Level", time.perf_counter() + 2]

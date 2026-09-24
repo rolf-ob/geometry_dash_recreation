@@ -73,7 +73,13 @@ def draw_wave_trail(game, screen):
     for i, point in enumerate(game.wave_trail):
 
         start_top = point
-        end_top = (game.player.x + 20, game.player.y) if i == len(game.wave_trail) - 1 else game.wave_trail[i + 1]
+        if game.gamemode == "wave":
+            end_top = (game.player.x + 20, game.player.y) if i == len(game.wave_trail) - 1 else game.wave_trail[i + 1]
+        else:
+            if i == len(game.wave_trail) - 1:
+                break
+            else:
+                end_top = game.wave_trail[i + 1]
 
         if game.camera_x < end_top[0] < game.camera_x + game.view_width or game.camera_x < start_top[0] < game.camera_x + game.view_width:
             start_bottom = (point[0], point[1] + 40)
@@ -200,7 +206,7 @@ def draw_debug(game, screen):
     debug_items = [
         f"FPS: {game.fps_counter.get_fps()}",
         f"Clicking: {game.clicking}",
-        f"Velocity: {game.y_vel}",
+        f"Velocity: {round(game.y_vel, 2)}",
         f"Level: {game.current_level}",
         f"Zoom: {round(game.camera_zoom, 1)}",
         f"Deaths: {game.noclip_deaths}",
@@ -230,8 +236,7 @@ def draw(game):
         draw_hitbox_trail(game, screen)
     
     if game.show_player and game.current_level != 0:
-        if game.gamemode == "wave":
-            draw_wave_trail(game, screen)
+        draw_wave_trail(game, screen)
         draw_player(game, screen)
 
     if game.completed or game.current_level == 0:

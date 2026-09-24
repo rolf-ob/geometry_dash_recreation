@@ -1,6 +1,7 @@
-- Less cube starting and ending velocity
-- Ship gamemode
+- Save building camera position
+- Resetting stats in level settings
 - Orbs and pads
+- Coins
 - Camera going up and down with player
 - Changing controls in menu and changing tutorial with it
 - CBF

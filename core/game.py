@@ -43,10 +43,11 @@ class Game():
         self.on_ground = False
         self.last_frame_time = time.perf_counter()
         self.clicking = 0
+        self.clicked = False
+        self.robot_fuel = 0
 
         self.building = False
         self.shape = "square"
-        self.rotation = 0
         self.layer = 1
         self.editing_level = False
 
@@ -99,34 +100,35 @@ class Game():
         try:
             if self.building:
                 if not self.editing_level:
-                    if field_name == "width":
-                        setattr(obj, field_name, max(0, int(text)))
-                    elif field_name == "height":
-                        setattr(obj, field_name, max(0, int(text)))
-                    elif field_name == "rotation":
-                        setattr(obj, field_name, int(text))
-                        self.rotation = int(text)
-                    
-                    elif field_name in ("color", "outline"):
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
-                        setattr(obj, field_name, (r, g, b))
+                    if obj.shape != "checkpoint":
+                        if field_name == "width":
+                            setattr(obj, field_name, max(0, int(text)))
+                        elif field_name == "height":
+                            setattr(obj, field_name, max(0, int(text)))
+                        elif field_name == "rotation":
+                            setattr(obj, field_name, int(text))
+                        
+                        elif field_name in ("color", "outline"):
+                            r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
+                            setattr(obj, field_name, (r, g, b))
 
-                    elif field_name == "shape" and text in ("square", "end", "spike", "slope", "circle", "gamemode", "speed", "gravity"):
-                        setattr(obj, field_name, text)
-                        if text != "end":
-                            self.shape = text
+                        elif field_name == "shape" and text in ("square", "end", "spike", "slope", "circle", "gamemode", "speed", "gravity"):
+                            setattr(obj, field_name, text)
+                            if text in ("square", "spike", "slope", "circle"):
+                                self.shape = text
 
-                    elif field_name == "modifier":
-                        setattr(obj, field_name, text)
-                    
-                    elif field_name == "gamemode" and text in ("wave", "cube"):
-                        obj.modifier["gamemode"] = text
+                        elif field_name == "modifier" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
+                            setattr(obj, field_name, text)
 
-                    elif field_name == "speed":
-                        obj.modifier["speed"] = float(text)
+                    else:
+                        if field_name == "gamemode" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
+                            obj.modifier["gamemode"] = text
 
-                    elif field_name == "gravity":
-                        obj.modifier["gravity"] = float(text)
+                        elif field_name == "speed":
+                            obj.modifier["speed"] = float(text)
+
+                        elif field_name == "gravity":
+                            obj.modifier["gravity"] = float(text)
 
                 else:
                     if field_name == "length":
@@ -200,7 +202,7 @@ class Game():
         self.completed = False
         self.hitbox_trail = []
         self.hitbox_trail_points = []
-        self.wave_trail = [(self.player.x + 20, self.player.y)]
+        self.wave_trail = [(self.player.x + 20, self.player.y)] if self.gamemode == "wave" else []
     
     def load_level(self):
         self.level = self.levels[self.current_level]
