@@ -36,11 +36,11 @@ def check_collision(game):
 
             elif not slide and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                 if not game.noclip:
-                        game.dead = FIXED_STEP
-                        hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
-                        break
+                    game.dead = FIXED_STEP
+                    hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
+                    break
                 else:
-                    if game.hitbox_trail and game.hitbox_trail[-1].outline == (0, 255, 0):
+                    if game.hitbox_trail and game.hitbox_trail[-1].outline in ((0, 255, 0), (0, 255, 255)):
                         game.cheated = True
                         game.noclip_deaths += 1
                     hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
@@ -251,7 +251,9 @@ def update_position(game):
     game.player.y = max(game.min_height, min(game.max_height, game.player.y - game.y_vel*game.speed*game.gravity)) if not game.dashing else game.player.y
 
     game.player_points = game.player.get_points()
-    game.percent = min(100.0, round((game.player.x - game.checkpoints[0].x) / (game.level_length - game.checkpoints[0].x - game.player.width)*100, 2))
+    start_x = game.player.x - game.checkpoints[0].x
+    end_x = game.level_length - game.checkpoints[0].x - game.player.width
+    game.percent = 0 if end_x == 0 else min(100.0, round(start_x / end_x) * 100)
 
 def update_death_timer(game):
     if not game.speedhack:

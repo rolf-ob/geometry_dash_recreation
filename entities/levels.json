@@ -60,7 +60,7 @@
     ],
     "victors": {
       "Rolf": [
-        458,
+        477,
         0,
         0,
         0
@@ -4168,7 +4168,7 @@
     ],
     "victors": {
       "Rolf": [
-        388,
+        411,
         3,
         3,
         40
@@ -5563,7 +5563,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5582,7 +5582,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5601,7 +5601,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5620,7 +5620,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5639,7 +5639,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5658,7 +5658,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5677,7 +5677,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5696,7 +5696,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -5715,7 +5715,7 @@
         "modifier": null
       },
       {
-        "x": 1680,
+        "x": 1670,
         "y": 680,
         "width": 40,
         "height": 40,
@@ -7141,7 +7141,7 @@
       },
       {
         "x": 5087.0,
-        "y": 80.0,
+        "y": 90.0,
         "width": 200,
         "height": 80,
         "rotation": 180,
@@ -7160,7 +7160,7 @@
       },
       {
         "x": 5247.0,
-        "y": 160.0,
+        "y": 170.0,
         "width": 40,
         "height": 60,
         "rotation": 180,
@@ -7217,7 +7217,7 @@
       },
       {
         "x": 5087.0,
-        "y": 160.0,
+        "y": 170.0,
         "width": 40,
         "height": 60,
         "rotation": 180,
@@ -7236,7 +7236,7 @@
       },
       {
         "x": 5200,
-        "y": 100,
+        "y": 110,
         "width": 40,
         "height": 40,
         "rotation": 0,
@@ -7255,7 +7255,7 @@
       },
       {
         "x": 5120,
-        "y": 100,
+        "y": 110,
         "width": 40,
         "height": 40,
         "rotation": 0,
@@ -7293,7 +7293,7 @@
       },
       {
         "x": 5120.0,
-        "y": 100.0,
+        "y": 110.0,
         "width": 40,
         "height": 40,
         "rotation": 180,
@@ -7312,7 +7312,7 @@
       },
       {
         "x": 5200.0,
-        "y": 100.0,
+        "y": 110.0,
         "width": 40,
         "height": 40,
         "rotation": 90,
@@ -7747,7 +7747,7 @@
     ],
     "victors": {
       "Rolf": [
-        170,
+        278,
         1,
         0,
         0
@@ -10031,7 +10031,7 @@
     ],
     "victors": {
       "Rolf": [
-        214,
+        216,
         2,
         3,
         60
@@ -10050,7 +10050,27 @@
       "points": 0
     },
     "background": [],
-    "objects": [],
+    "objects": [
+      {
+        "x": 800,
+        "y": 0,
+        "width": 1,
+        "height": 720,
+        "rotation": 0,
+        "shape": "end",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          255,
+          0,
+          0
+        ],
+        "modifier": null
+      }
+    ],
     "decoration": [],
     "checkpoints": [
       {
@@ -10079,8 +10099,8 @@
     ],
     "victors": {
       "Rolf": [
-        5,
-        0,
+        25,
+        4,
         0,
         0
       ]
@@ -10215,11 +10235,11 @@
         "modifier": null
       },
       {
-        "x": 2520,
-        "y": 440,
+        "x": 2520.0,
+        "y": 440.0,
         "width": 240,
         "height": 40,
-        "rotation": 0,
+        "rotation": 180,
         "shape": "square",
         "color": [
           0,
@@ -10234,11 +10254,11 @@
         "modifier": null
       },
       {
-        "x": 1680,
-        "y": 440,
+        "x": 1680.0,
+        "y": 440.0,
         "width": 200,
         "height": 40,
-        "rotation": 0,
+        "rotation": 180,
         "shape": "square",
         "color": [
           0,
@@ -10253,11 +10273,11 @@
         "modifier": null
       },
       {
-        "x": 1640,
-        "y": 680,
+        "x": 1640.0,
+        "y": 680.0,
         "width": 1120,
         "height": 40,
-        "rotation": 0,
+        "rotation": 180,
         "shape": "square",
         "color": [
           0,
@@ -10291,11 +10311,11 @@
         "modifier": null
       },
       {
-        "x": 2080,
-        "y": 440,
+        "x": 2080.0,
+        "y": 440.0,
         "width": 240,
         "height": 40,
-        "rotation": 0,
+        "rotation": 180,
         "shape": "square",
         "color": [
           0,
@@ -10310,11 +10330,11 @@
         "modifier": null
       },
       {
-        "x": 2040,
-        "y": 200,
+        "x": 2040.0,
+        "y": 200.0,
         "width": 320,
         "height": 40,
-        "rotation": 0,
+        "rotation": 180,
         "shape": "square",
         "color": [
           0,
@@ -15947,7 +15967,7 @@
     ],
     "victors": {
       "Rolf": [
-        98,
+        197,
         1,
         0,
         0

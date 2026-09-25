@@ -25,12 +25,13 @@ def click(game, type, button, shift):
         select_object(game, False)
 
 def toggle_pause(game):
+    if game.hitbox_trail:
+        game.cheated = True
     game.paused = not game.paused
     if not game.paused and game.dead == 0 and not game.completed and not game.building:
         game.camera_x = game.player.x - PLAYER_X
         game.camera_y = 0
         game.camera_zoom = 1
-        game.text_cache.clear()
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
 
     if not game.building:
@@ -59,7 +60,6 @@ def switch_level(game, way):
 
 def step_frame(game):
     if game.paused:
-        game.cheated = True
         if game.frame_steps >= game.fps // 3:
             game.frame_steps = game.fps // 3 - 2
         game.frame_steps += 1
@@ -122,7 +122,6 @@ def handle_input(game):
             game.width, game.height = event.size
             game.view_width = game.width * (HEIGHT / game.height)
             game.scale = game.height / HEIGHT
-            game.text_cache.clear()
             game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 

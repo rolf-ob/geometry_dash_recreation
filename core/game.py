@@ -184,7 +184,7 @@ class Game():
                     self.name = text
 
                 elif field_name == "speedhack":
-                    self.speedhack_multiplier = max(0, float(text))
+                    self.speedhack_multiplier = max(0.01, float(text))
 
                 elif field_name == "fps":
                     self.fps = max(48, int(text))
@@ -213,7 +213,9 @@ class Game():
         self.y_vel = 0
         self.dashing = False
         self.player_points = self.player.get_points()
-        self.percent = min(100.0, round((self.player.x - self.checkpoints[0].x) / (self.level_length - self.checkpoints[0].x - self.player.width)*100, 2))
+        start_x = self.player.x - self.checkpoints[0].x
+        end_x = self.level_length - self.checkpoints[0].x - self.player.width
+        self.percent = 0 if end_x == 0 else min(100.0, round(start_x / end_x * 100))
         if self.checkpoint != 0:
             self.cheated = True
         else:
@@ -334,6 +336,11 @@ class Game():
                 frame_time *= self.speedhack_multiplier
             accumulator += frame_time
 
+            if frame_time > 0.05 and can_update and not self.completed and self.dead == 0:
+                self.restart()
+                accumulator = 0
+                self.title = ["You're too laggy!", time.perf_counter() + 2]
+
             handle_input(self)
 
             can_update = not self.paused and not self.building and self.current_level != 0
@@ -343,11 +350,6 @@ class Game():
                 accumulator -= FIXED_STEP
             if self.frame_steps == 1 or self.frame_steps >= self.fps // 3:
                 update(self)
-
-            if frame_time > 0.05 and can_update and not self.completed and self.dead == 0:
-                self.restart()
-                accumulator = 0
-                self.title = ["You're too laggy!", time.perf_counter() + 2]
             
             draw(self)
             py.display.flip()

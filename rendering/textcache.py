@@ -17,6 +17,7 @@ class TextCache:
         return self._sizes[key]
 
     def change_font(self, font):
+        self.clear()
         self.font = font
 
     def clear(self):
