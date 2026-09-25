@@ -36,7 +36,7 @@ def place_object(game):
     layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
     if not any(polygons_collide(mouse_pos, points) for points in layer_points):
-        new_obj = Object(mouse_x, mouse_y, 40, 40, 0, game.shape, (255,)*3, (0,)*3)
+        new_obj = Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3)
         layer.append(new_obj)
         layer_points.append(new_obj.get_points())
 
@@ -163,7 +163,7 @@ def flip_objects(game, way):
                         flipped_center = center_pos - (center - center_pos)
                         obj.x = flipped_center - obj.width / 2
 
-                        if obj.shape in ("square", "end"):
+                        if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
                             obj.rotation -= obj.rotation * 2
                             
                         elif obj.shape == "slope":
@@ -183,7 +183,7 @@ def flip_objects(game, way):
                         flipped_center = center_pos - (center - center_pos)
                         obj.y = flipped_center - obj.height / 2
 
-                        if obj.shape in ("square", "end"):
+                        if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
                             obj.rotation -= 180 + obj.rotation * 2
                             
                         elif obj.shape == "slope":
@@ -208,7 +208,8 @@ def duplicate_objects(game):
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
         for obj in layer.copy():
             if obj.selected:
-                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, obj.modifier))
+                modifier = obj.modifier if obj.shape != "checkpoint" else obj.modifier.copy()
+                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier))
                 layer_points.append(layer[-1].get_points())
 
 def delete_objects(game):

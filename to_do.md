@@ -1,5 +1,3 @@
-- Orbs and pads
-- Coins
 - Camera going up and down with player
 - Changing controls in menu and changing tutorial with it
 - CBF

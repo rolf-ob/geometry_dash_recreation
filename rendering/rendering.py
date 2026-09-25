@@ -37,15 +37,21 @@ def draw_background(game, screen):
 
 def draw_objects(game, screen):
     for obj, points in zip(game.objects, game.object_points):
-        if obj.shape == "end":
-            if within_view(game, points):
-                if game.building:
-                    color = (200, 255, 200) if obj.selected else obj.color
-                else:
-                    color = obj.color if not game.cheated else obj.outline
-                draw_polygon(game, screen, points, color, 0)
-                if obj.selected:
-                    screen.blit(game.text_cache.get_surface(str(obj.x), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+        if obj.shape == "end" and within_view(game, points):
+            if game.building:
+                color = (200, 255, 200) if obj.selected else obj.color
+            else:
+                color = obj.color if not game.cheated else obj.outline
+            draw_polygon(game, screen, points, color, 0)
+            if obj.selected:
+                screen.blit(game.text_cache.get_surface(str(obj.x), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+
+        elif obj.shape == "coin" and obj.modifier and within_view(game, points):
+            color = (200, 255, 200) if obj.selected else obj.color
+            outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
+            draw_polygon(game, screen, points, color, 0)
+            draw_polygon(game, screen, points, outline_color, 1)
+            screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
         
         elif within_view(game, points):
             color = (200, 255, 200) if obj.selected else obj.color
@@ -62,8 +68,8 @@ def draw_decoration(game, screen):
 
 def draw_checkpoints(game, screen):
     for obj, points in zip(game.checkpoints, game.checkpoint_points):
-        text = "S" if obj == game.checkpoints[0] else "C"
         if within_view(game, points):
+            text = "S" if obj == game.checkpoints[0] else "C"
             color = (200, 255, 200) if obj.selected else obj.color
             draw_polygon(game, screen, points, color, 0)
             draw_polygon(game, screen, points, obj.outline, 1)
@@ -100,7 +106,7 @@ def draw_wave_trail(game, screen):
                 world_to_screen(game, *start_bottom)
             ]
 
-            py.draw.polygon(screen, game.player.color, points)
+            py.draw.polygon(screen, (0, 255, 255), points)
             py.draw.polygon(screen, (0,)*3, points, 1)
 
 def draw_player(game, screen):
@@ -122,7 +128,7 @@ def draw_leaderboard(game, screen):
         if victors:
             for i in range(len(victors)):
                 for victor in victors.copy():
-                    values = [completions for (attempts, completions) in victors.values()]
+                    values = [completions for (attempts, completions, coins, coin_points) in victors.values()]
                     if victors[victor][1] == max(values):
                         sorted_victors[victor] = victors[victor]
                         del victors[victor]
@@ -137,9 +143,9 @@ def draw_leaderboard(game, screen):
             screen.blit(text, (x, y))
         else:
             for i, (victor, stats) in enumerate(sorted_victors.items()):
-                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
+                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", (0,)*3)
                 margin = 5
-                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Attempts: {stats[0]}", (0,)*3)
+                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", (0,)*3)
                 x, y = (world_to_screen(game, game.level_length + 40, 125 + (i*(height + margin*2 - 2) + height) * HEIGHT / game.height))
                 py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
@@ -152,8 +158,10 @@ def draw_leaderboard(game, screen):
                 if stats[1] > 0:
                     if victor in players.keys():
                         players[victor] += level["meta"]["points"]
+                        players[victor] += stats[3]
                     else:
                         players[victor] = level["meta"]["points"]
+                        players[victor] += stats[3]
         
         sorted_players = {}
         for i in range(len(players)):
@@ -224,6 +232,7 @@ def draw_debug(game, screen):
         f"FPS: {game.fps_counter.get_fps()}",
         f"Clicking: {game.clicking}",
         f"Velocity: {round(game.y_vel, 2)}",
+        f"Gravity: {game.gravity}",
         f"Level: {game.current_level}",
         f"Zoom: {round(game.camera_zoom, 1)}",
         f"Deaths: {game.noclip_deaths}",
@@ -256,7 +265,7 @@ def draw(game):
         draw_wave_trail(game, screen)
         draw_player(game, screen)
 
-    if game.completed or game.current_level == 0:
+    if game.completed or game.paused or game.current_level == 0:
         draw_leaderboard(game, screen)
 
     if game.title:

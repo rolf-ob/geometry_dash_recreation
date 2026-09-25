@@ -17,10 +17,24 @@ gamemode_colors = {
 gravity_colors = {
     1: (0, 255, 0),
     2: (255, 0, 255),
-    -1: (255, 255, 0)
+    -1: (255, 255, 0),
+    -2: (0, 0, 255)
+}
+
+orb_pad_colors = {
+    "small": (255, 0, 255),
+    "normal": (255, 255, 0),
+    "big": (255, 0, 0),
+    "gravity": (0, 255, 255),
+    "heavy/spider": (0, 0, 0),
+    "dash": (0, 255, 0)
 }
 
 controls_tutorial = [
+    "HOW TO WIN",
+    "Collecting coins and completing levels gives points",
+    "Level points are displayed in the title",
+    "",
     "NAVIGATION",
     "Go Up - Spacebar, W, Return/Enter, Left Mouse",
     "Restart Level - R",
@@ -28,6 +42,7 @@ controls_tutorial = [
     "Pan/Scroll/Zoom - Scroll + Ctrl/Shift/None",
     "",
     "PRACTICE CHEATS",
+    "Cheats disables points earning and the end switches color",
     "Switch Checkpoint - 1, 3",
     "Toggle Speed Changer - Z",
     "Toggle Hitboxes - X",
@@ -82,19 +97,26 @@ building_tutorial = [
     "",
     "SHAPES",
     "Building shapes - square, end, triangle, slope, circle",
-    "Functional shapes - gamemode, speed, gravity",
+    "Functional shapes - coin, orb, pad, gamemode, speed, gravity",
+    "",
+    "SHAPE MODIFIERS",
+    "Coin - Set the number of points it should give",
+    "Orb - Small, normal, big, gravity, heavy or dash",
+    "Pad - Small, normal, big, gravity or spider",
+    "Speed - Default speed is 2",
+    "Gravity - Default gravity is 1, can also be negative",
     "",
     "GAMEMODES",
     "Wave - Hold to instantly move up, release to move down",
     "Cube - Click to do a jump when on the ground",
-    "Wave - Hold to accelerate upwards, release to accelerate downwards",
-    "",
-    "MODIFIERS",
-    "Gamemode - Changes what action clicking performs",
-    "Speed - Changes how fast the player moves in both directions",
-    "Gravity - Changes how fast the player moves up and down",
+    "Ship - Hold to accelerate upwards, release to accelerate downwards", #!
     "",
     "CHECKPOINTS",
     "Checkpoints have to be duplicated from the start position marked with an S",
     "Have only checkpoints selected to change their modifiers"
+    "",
+    "CHECKPOINT MODIFIERS",
+    "Gamemode - Changes what action clicking performs",
+    "Speed - Changes how fast the player moves in both directions",
+    "Gravity - Changes how fast the player moves up and down",
 ]

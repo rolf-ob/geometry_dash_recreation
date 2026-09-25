@@ -18,7 +18,7 @@ class Object:
         center_x = self.x + self.width / 2
         center_y = self.y + self.height / 2
 
-        if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity"):
+        if self.shape in ("square", "end", "checkpoint", "pad", "gamemode", "speed", "gravity"):
             corners = [
                 (self.x, self.y),
                 (self.x + self.width, self.y),
@@ -38,7 +38,7 @@ class Object:
                 (self.x, self.y + self.height)
             ]
 
-        elif self.shape == "circle":
+        elif self.shape in ("circle", "coin", "orb"):
             sides = 20
             radius = self.width / 2
             center_x = self.x + radius

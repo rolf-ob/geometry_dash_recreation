@@ -48,7 +48,6 @@ class Game():
         self.building = False
         self.building_camera_x = 0
         self.building_camera_y = 0
-        self.shape = "square"
         self.layer = 1
         self.editing_level = False
 
@@ -113,10 +112,23 @@ class Game():
                             r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                             setattr(obj, field_name, (r, g, b))
 
-                        elif field_name == "shape" and text in ("square", "end", "spike", "slope", "circle", "gamemode", "speed", "gravity"):
+                        elif field_name == "shape" and text in ("square", "end", "spike", "slope", "circle", "coin", "orb", "pad", "gamemode", "speed", "gravity"):
                             setattr(obj, field_name, text)
-                            if text in ("square", "spike", "slope", "circle"):
-                                self.shape = text
+                            if text == "end":
+                                obj.y = 0
+                                obj.height = 720
+                                obj.width = 1
+                                obj.color = (0, 255, 0)
+                                obj.outline = (255, 0, 0)
+
+                        elif obj.shape == "coin" and field_name == "modifier":
+                            setattr(obj, field_name, int(text))
+
+                        elif obj.shape == "orb" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
+                            setattr(obj, field_name, text)
+
+                        elif obj.shape == "pad" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "spider"):
+                            setattr(obj, field_name, text)
 
                         elif obj.shape == "gamemode" and field_name == "modifier" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
                             setattr(obj, field_name, text)
@@ -185,7 +197,7 @@ class Game():
 
     def restart(self):
         if self.name not in self.victors.keys():
-            self.victors[self.name] = [1, 0]
+            self.victors[self.name] = [1, 0, 0, 0]
         else:
             self.victors[self.name][0] += 1
 
@@ -199,6 +211,7 @@ class Game():
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
         self.y_vel = 0
+        self.dashing = False
         self.player_points = self.player.get_points()
         self.percent = min(100.0, round((self.player.x - self.checkpoints[0].x) / (self.level_length - self.checkpoints[0].x - self.player.width)*100, 2))
         if self.checkpoint != 0:
@@ -208,6 +221,12 @@ class Game():
         self.noclip_deaths = 0
         self.dead = 0
         self.completed = False
+        self.collected_coins = [0, 0]
+        for coin in self.coins:
+            coin["collected"] = False
+        for orb in self.orbs:
+            orb["clicked"] = False
+        
         self.hitbox_trail = []
         self.hitbox_trail_points = []
         self.wave_trail = [(self.player.x + 20, self.player.y)] if self.gamemode == "wave" else []
@@ -245,6 +264,9 @@ class Game():
         
         self.shapes = []
         self.ends = []
+        self.coins = []
+        self.orbs = []
+        self.pads = []
         self.gamemodes = []
         self.speeds = []
         self.gravitys = []
@@ -254,13 +276,25 @@ class Game():
                 self.shapes.append((obj, points))
             elif obj.shape == "end":
                 self.ends.append((obj, points))
+            elif obj.shape == "coin":
+                self.coins.append({
+                    "coin": (obj, points),
+                    "collected": False
+                    })
+            elif obj.shape == "orb":
+                self.orbs.append({
+                    "orb": (obj, points),
+                    "clicked": False
+                    })
+            elif obj.shape == "pad":
+                self.pads.append((obj, points))
             elif obj.shape == "gamemode":
                 self.gamemodes.append((obj, points))
             elif obj.shape == "speed":
                 self.speeds.append((obj, points))
             elif obj.shape == "gravity":
                 self.gravitys.append((obj, points))
-
+        
         self.restart()
 
     def save_to_file(self):
