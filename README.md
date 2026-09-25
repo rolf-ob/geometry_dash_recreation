@@ -1,7 +1,7 @@
 DOWNLOAD AND RUN:
-Click the green Code button -> download .zip. 
-Extract the .zip file and open the folder. 
-Run the main(.exe) file, NOT the one named main.py. 
+Click the latest release and download the zip file. 
+Extract the zip file and open the folder. 
+Run the main/main.exe file, NOT the one named main.py. 
 
 Go to the Main Menu (Q, E) for controls or if you're unsure of anything. 
 
