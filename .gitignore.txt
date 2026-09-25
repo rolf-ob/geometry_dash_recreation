@@ -1,8 +1,0 @@
-__pycache__/
-core/__pycache__/
-rendering/__pycache__/
-entities/__pycache__/
-build/
-dist/
-*.exe
-*.spec.bak
