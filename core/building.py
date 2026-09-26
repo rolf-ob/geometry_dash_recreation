@@ -167,7 +167,7 @@ def flip_objects(game, way):
                             obj.rotation -= obj.rotation * 2
                             
                         elif obj.shape == "slope":
-                            obj.rotation -= (90 + obj.rotation * 2) % 360
+                            obj.rotation -= 90 + obj.rotation * 2
                             width = obj.height
                             height = obj.width
                             obj.width = width
@@ -175,7 +175,10 @@ def flip_objects(game, way):
                         
                         elif obj.shape == "spike":
                             obj.rotation -= obj.rotation * 2
-
+                        
+                        obj.rotation %= 360
+                        if obj.rotation < 0:
+                            obj.rotation += 360
                         layer_points[i] = obj.get_points()
                     
                     elif way == "vertically":
@@ -195,14 +198,18 @@ def flip_objects(game, way):
                         
                         elif obj.shape == "spike":
                             obj.rotation -= 180 + obj.rotation * 2
-
+                        
+                        obj.rotation %= 360
+                        if obj.rotation < 0:
+                            obj.rotation += 360
                         layer_points[i] = obj.get_points()
 
 def deselect_objects(game):
-    for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-        for obj in layer:
-            obj.selected = False
-    close_menu(game)
+    if not game.editing_level:
+        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+            for obj in layer:
+                obj.selected = False
+        close_menu(game)
 
 def duplicate_objects(game):
     for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
@@ -240,7 +247,10 @@ def snap_grid_objects(game):
                     obj.rotation += 90 - obj.rotation % 90
                 else:
                     obj.rotation -= obj.rotation % 90
-
+                        
+                obj.rotation %= 360
+                if obj.rotation < 0:
+                    obj.rotation += 360
                 layer_points[i] = obj.get_points()
 
 def switch_layer(game, way):

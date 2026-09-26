@@ -106,7 +106,11 @@ class Game():
                         elif field_name == "height":
                             setattr(obj, field_name, max(0, int(text)))
                         elif field_name == "rotation":
-                            setattr(obj, field_name, int(text))
+                            rotation = int(text)
+                            rotation %= 360
+                            if rotation < 0:
+                                rotation += 360
+                            setattr(obj, field_name, rotation)
                         
                         elif field_name in ("color", "outline"):
                             r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))

@@ -60,7 +60,7 @@
     ],
     "victors": {
       "Rolf": [
-        502,
+        507,
         0,
         0,
         0
@@ -10071,9 +10071,28 @@
         "modifier": null
       },
       {
-        "x": 440,
-        "y": 580,
-        "width": 400,
+        "x": 622.0,
+        "y": 559.0,
+        "width": 160,
+        "height": 40,
+        "rotation": 180,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null
+      },
+      {
+        "x": 600,
+        "y": 640,
+        "width": 200,
         "height": 40,
         "rotation": 0,
         "shape": "square",
@@ -10090,8 +10109,8 @@
         "modifier": null
       },
       {
-        "x": 360,
-        "y": 240,
+        "x": 800,
+        "y": 640,
         "width": 40,
         "height": 40,
         "rotation": 0,
@@ -10099,14 +10118,14 @@
         "color": [
           255,
           0,
-          0
+          255
         ],
         "outline": [
           0,
           0,
           0
         ],
-        "modifier": "big"
+        "modifier": "small"
       }
     ],
     "decoration": [],
@@ -10119,9 +10138,9 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
+          0,
           255,
-          255,
-          255
+          0
         ],
         "outline": [
           0,
@@ -10129,7 +10148,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "robot",
+          "gamemode": "cube",
           "speed": 2,
           "gravity": 1
         }
@@ -10137,8 +10156,8 @@
     ],
     "victors": {
       "Rolf": [
-        36,
-        5,
+        169,
+        7,
         0,
         0
       ]
@@ -16028,7 +16047,7 @@
     ],
     "victors": {
       "Rolf": [
-        300,
+        304,
         1,
         0,
         0
@@ -23064,7 +23083,7 @@
     ],
     "victors": {
       "Rolf": [
-        171,
+        182,
         0,
         0,
         0

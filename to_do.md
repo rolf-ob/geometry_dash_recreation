@@ -1,9 +1,6 @@
 - Checkpoints as shapes
-- U when in level settings mode closes it
-- Cube can jump from roof right when changing gravity
 
 - Enforce x, y, width and height to be integers and rotation to be floats at max 1 decimal
-- Keep rotations between 0 and 359
 - Set maximum speed value so player cant move through thin objects
 - When changing level number have minimum 1 so main menu is always 0 and maximum the length of however many levels there are
 
@@ -27,8 +24,3 @@
 - Images/sprites
 - Each level as its own json file
 - UI menu and build mode
-
-- UPDATES
-- Fixed percent bug
-- Made fps timer more accurate
-- Made fps limiter less CPU consuming

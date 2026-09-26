@@ -13,7 +13,7 @@ def check_collision(game):
     for (obj, points) in game.shapes:
         slide = False
         if within_view(game, points) and polygons_collide(game.player_points, points):
-            if obj.shape == "square" and obj.rotation % 360 == 0:
+            if obj.shape == "square" and obj.rotation == 0:
                 if game.hitbox_trail:
                     prev_player_top = game.hitbox_trail[-1].y
                     prev_player_bottom = game.hitbox_trail[-1].y + 40
@@ -125,7 +125,7 @@ def check_collision(game):
 
                     elif orb["orb"][0].modifier == "gravity" and game.gamemode != "wave":
                         game.gravity *= -1
-                        game.y_vel = min(game.y_vel, -3)
+                        game.y_vel = -1
 
                     elif orb["orb"][0].modifier == "heavy" and game.gamemode != "wave":
                         game.y_vel = min(game.y_vel, -4)
@@ -171,7 +171,7 @@ def check_collision(game):
 
             elif obj.modifier == "gravity" and game.gamemode != "wave":
                 game.gravity *= -1
-                game.y_vel = min(game.y_vel, -3)
+                game.y_vel = -1
                 if game.gamemode == "ship":
                     game.y_vel *= ship_multiplier
                 elif game.gamemode == "ufo":
