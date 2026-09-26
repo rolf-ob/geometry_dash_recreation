@@ -59,11 +59,29 @@ def check_collision(game):
                 else:
                     game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1])
 
-    for coin in game.coins:
-        if not coin["collected"] and not game.cheated and within_view(game, coin["coin"][1]) and polygons_collide(game.player_points, coin["coin"][1]):
-            coin["collected"] = True
-            game.collected_coins[0] += 1
-            game.collected_coins[1] += coin["coin"][0].modifier
+    for (obj, points) in game.gamemodes:
+        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)):
+            if game.gamemode != obj.modifier:
+
+                if game.gamemode == "wave":
+                    game.wave_trail.append((game.player.x + 20, game.player.y))
+                
+                game.gamemode = obj.modifier
+                game.player.color = gamemode_colors[game.gamemode]
+
+                if game.gamemode == "wave":
+                    game.wave_trail = [(game.player.x + 20, game.player.y)]
+
+    for (obj, points) in game.speeds:
+        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)):
+            if game.speed != float(obj.modifier):
+                game.speed = float(obj.modifier)
+
+    for (obj, points) in game.gravitys:
+        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)) and game.gravity != float(obj.modifier):
+            game.gravity = float(obj.modifier)
+            if game.gamemode == "wave":
+                game.wave_trail.append((game.player.x + 20, game.player.y))
 
     if game.player.y == game.max_height:
         if game.gravity > 0:
@@ -112,84 +130,62 @@ def check_collision(game):
                     elif orb["orb"][0].modifier == "heavy" and game.gamemode != "wave":
                         game.y_vel = min(game.y_vel, -4)
 
-            elif orb["orb"][0].modifier:
-                if not game.clicked and not game.on_ground:
-                    if within_view(game, orb["orb"][1]) and polygons_collide(game.player_points, orb["orb"][1]) and game.clicking > 0:
-                        orb["clicked"] = True
-                        game.clicked = True
-                    elif orb["clicked"] and game.clicking == 0:
-                        orb["clicked"] = False
-                        game.y_vel = 0
+            elif orb["orb"][0].modifier and not game.clicked and not game.on_ground:
+                if within_view(game, orb["orb"][1]) and polygons_collide(game.player_points, orb["orb"][1]) and game.clicking > 0:
+                    orb["clicked"] = True
+                    game.clicked = True
+                elif orb["clicked"] and game.clicking == 0:
+                    orb["clicked"] = False
+                    game.y_vel = 0
 
-                    if orb["clicked"]:
-                        game.dashing = True
-                    else:
-                        game.dashing = False
+                if orb["clicked"]:
+                    game.dashing = True
+                else:
+                    game.dashing = False
     
     for (obj, points) in game.pads:
-        if obj.modifier and within_view(game, points) and polygons_collide(game.player_points, points):
-            if not polygons_collide(game.hitbox_trail_points[-1], points):
+        if obj.modifier and within_view(game, points) and polygons_collide(game.player_points, points) and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)):
+            ship_multiplier = 0.5
+            ufo_multiplier = 0.7
+            
+            if obj.modifier == "small" and game.gamemode != "wave":
+                game.y_vel = max(game.y_vel, 2)
+                if game.gamemode == "ship":
+                    game.y_vel *= ship_multiplier
+                elif game.gamemode == "ufo":
+                    game.y_vel *= ufo_multiplier
 
-                ship_multiplier = 0.5
-                ufo_multiplier = 0.7
-                
-                if obj.modifier == "small" and game.gamemode != "wave":
-                    game.y_vel = max(game.y_vel, 2)
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
-    
-                elif obj.modifier == "normal" and game.gamemode != "wave":
-                    game.y_vel = max(game.y_vel, 3)
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
-    
-                elif obj.modifier == "big" and game.gamemode != "wave":
-                    game.y_vel = max(game.y_vel, 4)
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
-    
-                elif obj.modifier == "gravity" and game.gamemode != "wave":
-                    game.gravity *= -1
-                    game.y_vel = min(game.y_vel, -3)
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
-    
-                elif obj.modifier == "spider" and game.gamemode != "wave":
-                    game.gravity *= -1
-                    game.y_vel = -40 / game.speed*abs(game.gravity)
+            elif obj.modifier == "normal" and game.gamemode != "wave":
+                game.y_vel = max(game.y_vel, 3)
+                if game.gamemode == "ship":
+                    game.y_vel *= ship_multiplier
+                elif game.gamemode == "ufo":
+                    game.y_vel *= ufo_multiplier
 
-    for (obj, points) in game.gamemodes:
-        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier:
-            if game.gamemode != obj.modifier:
+            elif obj.modifier == "big" and game.gamemode != "wave":
+                game.y_vel = max(game.y_vel, 4)
+                if game.gamemode == "ship":
+                    game.y_vel *= ship_multiplier
+                elif game.gamemode == "ufo":
+                    game.y_vel *= ufo_multiplier
 
-                if game.gamemode == "wave":
-                    game.wave_trail.append((game.player.x + 20, game.player.y))
-                
-                game.gamemode = obj.modifier
-                game.player.color = gamemode_colors[game.gamemode]
+            elif obj.modifier == "gravity" and game.gamemode != "wave":
+                game.gravity *= -1
+                game.y_vel = min(game.y_vel, -3)
+                if game.gamemode == "ship":
+                    game.y_vel *= ship_multiplier
+                elif game.gamemode == "ufo":
+                    game.y_vel *= ufo_multiplier
 
-                if game.gamemode == "wave":
-                    game.wave_trail = [(game.player.x + 20, game.player.y)]
+            elif obj.modifier == "spider" and game.gamemode != "wave":
+                game.gravity *= -1
+                game.y_vel = -40 / game.speed*abs(game.gravity)
 
-    for (obj, points) in game.speeds:
-        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier:
-            if game.speed != float(obj.modifier):
-                game.speed = float(obj.modifier)
-
-    for (obj, points) in game.gravitys:
-        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier:
-            if game.gravity != float(obj.modifier):
-                game.gravity = float(obj.modifier)
-                if game.gamemode == "wave":
-                    game.wave_trail.append((game.player.x + 20, game.player.y))
+    for coin in game.coins:
+        if not coin["collected"] and not game.cheated and within_view(game, coin["coin"][1]) and polygons_collide(game.player_points, coin["coin"][1]):
+            coin["collected"] = True
+            game.collected_coins[0] += 1
+            game.collected_coins[1] += coin["coin"][0].modifier
 
     hitbox = Object(game.player.x, game.player.y, 40, 40, 0, "square", (0,)*3, hitbox_color)
     game.hitbox_trail.append(hitbox)
@@ -201,12 +197,7 @@ def update_position(game):
     fall_speed = -40 / game.speed*abs(game.gravity)
 
     if round(game.y_vel) != -40 / game.speed*abs(game.gravity):
-        if game.gamemode == "wave":
-            game.y_vel = 1 if game.clicking > 0 else -1
-            if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - 40 or game.player.y == 0):
-                game.wave_trail.append((game.player.x + 20, game.player.y))
-
-        elif game.gamemode == "cube":
+        if game.gamemode == "cube":
             if game.clicking > 0 and game.on_ground:
                 game.clicked = True
                 game.y_vel = max(game.y_vel, 2.5)
@@ -223,6 +214,11 @@ def update_position(game):
                 game.clicked = True
                 game.gravity *= -1
             game.y_vel = max(fall_speed, game.y_vel - 0.05)
+
+        elif game.gamemode == "wave":
+            game.y_vel = 1 if game.clicking > 0 else -1
+            if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - 40 or game.player.y == 0):
+                game.wave_trail.append((game.player.x + 20, game.player.y))
 
         elif game.gamemode == "ufo":
             if game.clicking > 0 and not game.clicked:
@@ -253,7 +249,7 @@ def update_position(game):
     game.player_points = game.player.get_points()
     start_x = game.player.x - game.checkpoints[0].x
     end_x = game.level_length - game.checkpoints[0].x - game.player.width
-    game.percent = 0 if end_x == 0 else min(100.0, round(start_x / end_x) * 100)
+    game.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
 
 def update_death_timer(game):
     if not game.speedhack:

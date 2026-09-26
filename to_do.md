@@ -1,6 +1,6 @@
-- remaining = frame_duration - (time.perf_counter() - self.last_frame_time)
-if remaining > 0.001:
-    time.sleep(remaining - 0.0005)
+- Checkpoints as shapes
+- U when in level settings mode closes it
+- Cube can jump from roof right when changing gravity
 
 - Enforce x, y, width and height to be integers and rotation to be floats at max 1 decimal
 - Keep rotations between 0 and 359
@@ -17,7 +17,18 @@ if remaining > 0.001:
 - Render and check for things in cells that are for example 400 wide
 
 - Display from which percentage you started a run
+- Dark mode
+- Better x, y alignment for width and height
+- Scale mode for WASD
 - Camera going up and down with player
 - Changing controls in menu and changing tutorial with it
 - Sliding on slopes or rotated squares
 - CBF
+- Images/sprites
+- Each level as its own json file
+- UI menu and build mode
+
+- UPDATES
+- Fixed percent bug
+- Made fps timer more accurate
+- Made fps limiter less CPU consuming

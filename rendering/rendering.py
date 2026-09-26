@@ -232,6 +232,7 @@ def draw_debug(game, screen):
         f"FPS: {game.fps_counter.get_fps()}",
         f"Clicking: {game.clicking}",
         f"Velocity: {round(game.y_vel, 2)}",
+        f"Speed: {game.speed}",
         f"Gravity: {game.gravity}",
         f"Level: {game.current_level}",
         f"Zoom: {round(game.camera_zoom, 1)}",

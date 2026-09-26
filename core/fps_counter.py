@@ -7,9 +7,8 @@ class FpsCounter:
     def tick(self):
         now = time.perf_counter()
         self.frame_times.append(now)
-        cutoff = now - 1
-        while self.frame_times and self.frame_times[0] < cutoff:
+        if len(self.frame_times) > 2:
             self.frame_times.pop(0)
 
     def get_fps(self):
-        return len(self.frame_times)
+        return round(1 / (self.frame_times[1] - self.frame_times[0]))

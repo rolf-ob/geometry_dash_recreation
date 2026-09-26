@@ -1,7 +1,7 @@
 {
   "accessibility": {
     "name": "Rolf",
-    "speedhack multiplier": 0.8,
+    "speedhack multiplier": 0.5,
     "fps": 240,
     "respawn time": 0.5
   },

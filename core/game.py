@@ -8,7 +8,7 @@ from entities.object import Object
 from core.building import toggle_building
 from entities.serialization import levels_to_data, data_to_levels
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, gamemode_colors
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, gamemode_colors, speed_color, gravity_colors, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
 
 class Game():
@@ -112,35 +112,68 @@ class Game():
                             r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                             setattr(obj, field_name, (r, g, b))
 
-                        elif field_name == "shape" and text in ("square", "end", "spike", "slope", "circle", "coin", "orb", "pad", "gamemode", "speed", "gravity"):
+                        elif field_name == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "orb", "pad", "coin"):
                             setattr(obj, field_name, text)
+
                             if text == "end":
                                 obj.y = 0
-                                obj.height = 720
                                 obj.width = 1
+                                obj.height = 720
                                 obj.color = (0, 255, 0)
                                 obj.outline = (255, 0, 0)
+
+                            elif text == "gamemode":
+                                obj.width = 40
+                                obj.height = 120
+
+                            elif text == "speed":
+                                obj.width = 40
+                                obj.height = 120
+                                obj.color = speed_color
+
+                            elif text == "gravity":
+                                obj.width = 20
+                                obj.height = 120
+
+                            elif text == "orb":
+                                obj.width = 40
+                                obj.height = 40
+
+                            elif text == "pad":
+                                obj.width = 40
+                                obj.height = 10
+                                obj.y += 10
+
+                            elif text == "coin":
+                                obj.width = 40
+                                obj.height = 40
+                                obj.color = coin_color
+
+                        elif obj.shape == "gamemode" and field_name == "modifier" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
+                            setattr(obj, field_name, text)
+                            obj.color = gamemode_colors[text]
+
+                        elif obj.shape == "speed" and field_name == "modifier":
+                            setattr(obj, field_name, float(text))
+
+                        elif obj.shape == "gravity" and field_name == "modifier":
+                            setattr(obj, field_name, float(text))
+                            if int(text) in gravity_colors.keys():
+                                obj.color = gravity_colors[int(text)]
+
+                        elif obj.shape == "orb" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
+                            setattr(obj, field_name, text)
+                            obj.color = orb_pad_colors[text]
+
+                        elif obj.shape == "pad" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "spider"):
+                            setattr(obj, field_name, text)
+                            obj.color = orb_pad_colors[text]
 
                         elif obj.shape == "coin" and field_name == "modifier":
                             setattr(obj, field_name, int(text))
 
-                        elif obj.shape == "orb" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
-                            setattr(obj, field_name, text)
-
-                        elif obj.shape == "pad" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "spider"):
-                            setattr(obj, field_name, text)
-
-                        elif obj.shape == "gamemode" and field_name == "modifier" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
-                            setattr(obj, field_name, text)
-
-                        elif obj.shape == "speed" and field_name == "modifier":
-                            setattr(obj, field_name, int(text))
-
-                        elif obj.shape == "gravity" and field_name == "modifier":
-                            setattr(obj, field_name, int(text))
-
                     else:
-                        if field_name == "gamemode" and text in ("wave", "cube", "ship", "ball", "ufo", "robot", "spider"):
+                        if field_name == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                             obj.modifier["gamemode"] = text
                             obj.color = gamemode_colors[text]
 
@@ -215,7 +248,7 @@ class Game():
         self.player_points = self.player.get_points()
         start_x = self.player.x - self.checkpoints[0].x
         end_x = self.level_length - self.checkpoints[0].x - self.player.width
-        self.percent = 0 if end_x == 0 else min(100.0, round(start_x / end_x * 100))
+        self.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
         if self.checkpoint != 0:
             self.cheated = True
         else:
@@ -223,11 +256,11 @@ class Game():
         self.noclip_deaths = 0
         self.dead = 0
         self.completed = False
+        for orb in self.orbs:
+            orb["clicked"] = False
         self.collected_coins = [0, 0]
         for coin in self.coins:
             coin["collected"] = False
-        for orb in self.orbs:
-            orb["clicked"] = False
         
         self.hitbox_trail = []
         self.hitbox_trail_points = []
@@ -266,36 +299,43 @@ class Game():
         
         self.shapes = []
         self.ends = []
-        self.coins = []
-        self.orbs = []
-        self.pads = []
         self.gamemodes = []
         self.speeds = []
         self.gravitys = []
+        self.orbs = []
+        self.pads = []
+        self.coins = []
 
         for obj, points in zip(self.objects, self.object_points):
             if obj.shape in ("square", "spike", "slope", "circle"):
                 self.shapes.append((obj, points))
+            
             elif obj.shape == "end":
                 self.ends.append((obj, points))
-            elif obj.shape == "coin":
-                self.coins.append({
-                    "coin": (obj, points),
-                    "collected": False
-                    })
+            
+            elif obj.shape == "gamemode":
+                self.gamemodes.append((obj, points))
+            
+            elif obj.shape == "speed":
+                self.speeds.append((obj, points))
+            
+            elif obj.shape == "gravity":
+                self.gravitys.append((obj, points))
+            
             elif obj.shape == "orb":
                 self.orbs.append({
                     "orb": (obj, points),
                     "clicked": False
-                    })
+                })
+            
             elif obj.shape == "pad":
                 self.pads.append((obj, points))
-            elif obj.shape == "gamemode":
-                self.gamemodes.append((obj, points))
-            elif obj.shape == "speed":
-                self.speeds.append((obj, points))
-            elif obj.shape == "gravity":
-                self.gravitys.append((obj, points))
+            
+            elif obj.shape == "coin":
+                self.coins.append({
+                    "coin": (obj, points),
+                    "collected": False
+                })
         
         self.restart()
 
@@ -319,8 +359,14 @@ class Game():
 
     def limit_fps(self, target_fps):
         frame_duration = 1 / target_fps
+
+        remaining = frame_duration - (time.perf_counter() - self.last_frame_time)
+        if remaining > 0.001:
+            time.sleep(remaining - 0.0005)
+        
         while time.perf_counter() - self.last_frame_time < frame_duration:
             pass
+        
         self.last_frame_time = time.perf_counter()
 
     def run(self):

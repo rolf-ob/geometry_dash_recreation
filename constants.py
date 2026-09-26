@@ -14,6 +14,8 @@ gamemode_colors = {
     "spider": (128, 0, 255)
 }
 
+speed_color = (128, 128, 128)
+
 gravity_colors = {
     1: (0, 255, 0),
     2: (255, 0, 255),
@@ -26,9 +28,12 @@ orb_pad_colors = {
     "normal": (255, 255, 0),
     "big": (255, 0, 0),
     "gravity": (0, 255, 255),
-    "heavy/spider": (0, 0, 0),
+    "heavy": (0, 0, 0),
+    "spider": (0, 0, 0),
     "dash": (0, 255, 0)
 }
+
+coin_color = (255, 255, 0)
 
 controls_tutorial = [
     "HOW TO WIN",
@@ -43,7 +48,7 @@ controls_tutorial = [
     "",
     "PRACTICE CHEATS",
     "Cheats disables points earning and the end switches color",
-    "Switch Checkpoint - 1, 3",
+    "Switch Checkpoint - A, D",
     "Toggle Speed Changer - Z",
     "Toggle Hitboxes - X",
     "Toggle Collision (Only a cheat if you actually collide) - C",
@@ -77,17 +82,18 @@ building_tutorial = [
     "Place Object - Left Mouse + Shift/None",
     "Select Object - Right Mouse + Shift/None",
     "Move Objects - W, A, S, D + Shift/Ctrl/None",
-    "Rotate Objects - Z, C",
+    "Rotate Objects - Q, E",
     "Flip Objects - I, O",
     "Deselect Objects - U",
     "Duplicate Objects - Y",
     "Delete Objects - Backspace",
     "Snap Objects To Grid - G",
-    "Switch Building Layer - Q, E",
+    "Switch Building Layer - z, c",
     "Reset Camera Position - R",
     "Edit Level Settings - T",
     "",
     "LEVEL SETTINGS",
+    "Length - What x value the level ends at for the percentage display",
     "Background- Sets the background color of the enire level",
     "Title - The title of the level",
     "Points - How many points you should get from completing the level",
@@ -96,27 +102,18 @@ building_tutorial = [
     "Delete - Type delete to delete the entire level permanently",
     "",
     "SHAPES",
-    "Building shapes - square, end, triangle, slope, circle",
-    "Functional shapes - coin, orb, pad, gamemode, speed, gravity",
+    "Building shapes - square, triangle, slope, circle",
+    "Functional shapes - end, gamemode, speed, gravity, orb, pad, coin",
     "",
     "SHAPE MODIFIERS",
-    "Coin - Set the number of points it should give",
-    "Orb - Small, normal, big, gravity, heavy or dash",
-    "Pad - Small, normal, big, gravity or spider",
+    "Gamemode - Cube, ship, ball, wave, ufo, robot, spider",
     "Speed - Default speed is 2",
     "Gravity - Default gravity is 1, can also be negative",
-    "",
-    "GAMEMODES",
-    "Wave - Hold to instantly move up, release to move down",
-    "Cube - Click to do a jump when on the ground",
-    "Ship - Hold to accelerate upwards, release to accelerate downwards", #!
+    "Orb - Small, normal, big, gravity, heavy or dash",
+    "Pad - Small, normal, big, gravity or spider",
+    "Coin - Set the number of points it should give",
     "",
     "CHECKPOINTS",
     "Checkpoints have to be duplicated from the start position marked with an S",
     "Have only checkpoints selected to change their modifiers"
-    "",
-    "CHECKPOINT MODIFIERS",
-    "Gamemode - Changes what action clicking performs",
-    "Speed - Changes how fast the player moves in both directions",
-    "Gravity - Changes how fast the player moves up and down",
 ]
