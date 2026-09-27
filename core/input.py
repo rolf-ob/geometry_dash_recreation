@@ -30,14 +30,13 @@ def toggle_pause(game):
     if game.paused:
         py.mouse.set_visible(True)
         open_menu(game, "settings")
+        if not game.completed:
+            game.cheated = True
     else:
         py.mouse.set_visible(False)
         close_menu(game)
         if not game.completed and (game.show_hitboxes or game.speedhack):
             game.cheated = True
-    
-    if game.hitbox_trail and not game.completed:
-        game.cheated = True
     
     if not game.paused and game.dead == 0 and not game.completed:
         game.camera_x = game.player.x - PLAYER_X
@@ -62,6 +61,15 @@ def switch_level(game, way):
         game.current_level = (game.current_level+1) % len(game.levels)
     
     game.load_level()
+
+def toggle_dark_mode(game):
+    game.dark_mode = not game.dark_mode
+    if game.dark_mode:
+        game.primary_color = (255,)*3
+        game.secondary_color = (0,)*3
+    else:
+        game.primary_color = (0,)*3
+        game.secondary_color = (255,)*3
 
 def step_frame(game):
     if game.paused:
@@ -232,7 +240,9 @@ def handle_input(game):
                         edit_level(game)
 
                 #Universal controls
-                if any(event.key == key for key in game.controls["toggle debug"]):
+                if any(event.key == key for key in game.controls["toggle dark mode"]):
+                    toggle_dark_mode(game)
+                elif any(event.key == key for key in game.controls["toggle debug"]):
                     game.debug = not game.debug
                 elif any(event.key == key for key in game.controls["save to file"]):
                     game.save_to_file()

@@ -17,14 +17,15 @@ def screen_to_world(game, x, y):
     world_y = (y / game.scale - HEIGHT / 2) / game.camera_zoom + HEIGHT / 2 + camera_y
     return int(world_x), int(world_y)
 
-def within_view(game, points):
+def within_view(game, aabb):
     camera_x = game.camera_x if not game.building else game.building_camera_x
     camera_y = game.camera_y if not game.building else game.building_camera_y
-    all_left = all(point[0] < camera_x for point in points)
-    all_right = all(point[0] > camera_x + game.view_width for point in points)
-    all_above = all(point[1] < camera_y for point in points)
-    all_below = all(point[1] > camera_y + game.view_height for point in points)
-    return False if (all_left or all_right or all_above or all_below) else True
+    return not (
+        aabb["right"] < camera_x or
+        aabb["left"] > camera_x + game.view_width or
+        aabb["bottom"] < camera_y or
+        aabb["top"] > camera_y + game.view_height
+        )
 
 def draw_polygon(game, screen, points, color, width):
     screen_points = [world_to_screen(game, x, y) for x, y in points]
@@ -32,14 +33,14 @@ def draw_polygon(game, screen, points, color, width):
 
 def draw_background(game, screen):
     for obj in game.background:
-        if within_view(game, obj.points):
+        if within_view(game, obj.aabb):
             color = (200, 255, 200) if obj.selected else obj.color
             draw_polygon(game, screen, obj.points, color, 0)
             draw_polygon(game, screen, obj.points, obj.outline, 1)
 
 def draw_objects(game, screen):
     for obj in game.objects:
-        if within_view(game, obj.points):
+        if within_view(game, obj.aabb):
             if obj.shape == "end":
                 if game.building:
                     color = (200, 255, 200) if obj.selected else obj.color
@@ -47,7 +48,7 @@ def draw_objects(game, screen):
                     color = obj.color if not game.cheated else obj.outline
                 draw_polygon(game, screen, obj.points, color, 0)
                 if obj.selected:
-                    screen.blit(game.text_cache.get_surface(str(obj.x), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+                    screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color), world_to_screen(game, obj.x + 5, obj.y + 5))
 
             elif obj.shape == "coin":
                 if obj.modifier and not obj.interacted:
@@ -55,7 +56,7 @@ def draw_objects(game, screen):
                     outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
                     draw_polygon(game, screen, obj.points, color, 0)
                     draw_polygon(game, screen, obj.points, outline_color, 1)
-                    screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+                    screen.blit(game.text_cache.get_surface(str(obj.modifier), game.primary_color), world_to_screen(game, obj.x + 5, obj.y + 5))
             
             else:
                 color = (200, 255, 200) if obj.selected else obj.color
@@ -65,23 +66,23 @@ def draw_objects(game, screen):
 
 def draw_decoration(game, screen):
     for obj in game.decoration:
-        if within_view(game, obj.points):
+        if within_view(game, obj.aabb):
             color = (200, 255, 200) if obj.selected else obj.color
             draw_polygon(game, screen, obj.points, color, 0)
             draw_polygon(game, screen, obj.points, obj.outline, 1)
 
 def draw_checkpoints(game, screen):
     for obj in game.checkpoints:
-        if within_view(game, obj.points):
+        if within_view(game, obj.aabb):
             text = "S" if obj == game.checkpoints[0] else "C"
             color = (200, 255, 200) if obj.selected else obj.color
             draw_polygon(game, screen, obj.points, color, 0)
             draw_polygon(game, screen, obj.points, obj.outline, 1)
-            screen.blit(game.text_cache.get_surface(text, (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+            screen.blit(game.text_cache.get_surface(text, game.primary_color), world_to_screen(game, obj.x + 5, obj.y + 5))
 
 def draw_hitbox_trail(game, screen):
     for box in game.hitbox_trail:
-        if within_view(game, box.points):
+        if within_view(game, box.aabb):
             draw_polygon(game, screen, box.points, box.outline, 1)
     draw_polygon(game, screen, game.player.points, game.player.color, 1)
 
@@ -111,20 +112,20 @@ def draw_wave_trail(game, screen):
             ]
 
             py.draw.polygon(screen, (0, 255, 255), points)
-            py.draw.polygon(screen, (0,)*3, points, 1)
+            py.draw.polygon(screen, game.primary_color, points, 1)
 
 def draw_player(game, screen):
     draw_polygon(game, screen, game.player.points, game.player.color, 0)
-    draw_polygon(game, screen, game.player.points, (0,)*3, 1)
+    draw_polygon(game, screen, game.player.points, game.primary_color, 1)
 
 def draw_leaderboard(game, screen):
     if game.current_level != 0:
-        text = game.text_cache.get_surface(f"Leaderboard:", (0,)*3)
+        text = game.text_cache.get_surface(f"Leaderboard:", game.primary_color)
         margin = 5
-        width, height = game.text_cache.get_size(f"Leaderboard:", (0,)*3)
+        width, height = game.text_cache.get_size(f"Leaderboard:", game.primary_color)
         x, y = (world_to_screen(game, game.level_length + 40, 118))
-        py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
-        py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+        py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+        py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
 
         victors = game.victors.copy()
@@ -138,21 +139,21 @@ def draw_leaderboard(game, screen):
                         del victors[victor]
         
         if sorted_victors == {}:
-            text = game.text_cache.get_surface(f"No victors yet", (0,)*3)
+            text = game.text_cache.get_surface(f"No victors yet", game.primary_color)
             margin = 5
-            width, height = game.text_cache.get_size(f"No victors yet", (0,)*3)
+            width, height = game.text_cache.get_size(f"No victors yet", game.primary_color)
             x, y = (world_to_screen(game, game.level_length + 40, 125 + height * HEIGHT / game.height))
-            py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
-            py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+            py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
         else:
             for i, (victor, stats) in enumerate(sorted_victors.items()):
-                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", (0,)*3)
+                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color)
                 margin = 5
-                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", (0,)*3)
+                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color)
                 x, y = (world_to_screen(game, game.level_length + 40, 125 + (i*(height + margin*2 - 2) + height) * HEIGHT / game.height))
-                py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
-                py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+                py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+                py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
                 screen.blit(text, (x, y))
         
     else:
@@ -174,60 +175,60 @@ def draw_leaderboard(game, screen):
                     sorted_players[player] = players[player]
                     del players[player]
         
-        screen.blit(game.text_cache.get_surface(f"Total Points Leaderboard:", (0,)*3), world_to_screen(game, 50, 60))
+        screen.blit(game.text_cache.get_surface(f"Total Points Leaderboard:", game.primary_color), world_to_screen(game, 50, 60))
         for i, (player, points) in enumerate(sorted_players.items()):
-            screen.blit(game.text_cache.get_surface(f"{i+1}: {player} | Points: {points}", (0,)*3), world_to_screen(game, 50, 85 + 25*i))
+            screen.blit(game.text_cache.get_surface(f"{i+1}: {player} | Points: {points}", game.primary_color), world_to_screen(game, 50, 85 + 25*i))
         
         if not game.building:
             for i, line in enumerate(controls_tutorial):
-                screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 350, 60 + 25*i))
+                screen.blit(game.text_cache.get_surface(line, game.primary_color), world_to_screen(game, 350, 60 + 25*i))
             
             if game.operator:
                 for i, line in enumerate(operator_tutorial):
-                    screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 350, 60 + 25*(len(controls_tutorial)+1) + 25*i))
+                    screen.blit(game.text_cache.get_surface(line, game.primary_color), world_to_screen(game, 350, 60 + 25*(len(controls_tutorial)+1) + 25*i))
 
         else:
             for i, line in enumerate(building_tutorial):
-                screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 350, 60 + 25*i))
+                screen.blit(game.text_cache.get_surface(line, game.primary_color), world_to_screen(game, 350, 60 + 25*i))
         
         for i, line in enumerate(settings_tutorial):
-            screen.blit(game.text_cache.get_surface(line, (0,)*3), world_to_screen(game, 850, 60 + 25*i))
+            screen.blit(game.text_cache.get_surface(line, game.primary_color), world_to_screen(game, 850, 60 + 25*i))
 
 def draw_title(game, screen):
-    text = game.text_cache.get_surface(f"{game.title[0]}", (0,)*3)
+    text = game.text_cache.get_surface(f"{game.title[0]}", game.primary_color)
     margin = 10
-    width, height = game.text_cache.get_size(f"{game.title[0]}", (0,)*3)
+    width, height = game.text_cache.get_size(f"{game.title[0]}", game.primary_color)
     x, y = (game.width/2 - width/2, 20)
-    py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
-    py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+    py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+    py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
     screen.blit(text, (x, y))
     if not game.building and game.current_level != 0:
-        text = game.text_cache.get_surface(f"{game.percent}%", (0,)*3)
+        text = game.text_cache.get_surface(f"{game.percent}%", game.primary_color)
         margin = 10
-        width, height = game.text_cache.get_size(f"{game.percent}%", (0,)*3)
+        width, height = game.text_cache.get_size(f"{game.percent}%", game.primary_color)
         x, y = (game.width - width - 20, 20)
-        py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
-        py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+        py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+        py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
 
 def draw_textboxes(game, screen):
     for i, box in enumerate(game.textboxes):
         if not box.active:
-            text = game.text_cache.get_surface(f"{box.field_name}: {box.text}", (0,)*3)
+            text = game.text_cache.get_surface(f"{box.field_name}: {box.text}", game.primary_color)
             margin = 5
-            width, height = game.text_cache.get_size(f"{box.field_name}: {box.text}", (0,)*3)
+            width, height = game.text_cache.get_size(f"{box.field_name}: {box.text}", game.primary_color)
             x, y = (20, i*(height + margin*2 - 2) + height)
-            py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
-            py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+            py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
     
     for i, box in enumerate(game.textboxes):
         if box.active:
-            text = game.text_cache.get_surface(f"{box.field_name}: {box.text}", (0,)*3)
+            text = game.text_cache.get_surface(f"{box.field_name}: {box.text}", game.primary_color)
             margin = 5
-            width, height = game.text_cache.get_size(f"{box.field_name}: {box.text}", (0,)*3)
+            width, height = game.text_cache.get_size(f"{box.field_name}: {box.text}", game.primary_color)
             x, y = (20, i*(height + margin*2 - 2) + height)
-            py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
+            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
             py.draw.rect(screen, (0, 200, 0), (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
 
@@ -244,17 +245,24 @@ def draw_debug(game, screen):
         f"Cheated: {game.cheated}"
     ]
     for i, item in enumerate(debug_items):
-        text = game.text_cache.get_surface(item, (0,)*3)
+        text = game.text_cache.get_surface(item, game.primary_color)
         margin = 5
-        width, height = game.text_cache.get_size(item, (0,)*3)
+        width, height = game.text_cache.get_size(item, game.primary_color)
         x, y = (20, game.height - (len(debug_items)+1)*(height + margin*2 - 2) + i*(height + margin*2 - 2) + height)
-        py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
-        py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+        py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+        py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
 
 def draw(game):
-    game.screen.fill(game.background_color)
     screen = game.screen
+
+    if game.background_color == (0,)*3:
+        game.screen.fill(game.primary_color)
+    elif game.background_color == (255,)*3:
+        game.screen.fill(game.secondary_color)
+    else:
+        game.screen.fill(game.background_color)
+    
 
     if game.building:
         if not game.layer_view:

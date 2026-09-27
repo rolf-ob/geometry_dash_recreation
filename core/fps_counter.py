@@ -11,4 +11,5 @@ class FpsCounter:
             self.frame_times.pop(0)
 
     def get_fps(self):
+        if len(self.frame_times) < 2: return 0
         return round(1 / (self.frame_times[1] - self.frame_times[0]))

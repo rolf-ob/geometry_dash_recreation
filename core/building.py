@@ -4,7 +4,7 @@ import math, time
 from core.textbox import TextBox
 from entities.object import Object
 from entities.collision import collide
-from rendering.rendering import world_to_screen, screen_to_world
+from rendering.rendering import screen_to_world
 from constants import PLAYER_X, FONT_SIZE
 
 def toggle_building(game):
@@ -32,24 +32,24 @@ def toggle_building(game):
 
 def place_object(game):
     mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
-    mouse_pos = Object(mouse_x, mouse_y, 1, 1, 0, "square", (0,)*3, (0,)*3)
+    mouse_pos = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
     mouse_x -= mouse_x % 40
     mouse_y -= mouse_y % 40
     layer = (game.background, game.objects, game.decoration)[game.layer]
 
-    if not any(collide(game, mouse_pos, obj) for obj in layer):
+    if not any(collide(mouse_pos, obj) for obj in layer):
         layer.append(Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3))
 
 def select_object(game, shifting):
     if not game.editing_level:
         mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
-        mouse_pos = [(mouse_x - 1, mouse_y), (mouse_x, mouse_y), (mouse_x + 1, mouse_y)]        
+        mouse_pos = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)     
         layer = (game.background, game.objects, game.decoration)[game.layer]
 
         obj_selected = False
         cp_selected = False
         for obj in (*layer, *game.checkpoints):
-            if collide(game, mouse_pos, obj):
+            if collide(mouse_pos, obj):
                 if shifting:
                     obj.selected = True
                 else:
@@ -168,17 +168,17 @@ def flip_objects(game, way):
                     obj.x = int(flipped_center - obj.width / 2)
 
                     if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
-                        obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
+                        obj.rotation = -obj.rotation
                         
                     elif obj.shape == "slope":
-                        obj.rotation = round(obj.rotation - 90 + obj.rotation * 2, 1)
+                        obj.rotation = obj.rotation - 90 + obj.rotation * 2
                         width = int(obj.height)
                         height = int(obj.width)
                         obj.width = width
                         obj.height = height
                     
                     elif obj.shape == "spike":
-                        obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
+                        obj.rotation = -obj.rotation
                     
                     obj.rotation = round(obj.rotation % 360, 1)
                     if obj.rotation < 0:
@@ -191,17 +191,17 @@ def flip_objects(game, way):
                     obj.y = int(flipped_center - obj.height / 2)
 
                     if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
-                        obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
+                        obj.rotation = -obj.rotation
                         
                     elif obj.shape == "slope":
-                        obj.rotation = round(obj.rotation - 270 + obj.rotation * 2, 1)
+                        obj.rotation = obj.rotation - 270 + obj.rotation * 2
                         width = int(obj.height)
                         height = int(obj.width)
                         obj.width = width
                         obj.height = height
                     
                     elif obj.shape == "spike":
-                        obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
+                        obj.rotation = -obj.rotation + 180
                     
                     obj.rotation = round(obj.rotation % 360, 1)
                     if obj.rotation < 0:
@@ -273,7 +273,7 @@ def create_level(game):
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 255, 0), (0,)*3, {"gamemode": "cube", "speed": 2, "gravity": 1})],
+        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 255, 0), game.primary_color, {"gamemode": "cube", "speed": 2, "gravity": 1})],
         "victors": {}
     })
     game.title = ["Created New Level", time.perf_counter() + 2]

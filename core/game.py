@@ -28,11 +28,21 @@ class Game():
         self.running = True
 
         self.operator = True
+
         self.name = self.accessibility["name"]
         self.fps = self.accessibility["fps"]
         self.speedhack_multiplier = self.accessibility["speedhack multiplier"]
         self.respawn_time = self.accessibility["respawn time"]
+        self.dark_mode = self.accessibility["dark mode"]
+        if self.dark_mode:
+            self.primary_color = (255,)*3
+            self.secondary_color = (0,)*3
+        else:
+            self.primary_color = (0,)*3
+            self.secondary_color = (255,)*3
+
         self.current_level = 0
+
         self.width = WIDTH
         self.height = HEIGHT
         self.view_width = WIDTH
@@ -41,6 +51,7 @@ class Game():
         self.min_height = 0
         self.max_height = HEIGHT - 40
         self.on_ground = False
+
         self.last_frame_time = time.perf_counter()
         self.clicking = 0
         self.clicked = False
@@ -163,6 +174,7 @@ class Game():
                             obj.rotation = 0
                             obj.color = (255,)*3
                             obj.outline = (0,)*3
+                            obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1}
                             for layer in (self.background, self.objects, self.decoration):
                                 if obj in layer:
                                     layer.remove(obj)
@@ -174,7 +186,7 @@ class Game():
                             obj.color = gamemode_colors[text]
 
                         elif obj.shape == "speed" and field_name == "modifier":
-                            setattr(obj, field_name, min(40, float(text)))
+                            setattr(obj, field_name, max(0.01, min(40, float(text))))
 
                         elif obj.shape == "gravity" and field_name == "modifier":
                             setattr(obj, field_name, float(text))
@@ -198,7 +210,7 @@ class Game():
                             obj.color = gamemode_colors[text]
 
                         elif field_name == "speed":
-                            obj.modifier["speed"] = min(40, float(text))
+                            obj.modifier["speed"] = max(0.01, min(40, float(text)))
 
                         elif field_name == "gravity":
                             obj.modifier["gravity"] = float(text)
@@ -210,7 +222,7 @@ class Game():
                     elif field_name == "background":
                         r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                         self.level["meta"]["background color"] = (r, g, b)
-                        self.background_color = self.level["meta"]["background color"]
+                        self.background_color = tuple(self.level["meta"]["background color"])
 
                     elif field_name == "title":
                         self.level["meta"]["title"] = text
@@ -221,8 +233,8 @@ class Game():
                     elif field_name == "level number":
                         new_number = max(1, min(len(self.levels)-1, int(text)))
                         self.levels.pop(self.current_level)
-                        self.levels.insert(int(text), self.level)
-                        self.current_level = int(text)
+                        self.levels.insert(new_number, self.level)
+                        self.current_level = new_number
                         self.load_level()
 
                     elif field_name == "reset stats" and text == "reset":
@@ -270,7 +282,7 @@ class Game():
         start_x = self.player.x - self.checkpoints[0].x
         end_x = self.level_length - self.checkpoints[0].x - self.player.width
         self.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
-        self.cheated = True if self.checkpoint != 0 else False
+        self.cheated = True if self.checkpoint != 0 or (not self.paused and (self.speedhack or self.show_hitboxes)) else False
         self.noclip_deaths = 0
         self.dead = 0
         self.completed = False
@@ -288,7 +300,7 @@ class Game():
         self.decoration = self.level["decoration"]
         self.victors = self.level["victors"]
         self.level_length = self.level["meta"]["length"]
-        self.background_color = self.level["meta"]["background color"]
+        self.background_color = tuple(self.level["meta"]["background color"])
         self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 
         checkpoints = self.level["checkpoints"].copy()
@@ -351,6 +363,7 @@ class Game():
         self.accessibility["fps"] = self.fps
         self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
         self.accessibility["respawn time"] = self.respawn_time
+        self.accessibility["dark mode"] = self.dark_mode
         controls = {}
         for action, keys in self.controls.items():
             controls[action] = [py.key.name(key) for key in keys]
@@ -381,19 +394,20 @@ class Game():
             now = time.perf_counter()
             frame_time = now - previous
             previous = now
+            can_update = not self.paused and not self.building and self.current_level != 0
+
+            if frame_time > 0.05 and can_update and not self.completed and self.dead == 0:
+                self.restart()
+                accumulator = 0
+                frame_time = 0
+                self.title = ["You're too laggy!", time.perf_counter() + 2]
             
             if self.speedhack:
                 frame_time *= self.speedhack_multiplier
             accumulator += frame_time
 
-            if frame_time > 0.05 and can_update and not self.completed and self.dead == 0:
-                self.restart()
-                accumulator = 0
-                self.title = ["You're too laggy!", time.perf_counter() + 2]
-
             handle_input(self)
 
-            can_update = not self.paused and not self.building and self.current_level != 0
             while accumulator >= FIXED_STEP:
                 if can_update:
                     update(self)

@@ -56,7 +56,8 @@ controls_tutorial = [
     "Toggle Player Visibility - N",
     "",
     "OTHER",
-    "Debug Menu - F3",
+    "Dark Mode - M",
+    "Debug Overlay - F3",
     "Save To File - F"
 ]
 operator_tutorial = [

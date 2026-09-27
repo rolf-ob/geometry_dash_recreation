@@ -3,7 +3,8 @@
     "name": "Rolf",
     "speedhack multiplier": 0.5,
     "fps": 240,
-    "respawn time": 0.5
+    "respawn time": 0.5,
+    "dark mode": false
   },
   "controls": {
     "click": [
@@ -96,6 +97,9 @@
     ],
     "edit level": [
       "t"
+    ],
+    "toggle dark mode": [
+      "m"
     ],
     "toggle debug": [
       "f3"

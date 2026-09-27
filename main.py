@@ -1,2 +1,3 @@
 from core.game import Game
-Game().run()
+if __name__ == "__main__":
+    Game().run()

@@ -47,7 +47,7 @@ class Object:
             sides = 20
             radius = self.width / 2
             center_x = self.x + radius
-            center_y = self.y + self.height / 2
+            center_y = self.y + radius
             corners = []
             for i in range(sides):
                 angle = 2 * math.pi * i / sides
@@ -93,6 +93,7 @@ class Object:
     def to_dict(self):
         d = asdict(self)
         del d["selected"]
+        del d["interacted"]
         d["color"] = list(d["color"])
         d["outline"] = list(d["outline"])
         return d
