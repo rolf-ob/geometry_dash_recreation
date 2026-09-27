@@ -43,16 +43,19 @@
     "step frame": [
       "v"
     ],
-    "move up": [
+    "move or scale": [
+      "v"
+    ],
+    "up": [
       "w"
     ],
-    "move left": [
+    "left": [
       "a"
     ],
-    "move down": [
+    "down": [
       "s"
     ],
-    "move right": [
+    "right": [
       "d"
     ],
     "rotate counter clockwise": [

@@ -50,6 +50,7 @@ class Game():
         self.building_camera_x = 0
         self.building_camera_y = 0
         self.layer = 1
+        self.scale_mode = False
         self.editing_level = False
 
         self.textboxes = []
@@ -261,6 +262,7 @@ class Game():
         self.camera_zoom = 1
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
+        self.player.recompute()
         self.y_vel = 0
         self.dashing = False
         start_x = self.player.x - self.checkpoints[0].x
@@ -270,11 +272,9 @@ class Game():
         self.noclip_deaths = 0
         self.dead = 0
         self.completed = False
-        for orb in self.orbs:
-            orb["clicked"] = False
         self.collected_coins = [0, 0]
-        for coin in self.coins:
-            coin["collected"] = False
+        for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
+            obj.interacted = False
         
         self.hitbox_trail = []
         self.wave_trail = [(self.player.x + 20, self.player.y)] if self.gamemode == "wave" else []

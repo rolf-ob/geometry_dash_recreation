@@ -65,7 +65,7 @@ def select_object(game, shifting):
         else:
             close_menu(game)
 
-def move_objects(game, direction, shift, ctrl, alt): #! Make dicts for shift: 1 ctrl: 200 etc
+def move_scale_objects(game, direction, shift, ctrl, alt):
     if shift:
         distance = 1
     elif ctrl:
@@ -74,6 +74,7 @@ def move_objects(game, direction, shift, ctrl, alt): #! Make dicts for shift: 1 
         distance = 20
     else:
         distance = 40
+    
     add_x = 0
     add_y = 0
     if direction == "up":
@@ -85,11 +86,20 @@ def move_objects(game, direction, shift, ctrl, alt): #! Make dicts for shift: 1 
     elif direction == "right":
         add_x = distance
 
-    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-        if obj.selected:
-            obj.x += add_x
-            obj.y += add_y
-            obj.recompute()
+    if not game.scale_mode:
+        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+            if obj.selected:
+                obj.x += add_x
+                obj.y += add_y
+                obj.recompute()
+    else:
+        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+            if obj.selected:
+                if add_x > 0 or obj.width > distance:
+                    obj.width += add_x
+                if add_y > 0 or obj.height > distance:
+                    obj.height += add_y
+                obj.recompute()
 
 def rotate_objects(game, way):
     if way == "counter clockwise":

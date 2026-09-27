@@ -1,7 +1,7 @@
 import pygame as py
 import time
 
-from core.building import toggle_building, place_object, select_object, move_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, switch_layer, reset_camera, create_level, edit_level, close_menu, open_menu
+from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, switch_layer, reset_camera, create_level, edit_level, close_menu, open_menu
 from constants import HEIGHT, PLAYER_X, FONT_SIZE
 
 def click(game, type, button, shift):
@@ -185,14 +185,16 @@ def handle_input(game):
                         game.noclip = not game.noclip
 
                 else: #Building controls
-                    if any(event.key == key for key in game.controls["move up"]):
-                        move_objects(game, "up", shift, ctrl, alt)
-                    elif any(event.key == key for key in game.controls["move left"]):
-                        move_objects(game, "left", shift, ctrl, alt)
-                    elif any(event.key == key for key in game.controls["move down"]):
-                        move_objects(game, "down", shift, ctrl, alt)
-                    elif any(event.key == key for key in game.controls["move right"]):
-                        move_objects(game, "right", shift, ctrl, alt)
+                    if any(event.key == key for key in game.controls["move or scale"]):
+                        game.scale_mode = not game.scale_mode
+                    elif any(event.key == key for key in game.controls["up"]):
+                        move_scale_objects(game, "up", shift, ctrl, alt)
+                    elif any(event.key == key for key in game.controls["left"]):
+                        move_scale_objects(game, "left", shift, ctrl, alt)
+                    elif any(event.key == key for key in game.controls["down"]):
+                        move_scale_objects(game, "down", shift, ctrl, alt)
+                    elif any(event.key == key for key in game.controls["right"]):
+                        move_scale_objects(game, "right", shift, ctrl, alt)
 
                     elif any(event.key == key for key in game.controls["rotate counter clockwise"]):
                         rotate_objects(game, "counter clockwise")

@@ -81,7 +81,8 @@ building_tutorial = [
     "BUILDING CONTROLS",
     "Place Object - Left Mouse + Shift/None",
     "Select Object - Right Mouse + Shift/None",
-    "Move Objects - W, A, S, D + Shift/Ctrl/None",
+    "Switch Between Move and Scale - V",
+    "Move/Scale Objects - W, A, S, D + Shift/Ctrl/None",
     "Rotate Objects - Q, E",
     "Flip Objects - I, O",
     "Deselect Objects - U",
@@ -103,7 +104,11 @@ building_tutorial = [
     "",
     "SHAPES",
     "Building shapes - square, triangle, slope, circle",
-    "Functional shapes - end, gamemode, speed, gravity, orb, pad, coin",
+    "Functional shapes - end, checkpoint, gamemode, speed, gravity, orb, pad, coin",
+    "",
+    "CHECKPOINTS",
+    "Checkpoints are marked with a C, the first checkpoint is marked S and cannot be deleted",
+    "Have only checkpoints selected to change their modifiers"
     "",
     "SHAPE MODIFIERS",
     "Gamemode - Cube, ship, ball, wave, ufo, robot, spider",
@@ -112,8 +117,4 @@ building_tutorial = [
     "Orb - Small, normal, big, gravity, heavy or dash",
     "Pad - Small, normal, big, gravity or spider",
     "Coin - Set the number of points it should give",
-    "",
-    "CHECKPOINTS",
-    "Checkpoints have to be duplicated from the start position marked with an S",
-    "Have only checkpoints selected to change their modifiers"
 ]

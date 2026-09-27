@@ -16,12 +16,12 @@ class Object:
     selected: bool = False
     interacted: bool = False
 
-    points: list = []
-    axes: list = []
-    aabb: list = []
+    def __post_init__(self):
+        self.axes = []
+        self.aabb = []
+        self.recompute()
     
     def recompute(self):
-        print("HI")
         center_x = self.x + self.width / 2
         center_y = self.y + self.height / 2
 
@@ -64,6 +64,7 @@ class Object:
         else:
             angle = math.radians(self.rotation)
             cos_a, sin_a = math.cos(angle), math.sin(angle)
+            self.points = []
             for point_x, point_y in corners:
                 delta_x, delta_y = point_x - center_x, point_y - center_y
                 rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
@@ -83,5 +84,3 @@ class Object:
             x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
             shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]), modifier=d["modifier"]
         )
-
-    recompute()
