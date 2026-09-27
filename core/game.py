@@ -331,19 +331,13 @@ class Game():
                 self.gravitys.append(obj)
             
             elif obj.shape == "orb":
-                self.orbs.append({
-                    "orb": obj,
-                    "clicked": False
-                })
+                self.orbs.append(obj)
             
             elif obj.shape == "pad":
                 self.pads.append(obj)
             
             elif obj.shape == "coin":
-                self.coins.append({
-                    "coin": obj,
-                    "collected": False
-                })
+                self.coins.append(obj)
         
         self.restart()
 

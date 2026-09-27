@@ -14,6 +14,7 @@ class Object:
 
     modifier: str = None
     selected: bool = False
+    interacted: bool = False
 
     points: list = []
     axes: list = []

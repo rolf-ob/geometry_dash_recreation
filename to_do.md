@@ -1,7 +1,6 @@
 - Rotate objects around x+20 y+20, obj center if holding alt
 - Hide mouse
 - Obj scale mode for WASD
-- Coin and orb own class for collected/clicked or add interacted to obj class
 - Only seeing objects in current layer
 
 - sorted() function for leaderboard/checkpoint sorting
@@ -9,8 +8,8 @@
 - Only select top object if multiple are overlapping
 - Keybind to change the Z-axis of an object
 
-- Precompute and store obj.axes, obj.points and obj.AABB using obj.recompute rather than points arrays
-- Square hitboxes that get checked before SAT runs for optimization stored as obj.AABB
+- Precompute and store obj.axes and obj.aabb
+- Square hitboxes that get checked before SAT runs for optimization stored as obj.aabb
 - Render and check for things in cells that are for example 400 wide
 
 - Display from which percentage you started a run

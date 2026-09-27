@@ -48,20 +48,20 @@ def draw_objects(game, screen):
                 draw_polygon(game, screen, obj.points, color, 0)
                 if obj.selected:
                     screen.blit(game.text_cache.get_surface(str(obj.x), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
+
+            elif obj.shape == "coin":
+                if obj.modifier and not obj.interacted:
+                    color = (200, 255, 200) if obj.selected else obj.color
+                    outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
+                    draw_polygon(game, screen, obj.points, color, 0)
+                    draw_polygon(game, screen, obj.points, outline_color, 1)
+                    screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
             
-            elif obj.shape != "coin":
+            else:
                 color = (200, 255, 200) if obj.selected else obj.color
                 outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
                 draw_polygon(game, screen, obj.points, color, 0)
                 draw_polygon(game, screen, obj.points, outline_color, 1)
-
-    for coin in game.coins:
-        if coin["coin"].modifier and not coin["collected"] and within_view(game, coin["coin"].points):
-            color = (200, 255, 200) if coin["coin"].selected else coin["coin"].color
-            outline_color = coin["coin"].outline if not game.show_hitboxes else (255, 0, 0)
-            draw_polygon(game, screen, coin["coin"].points, color, 0)
-            draw_polygon(game, screen, coin["coin"].points, outline_color, 1)
-            screen.blit(game.text_cache.get_surface(str(coin["coin"].modifier), (0,)*3), world_to_screen(game, coin["coin"].x + 5, coin["coin"].y + 5))
 
 def draw_decoration(game, screen):
     for obj in game.decoration:
