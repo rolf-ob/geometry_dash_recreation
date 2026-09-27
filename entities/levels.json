@@ -60,7 +60,7 @@
     ],
     "victors": {
       "Rolf": [
-        563,
+        573,
         0,
         0,
         0
@@ -535,7 +535,7 @@
         "width": 320,
         "height": 320,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -554,7 +554,7 @@
         "width": 320,
         "height": 320,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -573,7 +573,7 @@
         "width": 440,
         "height": 440,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -592,7 +592,7 @@
         "width": 320,
         "height": 320,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -668,7 +668,7 @@
         "width": 320,
         "height": 320,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -801,7 +801,7 @@
         "width": 80,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -820,7 +820,7 @@
         "width": 80,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4193,7 +4193,7 @@
     ],
     "victors": {
       "Rolf": [
-        771,
+        774,
         8,
         3,
         40
@@ -4230,7 +4230,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4249,7 +4249,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4268,7 +4268,7 @@
         "width": 10,
         "height": 41,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4306,7 +4306,7 @@
         "width": 60,
         "height": 20,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4325,7 +4325,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4363,7 +4363,7 @@
         "width": 40,
         "height": 40,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4382,7 +4382,7 @@
         "width": 40,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4401,7 +4401,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4420,7 +4420,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4439,7 +4439,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4458,7 +4458,7 @@
         "width": 10,
         "height": 41,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4477,7 +4477,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4496,7 +4496,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4515,7 +4515,7 @@
         "width": 10,
         "height": 41,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4534,7 +4534,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4553,7 +4553,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4572,7 +4572,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4591,7 +4591,7 @@
         "width": 10,
         "height": 41,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4629,7 +4629,7 @@
         "width": 20,
         "height": 60,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4648,7 +4648,7 @@
         "width": 10,
         "height": 41,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4686,7 +4686,7 @@
         "width": 40,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4705,7 +4705,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4724,7 +4724,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4743,7 +4743,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4762,7 +4762,7 @@
         "width": 10,
         "height": 41,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4781,7 +4781,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4800,7 +4800,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4819,7 +4819,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4838,7 +4838,7 @@
         "width": 10,
         "height": 41,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4876,7 +4876,7 @@
         "width": 20,
         "height": 60,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4895,7 +4895,7 @@
         "width": 10,
         "height": 41,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4933,7 +4933,7 @@
         "width": 40,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4952,7 +4952,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -4990,7 +4990,7 @@
         "width": 40,
         "height": 40,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -5009,7 +5009,7 @@
         "width": 40,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -5047,7 +5047,7 @@
         "width": 40,
         "height": 40,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -5066,7 +5066,7 @@
         "width": 40,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -5085,7 +5085,7 @@
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -5104,7 +5104,7 @@
         "width": 41,
         "height": 10,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -5142,7 +5142,7 @@
         "width": 60,
         "height": 20,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -7120,7 +7120,7 @@
         "width": 320,
         "height": 320,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -7139,7 +7139,7 @@
         "width": 320,
         "height": 320,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -7272,7 +7272,7 @@
         "width": 100,
         "height": 100,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -7310,7 +7310,7 @@
         "width": 320,
         "height": 320,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -7329,7 +7329,7 @@
         "width": 320,
         "height": 320,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -8260,7 +8260,7 @@
         "width": 40,
         "height": 40,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -8279,7 +8279,7 @@
         "width": 40,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -11038,7 +11038,7 @@
     ],
     "victors": {
       "Rolf": [
-        287,
+        288,
         3,
         3,
         60
@@ -11046,131 +11046,6 @@
       "Lucas": [
         71,
         0,
-        0,
-        0
-      ]
-    }
-  },
-  {
-    "meta": {
-      "length": 200,
-      "background color": [
-        255,
-        255,
-        255
-      ],
-      "title": "Unnamed level",
-      "points": 0
-    },
-    "background": [],
-    "objects": [
-      {
-        "x": 1000,
-        "y": 0,
-        "width": 1,
-        "height": 720,
-        "rotation": 0,
-        "shape": "end",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          255,
-          0,
-          0
-        ],
-        "modifier": null
-      },
-      {
-        "x": 622.0,
-        "y": 559.0,
-        "width": 160,
-        "height": 40,
-        "rotation": 180,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null
-      },
-      {
-        "x": 600,
-        "y": 640,
-        "width": 200,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null
-      },
-      {
-        "x": 800,
-        "y": 640,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": "small"
-      }
-    ],
-    "decoration": [],
-    "checkpoints": [
-      {
-        "x": 360,
-        "y": 680,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "checkpoint",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": {
-          "gamemode": "cube",
-          "speed": 2,
-          "gravity": 0.0
-        }
-      }
-    ],
-    "victors": {
-      "Rolf": [
-        180,
-        9,
         0,
         0
       ]
@@ -11367,7 +11242,7 @@
         "width": 240,
         "height": 160,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11424,7 +11299,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11443,7 +11318,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11462,7 +11337,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11481,7 +11356,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11500,7 +11375,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11519,7 +11394,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11538,7 +11413,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11557,7 +11432,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11576,7 +11451,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11595,7 +11470,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11614,7 +11489,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11633,7 +11508,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11652,7 +11527,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11671,7 +11546,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11690,7 +11565,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11709,7 +11584,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11728,7 +11603,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11747,7 +11622,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11766,7 +11641,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11785,7 +11660,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11804,7 +11679,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11823,7 +11698,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11842,7 +11717,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11861,7 +11736,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11880,7 +11755,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11899,7 +11774,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11918,7 +11793,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11937,7 +11812,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11956,7 +11831,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11975,7 +11850,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -11994,7 +11869,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -12013,7 +11888,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -12032,7 +11907,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -12051,7 +11926,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -12070,7 +11945,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -12089,7 +11964,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14407,7 +14282,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14426,7 +14301,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14445,7 +14320,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14464,7 +14339,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14483,7 +14358,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14502,7 +14377,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14521,7 +14396,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14540,7 +14415,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14749,7 +14624,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14768,7 +14643,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14901,7 +14776,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14920,7 +14795,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14939,7 +14814,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14958,7 +14833,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14977,7 +14852,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -14996,7 +14871,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15015,7 +14890,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15034,7 +14909,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15053,7 +14928,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15072,7 +14947,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15091,7 +14966,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15110,7 +14985,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15129,7 +15004,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15148,7 +15023,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15167,7 +15042,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15186,7 +15061,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15205,7 +15080,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15224,7 +15099,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15243,7 +15118,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15262,7 +15137,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15281,7 +15156,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15300,7 +15175,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15338,7 +15213,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15357,7 +15232,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15528,7 +15403,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15547,7 +15422,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15566,7 +15441,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15585,7 +15460,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15604,7 +15479,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15623,7 +15498,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15642,7 +15517,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15661,7 +15536,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15680,7 +15555,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15699,7 +15574,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15718,7 +15593,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15737,7 +15612,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15756,7 +15631,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15775,7 +15650,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15794,7 +15669,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15813,7 +15688,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15832,7 +15707,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15851,7 +15726,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15870,7 +15745,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15889,7 +15764,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15908,7 +15783,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15927,7 +15802,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15946,7 +15821,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15965,7 +15840,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -15984,7 +15859,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16003,7 +15878,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16022,7 +15897,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16041,7 +15916,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16060,7 +15935,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16079,7 +15954,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16098,7 +15973,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16117,7 +15992,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16136,7 +16011,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16155,7 +16030,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16174,7 +16049,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16193,7 +16068,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16212,7 +16087,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16231,7 +16106,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16250,7 +16125,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16269,7 +16144,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16288,7 +16163,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16307,7 +16182,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16326,7 +16201,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16345,7 +16220,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16364,7 +16239,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16383,7 +16258,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16402,7 +16277,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16421,7 +16296,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16440,7 +16315,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16459,7 +16334,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16478,7 +16353,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16497,7 +16372,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16516,7 +16391,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16535,7 +16410,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16554,7 +16429,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16573,7 +16448,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16592,7 +16467,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16611,7 +16486,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16630,7 +16505,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16649,7 +16524,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16668,7 +16543,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16687,7 +16562,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16706,7 +16581,7 @@
         "width": 80,
         "height": 40,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16725,7 +16600,7 @@
         "width": 80,
         "height": 40,
         "rotation": 90,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16744,7 +16619,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16763,7 +16638,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16782,7 +16657,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16801,7 +16676,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16820,7 +16695,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16839,7 +16714,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16858,7 +16733,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16877,7 +16752,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16896,7 +16771,7 @@
         "width": 160,
         "height": 240,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16915,7 +16790,7 @@
         "width": 240,
         "height": 160,
         "rotation": 270,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16934,7 +16809,7 @@
         "width": 160,
         "height": 240,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16953,7 +16828,7 @@
         "width": 40,
         "height": 80,
         "rotation": 180,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -16972,7 +16847,7 @@
         "width": 40,
         "height": 80,
         "rotation": 0,
-        "shape": "slope",
+        "shape": "right slope",
         "color": [
           0,
           0,
@@ -17060,7 +16935,7 @@
     ],
     "victors": {
       "Rolf": [
-        350,
+        352,
         2,
         0,
         0
@@ -23279,7 +23154,55 @@
     ],
     "victors": {
       "Rolf": [
-        228,
+        236,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "length": 100,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "Unnamed level",
+      "points": 0
+    },
+    "background": [],
+    "objects": [],
+    "decoration": [],
+    "checkpoints": [
+      {
+        "x": 360,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": {
+          "gamemode": "cube",
+          "speed": 2,
+          "gravity": 1
+        }
+      }
+    ],
+    "victors": {
+      "Rolf": [
+        6,
         0,
         0,
         0

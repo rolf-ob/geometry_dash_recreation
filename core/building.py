@@ -104,11 +104,20 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
                     obj.height += add_y
                 obj.recompute()
 
-def rotate_objects(game, way):
+def rotate_objects(game, way, shift, ctrl, alt):
+    if shift:
+        distance = 0.1
+    elif ctrl:
+        distance = 1
+    elif alt:
+        distance = 45
+    else:
+        distance = 90
+    
     if way == "counter clockwise":
-        rotation = -90
+        rotation = -distance
     elif way == "clockwise":
-        rotation = 90
+        rotation = distance
 
     x_positions = []
     y_positions = []
@@ -170,12 +179,12 @@ def flip_objects(game, way):
                     if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
                         obj.rotation = -obj.rotation
                         
-                    elif obj.shape == "slope":
-                        obj.rotation = obj.rotation - 90 + obj.rotation * 2
-                        width = int(obj.height)
-                        height = int(obj.width)
-                        obj.width = width
-                        obj.height = height
+                    elif obj.shape == "right slope":
+                        obj.rotation = -obj.rotation
+                        obj.shape = "left slope"
+                    elif obj.shape == "left slope":
+                        obj.rotation = -obj.rotation
+                        obj.shape = "right slope"
                     
                     elif obj.shape == "spike":
                         obj.rotation = -obj.rotation
@@ -193,12 +202,12 @@ def flip_objects(game, way):
                     if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
                         obj.rotation = -obj.rotation
                         
-                    elif obj.shape == "slope":
-                        obj.rotation = obj.rotation - 270 + obj.rotation * 2
-                        width = int(obj.height)
-                        height = int(obj.width)
-                        obj.width = width
-                        obj.height = height
+                    elif obj.shape == "right slope":
+                        obj.rotation = -obj.rotation + 180
+                        obj.shape = "left slope"
+                    elif obj.shape == "left slope":
+                        obj.rotation = -obj.rotation + 180
+                        obj.shape = "right slope"
                     
                     elif obj.shape == "spike":
                         obj.rotation = -obj.rotation + 180

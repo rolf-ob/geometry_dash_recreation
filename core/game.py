@@ -131,7 +131,7 @@ class Game():
                             r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                             setattr(obj, field_name, (r, g, b))
 
-                        elif field_name == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "orb", "pad", "coin"):
+                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "orb", "pad", "coin"):
                             setattr(obj, field_name, text)
 
                             if text == "end":
@@ -168,7 +168,11 @@ class Game():
                                 obj.height = 40
                                 obj.color = coin_color
 
+                        elif field_name == "shape" and text == "slope":
+                            setattr(obj, field_name, "right slope")
+
                         elif field_name == "shape" and text == "checkpoint":
+                            setattr(obj, field_name, text)
                             obj.width = 40
                             obj.height = 40
                             obj.rotation = 0
@@ -329,7 +333,7 @@ class Game():
         self.coins = []
 
         for obj in self.objects:
-            if obj.shape in ("square", "spike", "slope", "circle"):
+            if obj.shape in ("square", "spike", "right slope", "left slope", "circle"):
                 self.shapes.append(obj)
             
             elif obj.shape == "end":

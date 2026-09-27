@@ -128,26 +128,14 @@ def draw_leaderboard(game, screen):
         py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
 
-        victors = game.victors.copy()
-        sorted_victors = {}
-        if victors:
-            for i in range(len(victors)):
-                for victor in victors.copy():
-                    values = [completions for (attempts, completions, coins, coin_points) in victors.values()]
-                    if victors[victor][1] == max(values):
-                        sorted_victors[victor] = victors[victor]
-                        del victors[victor]
-        
-        if sorted_victors == {}:
-            text = game.text_cache.get_surface(f"No victors yet", game.primary_color)
-            margin = 5
-            width, height = game.text_cache.get_size(f"No victors yet", game.primary_color)
-            x, y = (world_to_screen(game, game.level_length + 40, 125 + height * HEIGHT / game.height))
-            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
-            py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
-            screen.blit(text, (x, y))
-        else:
-            for i, (victor, stats) in enumerate(sorted_victors.items()):
+        if game.victors:
+            sorted_victors = sorted(
+                game.victors.items(),
+                key=lambda item: item[1][1],
+                reverse=True
+            )
+
+            for i, (victor, stats) in enumerate(sorted_victors):
                 text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color)
                 margin = 5
                 width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color)
@@ -155,6 +143,15 @@ def draw_leaderboard(game, screen):
                 py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
                 screen.blit(text, (x, y))
+        
+        else:
+            text = game.text_cache.get_surface(f"No victors yet", game.primary_color)
+            margin = 5
+            width, height = game.text_cache.get_size(f"No victors yet", game.primary_color)
+            x, y = (world_to_screen(game, game.level_length + 40, 125 + height * HEIGHT / game.height))
+            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+            py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+            screen.blit(text, (x, y))
         
     else:
         players = {}
@@ -168,15 +165,13 @@ def draw_leaderboard(game, screen):
                         players[victor] = level["meta"]["points"]
                         players[victor] += stats[3]
         
-        sorted_players = {}
-        for i in range(len(players)):
-            for player in players.copy():
-                if players[player] == max(players.values()):
-                    sorted_players[player] = players[player]
-                    del players[player]
+        sorted_players = sorted(
+            players.items(),
+            reverse=True
+        )
         
         screen.blit(game.text_cache.get_surface(f"Total Points Leaderboard:", game.primary_color), world_to_screen(game, 50, 60))
-        for i, (player, points) in enumerate(sorted_players.items()):
+        for i, (player, points) in enumerate(sorted_players):
             screen.blit(game.text_cache.get_surface(f"{i+1}: {player} | Points: {points}", game.primary_color), world_to_screen(game, 50, 85 + 25*i))
         
         if not game.building:

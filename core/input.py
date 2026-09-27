@@ -207,9 +207,9 @@ def handle_input(game):
                         move_scale_objects(game, "right", shift, ctrl, alt)
 
                     elif any(event.key == key for key in game.controls["rotate counter clockwise"]):
-                        rotate_objects(game, "counter clockwise")
+                        rotate_objects(game, "counter clockwise", shift, ctrl, alt)
                     elif any(event.key == key for key in game.controls["rotate clockwise"]):
-                        rotate_objects(game, "clockwise")
+                        rotate_objects(game, "clockwise", shift, ctrl, alt)
 
                     elif any(event.key == key for key in game.controls["flip horizontally"]):
                         flip_objects(game, "horizontally")

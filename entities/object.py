@@ -36,9 +36,16 @@ class Object:
                 (self.x + self.width / 2, self.y),
                 (self.x + self.width, self.y + self.height),
             ]
-        elif self.shape == "slope":
+        elif self.shape == "right slope":
             corners = [
                 (self.x, self.y),
+                (self.x + self.width, self.y + self.height),
+                (self.x, self.y + self.height)
+            ]
+
+        elif self.shape == "left slope":
+            corners = [
+                (self.x + self.width, self.y),
                 (self.x + self.width, self.y + self.height),
                 (self.x, self.y + self.height)
             ]

@@ -1,8 +1,3 @@
-- Rotate objects around x+20 y+20, obj center if holding alt
-- Fix rotation, flipping etc to not be weird with especially slopes
-
-- sorted() function for leaderboard/checkpoint sorting
-
 - Only select top object if multiple are overlapping
 - Keybind to change the Z-axis of an object
 
