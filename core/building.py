@@ -3,7 +3,7 @@ import math, time
 
 from core.textbox import TextBox
 from entities.object import Object
-from entities.collision import polygons_collide
+from entities.collision import collide
 from rendering.rendering import world_to_screen, screen_to_world
 from constants import PLAYER_X, FONT_SIZE
 
@@ -32,12 +32,12 @@ def toggle_building(game):
 
 def place_object(game):
     mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
-    mouse_pos = [(mouse_x - 1, mouse_y), (mouse_x, mouse_y), (mouse_x + 1, mouse_y)]
+    mouse_pos = Object(mouse_x, mouse_y, 1, 1, 0, "square", (0,)*3, (0,)*3)
     mouse_x -= mouse_x % 40
     mouse_y -= mouse_y % 40
     layer = (game.background, game.objects, game.decoration)[game.layer]
 
-    if not any(polygons_collide(mouse_pos, obj.points) for obj in layer):
+    if not any(collide(game, mouse_pos, obj) for obj in layer):
         layer.append(Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3))
 
 def select_object(game, shifting):
@@ -49,7 +49,7 @@ def select_object(game, shifting):
         obj_selected = False
         cp_selected = False
         for obj in (*layer, *game.checkpoints):
-            if polygons_collide(mouse_pos, obj.points):
+            if collide(game, mouse_pos, obj):
                 if shifting:
                     obj.selected = True
                 else:

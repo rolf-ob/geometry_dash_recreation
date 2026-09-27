@@ -17,11 +17,9 @@ class Object:
     interacted: bool = False
 
     def __post_init__(self):
-        self.axes = []
-        self.aabb = []
         self.recompute()
     
-    def recompute(self):
+    def recompute_points(self):
         center_x = self.x + self.width / 2
         center_y = self.y + self.height / 2
 
@@ -60,7 +58,6 @@ class Object:
 
         if self.rotation == 0:
             self.points = corners
-
         else:
             angle = math.radians(self.rotation)
             cos_a, sin_a = math.cos(angle), math.sin(angle)
@@ -70,6 +67,28 @@ class Object:
                 rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
                 rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
                 self.points.append((rotated_x, rotated_y))
+
+    def recompute_axes(self):
+        self.axes = []
+        for i, point in enumerate(self.points):
+            x1, y1 = point
+            x2, y2 = self.points[(i + 1) % len(self.points)]
+            self.axes.append((y2 - y1, x1 - x2))
+
+    def recompute_aabb(self):
+        self.aabb = {}
+        x_values = [point[0] for point in self.points]
+        y_values = [point[1] for point in self.points]
+
+        self.aabb["top"] = min(y_values)
+        self.aabb["bottom"] = max(y_values)
+        self.aabb["left"] = min(x_values)
+        self.aabb["right"] = max(x_values)
+
+    def recompute(self):
+        self.recompute_points()
+        self.recompute_axes()
+        self.recompute_aabb()
 
     def to_dict(self):
         d = asdict(self)
