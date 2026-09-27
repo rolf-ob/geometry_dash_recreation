@@ -36,6 +36,7 @@ class Game():
         self.width = WIDTH
         self.height = HEIGHT
         self.view_width = WIDTH
+        self.view_height = HEIGHT
         self.scale = 1
         self.min_height = 0
         self.max_height = HEIGHT - 40
@@ -153,6 +154,18 @@ class Game():
                                 obj.height = 40
                                 obj.color = coin_color
 
+                        elif field_name == "shape" and text == "checkpoint":
+                            obj.width = 40
+                            obj.height = 40
+                            obj.rotation = 0
+                            obj.color = (255,)*3
+                            obj.outline = (0,)*3
+                            for layer in (self.background, self.objects, self.decoration):
+                                if obj in layer:
+                                    layer.remove(obj)
+                                    break
+                            self.checkpoints.append(obj)
+
                         elif obj.shape == "gamemode" and field_name == "modifier" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                             setattr(obj, field_name, text)
                             obj.color = gamemode_colors[text]
@@ -250,7 +263,6 @@ class Game():
         self.player.y = self.checkpoints[self.checkpoint].y
         self.y_vel = 0
         self.dashing = False
-        self.player_points = self.player.get_points()
         start_x = self.player.x - self.checkpoints[0].x
         end_x = self.level_length - self.checkpoints[0].x - self.player.width
         self.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
@@ -265,7 +277,6 @@ class Game():
             coin["collected"] = False
         
         self.hitbox_trail = []
-        self.hitbox_trail_points = []
         self.wave_trail = [(self.player.x + 20, self.player.y)] if self.gamemode == "wave" else []
     
     def load_level(self):
@@ -294,11 +305,6 @@ class Game():
         self.checkpoints = self.level["checkpoints"]
         self.checkpoint = 0
         
-        self.background_points = [obj.get_points() for obj in self.background]
-        self.object_points = [obj.get_points() for obj in self.objects]
-        self.decoration_points = [obj.get_points() for obj in self.decoration]
-        self.checkpoint_points = [obj.get_points() for obj in self.checkpoints]
-        
         self.shapes = []
         self.ends = []
         self.gamemodes = []
@@ -308,34 +314,34 @@ class Game():
         self.pads = []
         self.coins = []
 
-        for obj, points in zip(self.objects, self.object_points):
+        for obj in self.objects:
             if obj.shape in ("square", "spike", "slope", "circle"):
-                self.shapes.append((obj, points))
+                self.shapes.append(obj)
             
             elif obj.shape == "end":
-                self.ends.append((obj, points))
+                self.ends.append(obj)
             
             elif obj.shape == "gamemode":
-                self.gamemodes.append((obj, points))
+                self.gamemodes.append(obj)
             
             elif obj.shape == "speed":
-                self.speeds.append((obj, points))
+                self.speeds.append(obj)
             
             elif obj.shape == "gravity":
-                self.gravitys.append((obj, points))
+                self.gravitys.append(obj)
             
             elif obj.shape == "orb":
                 self.orbs.append({
-                    "orb": (obj, points),
+                    "orb": obj,
                     "clicked": False
                 })
             
             elif obj.shape == "pad":
-                self.pads.append((obj, points))
+                self.pads.append(obj)
             
             elif obj.shape == "coin":
                 self.coins.append({
-                    "coin": (obj, points),
+                    "coin": obj,
                     "collected": False
                 })
         

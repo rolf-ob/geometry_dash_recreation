@@ -1,7 +1,8 @@
-- Checkpoints as shapes
 - Rotate objects around x+20 y+20, obj center if holding alt
 - Hide mouse
 - Obj scale mode for WASD
+- Coin and orb own class for collected/clicked or add interacted to obj class
+- Only seeing objects in current layer
 
 - sorted() function for leaderboard/checkpoint sorting
 
@@ -22,5 +23,3 @@
 - Images/sprites
 - Each level as its own json file
 - UI menu and build mode
-
-positions never float, rotations max 1 decimal, clamped speed, clamped level number, visually collect coins

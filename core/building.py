@@ -33,24 +33,20 @@ def place_object(game):
     mouse_x -= mouse_x % 40
     mouse_y -= mouse_y % 40
     layer = (game.background, game.objects, game.decoration)[game.layer]
-    layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
-    if not any(polygons_collide(mouse_pos, points) for points in layer_points):
-        new_obj = Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3)
-        layer.append(new_obj)
-        layer_points.append(new_obj.get_points())
+    if not any(polygons_collide(mouse_pos, obj.points) for obj in layer):
+        layer.append(Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3))
 
 def select_object(game, shifting):
     if not game.editing_level:
         mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
         mouse_pos = [(mouse_x - 1, mouse_y), (mouse_x, mouse_y), (mouse_x + 1, mouse_y)]        
         layer = (game.background, game.objects, game.decoration)[game.layer]
-        layer_points = (game.background_points, game.object_points, game.decoration_points)[game.layer]
 
         obj_selected = False
         cp_selected = False
-        for obj, points in zip((*layer, *game.checkpoints), (*layer_points, *game.checkpoint_points)):
-            if polygons_collide(mouse_pos, points):
+        for obj in (*layer, *game.checkpoints):
+            if polygons_collide(mouse_pos, obj.points):
                 if shifting:
                     obj.selected = True
                 else:
@@ -69,7 +65,7 @@ def select_object(game, shifting):
         else:
             close_menu(game)
 
-def move_objects(game, direction, shift, ctrl, alt):
+def move_objects(game, direction, shift, ctrl, alt): #! Make dicts for shift: 1 ctrl: 200 etc
     if shift:
         distance = 1
     elif ctrl:
@@ -89,12 +85,11 @@ def move_objects(game, direction, shift, ctrl, alt):
     elif direction == "right":
         add_x = distance
 
-    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
-        for i, obj in enumerate(layer):
-            if obj.selected:
-                obj.x += add_x
-                obj.y += add_y
-                layer_points[i] = obj.get_points()
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            obj.x += add_x
+            obj.y += add_y
+            obj.recompute()
 
 def rotate_objects(game, way):
     if way == "counter clockwise":
@@ -105,12 +100,11 @@ def rotate_objects(game, way):
     x_positions = []
     y_positions = []
 
-    for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
-        for i, obj in enumerate(layer):
-            if obj.selected:
-                for point in layer_points[i]:
-                    x_positions.append(point[0])
-                    y_positions.append(point[1])
+    for obj in (*game.background, *game.objects, *game.decoration):
+        if obj.selected:
+            for point in obj.points:
+                x_positions.append(point[0])
+                y_positions.append(point[1])
 
     if x_positions:
         min_x = min(x_positions)
@@ -120,22 +114,21 @@ def rotate_objects(game, way):
         center_x = min_x + (max_x - min_x) / 2
         center_y = min_y + (max_y - min_y) / 2
 
-        for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
-            for i, obj in enumerate(layer):
-                if obj.selected:
-                    angle = math.radians(rotation)
-                    cos_a, sin_a = math.cos(angle), math.sin(angle)
+        for obj in (*game.background, *game.objects, *game.decoration):
+            if obj.selected:
+                angle = math.radians(rotation)
+                cos_a, sin_a = math.cos(angle), math.sin(angle)
 
-                    point_x = obj.x + obj.width / 2
-                    point_y = obj.y + obj.height / 2
-                    delta_x, delta_y = point_x - center_x, point_y - center_y
-                    rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
-                    rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
+                point_x = obj.x + obj.width / 2
+                point_y = obj.y + obj.height / 2
+                delta_x, delta_y = point_x - center_x, point_y - center_y
+                rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
+                rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
 
-                    obj.rotation = round((obj.rotation + rotation) % 360, 1)
-                    obj.x = int(rotated_x - obj.width / 2)
-                    obj.y = int(rotated_y - obj.height / 2)
-                    layer_points[i] = obj.get_points()
+                obj.rotation = round((obj.rotation + rotation) % 360, 1)
+                obj.x = int(rotated_x - obj.width / 2)
+                obj.y = int(rotated_y - obj.height / 2)
+                obj.recompute()
 
 def flip_objects(game, way):
     if way == "horizontally":
@@ -144,65 +137,63 @@ def flip_objects(game, way):
         axis = 1
     positions = []
 
-    for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
-        for i, obj in enumerate(layer):
-            if obj.selected:
-                for point in layer_points[i]:
-                    positions.append(point[axis])
+    for obj in (*game.background, *game.objects, *game.decoration):
+        if obj.selected:
+            for point in obj.points:
+                positions.append(point[axis])
 
     if positions:
         min_pos = min(positions)
         max_pos = max(positions)
         center_pos = min_pos + (max_pos - min_pos) / 2
 
-        for layer, layer_points in zip((game.background, game.objects, game.decoration), (game.background_points, game.object_points, game.decoration_points)):
-            for i, obj in enumerate(layer):
-                if obj.selected:
-                    if way == "horizontally":
-                        center = obj.x + obj.width / 2
-                        flipped_center = center_pos - (center - center_pos)
-                        obj.x = int(flipped_center - obj.width / 2)
+        for obj in (*game.background, *game.objects, *game.decoration):
+            if obj.selected:
+                if way == "horizontally":
+                    center = obj.x + obj.width / 2
+                    flipped_center = center_pos - (center - center_pos)
+                    obj.x = int(flipped_center - obj.width / 2)
 
-                        if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
-                            obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
-                            
-                        elif obj.shape == "slope":
-                            obj.rotation = round(obj.rotation - 90 + obj.rotation * 2, 1)
-                            width = int(obj.height)
-                            height = int(obj.width)
-                            obj.width = width
-                            obj.height = height
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
+                        obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
                         
-                        elif obj.shape == "spike":
-                            obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
-                        
-                        obj.rotation = round(obj.rotation % 360, 1)
-                        if obj.rotation < 0:
-                            obj.rotation = round(obj.rotation + 360, 1)
-                        layer_points[i] = obj.get_points()
+                    elif obj.shape == "slope":
+                        obj.rotation = round(obj.rotation - 90 + obj.rotation * 2, 1)
+                        width = int(obj.height)
+                        height = int(obj.width)
+                        obj.width = width
+                        obj.height = height
                     
-                    elif way == "vertically":
-                        center = obj.y + obj.height / 2
-                        flipped_center = center_pos - (center - center_pos)
-                        obj.y = int(flipped_center - obj.height / 2)
+                    elif obj.shape == "spike":
+                        obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
+                    
+                    obj.rotation = round(obj.rotation % 360, 1)
+                    if obj.rotation < 0:
+                        obj.rotation = round(obj.rotation + 360, 1)
+                    obj.recompute()
+                
+                elif way == "vertically":
+                    center = obj.y + obj.height / 2
+                    flipped_center = center_pos - (center - center_pos)
+                    obj.y = int(flipped_center - obj.height / 2)
 
-                        if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
-                            obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
-                            
-                        elif obj.shape == "slope":
-                            obj.rotation = round(obj.rotation - 270 + obj.rotation * 2, 1)
-                            width = int(obj.height)
-                            height = int(obj.width)
-                            obj.width = width
-                            obj.height = height
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
+                        obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
                         
-                        elif obj.shape == "spike":
-                            obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
-                        
-                        obj.rotation = round(obj.rotation % 360, 1)
-                        if obj.rotation < 0:
-                            obj.rotation = round(obj.rotation + 360, 1)
-                        layer_points[i] = obj.get_points()
+                    elif obj.shape == "slope":
+                        obj.rotation = round(obj.rotation - 270 + obj.rotation * 2, 1)
+                        width = int(obj.height)
+                        height = int(obj.width)
+                        obj.width = width
+                        obj.height = height
+                    
+                    elif obj.shape == "spike":
+                        obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
+                    
+                    obj.rotation = round(obj.rotation % 360, 1)
+                    if obj.rotation < 0:
+                        obj.rotation = round(obj.rotation + 360, 1)
+                    obj.recompute()
 
 def deselect_objects(game):
     if not game.editing_level:
@@ -212,46 +203,42 @@ def deselect_objects(game):
         close_menu(game)
 
 def duplicate_objects(game):
-    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
+    for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
             if obj.selected:
                 modifier = obj.modifier if obj.shape != "checkpoint" else obj.modifier.copy()
-                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier))
-                layer_points.append(layer[-1].get_points())
+                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True))
+                obj.selected = False
 
 def delete_objects(game):
-    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
-        for obj, points in zip(layer.copy(), layer_points.copy()):
-            if obj.selected:
-                if obj != game.checkpoints[0]:
-                    layer.remove(obj)
-                    layer_points.remove(points)
-    
+    for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+        for obj in layer.copy():
+            if obj.selected and obj != game.checkpoints[0]:
+                layer.remove(obj)
     close_menu(game)
 
 def snap_grid_objects(game):
-    for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
-        for i, obj in enumerate(layer):
-            if obj.selected:
-                if obj.x % 40 > 20:
-                    obj.x += 40 - obj.x % 40
-                else:
-                    obj.x -= obj.x % 40
-                
-                if obj.y % 40 > 20:
-                    obj.y += 40 - obj.y % 40
-                else:
-                    obj.y -= obj.y % 40
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            if obj.x % 40 > 20:
+                obj.x += 40 - obj.x % 40
+            else:
+                obj.x -= obj.x % 40
+            
+            if obj.y % 40 > 20:
+                obj.y += 40 - obj.y % 40
+            else:
+                obj.y -= obj.y % 40
 
-                if obj.rotation % 90 > 45:
-                    obj.rotation = round(obj.rotation + 90 - obj.rotation % 90, 1)
-                else:
-                    obj.rotation = round(obj.rotation - obj.rotation % 90, 1)
-                        
-                obj.rotation = round(obj.rotation % 360, 1)
-                if obj.rotation < 0:
-                    obj.rotation = round(obj.rotation + 360, 1)
-                layer_points[i] = obj.get_points()
+            if obj.rotation % 90 > 45:
+                obj.rotation = round(obj.rotation + 90 - obj.rotation % 90, 1)
+            else:
+                obj.rotation = round(obj.rotation - obj.rotation % 90, 1)
+                    
+            obj.rotation = round(obj.rotation % 360, 1)
+            if obj.rotation < 0:
+                obj.rotation = round(obj.rotation + 360, 1)
+            obj.recompute()
 
 def switch_layer(game, way):
     if way == "previous":

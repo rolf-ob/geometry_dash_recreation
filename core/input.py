@@ -124,6 +124,7 @@ def handle_input(game):
         elif event.type == py.VIDEORESIZE:
             game.width, game.height = event.size
             game.view_width = game.width * (HEIGHT / game.height)
+            game.view_height = game.height * (HEIGHT / game.height)
             game.scale = game.height / HEIGHT
             game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
@@ -135,11 +136,10 @@ def handle_input(game):
             if game.active_textbox:
                 if event.key == py.K_RETURN:
                     if game.building and not game.editing_level:
-                        for layer, layer_points in zip((game.background, game.objects, game.decoration, game.checkpoints), (game.background_points, game.object_points, game.decoration_points, game.checkpoint_points)):
-                            for i, obj in enumerate(layer):
-                                if obj.selected:
-                                    game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                    layer_points[i] = obj.get_points()
+                        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+                            if obj.selected:
+                                game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                                obj.recompute()
                         game.active_textbox.text = ""
                     else:
                         game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)

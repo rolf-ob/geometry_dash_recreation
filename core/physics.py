@@ -10,9 +10,9 @@ def check_collision(game):
     game.max_height = HEIGHT - 40
     game.on_ground = False
 
-    for (obj, points) in game.shapes:
+    for obj in game.shapes:
         slide = False
-        if within_view(game, points) and polygons_collide(game.player_points, points):
+        if within_view(game, obj.points) and polygons_collide(game.player.points, obj.points):
             if obj.shape == "square" and obj.rotation == 0:
                 if game.hitbox_trail:
                     prev_player_top = game.hitbox_trail[-1].y
@@ -48,8 +48,8 @@ def check_collision(game):
             elif game.gamemode == "wave" and game.wave_trail[-1][1] != game.player.y:
                 game.wave_trail.append((game.player.x + 20, game.player.y))
 
-    for (obj, points) in game.ends:
-        if within_view(game, points) and polygons_collide(game.player_points, points):
+    for obj in game.ends:
+        if within_view(game, obj.points) and polygons_collide(game.player.points, obj.points):
             game.completed = True
             if not game.cheated:
                 if game.name in game.victors.keys():
@@ -59,8 +59,8 @@ def check_collision(game):
                 else:
                     game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1])
 
-    for (obj, points) in game.gamemodes:
-        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)):
+    for obj in game.gamemodes:
+        if within_view(game, obj.points) and polygons_collide(game.player.points, obj.points) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1].points, obj.points)):
             if game.gamemode != obj.modifier:
 
                 if game.gamemode == "wave":
@@ -72,13 +72,13 @@ def check_collision(game):
                 if game.gamemode == "wave":
                     game.wave_trail = [(game.player.x + 20, game.player.y)]
 
-    for (obj, points) in game.speeds:
-        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)):
+    for obj in game.speeds:
+        if within_view(game, obj.points) and polygons_collide(game.player.points, obj.points) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1].points, obj.points)):
             if game.speed != float(obj.modifier):
                 game.speed = float(obj.modifier)
 
-    for (obj, points) in game.gravitys:
-        if within_view(game, points) and polygons_collide(game.player_points, points) and obj.modifier and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)) and game.gravity != float(obj.modifier):
+    for obj in game.gravitys:
+        if within_view(game, obj.points) and polygons_collide(game.player.points, obj.points) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1].points, obj.points)) and game.gravity != float(obj.modifier):
             game.gravity = float(obj.modifier)
             if game.gamemode == "wave":
                 game.wave_trail.append((game.player.x + 20, game.player.y))
@@ -95,7 +95,7 @@ def check_collision(game):
     for orb in game.orbs:
         if round(game.y_vel) != -40 / game.speed*abs(game.gravity):
             if orb["orb"][0].modifier and orb["orb"][0].modifier != "dash":
-                if not orb["clicked"] and game.clicking > 0 and not game.clicked and not game.on_ground and within_view(game, orb["orb"][1]) and polygons_collide(game.player_points, orb["orb"][1]):
+                if not orb["clicked"] and game.clicking > 0 and not game.clicked and not game.on_ground and within_view(game, orb["orb"][1]) and polygons_collide(game.player.points, orb["orb"][1]):
                     orb["clicked"]= True
                     game.clicked = True
 
@@ -131,7 +131,7 @@ def check_collision(game):
                         game.y_vel = min(game.y_vel, -4)
 
             elif orb["orb"][0].modifier and not game.clicked and not game.on_ground:
-                if within_view(game, orb["orb"][1]) and polygons_collide(game.player_points, orb["orb"][1]) and game.clicking > 0:
+                if within_view(game, orb["orb"][1]) and polygons_collide(game.player.points, orb["orb"][1]) and game.clicking > 0:
                     orb["clicked"] = True
                     game.clicked = True
                 elif orb["clicked"] and game.clicking == 0:
@@ -143,8 +143,8 @@ def check_collision(game):
                 else:
                     game.dashing = False
     
-    for (obj, points) in game.pads:
-        if obj.modifier and within_view(game, points) and polygons_collide(game.player_points, points) and (game.hitbox_trail_points and not polygons_collide(game.hitbox_trail_points[-1], points)):
+    for obj in game.pads:
+        if obj.modifier and within_view(game, obj.points) and polygons_collide(game.player.points, obj.points) and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1].points, obj.points)):
             ship_multiplier = 0.5
             ufo_multiplier = 0.7
             
@@ -182,14 +182,12 @@ def check_collision(game):
                 game.y_vel = -40 / game.speed*abs(game.gravity)
 
     for coin in game.coins:
-        if not coin["collected"] and not game.cheated and within_view(game, coin["coin"][1]) and polygons_collide(game.player_points, coin["coin"][1]):
+        if not coin["collected"] and not game.cheated and within_view(game, coin["coin"].points) and polygons_collide(game.player.points, coin["coin"].points):
             coin["collected"] = True
             game.collected_coins[0] += 1
-            game.collected_coins[1] += coin["coin"][0].modifier
+            game.collected_coins[1] += coin["coin"].modifier
 
-    hitbox = Object(game.player.x, game.player.y, 40, 40, 0, "square", (0,)*3, hitbox_color)
-    game.hitbox_trail.append(hitbox)
-    game.hitbox_trail_points.append(hitbox.get_points())
+    game.hitbox_trail.append(Object(game.player.x, game.player.y, 40, 40, 0, "square", (0,)*3, hitbox_color))
 
 def update_position(game):
     fall_speed = -40 / game.speed*abs(game.gravity)
@@ -246,7 +244,7 @@ def update_position(game):
     game.player.x += game.speed
     game.player.y = max(game.min_height, min(game.max_height, game.player.y - game.y_vel*game.speed*game.gravity)) if not game.dashing else game.player.y
 
-    game.player_points = game.player.get_points()
+    game.player.recompute()
     start_x = game.player.x - game.checkpoints[0].x
     end_x = game.level_length - game.checkpoints[0].x - game.player.width
     game.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
