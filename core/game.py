@@ -50,6 +50,7 @@ class Game():
         self.building_camera_x = 0
         self.building_camera_y = 0
         self.layer = 1
+        self.layer_view = True
         self.scale_mode = False
         self.editing_level = False
 
@@ -66,6 +67,7 @@ class Game():
 
         self.load_level()
 
+        py.mouse.set_visible(False)
         self.font = py.font.SysFont("Arial", FONT_SIZE)
         self.text_cache = TextCache(self.font)
         self.screen = py.display.set_mode((WIDTH, HEIGHT), py.RESIZABLE)

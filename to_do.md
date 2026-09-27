@@ -1,7 +1,4 @@
 - Rotate objects around x+20 y+20, obj center if holding alt
-- Hide mouse
-- Obj scale mode for WASD
-- Only seeing objects in current layer
 
 - sorted() function for leaderboard/checkpoint sorting
 
@@ -15,6 +12,7 @@
 - Display from which percentage you started a run
 - Dark mode
 - Better x, y alignment compared to width and height
+- Grouping background, objects and decoration
 - Camera going up and down with player
 - Changing controls in menu and changing tutorial with it
 - Sliding on slopes or rotated squares

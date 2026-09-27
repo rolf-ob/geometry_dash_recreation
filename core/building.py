@@ -14,6 +14,7 @@ def toggle_building(game):
         game.clicked = False
         game.layer = 1
         game.title = ["Objects", -1]
+        py.mouse.set_visible(True)
         close_menu(game)
 
     else:
@@ -25,6 +26,8 @@ def toggle_building(game):
         close_menu(game)
         if game.paused:
             open_menu(game, "settings")
+        else:
+            py.mouse.set_visible(False)
         game.load_level()
 
 def place_object(game):

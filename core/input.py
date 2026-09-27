@@ -25,23 +25,25 @@ def click(game, type, button, shift):
         select_object(game, False)
 
 def toggle_pause(game):
+    game.paused = not game.paused
+
+    if game.paused:
+        py.mouse.set_visible(True)
+        open_menu(game, "settings")
+    else:
+        py.mouse.set_visible(False)
+        close_menu(game)
+        if not game.completed and (game.show_hitboxes or game.speedhack):
+            game.cheated = True
+    
     if game.hitbox_trail and not game.completed:
         game.cheated = True
     
-    game.paused = not game.paused
-    if not game.paused and game.dead == 0 and not game.completed and not game.building:
+    if not game.paused and game.dead == 0 and not game.completed:
         game.camera_x = game.player.x - PLAYER_X
         game.camera_y = 0
         game.camera_zoom = 1
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
-
-    if not game.building:
-        if game.paused:
-            open_menu(game, "settings")
-        else:
-            close_menu(game)
-            if not game.completed and (game.show_hitboxes or game.speedhack):
-                game.cheated = True
 
 def switch_checkpoint(game, way):
     if way == "previous":
@@ -220,6 +222,8 @@ def handle_input(game):
                         switch_layer(game, "previous")
                     elif any(event.key == key for key in game.controls["next layer"]):
                         switch_layer(game, "next")
+                    elif any(event.key == key for key in game.controls["toggle layer view"]):
+                        game.layer_view = not game.layer_view
 
                     elif any(event.key == key for key in game.controls["reset camera"]):
                         reset_camera(game)

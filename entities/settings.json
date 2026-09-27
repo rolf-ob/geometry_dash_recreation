@@ -88,6 +88,9 @@
     "next layer": [
       "c"
     ],
+    "toggle layer view": [
+      "<"
+    ],
     "reset camera": [
       "r"
     ],

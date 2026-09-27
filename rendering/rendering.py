@@ -256,12 +256,23 @@ def draw(game):
     game.screen.fill(game.background_color)
     screen = game.screen
 
-    draw_background(game, screen)
-    draw_objects(game, screen)
-    draw_decoration(game, screen)
-
     if game.building:
-        draw_checkpoints(game, screen)
+        if not game.layer_view:
+            draw_background(game, screen)
+            draw_objects(game, screen)
+            draw_decoration(game, screen)
+            draw_checkpoints(game, screen)
+        else:
+            if game.layer == 0:
+                draw_background(game, screen)
+            elif game.layer == 1:
+                draw_objects(game, screen)
+            elif game.layer == 2:
+                draw_decoration(game, screen)
+    else:
+        draw_background(game, screen)
+        draw_objects(game, screen)
+        draw_decoration(game, screen)
     
     if game.show_hitboxes and len(game.hitbox_trail) > 0:
         draw_hitbox_trail(game, screen)
