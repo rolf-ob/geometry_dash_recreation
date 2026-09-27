@@ -25,8 +25,9 @@ def click(game, type, button, shift):
         select_object(game, False)
 
 def toggle_pause(game):
-    if game.hitbox_trail:
+    if game.hitbox_trail and not game.completed:
         game.cheated = True
+    
     game.paused = not game.paused
     if not game.paused and game.dead == 0 and not game.completed and not game.building:
         game.camera_x = game.player.x - PLAYER_X
@@ -39,6 +40,8 @@ def toggle_pause(game):
             open_menu(game, "settings")
         else:
             close_menu(game)
+            if not game.completed and (game.show_hitboxes or game.speedhack):
+                game.cheated = True
 
 def switch_checkpoint(game, way):
     if way == "previous":
@@ -174,7 +177,7 @@ def handle_input(game):
                         switch_level(game, "next")
 
                     elif any(event.key == key for key in game.controls["toggle speedhack"]):
-                        if not game.completed:
+                        if game.hitbox_trail and not game.completed:
                             game.cheated = True
                         game.speedhack = not game.speedhack
                     
@@ -234,7 +237,7 @@ def handle_input(game):
                     game.switch_attribute("next")
 
                 elif any(event.key == key for key in game.controls["toggle hitboxes"]):
-                    if not game.completed:
+                    if game.hitbox_trail and not game.completed:
                         game.cheated = True
                     game.show_hitboxes = not game.show_hitboxes
 

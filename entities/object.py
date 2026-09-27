@@ -7,7 +7,7 @@ class Object:
     y: int
     width: int
     height: int
-    rotation: int
+    rotation: float
     shape: str
     color: tuple[int, int, int]
     outline: tuple[int, int, int]

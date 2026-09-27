@@ -132,9 +132,9 @@ def rotate_objects(game, way):
                     rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
                     rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
 
-                    obj.rotation = (obj.rotation + rotation) % 360
-                    obj.x = rotated_x - obj.width / 2
-                    obj.y = rotated_y - obj.height / 2
+                    obj.rotation = round((obj.rotation + rotation) % 360, 1)
+                    obj.x = int(rotated_x - obj.width / 2)
+                    obj.y = int(rotated_y - obj.height / 2)
                     layer_points[i] = obj.get_points()
 
 def flip_objects(game, way):
@@ -161,47 +161,47 @@ def flip_objects(game, way):
                     if way == "horizontally":
                         center = obj.x + obj.width / 2
                         flipped_center = center_pos - (center - center_pos)
-                        obj.x = flipped_center - obj.width / 2
+                        obj.x = int(flipped_center - obj.width / 2)
 
                         if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
-                            obj.rotation -= obj.rotation * 2
+                            obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
                             
                         elif obj.shape == "slope":
-                            obj.rotation -= 90 + obj.rotation * 2
-                            width = obj.height
-                            height = obj.width
+                            obj.rotation = round(obj.rotation - 90 + obj.rotation * 2, 1)
+                            width = int(obj.height)
+                            height = int(obj.width)
                             obj.width = width
                             obj.height = height
                         
                         elif obj.shape == "spike":
-                            obj.rotation -= obj.rotation * 2
+                            obj.rotation = round(obj.rotation - obj.rotation * 2, 1)
                         
-                        obj.rotation %= 360
+                        obj.rotation = round(obj.rotation % 360, 1)
                         if obj.rotation < 0:
-                            obj.rotation += 360
+                            obj.rotation = round(obj.rotation + 360, 1)
                         layer_points[i] = obj.get_points()
                     
                     elif way == "vertically":
                         center = obj.y + obj.height / 2
                         flipped_center = center_pos - (center - center_pos)
-                        obj.y = flipped_center - obj.height / 2
+                        obj.y = int(flipped_center - obj.height / 2)
 
                         if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
-                            obj.rotation -= 180 + obj.rotation * 2
+                            obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
                             
                         elif obj.shape == "slope":
-                            obj.rotation -= 270 + obj.rotation * 2
-                            width = obj.height
-                            height = obj.width
+                            obj.rotation = round(obj.rotation - 270 + obj.rotation * 2, 1)
+                            width = int(obj.height)
+                            height = int(obj.width)
                             obj.width = width
                             obj.height = height
                         
                         elif obj.shape == "spike":
-                            obj.rotation -= 180 + obj.rotation * 2
+                            obj.rotation = round(obj.rotation - 180 + obj.rotation * 2, 1)
                         
-                        obj.rotation %= 360
+                        obj.rotation = round(obj.rotation % 360, 1)
                         if obj.rotation < 0:
-                            obj.rotation += 360
+                            obj.rotation = round(obj.rotation + 360, 1)
                         layer_points[i] = obj.get_points()
 
 def deselect_objects(game):
@@ -244,13 +244,13 @@ def snap_grid_objects(game):
                     obj.y -= obj.y % 40
 
                 if obj.rotation % 90 > 45:
-                    obj.rotation += 90 - obj.rotation % 90
+                    obj.rotation = round(obj.rotation + 90 - obj.rotation % 90, 1)
                 else:
-                    obj.rotation -= obj.rotation % 90
+                    obj.rotation = round(obj.rotation - obj.rotation % 90, 1)
                         
-                obj.rotation %= 360
+                obj.rotation = round(obj.rotation % 360, 1)
                 if obj.rotation < 0:
-                    obj.rotation += 360
+                    obj.rotation = round(obj.rotation + 360, 1)
                 layer_points[i] = obj.get_points()
 
 def switch_layer(game, way):

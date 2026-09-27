@@ -192,8 +192,6 @@ def check_collision(game):
     game.hitbox_trail_points.append(hitbox.get_points())
 
 def update_position(game):
-    game.camera_x += game.speed
-    game.player.x += game.speed
     fall_speed = -40 / game.speed*abs(game.gravity)
 
     if round(game.y_vel) != -40 / game.speed*abs(game.gravity):
@@ -244,6 +242,8 @@ def update_position(game):
             else:
                 game.y_vel = max(fall_speed, game.y_vel - 0.05)
 
+    game.camera_x += game.speed
+    game.player.x += game.speed
     game.player.y = max(game.min_height, min(game.max_height, game.player.y - game.y_vel*game.speed*game.gravity)) if not game.dashing else game.player.y
 
     game.player_points = game.player.get_points()

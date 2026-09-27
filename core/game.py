@@ -106,11 +106,11 @@ class Game():
                         elif field_name == "height":
                             setattr(obj, field_name, max(0, int(text)))
                         elif field_name == "rotation":
-                            rotation = int(text)
+                            rotation = float(text)
                             rotation %= 360
                             if rotation < 0:
                                 rotation += 360
-                            setattr(obj, field_name, rotation)
+                            setattr(obj, field_name, round(rotation, 1))
                         
                         elif field_name in ("color", "outline"):
                             r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
@@ -158,7 +158,7 @@ class Game():
                             obj.color = gamemode_colors[text]
 
                         elif obj.shape == "speed" and field_name == "modifier":
-                            setattr(obj, field_name, float(text))
+                            setattr(obj, field_name, min(40, float(text)))
 
                         elif obj.shape == "gravity" and field_name == "modifier":
                             setattr(obj, field_name, float(text))
@@ -182,7 +182,7 @@ class Game():
                             obj.color = gamemode_colors[text]
 
                         elif field_name == "speed":
-                            obj.modifier["speed"] = float(text)
+                            obj.modifier["speed"] = min(40, float(text))
 
                         elif field_name == "gravity":
                             obj.modifier["gravity"] = float(text)
@@ -203,6 +203,7 @@ class Game():
                         self.level["meta"]["points"] = int(text)
 
                     elif field_name == "level number":
+                        new_number = max(1, min(len(self.levels)-1, int(text)))
                         self.levels.pop(self.current_level)
                         self.levels.insert(int(text), self.level)
                         self.current_level = int(text)
@@ -253,10 +254,7 @@ class Game():
         start_x = self.player.x - self.checkpoints[0].x
         end_x = self.level_length - self.checkpoints[0].x - self.player.width
         self.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
-        if self.checkpoint != 0:
-            self.cheated = True
-        else:
-            self.cheated = self.show_hitboxes or self.speedhack
+        self.cheated = True if self.checkpoint != 0 else False
         self.noclip_deaths = 0
         self.dead = 0
         self.completed = False

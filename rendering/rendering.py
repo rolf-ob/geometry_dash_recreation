@@ -45,19 +45,20 @@ def draw_objects(game, screen):
             draw_polygon(game, screen, points, color, 0)
             if obj.selected:
                 screen.blit(game.text_cache.get_surface(str(obj.x), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
-
-        elif obj.shape == "coin" and obj.modifier and within_view(game, points):
-            color = (200, 255, 200) if obj.selected else obj.color
-            outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
-            draw_polygon(game, screen, points, color, 0)
-            draw_polygon(game, screen, points, outline_color, 1)
-            screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
         
-        elif within_view(game, points):
+        elif obj.shape != "coin" and within_view(game, points):
             color = (200, 255, 200) if obj.selected else obj.color
             outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
             draw_polygon(game, screen, points, color, 0)
             draw_polygon(game, screen, points, outline_color, 1)
+
+    for coin in game.coins:
+        if coin["coin"][0].modifier and not coin["collected"] and within_view(game, coin["coin"][1]):
+            color = (200, 255, 200) if coin["coin"][0].selected else coin["coin"][0].color
+            outline_color = coin["coin"][0].outline if not game.show_hitboxes else (255, 0, 0)
+            draw_polygon(game, screen, coin["coin"][1], color, 0)
+            draw_polygon(game, screen, coin["coin"][1], outline_color, 1)
+            screen.blit(game.text_cache.get_surface(str(coin["coin"][0].modifier), (0,)*3), world_to_screen(game, coin["coin"][0].x + 5, coin["coin"][0].y + 5))
 
 def draw_decoration(game, screen):
     for obj, points in zip(game.decoration, game.decoration_points):
@@ -200,7 +201,7 @@ def draw_title(game, screen):
     if not game.building and game.current_level != 0:
         text = game.text_cache.get_surface(f"{game.percent}%", (0,)*3)
         margin = 10
-        width, height = game.text_cache.get_size("100.0%", (0,)*3)
+        width, height = game.text_cache.get_size(f"{game.percent}%", (0,)*3)
         x, y = (game.width - width - 20, 20)
         py.draw.rect(screen, (255,)*3, (x - margin, y - margin, width + margin*2, height + margin*2))
         py.draw.rect(screen, (0,)*3, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
