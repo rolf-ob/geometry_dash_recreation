@@ -18,7 +18,7 @@ class Game():
         with open("entities/levels.json", "r") as f:
             self.levels = data_to_levels(json.load(f))
         
-        with open("entities/settings.json", "r") as f:
+        with open("players/settings.json", "r") as f:
             settings = json.load(f)
             self.accessibility = settings["accessibility"]
             self.controls = {}
@@ -176,7 +176,7 @@ class Game():
                             obj.width = 40
                             obj.height = 40
                             obj.rotation = 0
-                            obj.color = (255,)*3
+                            obj.color = (0, 255, 0)
                             obj.outline = (0,)*3
                             obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1}
                             for layer in (self.background, self.objects, self.decoration):
@@ -275,16 +275,18 @@ class Game():
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
         self.player = Object(0, 0, 40, 40, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
+        self.player.recompute()
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
-        self.player.recompute()
         self.y_vel = 0
         self.dashing = False
         start_x = self.player.x - self.checkpoints[0].x
+        checkpoint_x = self.checkpoints[self.checkpoint].x - self.checkpoints[0].x
         end_x = self.level_length - self.checkpoints[0].x - self.player.width
+        self.starting_percent = 0 if end_x == 0 else min(100, round(checkpoint_x / end_x * 100))
         self.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
         self.cheated = True if self.checkpoint != 0 or (not self.paused and (self.speedhack or self.show_hitboxes)) else False
         self.noclip_deaths = 0
@@ -378,7 +380,7 @@ class Game():
             controls[action] = [py.key.name(key) for key in keys]
         
         settings = {"accessibility": self.accessibility, "controls": controls}
-        with open("entities/settings.json", "w") as f:
+        with open("players/settings.json", "w") as f:
             json.dump(settings, f, indent=2)
 
         self.title = ["Settings and levels saved", time.perf_counter() + 2]

@@ -13,17 +13,13 @@ def check_collision(game):
         slide = False
         if collide(game.player, obj):
             if obj.shape == "square" and obj.rotation == 0:
-                if game.hitbox_trail:
-                    prev_player = game.hitbox_trail[-1].aabb
-                else:
-                    prev_player = game.player.aabb
-                
+                prev_player = game.hitbox_trail[-1].aabb if game.hitbox_trail else game.player.aabb
                 player = game.player.aabb
 
-                if (player["top"] < obj.y+obj.height < prev_player["top"] or player["top"] == obj.y+obj.height) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                if (player["top"] <= obj.y+obj.height <= prev_player["top"] or player["top"] == obj.y+obj.height) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                     game.min_height = max(game.min_height, obj.y+obj.height)
                     slide = True
-                elif (prev_player["bottom"] < obj.y < player["bottom"] or obj.y == player["bottom"]) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                elif (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                     game.max_height = min(game.max_height, obj.y - 40)
                     slide = True
 
@@ -64,6 +60,7 @@ def check_collision(game):
                 
                 game.gamemode = obj.modifier
                 game.player.color = gamemode_colors[game.gamemode]
+                game.player.recompute()
 
                 if game.gamemode == "wave":
                     game.wave_trail = [(game.player.x + 20, game.player.y)]
@@ -235,14 +232,16 @@ def update_position(game):
                 game.y_vel = fall_speed
             else:
                 game.y_vel = max(fall_speed, game.y_vel - 0.05)
-
+    
     game.camera_x += game.speed
     game.player.x += game.speed
     game.player.y = max(game.min_height, min(game.max_height, game.player.y - game.y_vel*game.speed*game.gravity)) if not game.dashing else game.player.y
-
     game.player.recompute()
+
     start_x = game.player.x - game.checkpoints[0].x
+    checkpoint_x = game.checkpoints[game.checkpoint].x - game.checkpoints[0].x
     end_x = game.level_length - game.checkpoints[0].x - game.player.width
+    game.starting_percent = 0 if end_x == 0 else min(100, round(checkpoint_x / end_x * 100))
     game.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
 
 def update_death_timer(game):

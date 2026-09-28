@@ -1,6 +1,7 @@
 import pygame as py
 import time
 
+from entities.object import Object
 from constants import WIDTH, HEIGHT, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
@@ -115,8 +116,15 @@ def draw_wave_trail(game, screen):
             py.draw.polygon(screen, game.primary_color, points, 1)
 
 def draw_player(game, screen):
-    draw_polygon(game, screen, game.player.points, game.player.color, 0)
-    draw_polygon(game, screen, game.player.points, game.primary_color, 1)
+    if game.hitbox_trail:
+        prev_player = game.hitbox_trail[-1]
+    else:
+        prev_player = game.player
+
+    rotation = (prev_player.y - game.player.y) * -20
+    player = Object(game.player.x, game.player.y, 40, 40, rotation, "square", game.player.color, (0,)*3)
+    draw_polygon(game, screen, player.points, game.player.color, 0)
+    draw_polygon(game, screen, player.points, game.primary_color, 1)
 
 def draw_leaderboard(game, screen):
     if game.current_level != 0:
@@ -198,9 +206,9 @@ def draw_title(game, screen):
     py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
     screen.blit(text, (x, y))
     if not game.building and game.current_level != 0:
-        text = game.text_cache.get_surface(f"{game.percent}%", game.primary_color)
+        text = game.text_cache.get_surface(f"{game.starting_percent}%-{game.percent}%", game.primary_color)
         margin = 10
-        width, height = game.text_cache.get_size(f"{game.percent}%", game.primary_color)
+        width, height = game.text_cache.get_size(f"{game.starting_percent}%-{game.percent}%", game.primary_color)
         x, y = (game.width - width - 20, 20)
         py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
         py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
