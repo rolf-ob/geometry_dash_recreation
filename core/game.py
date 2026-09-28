@@ -61,7 +61,7 @@ class Game():
         self.building_camera_x = 0
         self.building_camera_y = 0
         self.layer = 1
-        self.layer_view = True
+        self.layer_view = False
         self.scale_mode = False
         self.editing_level = False
 
@@ -356,6 +356,11 @@ class Game():
             
             elif obj.shape == "coin":
                 self.coins.append(obj)
+
+        self.current_group_id = 0
+        for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
+            if obj.group_id >= self.current_group_id:
+                self.current_group_id = obj.group_id + 1
         
         self.restart()
 

@@ -1,7 +1,7 @@
 import pygame as py
 import time
 
-from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, switch_layer, reset_camera, create_level, edit_level, close_menu, open_menu
+from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, create_level, edit_level, close_menu, open_menu
 from constants import HEIGHT, PLAYER_X, FONT_SIZE
 
 def click(game, type, button, shift):
@@ -103,10 +103,10 @@ def pan(game, y):
 
 def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
-        game.camera_zoom += 0.1
+        game.camera_zoom += game.camera_zoom/10
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
     elif y < 0 and (game.paused or game.completed or game.building) and game.camera_zoom > 1:
-        game.camera_zoom -= 0.1
+        game.camera_zoom = max(1, game.camera_zoom - game.camera_zoom/10)
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
 
 def handle_input(game):
@@ -225,6 +225,27 @@ def handle_input(game):
 
                     elif any(event.key == key for key in game.controls["snap grid objects"]):
                         snap_grid_objects(game)
+
+                    elif any(event.key == key for key in game.controls["group objects"]):
+                        group_objects(game, "group")
+                    elif any(event.key == key for key in game.controls["ungroup objects"]):
+                        group_objects(game, "ungroup")
+
+                    elif any(event.key == key for key in game.controls["layer objects last"]):
+                        layer_objects(game, "last")
+                    elif any(event.key == key for key in game.controls["layer objects back"]):
+                        layer_objects(game, "back")
+                    elif any(event.key == key for key in game.controls["layer objects forward"]):
+                        layer_objects(game, "forward")
+                    elif any(event.key == key for key in game.controls["layer objects first"]):
+                        layer_objects(game, "first")
+
+                    elif any(event.key == key for key in game.controls["move objects to background"]):
+                        move_objects_to_layer(game, "background")
+                    elif any(event.key == key for key in game.controls["move objects to objects"]):
+                        move_objects_to_layer(game, "objects")
+                    elif any(event.key == key for key in game.controls["move objects to decoration"]):
+                        move_objects_to_layer(game, "decoration")
                     
                     elif any(event.key == key for key in game.controls["previous layer"]):
                         switch_layer(game, "previous")

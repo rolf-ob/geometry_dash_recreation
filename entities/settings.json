@@ -83,6 +83,33 @@
     "snap grid objects": [
       "g"
     ],
+    "group objects": [
+      "j"
+    ],
+    "ungroup objects": [
+      "k"
+    ],
+    "layer objects last": [
+      "1"
+    ],
+    "layer objects back": [
+      "2"
+    ],
+    "layer objects forward": [
+      "3"
+    ],
+    "layer objects first": [
+      "4"
+    ],
+    "move objects to background": [
+      "5"
+    ],
+    "move objects to objects": [
+      "6"
+    ],
+    "move objects to decoration": [
+      "7"
+    ],
     "previous layer": [
       "z"
     ],

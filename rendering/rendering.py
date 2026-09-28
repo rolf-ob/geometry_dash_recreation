@@ -56,7 +56,7 @@ def draw_objects(game, screen):
                     outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
                     draw_polygon(game, screen, obj.points, color, 0)
                     draw_polygon(game, screen, obj.points, outline_color, 1)
-                    screen.blit(game.text_cache.get_surface(str(obj.modifier), game.primary_color), world_to_screen(game, obj.x + 5, obj.y + 5))
+                    screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
             
             else:
                 color = (200, 255, 200) if obj.selected else obj.color
@@ -78,7 +78,7 @@ def draw_checkpoints(game, screen):
             color = (200, 255, 200) if obj.selected else obj.color
             draw_polygon(game, screen, obj.points, color, 0)
             draw_polygon(game, screen, obj.points, obj.outline, 1)
-            screen.blit(game.text_cache.get_surface(text, game.primary_color), world_to_screen(game, obj.x + 5, obj.y + 5))
+            screen.blit(game.text_cache.get_surface(text, (0,)*3), world_to_screen(game, obj.x + 5, obj.y + 5))
 
 def draw_hitbox_trail(game, screen):
     for box in game.hitbox_trail:

@@ -15,14 +15,12 @@ class Object:
     modifier: str = None
     selected: bool = False
     interacted: bool = False
+    group_id: int = 0
 
     def __post_init__(self):
         self.recompute()
     
     def recompute_points(self):
-        center_x = self.x + self.width / 2
-        center_y = self.y + self.height / 2
-
         if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity", "pad"):
             corners = [
                 (self.x, self.y),
@@ -52,20 +50,19 @@ class Object:
 
         elif self.shape in ("circle", "orb", "coin"):
             sides = 20
-            radius = self.width / 2
-            center_x = self.x + radius
-            center_y = self.y + radius
             corners = []
             for i in range(sides):
                 angle = 2 * math.pi * i / sides
                 corners.append((
-                    center_x + radius * math.cos(angle),
-                    center_y + radius * math.sin(angle)
+                    self.x + self.width / 2 * math.cos(angle) + self.width / 2,
+                    self.y + self.height / 2 * math.sin(angle) + self.height / 2
                 ))
 
         if self.rotation == 0:
             self.points = corners
         else:
+            center_x = self.x + self.width / 2
+            center_y = self.y + self.height / 2
             angle = math.radians(self.rotation)
             cos_a, sin_a = math.cos(angle), math.sin(angle)
             self.points = []
@@ -109,5 +106,6 @@ class Object:
     def from_dict(cls, d):
         return cls(
             x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
-            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]), modifier=d["modifier"]
+            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]),
+            modifier=d["modifier"], group_id=d["group_id"]
         )
