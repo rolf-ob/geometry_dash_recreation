@@ -62,7 +62,7 @@
     ],
     "victors": {
       "Rolf": [
-        698,
+        700,
         6,
         0,
         0
@@ -94,7 +94,7 @@
     },
     "background": [
       {
-        "x": 2080,
+        "x": 4920,
         "y": 480,
         "width": 240,
         "height": 200,
@@ -111,10 +111,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 21
       },
       {
-        "x": 1680.0,
+        "x": 4520.0,
         "y": 0.0,
         "width": 1080,
         "height": 240,
@@ -131,10 +131,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 2520,
+        "x": 5360,
         "y": 240,
         "width": 240,
         "height": 200,
@@ -151,10 +151,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 1680,
+        "x": 4520,
         "y": 240,
         "width": 200,
         "height": 200,
@@ -171,12 +171,12 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       }
     ],
     "objects": [
       {
-        "x": 5180,
+        "x": 8020,
         "y": 0,
         "width": 1,
         "height": 720,
@@ -196,7 +196,7 @@
         "group_id": 0
       },
       {
-        "x": 1640.0,
+        "x": 4480.0,
         "y": -40.0,
         "width": 40,
         "height": 520,
@@ -213,10 +213,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 2520.0,
+        "x": 5360.0,
         "y": 440.0,
         "width": 240,
         "height": 40,
@@ -233,10 +233,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 1680.0,
+        "x": 4520.0,
         "y": 440.0,
         "width": 200,
         "height": 40,
@@ -253,10 +253,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 1640.0,
+        "x": 4480.0,
         "y": 680.0,
         "width": 1120,
         "height": 40,
@@ -273,10 +273,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 21
       },
       {
-        "x": 1840.0,
+        "x": 4680.0,
         "y": 280.0,
         "width": 240,
         "height": 160,
@@ -293,10 +293,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 2080.0,
+        "x": 4920.0,
         "y": 440.0,
         "width": 240,
         "height": 40,
@@ -313,10 +313,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 21
       },
       {
-        "x": 2040.0,
+        "x": 4880.0,
         "y": 200.0,
         "width": 320,
         "height": 40,
@@ -333,10 +333,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 2855.0,
+        "x": 5695.0,
         "y": 520.0,
         "width": 80,
         "height": 40,
@@ -353,10 +353,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 19
       },
       {
-        "x": 2895.0,
+        "x": 5735.0,
         "y": 520.0,
         "width": 80,
         "height": 40,
@@ -373,10 +373,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 19
       },
       {
-        "x": 3102.0,
+        "x": 5942.0,
         "y": 700.0,
         "width": 80,
         "height": 40,
@@ -393,10 +393,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 16
       },
       {
-        "x": 3062.0,
+        "x": 5902.0,
         "y": 700.0,
         "width": 80,
         "height": 40,
@@ -413,10 +413,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 16
       },
       {
-        "x": 3102.0,
+        "x": 5942.0,
         "y": 620.0,
         "width": 80,
         "height": 40,
@@ -433,10 +433,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 16
       },
       {
-        "x": 3142.0,
+        "x": 5982.0,
         "y": 620.0,
         "width": 80,
         "height": 40,
@@ -453,10 +453,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 16
       },
       {
-        "x": 3083.0,
+        "x": 5923.0,
         "y": 420.0,
         "width": 80,
         "height": 40,
@@ -473,10 +473,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 3123.0,
+        "x": 5963.0,
         "y": 420.0,
         "width": 80,
         "height": 40,
@@ -493,10 +493,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 4149.0,
+        "x": 6989.0,
         "y": 680.0,
         "width": 80,
         "height": 40,
@@ -513,10 +513,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 4189.0,
+        "x": 7029.0,
         "y": 680.0,
         "width": 80,
         "height": 40,
@@ -533,10 +533,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 3567.0,
+        "x": 6407.0,
         "y": 340.0,
         "width": 80,
         "height": 40,
@@ -553,10 +553,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3607.0,
+        "x": 6447.0,
         "y": 340.0,
         "width": 80,
         "height": 40,
@@ -573,10 +573,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3647.0,
+        "x": 6487.0,
         "y": 260.0,
         "width": 80,
         "height": 40,
@@ -593,10 +593,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3607.0,
+        "x": 6447.0,
         "y": 260.0,
         "width": 80,
         "height": 40,
@@ -613,10 +613,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 4160.0,
+        "x": 7000.0,
         "y": 400.0,
         "width": 80,
         "height": 40,
@@ -633,10 +633,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4200.0,
+        "x": 7040.0,
         "y": 400.0,
         "width": 80,
         "height": 40,
@@ -653,10 +653,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 3163.0,
+        "x": 6003.0,
         "y": 340.0,
         "width": 80,
         "height": 40,
@@ -673,10 +673,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 3123.0,
+        "x": 5963.0,
         "y": 340.0,
         "width": 80,
         "height": 40,
@@ -693,10 +693,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 3223.0,
+        "x": 6063.0,
         "y": -7.105427357601002e-15,
         "width": 40,
         "height": 80,
@@ -713,10 +713,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 3183.0,
+        "x": 6023.0,
         "y": -7.105427357601002e-15,
         "width": 40,
         "height": 80,
@@ -733,10 +733,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 5140.0,
+        "x": 7980.0,
         "y": 640.0,
         "width": 40,
         "height": 80,
@@ -753,10 +753,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 2
       },
       {
-        "x": 5060.0,
+        "x": 7900.0,
         "y": 480.0,
         "width": 40,
         "height": 80,
@@ -773,10 +773,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 2
       },
       {
-        "x": 5100.0,
+        "x": 7940.0,
         "y": 640.0,
         "width": 40,
         "height": 80,
@@ -793,10 +793,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 2
       },
       {
-        "x": 5020.0,
+        "x": 7860.0,
         "y": 480.0,
         "width": 40,
         "height": 80,
@@ -813,10 +813,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 2
       },
       {
-        "x": 4900.0,
+        "x": 7740.0,
         "y": 480.0,
         "width": 40,
         "height": 80,
@@ -833,10 +833,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 3
       },
       {
-        "x": 4860.0,
+        "x": 7700.0,
         "y": 400.0,
         "width": 40,
         "height": 80,
@@ -853,10 +853,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 3
       },
       {
-        "x": 4860.0,
+        "x": 7700.0,
         "y": 480.0,
         "width": 40,
         "height": 80,
@@ -873,10 +873,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 3
       },
       {
-        "x": 4820.0,
+        "x": 7660.0,
         "y": 400.0,
         "width": 40,
         "height": 80,
@@ -893,10 +893,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 3
       },
       {
-        "x": 4980.0,
+        "x": 7820.0,
         "y": 640.0,
         "width": 40,
         "height": 80,
@@ -913,10 +913,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 3
       },
       {
-        "x": 4940.0,
+        "x": 7780.0,
         "y": 560.0,
         "width": 40,
         "height": 80,
@@ -933,10 +933,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 3
       },
       {
-        "x": 4940.0,
+        "x": 7780.0,
         "y": 640.0,
         "width": 40,
         "height": 80,
@@ -953,10 +953,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 3
       },
       {
-        "x": 4900.0,
+        "x": 7740.0,
         "y": 560.0,
         "width": 40,
         "height": 80,
@@ -973,2911 +973,2911 @@
           0
         ],
         "modifier": null,
+        "group_id": 3
+      },
+      {
+        "x": 7720.0,
+        "y": 20.0,
+        "width": 80,
+        "height": 40,
+        "rotation": 270,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 1
+      },
+      {
+        "x": 7760.0,
+        "y": 20.0,
+        "width": 80,
+        "height": 40,
+        "rotation": 90,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 1
+      },
+      {
+        "x": 7940.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 2
+      },
+      {
+        "x": 7900.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 2
+      },
+      {
+        "x": 3740.0,
+        "y": -20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3720.0,
+        "y": -20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3460.0,
+        "y": 320.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3880.0,
+        "y": 160.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3880.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 4040.0,
+        "y": 0.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 3680.0,
+        "y": 220.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3760.0,
+        "y": 20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3740.0,
+        "y": 20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3620.0,
+        "y": -20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3640.0,
+        "y": 300.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3640.0,
+        "y": 340.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3620.0,
+        "y": 260.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3620.0,
+        "y": 300.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3600.0,
+        "y": 220.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3600.0,
+        "y": 260.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3580.0,
+        "y": 180.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3580.0,
+        "y": 220.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3560.0,
+        "y": 140.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3560.0,
+        "y": 180.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3900.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3900.0,
+        "y": 160.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3920.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3920.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3700.0,
+        "y": 220.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3700.0,
+        "y": 260.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3740.0,
+        "y": 300.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3740.0,
+        "y": 340.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3720.0,
+        "y": 260.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3720.0,
+        "y": 300.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3380.0,
+        "y": 0.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3620.0,
+        "y": 660.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 32
+      },
+      {
+        "x": 3640.0,
+        "y": 660.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 32
+      },
+      {
+        "x": 3360.0,
+        "y": 0.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3360.0,
+        "y": 40.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3800.0,
+        "y": 520.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 3800.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 4060.0,
+        "y": 520.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 4060.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 3820.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 3820.0,
+        "y": 600.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 3420.0,
+        "y": 360.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3420.0,
+        "y": 400.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3440.0,
+        "y": 320.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3440.0,
+        "y": 360.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3460.0,
+        "y": 280.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3400.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3400.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3380.0,
+        "y": 40.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3380.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3600.0,
+        "y": 700.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 32
+      },
+      {
+        "x": 3560.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3620.0,
+        "y": 700.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 32
+      },
+      {
+        "x": 3540.0,
+        "y": 520.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3540.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3640.0,
+        "y": 620.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 32
+      },
+      {
+        "x": 3900.0,
+        "y": 360.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3900.0,
+        "y": 400.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3920.0,
+        "y": 320.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3920.0,
+        "y": 360.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3880.0,
+        "y": 680.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 3840.0,
+        "y": 600.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 3860.0,
+        "y": 680.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 4060.0,
+        "y": 600.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 4040.0,
+        "y": 560.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 4040.0,
+        "y": 600.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 3540.0,
+        "y": 600.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3560.0,
+        "y": 600.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3420.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3420.0,
+        "y": 160.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3440.0,
+        "y": 160.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3440.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3480.0,
+        "y": 240.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3480.0,
+        "y": 280.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3460.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3460.0,
+        "y": 240.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 30
+      },
+      {
+        "x": 3600.0,
+        "y": -20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3540.0,
+        "y": 140.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3540.0,
+        "y": 100.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3560.0,
+        "y": 60.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3580.0,
+        "y": 60.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3560.0,
+        "y": 100.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3600.0,
+        "y": 20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3580.0,
+        "y": 20.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 29
+      },
+      {
+        "x": 3700.0,
+        "y": 140.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3720.0,
+        "y": 140.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3680.0,
+        "y": 180.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3700.0,
+        "y": 180.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3740.0,
+        "y": 60.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3760.0,
+        "y": 60.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3720.0,
+        "y": 100.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 3740.0,
+        "y": 100.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 28
+      },
+      {
+        "x": 4040.0,
+        "y": 280.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4040.0,
+        "y": 320.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 3980.0,
+        "y": 160.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 3980.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4020.0,
+        "y": 240.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4020.0,
+        "y": 280.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4000.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4000.0,
+        "y": 240.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4000.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4000.0,
+        "y": 160.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4060.0,
+        "y": 0.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4060.0,
+        "y": 40.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4020.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4020.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4040.0,
+        "y": 40.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 4040.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 24
+      },
+      {
+        "x": 3860.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3860.0,
+        "y": 240.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3900.0,
+        "y": 280.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3900.0,
+        "y": 320.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3880.0,
+        "y": 240.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3880.0,
+        "y": 280.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3940.0,
+        "y": 40.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3940.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3920.0,
+        "y": 0.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3920.0,
+        "y": 40.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 3900.0,
+        "y": 0.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 26
+      },
+      {
+        "x": 6103.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 17
+      },
+      {
+        "x": 6063.0,
+        "y": 80.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 17
+      },
+      {
+        "x": 7540.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 4
+      },
+      {
+        "x": 7500.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 4
+      },
+      {
+        "x": 7500.0,
+        "y": 200.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 4
+      },
+      {
+        "x": 7460.0,
+        "y": 120.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 4
+      },
+      {
+        "x": 7420.0,
+        "y": -40.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 4
+      },
+      {
+        "x": 7380.0,
+        "y": -40.0,
+        "width": 40,
+        "height": 80,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 4
+      },
+      {
+        "x": 4080.0,
+        "y": 640.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 4060.0,
+        "y": 640.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 3520.0,
+        "y": 640.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3540.0,
+        "y": 640.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3500.0,
+        "y": 680.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3520.0,
+        "y": 680.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 31
+      },
+      {
+        "x": 3860.0,
+        "y": 640.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 3840.0,
+        "y": 640.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 27
+      },
+      {
+        "x": 4100.0,
+        "y": 680.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 4080.0,
+        "y": 680.0,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          100,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 25
+      },
+      {
+        "x": 5695.0,
+        "y": 600.0,
+        "width": 80,
+        "height": 40,
+        "rotation": 90,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 19
+      },
+      {
+        "x": 5655.0,
+        "y": 600.0,
+        "width": 80,
+        "height": 40,
+        "rotation": 270,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 19
+      },
+      {
+        "x": 6840.0,
+        "y": 340.0,
+        "width": 20,
+        "height": 120,
+        "rotation": 0,
+        "shape": "gravity",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": "1",
+        "group_id": 0
+      },
+      {
+        "x": 4740.0,
+        "y": 520.0,
+        "width": 20,
+        "height": 120,
+        "rotation": 0,
+        "shape": "gravity",
+        "color": [
+          255,
+          0,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": "2",
         "group_id": 0
       },
       {
         "x": 4880.0,
-        "y": 20.0,
-        "width": 80,
-        "height": 40,
-        "rotation": 270,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4920.0,
-        "y": 20.0,
-        "width": 80,
-        "height": 40,
-        "rotation": 90,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 5100.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 5060.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 180,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 900.0,
-        "y": -20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 880.0,
-        "y": -20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 620.0,
-        "y": 320.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1040.0,
-        "y": 160.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1040.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": -40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": 0.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 840.0,
-        "y": 220.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 920.0,
-        "y": 20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 900.0,
-        "y": 20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 780.0,
-        "y": -20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 800.0,
-        "y": 300.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 800.0,
-        "y": 340.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 780.0,
-        "y": 260.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 780.0,
-        "y": 300.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 760.0,
-        "y": 220.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 760.0,
-        "y": 260.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 740.0,
-        "y": 180.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 740.0,
-        "y": 220.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 720.0,
-        "y": 140.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 720.0,
-        "y": 180.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1060.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1060.0,
-        "y": 160.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1080.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1080.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 860.0,
-        "y": 220.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 860.0,
-        "y": 260.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 900.0,
-        "y": 300.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 900.0,
-        "y": 340.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 880.0,
-        "y": 260.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 880.0,
-        "y": 300.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 540.0,
-        "y": 0.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 780.0,
-        "y": 660.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 800.0,
-        "y": 660.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 520.0,
-        "y": 0.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 520.0,
-        "y": 40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 960.0,
-        "y": 520.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 960.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1220.0,
-        "y": 520.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1220.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 980.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 980.0,
-        "y": 600.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 580.0,
-        "y": 360.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 580.0,
-        "y": 400.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 600.0,
-        "y": 320.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 600.0,
-        "y": 360.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 620.0,
         "y": 280.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 560.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 560.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 540.0,
-        "y": 40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 540.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 760.0,
-        "y": 700.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 720.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 780.0,
-        "y": 700.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 700.0,
-        "y": 520.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 700.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 800.0,
-        "y": 620.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1060.0,
-        "y": 360.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1060.0,
-        "y": 400.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1080.0,
-        "y": 320.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1080.0,
-        "y": 360.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1180.0,
-        "y": -40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1040.0,
-        "y": 680.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1000.0,
-        "y": 600.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1020.0,
-        "y": 680.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1220.0,
-        "y": 600.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": 560.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": 600.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 700.0,
-        "y": 600.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 720.0,
-        "y": 600.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 580.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 580.0,
-        "y": 160.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 600.0,
-        "y": 160.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 600.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 640.0,
-        "y": 240.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 640.0,
-        "y": 280.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 620.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 620.0,
-        "y": 240.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 760.0,
-        "y": -20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 700.0,
-        "y": 140.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 700.0,
-        "y": 100.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 720.0,
-        "y": 60.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 740.0,
-        "y": 60.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 720.0,
-        "y": 100.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 760.0,
-        "y": 20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 740.0,
-        "y": 20.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 860.0,
-        "y": 140.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 880.0,
-        "y": 140.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 840.0,
-        "y": 180.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 860.0,
-        "y": 180.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 900.0,
-        "y": 60.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 920.0,
-        "y": 60.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 880.0,
-        "y": 100.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 900.0,
-        "y": 100.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": 280.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": 320.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1140.0,
-        "y": 160.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1140.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1180.0,
-        "y": 240.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1180.0,
-        "y": 280.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1160.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1160.0,
-        "y": 240.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1160.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1160.0,
-        "y": 160.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1220.0,
-        "y": 0.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1220.0,
-        "y": 40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1180.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1180.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": 40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1200.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1020.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1020.0,
-        "y": 240.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1060.0,
-        "y": 280.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1060.0,
-        "y": 320.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1040.0,
-        "y": 240.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1040.0,
-        "y": 280.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1100.0,
-        "y": 40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1100.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1080.0,
-        "y": 0.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1080.0,
-        "y": 40.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1060.0,
-        "y": 0.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 3263.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 3223.0,
-        "y": 80.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 180,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4700.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4660.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4660.0,
-        "y": 200.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 180,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4620.0,
-        "y": 120.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 180,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4580.0,
-        "y": -40.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4540.0,
-        "y": -40.0,
-        "width": 40,
-        "height": 80,
-        "rotation": 180,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1240.0,
-        "y": 640.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1220.0,
-        "y": 640.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 680.0,
-        "y": 640.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 700.0,
-        "y": 640.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 660.0,
-        "y": 680.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 680.0,
-        "y": 680.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1020.0,
-        "y": 640.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1000.0,
-        "y": 640.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1260.0,
-        "y": 680.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 1240.0,
-        "y": 680.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          100,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 2855.0,
-        "y": 600.0,
-        "width": 80,
-        "height": 40,
-        "rotation": 90,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 2815.0,
-        "y": 600.0,
-        "width": 80,
-        "height": 40,
-        "rotation": 270,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0
-      },
-      {
-        "x": 4000.0,
-        "y": 340.0,
         "width": 20,
         "height": 120,
         "rotation": 0,
@@ -3896,8 +3896,28 @@
         "group_id": 0
       },
       {
-        "x": 1900.0,
-        "y": 540.0,
+        "x": 5340.0,
+        "y": 520.0,
+        "width": 20,
+        "height": 120,
+        "rotation": 0,
+        "shape": "gravity",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": "1",
+        "group_id": 0
+      },
+      {
+        "x": 5600.0,
+        "y": 520.0,
         "width": 20,
         "height": 120,
         "rotation": 0,
@@ -3916,67 +3936,7 @@
         "group_id": 0
       },
       {
-        "x": 2040.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 120,
-        "rotation": 0,
-        "shape": "gravity",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": "1",
-        "group_id": 0
-      },
-      {
-        "x": 2500.0,
-        "y": 540.0,
-        "width": 20,
-        "height": 120,
-        "rotation": 0,
-        "shape": "gravity",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": "1",
-        "group_id": 0
-      },
-      {
-        "x": 2760.0,
-        "y": 540.0,
-        "width": 20,
-        "height": 120,
-        "rotation": 0,
-        "shape": "gravity",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": "2",
-        "group_id": 0
-      },
-      {
-        "x": 4380.0,
+        "x": 7220.0,
         "y": 180.0,
         "width": 20,
         "height": 120,
@@ -3996,7 +3956,7 @@
         "group_id": 0
       },
       {
-        "x": 2940.0,
+        "x": 5780.0,
         "y": 240.0,
         "width": 80,
         "height": 40,
@@ -4013,10 +3973,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 18
       },
       {
-        "x": 2980.0,
+        "x": 5820.0,
         "y": 240.0,
         "width": 80,
         "height": 40,
@@ -4033,10 +3993,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 18
       },
       {
-        "x": 3020.0,
+        "x": 5860.0,
         "y": 160.0,
         "width": 80,
         "height": 40,
@@ -4053,10 +4013,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 18
       },
       {
-        "x": 2980.0,
+        "x": 5820.0,
         "y": 160.0,
         "width": 80,
         "height": 40,
@@ -4073,10 +4033,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 18
       },
       {
-        "x": 2835.0,
+        "x": 5675.0,
         "y": 660.0,
         "width": 40,
         "height": 80,
@@ -4093,10 +4053,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 19
       },
       {
-        "x": 2875.0,
+        "x": 5715.0,
         "y": 660.0,
         "width": 40,
         "height": 80,
@@ -4113,10 +4073,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 19
       },
       {
-        "x": 3203.0,
+        "x": 6043.0,
         "y": 180.0,
         "width": 80,
         "height": 40,
@@ -4133,10 +4093,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 3243.0,
+        "x": 6083.0,
         "y": 180.0,
         "width": 80,
         "height": 40,
@@ -4153,10 +4113,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 3163.0,
+        "x": 6003.0,
         "y": 260.0,
         "width": 80,
         "height": 40,
@@ -4173,10 +4133,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 3203.0,
+        "x": 6043.0,
         "y": 260.0,
         "width": 80,
         "height": 40,
@@ -4193,10 +4153,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 17
       },
       {
-        "x": 4220.0,
+        "x": 7060.0,
         "y": 220.0,
         "width": 40,
         "height": 80,
@@ -4213,10 +4173,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4260.0,
+        "x": 7100.0,
         "y": 220.0,
         "width": 40,
         "height": 80,
@@ -4233,10 +4193,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4100.0,
+        "x": 6940.0,
         "y": -20.0,
         "width": 40,
         "height": 80,
@@ -4253,10 +4213,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4140.0,
+        "x": 6980.0,
         "y": -20.0,
         "width": 40,
         "height": 80,
@@ -4273,10 +4233,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4720.0,
+        "x": 7560.0,
         "y": 520.0,
         "width": 40,
         "height": 80,
@@ -4293,10 +4253,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 4680.0,
+        "x": 7520.0,
         "y": 440.0,
         "width": 40,
         "height": 80,
@@ -4313,10 +4273,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 4680.0,
+        "x": 7520.0,
         "y": 520.0,
         "width": 40,
         "height": 80,
@@ -4333,10 +4293,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 4640.0,
+        "x": 7480.0,
         "y": 440.0,
         "width": 40,
         "height": 80,
@@ -4353,10 +4313,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 4660.0,
+        "x": 7500.0,
         "y": 620.0,
         "width": 80,
         "height": 40,
@@ -4373,10 +4333,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 4700.0,
+        "x": 7540.0,
         "y": 620.0,
         "width": 80,
         "height": 40,
@@ -4393,10 +4353,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 4620.0,
+        "x": 7460.0,
         "y": 700.0,
         "width": 80,
         "height": 40,
@@ -4413,10 +4373,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 4660.0,
+        "x": 7500.0,
         "y": 700.0,
         "width": 80,
         "height": 40,
@@ -4433,10 +4393,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 5
       },
       {
-        "x": 2310.0,
+        "x": 5150.0,
         "y": 280.0,
         "width": 20,
         "height": 120,
@@ -4456,7 +4416,7 @@
         "group_id": 0
       },
       {
-        "x": 2960.0,
+        "x": 5800.0,
         "y": -20.0,
         "width": 40,
         "height": 80,
@@ -4473,10 +4433,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 18
       },
       {
-        "x": 3000.0,
+        "x": 5840.0,
         "y": -20.0,
         "width": 40,
         "height": 80,
@@ -4493,10 +4453,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 18
       },
       {
-        "x": 4160.0,
+        "x": 7000.0,
         "y": 500.0,
         "width": 20,
         "height": 120,
@@ -4516,7 +4476,7 @@
         "group_id": 0
       },
       {
-        "x": 4471.0,
+        "x": 7311.0,
         "y": 124.0,
         "width": 40,
         "height": 40,
@@ -4533,11 +4493,11 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 6
       },
       {
-        "x": 1420,
-        "y": 220,
+        "x": 4260,
+        "y": 200,
         "width": 80,
         "height": 80,
         "rotation": 0,
@@ -4553,11 +4513,11 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 22
       },
       {
-        "x": 4420.0,
-        "y": 40.0,
+        "x": 7260.0,
+        "y": 60.0,
         "width": 80,
         "height": 80,
         "rotation": 180,
@@ -4573,10 +4533,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 6
       },
       {
-        "x": 1400,
+        "x": 4240,
         "y": 260,
         "width": 40,
         "height": 40,
@@ -4593,11 +4553,11 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 22
       },
       {
-        "x": 1440,
-        "y": 280,
+        "x": 4280,
+        "y": 260,
         "width": 80,
         "height": 80,
         "rotation": 0,
@@ -4613,10 +4573,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 22
       },
       {
-        "x": 1340,
+        "x": 4180,
         "y": 620,
         "width": 40,
         "height": 40,
@@ -4633,11 +4593,11 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 23
       },
       {
-        "x": 1360,
-        "y": 660,
+        "x": 4200,
+        "y": 640,
         "width": 80,
         "height": 80,
         "rotation": 0,
@@ -4653,10 +4613,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 23
       },
       {
-        "x": 3323.0,
+        "x": 6163.0,
         "y": 380.0,
         "width": 80,
         "height": 40,
@@ -4673,10 +4633,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3363.0,
+        "x": 6203.0,
         "y": 380.0,
         "width": 80,
         "height": 40,
@@ -4693,10 +4653,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3403.0,
+        "x": 6243.0,
         "y": 300.0,
         "width": 80,
         "height": 40,
@@ -4713,10 +4673,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3363.0,
+        "x": 6203.0,
         "y": 300.0,
         "width": 80,
         "height": 40,
@@ -4733,10 +4693,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3403.0,
+        "x": 6243.0,
         "y": 220.0,
         "width": 80,
         "height": 40,
@@ -4753,10 +4713,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3443.0,
+        "x": 6283.0,
         "y": 220.0,
         "width": 80,
         "height": 40,
@@ -4773,10 +4733,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3343.0,
+        "x": 6183.0,
         "y": -40.0,
         "width": 40,
         "height": 80,
@@ -4793,10 +4753,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3383.0,
+        "x": 6223.0,
         "y": -40.0,
         "width": 40,
         "height": 80,
@@ -4813,10 +4773,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3423.0,
+        "x": 6263.0,
         "y": 120.0,
         "width": 40,
         "height": 80,
@@ -4833,10 +4793,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3463.0,
+        "x": 6303.0,
         "y": 120.0,
         "width": 40,
         "height": 80,
@@ -4853,10 +4813,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3383.0,
+        "x": 6223.0,
         "y": 40.0,
         "width": 40,
         "height": 80,
@@ -4873,10 +4833,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3423.0,
+        "x": 6263.0,
         "y": 40.0,
         "width": 40,
         "height": 80,
@@ -4893,10 +4853,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 14
       },
       {
-        "x": 3342.0,
+        "x": 6182.0,
         "y": 660.0,
         "width": 80,
         "height": 40,
@@ -4913,10 +4873,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 15
       },
       {
-        "x": 3302.0,
+        "x": 6142.0,
         "y": 660.0,
         "width": 80,
         "height": 40,
@@ -4933,10 +4893,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 15
       },
       {
-        "x": 3342.0,
+        "x": 6182.0,
         "y": 580.0,
         "width": 80,
         "height": 40,
@@ -4953,10 +4913,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 15
       },
       {
-        "x": 3382.0,
+        "x": 6222.0,
         "y": 580.0,
         "width": 80,
         "height": 40,
@@ -4973,10 +4933,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 15
       },
       {
-        "x": 4269.0,
+        "x": 7109.0,
         "y": 520.0,
         "width": 80,
         "height": 40,
@@ -4993,10 +4953,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 4229.0,
+        "x": 7069.0,
         "y": 520.0,
         "width": 80,
         "height": 40,
@@ -5013,10 +4973,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 4269.0,
+        "x": 7109.0,
         "y": 440.0,
         "width": 80,
         "height": 40,
@@ -5033,10 +4993,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 4309.0,
+        "x": 7149.0,
         "y": 440.0,
         "width": 80,
         "height": 40,
@@ -5053,10 +5013,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 3647.0,
+        "x": 6487.0,
         "y": 180.0,
         "width": 80,
         "height": 40,
@@ -5073,10 +5033,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3687.0,
+        "x": 6527.0,
         "y": 180.0,
         "width": 80,
         "height": 40,
@@ -5093,10 +5053,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3667.0,
+        "x": 6507.0,
         "y": 80.0,
         "width": 40,
         "height": 80,
@@ -5113,10 +5073,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3707.0,
+        "x": 6547.0,
         "y": 80.0,
         "width": 40,
         "height": 80,
@@ -5133,10 +5093,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3627.0,
+        "x": 6467.0,
         "y": 0.0,
         "width": 40,
         "height": 80,
@@ -5153,10 +5113,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 3667.0,
+        "x": 6507.0,
         "y": 0.0,
         "width": 40,
         "height": 80,
@@ -5173,10 +5133,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 12
       },
       {
-        "x": 4180.0,
+        "x": 7020.0,
         "y": 140.0,
         "width": 40,
         "height": 80,
@@ -5193,10 +5153,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4220.0,
+        "x": 7060.0,
         "y": 140.0,
         "width": 40,
         "height": 80,
@@ -5213,10 +5173,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 3840.0,
+        "x": 6680.0,
         "y": 260.0,
         "width": 80,
         "height": 40,
@@ -5233,10 +5193,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 3880.0,
+        "x": 6720.0,
         "y": 260.0,
         "width": 80,
         "height": 40,
@@ -5253,10 +5213,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 3860.0,
+        "x": 6700.0,
         "y": 160.0,
         "width": 40,
         "height": 80,
@@ -5273,10 +5233,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 3900.0,
+        "x": 6740.0,
         "y": 160.0,
         "width": 40,
         "height": 80,
@@ -5293,10 +5253,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 3780.0,
+        "x": 6620.0,
         "y": 0.0,
         "width": 40,
         "height": 80,
@@ -5313,10 +5273,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 3820.0,
+        "x": 6660.0,
         "y": 0.0,
         "width": 40,
         "height": 80,
@@ -5333,10 +5293,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 3820.0,
+        "x": 6660.0,
         "y": 80.0,
         "width": 40,
         "height": 80,
@@ -5353,10 +5313,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 3860.0,
+        "x": 6700.0,
         "y": 80.0,
         "width": 40,
         "height": 80,
@@ -5373,10 +5333,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 11
       },
       {
-        "x": 4200.0,
+        "x": 7040.0,
         "y": 320.0,
         "width": 80,
         "height": 40,
@@ -5393,10 +5353,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4240.0,
+        "x": 7080.0,
         "y": 320.0,
         "width": 80,
         "height": 40,
@@ -5413,10 +5373,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 3920.0,
+        "x": 6760.0,
         "y": 280.0,
         "width": 80,
         "height": 40,
@@ -5433,10 +5393,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3960.0,
+        "x": 6800.0,
         "y": 280.0,
         "width": 80,
         "height": 40,
@@ -5453,10 +5413,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3980.0,
+        "x": 6820.0,
         "y": 100.0,
         "width": 40,
         "height": 80,
@@ -5473,10 +5433,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 4020.0,
+        "x": 6860.0,
         "y": 100.0,
         "width": 40,
         "height": 80,
@@ -5493,10 +5453,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3900.0,
+        "x": 6740.0,
         "y": -60.0,
         "width": 40,
         "height": 80,
@@ -5513,10 +5473,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3940.0,
+        "x": 6780.0,
         "y": -60.0,
         "width": 40,
         "height": 80,
@@ -5533,10 +5493,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3940.0,
+        "x": 6780.0,
         "y": 20.0,
         "width": 40,
         "height": 80,
@@ -5553,10 +5513,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3980.0,
+        "x": 6820.0,
         "y": 20.0,
         "width": 40,
         "height": 80,
@@ -5573,10 +5533,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3960.0,
+        "x": 6800.0,
         "y": 200.0,
         "width": 80,
         "height": 40,
@@ -5593,10 +5553,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 4000.0,
+        "x": 6840.0,
         "y": 200.0,
         "width": 80,
         "height": 40,
@@ -5613,10 +5573,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 9
       },
       {
-        "x": 3532.0,
+        "x": 6372.0,
         "y": 660.0,
         "width": 80,
         "height": 40,
@@ -5633,10 +5593,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 13
       },
       {
-        "x": 3572.0,
+        "x": 6412.0,
         "y": 660.0,
         "width": 80,
         "height": 40,
@@ -5653,10 +5613,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 13
       },
       {
-        "x": 3612.0,
+        "x": 6452.0,
         "y": 580.0,
         "width": 80,
         "height": 40,
@@ -5673,10 +5633,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 13
       },
       {
-        "x": 3572.0,
+        "x": 6412.0,
         "y": 580.0,
         "width": 80,
         "height": 40,
@@ -5693,10 +5653,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 13
       },
       {
-        "x": 3612.0,
+        "x": 6452.0,
         "y": 500.0,
         "width": 80,
         "height": 40,
@@ -5713,10 +5673,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 13
       },
       {
-        "x": 3652.0,
+        "x": 6492.0,
         "y": 500.0,
         "width": 80,
         "height": 40,
@@ -5733,10 +5693,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 13
       },
       {
-        "x": 4140.0,
+        "x": 6980.0,
         "y": 60.0,
         "width": 40,
         "height": 80,
@@ -5753,10 +5713,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 4180.0,
+        "x": 7020.0,
         "y": 60.0,
         "width": 40,
         "height": 80,
@@ -5773,10 +5733,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 7
       },
       {
-        "x": 3859.0,
+        "x": 6699.0,
         "y": 660.0,
         "width": 80,
         "height": 40,
@@ -5793,10 +5753,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 10
       },
       {
-        "x": 3899.0,
+        "x": 6739.0,
         "y": 660.0,
         "width": 80,
         "height": 40,
@@ -5813,10 +5773,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 10
       },
       {
-        "x": 3939.0,
+        "x": 6779.0,
         "y": 580.0,
         "width": 80,
         "height": 40,
@@ -5833,10 +5793,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 10
       },
       {
-        "x": 3899.0,
+        "x": 6739.0,
         "y": 580.0,
         "width": 80,
         "height": 40,
@@ -5853,10 +5813,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 10
       },
       {
-        "x": 3939.0,
+        "x": 6779.0,
         "y": 500.0,
         "width": 80,
         "height": 40,
@@ -5873,10 +5833,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 10
       },
       {
-        "x": 3979.0,
+        "x": 6819.0,
         "y": 500.0,
         "width": 80,
         "height": 40,
@@ -5893,10 +5853,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 10
       },
       {
-        "x": 4189.0,
+        "x": 7029.0,
         "y": 600.0,
         "width": 80,
         "height": 40,
@@ -5913,10 +5873,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 4229.0,
+        "x": 7069.0,
         "y": 600.0,
         "width": 80,
         "height": 40,
@@ -5933,10 +5893,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 8
       },
       {
-        "x": 5020.0,
+        "x": 7860.0,
         "y": 240.0,
         "width": 40,
         "height": 80,
@@ -5953,10 +5913,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 1
       },
       {
-        "x": 4980.0,
+        "x": 7820.0,
         "y": 160.0,
         "width": 40,
         "height": 80,
@@ -5973,10 +5933,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 1
       },
       {
-        "x": 4980.0,
+        "x": 7820.0,
         "y": 240.0,
         "width": 40,
         "height": 80,
@@ -5993,10 +5953,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 1
       },
       {
-        "x": 4940.0,
+        "x": 7780.0,
         "y": 160.0,
         "width": 40,
         "height": 80,
@@ -6013,10 +5973,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 1
       },
       {
-        "x": 4940.0,
+        "x": 7780.0,
         "y": 80.0,
         "width": 40,
         "height": 80,
@@ -6033,10 +5993,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 1
       },
       {
-        "x": 4900.0,
+        "x": 7740.0,
         "y": 80.0,
         "width": 40,
         "height": 80,
@@ -6053,10 +6013,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 1
       },
       {
-        "x": 4620.0,
+        "x": 7460.0,
         "y": 40.0,
         "width": 40,
         "height": 80,
@@ -6073,10 +6033,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 4
       },
       {
-        "x": 4580.0,
+        "x": 7420.0,
         "y": 40.0,
         "width": 40,
         "height": 80,
@@ -6093,10 +6053,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 4
       },
       {
-        "x": 2360.0,
+        "x": 5200.0,
         "y": 240.0,
         "width": 160,
         "height": 240,
@@ -6113,10 +6073,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 20
       },
       {
-        "x": 1880.0,
+        "x": 4720.0,
         "y": 480.0,
         "width": 240,
         "height": 160,
@@ -6133,10 +6093,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 21
       },
       {
-        "x": 2320.0,
+        "x": 5160.0,
         "y": 440.0,
         "width": 160,
         "height": 240,
@@ -6153,10 +6113,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 21
       },
       {
-        "x": 3000.0,
+        "x": 5840.0,
         "y": 60.0,
         "width": 40,
         "height": 80,
@@ -6173,10 +6133,10 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
+        "group_id": 18
       },
       {
-        "x": 3040.0,
+        "x": 5880.0,
         "y": 60.0,
         "width": 40,
         "height": 80,
@@ -6193,18 +6153,55 @@
           0
         ],
         "modifier": null,
-        "group_id": 0
-      }
-    ],
-    "decoration": [],
-    "checkpoints": [
+        "group_id": 18
+      },
       {
-        "x": 380,
-        "y": 340,
+        "x": 760,
+        "y": 680,
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "checkpoint",
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 760,
+        "y": 640,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 760,
+        "y": 560,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "orb",
         "color": [
           0,
           255,
@@ -6215,15 +6212,98 @@
           0,
           0
         ],
+        "modifier": "gravity",
+        "group_id": 0
+      },
+      {
+        "x": 720,
+        "y": 200,
+        "width": 40,
+        "height": 240,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 804,
+        "y": 426,
+        "width": 20,
+        "height": 120,
+        "rotation": 330.0,
+        "shape": "gravity",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": 1.0,
+        "group_id": 0
+      },
+      {
+        "x": 720,
+        "y": 440,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      }
+    ],
+    "decoration": [],
+    "checkpoints": [
+      {
+        "x": 380,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
         "modifier": {
-          "gamemode": "wave",
-          "speed": 3.0,
-          "gravity": 1
+          "gamemode": "cube",
+          "speed": 2.0,
+          "gravity": 1.0
         },
         "group_id": 0
       },
       {
-        "x": 1500,
+        "x": 4340,
         "y": 500,
         "width": 40,
         "height": 40,
@@ -6247,7 +6327,7 @@
         "group_id": 0
       },
       {
-        "x": 2340,
+        "x": 5180,
         "y": 320,
         "width": 40,
         "height": 40,
@@ -6273,7 +6353,7 @@
     ],
     "victors": {
       "Rolf": [
-        463,
+        482,
         3,
         0,
         0

@@ -1,5 +1,3 @@
-- checkpoints affected by scale mode
-
 Optimization
 - Render and check for things in cells that are for example 400 wide
 - Prevent opposite side axes to exist, squares only need 2 axes not 4

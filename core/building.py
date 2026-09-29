@@ -125,7 +125,7 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
                 obj.y += add_y
                 obj.recompute()
     else:
-        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        for obj in (*game.background, *game.objects, *game.decoration):
             if obj.selected:
                 if add_x > 0 or obj.width > distance:
                     obj.width += add_x
