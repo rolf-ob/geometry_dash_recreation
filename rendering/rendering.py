@@ -27,7 +27,11 @@ def draw_background(game, screen):
     objects = get_nearby_objects(game.buckets["background"], camera_x, camera_x + game.view_width)
     for obj in objects:
         color = (200, 255, 200) if obj.selected else obj.color
-        draw_polygon(game, screen, obj.points, color, 0)
+        if color == (0, 0):
+            if game.building:
+                draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
+        else:
+            draw_polygon(game, screen, obj.points, color, 0)
         draw_polygon(game, screen, obj.points, obj.outline, 1)
 
 def draw_objects(game, screen):
@@ -39,30 +43,61 @@ def draw_objects(game, screen):
                 color = (200, 255, 200) if obj.selected else obj.color
             else:
                 color = obj.color if not game.cheated else obj.outline
-            draw_polygon(game, screen, obj.points, color, 0)
+            
+            if color == (0, 0):
+                if game.building:
+                    draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
+            else:
+                draw_polygon(game, screen, obj.points, color, 0)
+            
             if obj.selected:
                 screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
 
         elif obj.shape == "coin":
             if not obj.interacted:
                 color = (200, 255, 200) if obj.selected else obj.color
-                outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
-                draw_polygon(game, screen, obj.points, color, 0)
-                draw_polygon(game, screen, obj.points, outline_color, 1)
-                screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+                outline_color = (255, 0, 0) if game.show_hitboxes else obj.outline
+
+                if color == (0, 0):
+                    if game.building:
+                        draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
+                        screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+                else:
+                    draw_polygon(game, screen, obj.points, color, 0)
+                    screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+                
+                if outline_color == (0, 0):
+                    if game.show_hitboxes:
+                        draw_polygon(game, screen, obj.points, outline_color, 1)
+                else:
+                    draw_polygon(game, screen, obj.points, outline_color, 1)
         
         else:
             color = (200, 255, 200) if obj.selected else obj.color
-            outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
-            draw_polygon(game, screen, obj.points, color, 0)
-            draw_polygon(game, screen, obj.points, outline_color, 1)
+            outline_color = (255, 0, 0) if game.show_hitboxes else obj.outline
+
+            if color == (0, 0):
+                if game.building:
+                    draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
+            else:
+                draw_polygon(game, screen, obj.points, color, 0)
+            
+            if outline_color == (0, 0):
+                if game.show_hitboxes:
+                    draw_polygon(game, screen, obj.points, outline_color, 1)
+            else:
+                draw_polygon(game, screen, obj.points, outline_color, 1)
 
 def draw_decoration(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["decoration"], camera_x, camera_x + game.view_width)
     for obj in objects:
         color = (200, 255, 200) if obj.selected else obj.color
-        draw_polygon(game, screen, obj.points, color, 0)
+        if color == (0, 0):
+            if game.building:
+                draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
+        else:
+            draw_polygon(game, screen, obj.points, color, 0)
         draw_polygon(game, screen, obj.points, obj.outline, 1)
 
 def draw_checkpoints(game, screen):

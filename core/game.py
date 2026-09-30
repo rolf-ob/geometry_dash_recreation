@@ -131,8 +131,12 @@ class Game():
                             setattr(obj, field_name, round(rotation, 1))
                         
                         elif field_name in ("color", "outline"):
-                            r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
-                            setattr(obj, field_name, (r, g, b))
+                            rgb = text.split(" ")
+                            if len(rgb) == 3:
+                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                setattr(obj, field_name, (r, g, b))
+                            elif len(rgb) == 1 and rgb[0] == "0":
+                                setattr(obj, field_name, (0, 0))
 
                         elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "orb", "pad", "coin"):
                             setattr(obj, field_name, text)

@@ -1,9 +1,8 @@
 Build mode features
-- Transparent "color" for objects
 - Undo and redo
 
 Gameplay features
-- Music
+- Level music
 - Camera going up and down with player
 - Sliding on slopes or rotated squares
 - CBF
