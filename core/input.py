@@ -37,6 +37,12 @@ def toggle_pause(game):
         close_menu(game)
         if not game.completed and (game.show_hitboxes or game.speedhack):
             game.cheated = True
+
+        if game.player.x == game.checkpoints[game.checkpoint].x:
+            if game.name not in game.victors.keys():
+                game.victors[game.name] = [1, 0, 0, 0]
+            else:
+                game.victors[game.name][0] += 1
     
     if not game.paused and game.dead == 0 and not game.completed:
         game.camera_x = game.player.x - PLAYER_X
@@ -137,6 +143,7 @@ def handle_input(game):
             game.view_height = game.height * (HEIGHT / game.height)
             game.scale = game.height / HEIGHT
             game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)), "screen")
+            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
         elif event.type == py.TEXTINPUT and game.active_textbox:
@@ -154,7 +161,7 @@ def handle_input(game):
                         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                             if obj.selected:
                                 game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                obj.recompute()
+                                game.recompute_object(obj)
                                 if obj.shape == "checkpoint": cp_selected = True
                                 else: obj_selected = True
 
@@ -199,7 +206,7 @@ def handle_input(game):
                         switch_level(game, "next")
 
                     elif any(event.key == key for key in game.controls["toggle speedhack"]):
-                        if game.hitbox_trail and not game.completed:
+                        if game.hitboxes and not game.completed:
                             game.cheated = True
                         game.speedhack = not game.speedhack
                     
@@ -287,7 +294,7 @@ def handle_input(game):
                     game.switch_attribute("next")
 
                 elif any(event.key == key for key in game.controls["toggle hitboxes"]):
-                    if game.hitbox_trail and not game.completed:
+                    if game.hitboxes and not game.completed:
                         game.cheated = True
                     game.show_hitboxes = not game.show_hitboxes
 

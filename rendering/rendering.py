@@ -1,7 +1,7 @@
 import pygame as py
 import time
 
-from entities.object import Object
+from entities.spacial import get_nearby_objects
 from constants import WIDTH, HEIGHT, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
@@ -18,73 +18,68 @@ def screen_to_world(game, x, y):
     world_y = (y / game.scale - HEIGHT / 2) / game.camera_zoom + HEIGHT / 2 + camera_y
     return int(world_x), int(world_y)
 
-def within_view(game, aabb):
-    camera_x = game.camera_x if not game.building else game.building_camera_x
-    camera_y = game.camera_y if not game.building else game.building_camera_y
-    return not (
-        aabb["right"] < camera_x or
-        aabb["left"] > camera_x + game.view_width or
-        aabb["bottom"] < camera_y or
-        aabb["top"] > camera_y + game.view_height
-        )
-
 def draw_polygon(game, screen, points, color, width):
     screen_points = [world_to_screen(game, x, y) for x, y in points]
     py.draw.polygon(screen, color, screen_points, width)
 
 def draw_background(game, screen):
-    for obj in game.background:
-        if within_view(game, obj.aabb):
-            color = (200, 255, 200) if obj.selected else obj.color
-            draw_polygon(game, screen, obj.points, color, 0)
-            draw_polygon(game, screen, obj.points, obj.outline, 1)
+    camera_x = game.building_camera_x if game.building else game.camera_x
+    objects = get_nearby_objects(game.buckets["background"], camera_x, camera_x + game.view_width)
+    for obj in objects:
+        color = (200, 255, 200) if obj.selected else obj.color
+        draw_polygon(game, screen, obj.points, color, 0)
+        draw_polygon(game, screen, obj.points, obj.outline, 1)
 
 def draw_objects(game, screen):
-    for obj in game.objects:
-        if within_view(game, obj.aabb):
-            if obj.shape == "end":
-                if game.building:
-                    color = (200, 255, 200) if obj.selected else obj.color
-                else:
-                    color = obj.color if not game.cheated else obj.outline
-                draw_polygon(game, screen, obj.points, color, 0)
-                if obj.selected:
-                    screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
-
-            elif obj.shape == "coin":
-                if not obj.interacted:
-                    color = (200, 255, 200) if obj.selected else obj.color
-                    outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
-                    draw_polygon(game, screen, obj.points, color, 0)
-                    draw_polygon(game, screen, obj.points, outline_color, 1)
-                    screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
-            
+    camera_x = game.building_camera_x if game.building else game.camera_x
+    objects = get_nearby_objects(game.buckets["objects"], camera_x, camera_x + game.view_width)
+    for obj in objects:
+        if obj.shape == "end":
+            if game.building:
+                color = (200, 255, 200) if obj.selected else obj.color
             else:
+                color = obj.color if not game.cheated else obj.outline
+            draw_polygon(game, screen, obj.points, color, 0)
+            if obj.selected:
+                screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+
+        elif obj.shape == "coin":
+            if not obj.interacted:
                 color = (200, 255, 200) if obj.selected else obj.color
                 outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
                 draw_polygon(game, screen, obj.points, color, 0)
                 draw_polygon(game, screen, obj.points, outline_color, 1)
+                screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+        
+        else:
+            color = (200, 255, 200) if obj.selected else obj.color
+            outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
+            draw_polygon(game, screen, obj.points, color, 0)
+            draw_polygon(game, screen, obj.points, outline_color, 1)
 
 def draw_decoration(game, screen):
-    for obj in game.decoration:
-        if within_view(game, obj.aabb):
-            color = (200, 255, 200) if obj.selected else obj.color
-            draw_polygon(game, screen, obj.points, color, 0)
-            draw_polygon(game, screen, obj.points, obj.outline, 1)
+    camera_x = game.building_camera_x if game.building else game.camera_x
+    objects = get_nearby_objects(game.buckets["decoration"], camera_x, camera_x + game.view_width)
+    for obj in objects:
+        color = (200, 255, 200) if obj.selected else obj.color
+        draw_polygon(game, screen, obj.points, color, 0)
+        draw_polygon(game, screen, obj.points, obj.outline, 1)
 
 def draw_checkpoints(game, screen):
-    for obj in game.checkpoints:
-        if within_view(game, obj.aabb):
-            text = "S" if obj == game.checkpoints[0] else "C"
-            color = (200, 255, 200) if obj.selected else obj.color
-            draw_polygon(game, screen, obj.points, color, 0)
-            draw_polygon(game, screen, obj.points, obj.outline, 1)
-            screen.blit(game.text_cache.get_surface(text, (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+    camera_x = game.building_camera_x if game.building else game.camera_x
+    objects = get_nearby_objects(game.buckets["checkpoints"], camera_x, camera_x + game.view_width)
+    for obj in objects:
+        text = "S" if obj == game.checkpoints[0] else "C"
+        color = (200, 255, 200) if obj.selected else obj.color
+        draw_polygon(game, screen, obj.points, color, 0)
+        draw_polygon(game, screen, obj.points, obj.outline, 1)
+        screen.blit(game.text_cache.get_surface(text, (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
 
-def draw_hitbox_trail(game, screen):
-    for box in game.hitbox_trail:
-        if within_view(game, box.aabb):
-            draw_polygon(game, screen, box.points, box.outline, 1)
+def draw_hitboxes(game, screen):
+    camera_x = game.building_camera_x if game.building else game.camera_x
+    objects = get_nearby_objects(game.buckets["hitboxes"], camera_x, camera_x + game.view_width)
+    for obj in objects:
+        draw_polygon(game, screen, obj.points, obj.outline, 1)
     draw_polygon(game, screen, game.player.points, game.player.color, 1)
 
 def draw_wave_trail(game, screen):
@@ -116,8 +111,8 @@ def draw_wave_trail(game, screen):
             py.draw.polygon(screen, game.primary_color, points, 1)
 
 def draw_player(game, screen):
-    if game.hitbox_trail:
-        prev_player = game.hitbox_trail[-1]
+    if game.hitboxes:
+        prev_player = game.hitboxes[-1]
     else:
         prev_player = game.player
 
@@ -288,8 +283,8 @@ def draw(game):
         draw_objects(game, screen)
         draw_decoration(game, screen)
     
-    if game.show_hitboxes and len(game.hitbox_trail) > 0:
-        draw_hitbox_trail(game, screen)
+    if game.show_hitboxes and game.hitboxes:
+        draw_hitboxes(game, screen)
     
     if game.show_player and game.current_level != 0:
         draw_wave_trail(game, screen)

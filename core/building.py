@@ -1,9 +1,10 @@
+from collections import defaultdict
 import pygame as py
 import math, time
 
 from core.textbox import TextBox
 from entities.object import Object
-from entities.collision import collide
+from entities.spacial import collide, get_buckets, get_nearby_objects
 from rendering.rendering import screen_to_world
 from constants import PLAYER_X, FONT_SIZE
 
@@ -18,9 +19,8 @@ def toggle_building(game):
         close_menu(game)
 
     else:
-        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-            for obj in layer:
-                obj.selected = False
+        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+            obj.selected = False
 
         game.editing_level = False
         close_menu(game)
@@ -36,20 +36,28 @@ def place_object(game):
     mouse_x -= mouse_x % 40
     mouse_y -= mouse_y % 40
     layer = (game.background, game.objects, game.decoration)[game.layer]
+    name = ("background", "objects", "decoration")[game.layer]
+    objects = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width)
 
-    if not any(collide(mouse, obj) for obj in layer):
-        layer.append(Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3))
+    if not any(collide(mouse, obj) for obj in objects):
+        new_obj = Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3)
+        layer.append(new_obj)
+        for bucket in get_buckets(new_obj):
+            game.buckets[name][bucket].append(new_obj)
+            new_obj.bucket = name
 
 def select_object(game, shifting):
     if not game.editing_level:
         mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
-        mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)     
-        layer = (game.background, game.objects, game.decoration)[game.layer]
+        mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
+        name = ("background", "objects", "decoration")[game.layer]
+        layer = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width)
+        checkpoints  = get_nearby_objects(game.buckets["checkpoints"], game.building_camera_x, game.building_camera_x + game.view_width)
 
         obj_selected = False
         cp_selected = False
         if shifting:
-            for obj in (*layer, *game.checkpoints):
+            for obj in (*layer, *checkpoints):
                 if collide(mouse, obj):
                     obj.selected = True
                     if obj.shape == "checkpoint": cp_selected = True
@@ -64,7 +72,7 @@ def select_object(game, shifting):
         
         else:
             top_obj = None
-            for obj in (*layer, *game.checkpoints):
+            for obj in (*layer, *checkpoints):
                 if collide(mouse, obj):
                     top_obj = obj
 
@@ -118,20 +126,25 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
     elif direction == "right":
         add_x = distance
 
+    objects = []
+    for name in ("background", "objects", "decoration"):
+        objects.extend(get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width))
+    checkpoints = get_nearby_objects(game.buckets["checkpoints"], game.building_camera_x, game.building_camera_x + game.view_width)
+
     if not game.scale_mode:
-        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        for obj in (*objects, *checkpoints):
             if obj.selected:
                 obj.x += add_x
                 obj.y += add_y
-                obj.recompute()
+                game.recompute_object(obj)
     else:
-        for obj in (*game.background, *game.objects, *game.decoration):
+        for obj in objects:
             if obj.selected:
                 if add_x > 0 or obj.width > distance:
                     obj.width += add_x
                 if add_y > 0 or obj.height > distance:
                     obj.height += add_y
-                obj.recompute()
+                game.recompute_object(obj)
 
 def rotate_objects(game, way, shift, ctrl, alt):
     if shift:
@@ -179,7 +192,7 @@ def rotate_objects(game, way, shift, ctrl, alt):
                 obj.rotation = round((obj.rotation + rotation) % 360, 1)
                 obj.x = int(rotated_x - obj.width / 2)
                 obj.y = int(rotated_y - obj.height / 2)
-                obj.recompute()
+                game.recompute_object(obj)
 
 def flip_objects(game, way):
     if way == "horizontally":
@@ -221,7 +234,7 @@ def flip_objects(game, way):
                     obj.rotation = round(obj.rotation % 360, 1)
                     if obj.rotation < 0:
                         obj.rotation = round(obj.rotation + 360, 1)
-                    obj.recompute()
+                    game.recompute_object(obj)
                 
                 elif way == "vertically":
                     center = obj.y + obj.height / 2
@@ -244,7 +257,7 @@ def flip_objects(game, way):
                     obj.rotation = round(obj.rotation % 360, 1)
                     if obj.rotation < 0:
                         obj.rotation = round(obj.rotation + 360, 1)
-                    obj.recompute()
+                    game.recompute_object(obj)
 
 def deselect_objects(game):
     if not game.editing_level:
@@ -258,13 +271,22 @@ def duplicate_objects(game):
         for obj in layer.copy():
             if obj.selected:
                 modifier = obj.modifier if obj.shape != "checkpoint" else obj.modifier.copy()
-                layer.append(Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True))
-                obj.selected = False
+                
+                new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
+                layer.append(new_obj)
+                if layer == game.checkpoints:
+                    game.level["checkpoints"].append(new_obj)
+                for bucket in get_buckets(new_obj):
+                    game.buckets[obj.bucket][bucket].append(new_obj)
+                    new_obj.bucket = obj.bucket
+                new_obj.selected = False
 
 def delete_objects(game):
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
             if obj.selected and obj != game.checkpoints[0]:
+                for bucket in get_buckets(obj):
+                    game.buckets[obj.bucket][bucket].remove(obj)
                 layer.remove(obj)
     close_menu(game)
 
@@ -289,7 +311,7 @@ def snap_grid_objects(game):
             obj.rotation = round(obj.rotation % 360, 1)
             if obj.rotation < 0:
                 obj.rotation = round(obj.rotation + 360, 1)
-            obj.recompute()
+            game.recompute_object(obj)
 
 def group_objects(game, group):
     if group == "group":
@@ -332,6 +354,18 @@ def layer_objects(game, way):
                     layer.remove(obj)
                     layer.append(obj)
 
+    for layer, name in (
+        (game.background, "background"),
+        (game.objects, "objects"),
+        (game.decoration, "decoration"),
+        (game.checkpoints, "checkpoints")
+    ):
+        game.buckets[name] = defaultdict(list)
+        for obj in layer:
+            for bucket in get_buckets(obj):
+                game.buckets[name][bucket].append(obj)
+                obj.bucket = name
+
 def move_objects_to_layer(game, layer_name):
     target_layer = {
         "background": game.background,
@@ -346,6 +380,12 @@ def move_objects_to_layer(game, layer_name):
                     layer.remove(obj)
                     target_layer.append(obj)
 
+                    for bucket in get_buckets(obj):
+                        game.buckets[obj.bucket][bucket].remove(obj)
+                    obj.recompute()
+                    obj.bucket = layer_name
+                    for bucket in get_buckets(obj):
+                        game.buckets[obj.bucket][bucket].append(obj)
 
     elif layer_name == "objects":
         for layer in (game.background, game.objects, game.decoration):
@@ -354,12 +394,26 @@ def move_objects_to_layer(game, layer_name):
                     layer.remove(obj)
                     target_layer.append(obj)
 
+                    for bucket in get_buckets(obj):
+                        game.buckets[obj.bucket][bucket].remove(obj)
+                    obj.recompute()
+                    obj.bucket = layer_name
+                    for bucket in get_buckets(obj):
+                        game.buckets[obj.bucket][bucket].append(obj)
+
     elif layer_name == "decoration":
         for layer in (game.background, game.objects, game.decoration):
             for obj in layer.copy():
                 if obj.selected:
                     layer.remove(obj)
                     target_layer.append(obj)
+
+                    for bucket in get_buckets(obj):
+                        game.buckets[obj.bucket][bucket].remove(obj)
+                    obj.recompute()
+                    obj.bucket = layer_name
+                    for bucket in get_buckets(obj):
+                        game.buckets[obj.bucket][bucket].append(obj)
 
 def switch_layer(game, shift):
     if shift:

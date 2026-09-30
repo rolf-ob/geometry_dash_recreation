@@ -1,6 +1,8 @@
+from collections import defaultdict
 import time, json
 import pygame as py
 
+from entities.spacial import get_buckets
 from core.input import handle_input
 from core.physics import update
 from rendering.rendering import draw
@@ -188,7 +190,14 @@ class Game():
                                 if obj in layer:
                                     layer.remove(obj)
                                     break
+                            
+                            for bucket in get_buckets(obj):
+                                self.buckets[obj.bucket][bucket].remove(obj)
+                            obj.bucket = "checkpoints"
+                            for bucket in get_buckets(obj):
+                                self.buckets[obj.bucket][bucket].append(obj)
                             self.checkpoints.append(obj)
+                            self.level["checkpoints"].append(obj)
 
                         elif obj.shape == "gamemode" and field_name == "modifier" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                             setattr(obj, field_name, text)
@@ -278,32 +287,45 @@ class Game():
         except ValueError:
             pass
 
+    def recompute_object(self, obj):
+        for bucket in get_buckets(obj):
+            self.buckets[obj.bucket][bucket].remove(obj)
+        obj.recompute()
+        for bucket in get_buckets(obj):
+            self.buckets[obj.bucket][bucket].append(obj)
+
     def restart(self):
-        if self.name not in self.victors.keys():
-            self.victors[self.name] = [1, 0, 0, 0]
-        else:
-            self.victors[self.name][0] += 1
+        if not self.paused:
+            if self.name not in self.victors.keys():
+                self.victors[self.name] = [1, 0, 0, 0]
+            else:
+                self.victors[self.name][0] += 1
 
         self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
         self.size = self.checkpoints[self.checkpoint].modifier["size"]*40
+
         self.player = Object(0, 0, self.size, self.size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.player.recompute()
         self.player_render = Object(0, 0, self.size, self.size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.player_render.recompute()
+
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
+
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
         self.y_vel = 0
         self.dashing = False
+
         start_x = self.player.x - self.checkpoints[0].x
         checkpoint_x = self.checkpoints[self.checkpoint].x - self.checkpoints[0].x
         end_x = self.level_length - self.checkpoints[0].x - self.player.width
         self.starting_percent = 0 if end_x == 0 else min(100, round(checkpoint_x / end_x * 100))
         self.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
+
         self.cheated = True if self.checkpoint != 0 or (not self.paused and (self.speedhack or self.show_hitboxes)) else False
         self.noclip_deaths = 0
         self.dead = 0
@@ -312,18 +334,16 @@ class Game():
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
             obj.interacted = False
         
-        self.hitbox_trail = []
+        self.hitboxes = []
+        self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + 20, self.player.y)] if self.gamemode == "wave" else []
     
     def load_level(self):
         self.level = self.levels[self.current_level]
+
         self.background = self.level["background"]
         self.objects = self.level["objects"]
         self.decoration = self.level["decoration"]
-        self.victors = self.level["victors"]
-        self.level_length = self.level["meta"]["length"]
-        self.background_color = tuple(self.level["meta"]["background color"])
-        self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 
         rest = sorted(
             self.level["checkpoints"][1:],
@@ -334,6 +354,30 @@ class Game():
             self.checkpoint = 0
         elif self.checkpoint > len(self.checkpoints)-1:
             self.checkpoint = len(self.checkpoints)-1
+
+        self.buckets = {
+            "background": defaultdict(list),
+            "objects": defaultdict(list),
+            "decoration": defaultdict(list),
+            "checkpoints": defaultdict(list),
+            "hitboxes": defaultdict(list)
+        }
+
+        for layer, name in (
+            (self.background, "background"),
+            (self.objects, "objects"),
+            (self.decoration, "decoration"),
+            (self.checkpoints, "checkpoints")
+        ):
+            for obj in layer:
+                for bucket in get_buckets(obj):
+                    self.buckets[name][bucket].append(obj)
+                    obj.bucket = name
+
+        self.victors = self.level["victors"]
+        self.level_length = self.level["meta"]["length"]
+        self.background_color = tuple(self.level["meta"]["background color"])
+        self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 
         self.current_group_id = 0
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
@@ -350,6 +394,7 @@ class Game():
         self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
         self.accessibility["respawn time"] = self.respawn_time
         self.accessibility["dark mode"] = self.dark_mode
+        self.level["checkpoints"] = self.checkpoints
         controls = {action: [py.key.name(key) for key in keys] for action, keys in self.controls.items()}
         settings = {"accessibility": self.accessibility, "controls": controls}
         save_json("players/settings.json", settings)

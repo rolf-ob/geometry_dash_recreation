@@ -1,7 +1,5 @@
-Optimization
-- Render and check for things in buckets that are 400 wide
-
 Build mode features
+- Transparent "color" for objects
 - Undo and redo
 
 Gameplay features

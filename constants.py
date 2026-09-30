@@ -4,6 +4,7 @@ PLAYER_X = 360
 FONT_SIZE = 24
 FIXED_STEP = 1 / 240
 AUTOSAVE_INTERVAL = 120
+BUCKET_WIDTH = 400
 
 gamemode_colors = {
     "wave": (0, 255, 255),
