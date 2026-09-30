@@ -334,44 +334,6 @@ class Game():
             self.checkpoint = 0
         elif self.checkpoint > len(self.checkpoints)-1:
             self.checkpoint = len(self.checkpoints)-1
-        
-        self.shapes = []
-        self.ends = []
-        self.gamemodes = []
-        self.speeds = []
-        self.gravitys = []
-        self.sizes = []
-        self.orbs = []
-        self.pads = []
-        self.coins = []
-
-        for obj in self.objects:
-            if obj.shape in ("square", "spike", "right slope", "left slope", "circle"):
-                self.shapes.append(obj)
-            
-            elif obj.shape == "end":
-                self.ends.append(obj)
-            
-            elif obj.shape == "gamemode":
-                self.gamemodes.append(obj)
-            
-            elif obj.shape == "speed":
-                self.speeds.append(obj)
-            
-            elif obj.shape == "gravity":
-                self.gravitys.append(obj)
-            
-            elif obj.shape == "size":
-                self.sizes.append(obj)
-            
-            elif obj.shape == "orb":
-                self.orbs.append(obj)
-            
-            elif obj.shape == "pad":
-                self.pads.append(obj)
-            
-            elif obj.shape == "coin":
-                self.coins.append(obj)
 
         self.current_group_id = 0
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):

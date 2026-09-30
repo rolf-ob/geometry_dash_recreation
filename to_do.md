@@ -1,5 +1,5 @@
 Optimization
-- Render and check for things in buckets that are for example 400 wide
+- Render and check for things in buckets that are 400 wide
 
 Build mode features
 - Undo and redo

@@ -1,7 +1,7 @@
 import pygame as py
 import time
 
-from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, create_level, edit_level, close_menu, open_menu
+from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
 from constants import HEIGHT, PLAYER_X, FONT_SIZE
 
 def click(game, type, button, shift):
@@ -259,15 +259,16 @@ def handle_input(game):
                     elif any(event.key == key for key in game.controls["move objects to decoration"]):
                         move_objects_to_layer(game, "decoration")
                     
-                    elif any(event.key == key for key in game.controls["previous layer"]):
-                        switch_layer(game, "previous")
-                    elif any(event.key == key for key in game.controls["next layer"]):
-                        switch_layer(game, "next")
+                    elif any(event.key == key for key in game.controls["switch layer"]):
+                        switch_layer(game, shift)
                     elif any(event.key == key for key in game.controls["toggle layer view"]):
                         game.layer_view = not game.layer_view
 
                     elif any(event.key == key for key in game.controls["reset camera"]):
-                        reset_camera(game)
+                        reset_camera(game, ctrl)
+
+                    elif any(event.key == key for key in game.controls["undo edit"]):
+                        undo_edit(game, ctrl)
                     
                     elif any(event.key == key for key in game.controls["edit level"]):
                         edit_level(game)

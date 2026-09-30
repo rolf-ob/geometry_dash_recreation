@@ -361,19 +361,26 @@ def move_objects_to_layer(game, layer_name):
                     layer.remove(obj)
                     target_layer.append(obj)
 
-def switch_layer(game, way):
-    if way == "previous":
+def switch_layer(game, shift):
+    if shift:
         game.layer = max(0, game.layer - 1)
-    if way == "next":
+    else:
         game.layer = min(2, game.layer + 1)
     
     game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
 
-def reset_camera(game):
-    game.building_camera_x = 0
+def reset_camera(game, ctrl):
+    if ctrl: game.building_camera_x = 0
     game.building_camera_y = 0
     game.camera_zoom = 1
     game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
+
+def undo_edit(game, ctrl):
+    if ctrl:
+        print("undo") #! apply edit, place, move/scale, rotate, flip, duplicate, delete, snap grid, group, ungroup, change layer order, change layer
+
+    else:
+        print("redo")
 
 def create_level(game):
     game.levels.insert(game.current_level + 1, {

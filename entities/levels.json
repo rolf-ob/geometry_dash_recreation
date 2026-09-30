@@ -63,7 +63,7 @@
     ],
     "victors": {
       "Rolf": [
-        731,
+        734,
         7,
         0,
         0
@@ -17139,63 +17139,43 @@
     "background": [],
     "objects": [
       {
-        "x": 640,
-        "y": 560,
-        "width": 20,
-        "height": 120,
-        "rotation": 0,
-        "shape": "gravity",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": 2.0,
-        "group_id": 0
-      },
-      {
-        "x": 160,
-        "y": 80,
+        "x": 680,
+        "y": 640,
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "square",
+        "shape": "orb",
         "color": [
           255,
-          255,
-          255
+          0,
+          0
         ],
         "outline": [
           0,
           0,
           0
         ],
-        "modifier": null,
+        "modifier": "big",
         "group_id": 0
       },
       {
-        "x": 160,
-        "y": 200,
+        "x": 960,
+        "y": 600,
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "square",
+        "shape": "orb",
         "color": [
           255,
-          255,
-          255
+          0,
+          0
         ],
         "outline": [
           0,
           0,
           0
         ],
-        "modifier": null,
+        "modifier": "big",
         "group_id": 0
       }
     ],
@@ -17229,7 +17209,7 @@
     ],
     "victors": {
       "Rolf": [
-        31,
+        44,
         0,
         0,
         0
@@ -23632,7 +23612,7 @@
     ],
     "victors": {
       "Rolf": [
-        2561,
+        2564,
         0,
         0,
         0
