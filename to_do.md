@@ -1,6 +1,5 @@
 Optimization
-- Render and check for things in cells that are for example 400 wide
-- Prevent opposite side axes to exist, squares only need 2 axes not 4
+- Render and check for things in buckets that are for example 400 wide
 
 Build mode features
 - Undo and redo

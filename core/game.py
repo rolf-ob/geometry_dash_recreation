@@ -388,7 +388,7 @@ class Game():
         self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
         self.accessibility["respawn time"] = self.respawn_time
         self.accessibility["dark mode"] = self.dark_mode
-        controls = {[action]: [py.key.name(key) for key in keys] for action, keys in self.controls.items()}
+        controls = {action: [py.key.name(key) for key in keys] for action, keys in self.controls.items()}
         settings = {"accessibility": self.accessibility, "controls": controls}
         save_json("players/settings.json", settings)
 
@@ -440,7 +440,8 @@ class Game():
             self.limit_fps(self.fps * self.speedhack_multiplier if self.speedhack else self.fps)
             self.fps_counter.tick()
 
-            if now - self.last_save_time >= AUTOSAVE_INTERVAL:
+            if self.building and now - self.last_save_time >= AUTOSAVE_INTERVAL:
+                self.last_save_time = time.perf_counter()
                 self.save_to_file()
 
         self.save_to_file()

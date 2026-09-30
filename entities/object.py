@@ -73,11 +73,24 @@ class Object:
                 self.points.append((rotated_x, rotated_y))
 
     def recompute_axes(self):
-        self.axes = []
+        all_axes = []
         for i, point in enumerate(self.points):
             x1, y1 = point
             x2, y2 = self.points[(i + 1) % len(self.points)]
-            self.axes.append((y2 - y1, x1 - x2))
+            all_axes.append((y2 - y1, x1 - x2))
+
+        self.axes = []
+        for axis in all_axes:
+            parallel = False
+
+            for other in self.axes:
+                cross = axis[0] * other[1] - axis[1] * other[0]
+                if abs(cross) < 1e-9:
+                    parallel = True
+                    break
+
+            if not parallel:
+                self.axes.append(axis)
 
     def recompute_aabb(self):
         self.aabb = {}
