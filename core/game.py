@@ -8,7 +8,7 @@ from entities.object import Object
 from core.building import toggle_building
 from entities.serialization import levels_to_data, data_to_levels
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, gamemode_colors, speed_color, gravity_colors, orb_pad_colors, coin_color
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, gamemode_colors, speed_color, gravity_colors, size_colors, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
 
 class Game():
@@ -131,7 +131,7 @@ class Game():
                             r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
                             setattr(obj, field_name, (r, g, b))
 
-                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "orb", "pad", "coin"):
+                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "orb", "pad", "coin"):
                             setattr(obj, field_name, text)
 
                             if text == "end":
@@ -153,6 +153,10 @@ class Game():
                             elif text == "gravity":
                                 obj.width = 20
                                 obj.height = 120
+
+                            elif text == "size":
+                                obj.width = 20
+                                obj.height = 80
 
                             elif text == "orb":
                                 obj.width = 40
@@ -178,7 +182,7 @@ class Game():
                             obj.rotation = 0
                             obj.color = (0, 255, 0)
                             obj.outline = (0,)*3
-                            obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1}
+                            obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
                             for layer in (self.background, self.objects, self.decoration):
                                 if obj in layer:
                                     layer.remove(obj)
@@ -196,6 +200,11 @@ class Game():
                             setattr(obj, field_name, float(text))
                             if int(text) in gravity_colors.keys():
                                 obj.color = gravity_colors[int(text)]
+
+                        elif obj.shape == "size" and field_name == "modifier":
+                            setattr(obj, field_name, max(0.1, min(10, float(text))))
+                            if float(text) in size_colors.keys():
+                                obj.color = size_colors[float(text)]
 
                         elif obj.shape == "orb" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
                             setattr(obj, field_name, text)
@@ -218,6 +227,9 @@ class Game():
 
                         elif field_name == "gravity":
                             obj.modifier["gravity"] = float(text)
+
+                        elif field_name == "size":
+                            obj.modifier["size"] = max(0.1, min(10, float(text)))
 
                 else:
                     if field_name == "length":
@@ -274,8 +286,11 @@ class Game():
         self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
-        self.player = Object(0, 0, 40, 40, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
+        self.size = self.checkpoints[self.checkpoint].modifier["size"]*40
+        self.player = Object(0, 0, self.size, self.size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.player.recompute()
+        self.player_render = Object(0, 0, self.size, self.size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
+        self.player_render.recompute()
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = 0
         self.camera_zoom = 1
@@ -310,17 +325,21 @@ class Game():
         self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 
         rest = sorted(
-            self.level["checkpoints"][1:].items(),
+            self.level["checkpoints"][1:],
             key=lambda cp : cp.x
         )
-        self.checkpoints = [self.level["checkpoints"][0] + rest]
-        self.checkpoint = 0
+        self.checkpoints = [self.level["checkpoints"][0]] + rest
+        if not hasattr(self, "checkpoint"):
+            self.checkpoint = 0
+        elif self.checkpoint > len(self.checkpoints)-1:
+            self.checkpoint = len(self.checkpoints)-1
         
         self.shapes = []
         self.ends = []
         self.gamemodes = []
         self.speeds = []
         self.gravitys = []
+        self.sizes = []
         self.orbs = []
         self.pads = []
         self.coins = []
@@ -340,6 +359,9 @@ class Game():
             
             elif obj.shape == "gravity":
                 self.gravitys.append(obj)
+            
+            elif obj.shape == "size":
+                self.sizes.append(obj)
             
             elif obj.shape == "orb":
                 self.orbs.append(obj)

@@ -101,9 +101,9 @@ def draw_wave_trail(game, screen):
 
         camera_x = game.camera_x if not game.building else game.building_camera_x
         if camera_x < end_top[0] < camera_x + game.view_width or camera_x < start_top[0] < camera_x + game.view_width:
-            start_bottom = (point[0], point[1] + 40)
+            start_bottom = (point[0], point[1] + game.size)
 
-            end_bottom = (game.player.x + 20, game.player.y + 40) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + 40)
+            end_bottom = (game.player.x + 20, game.player.y + game.size) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.size)
 
             points = [
                 world_to_screen(game, *start_top),
@@ -122,9 +122,13 @@ def draw_player(game, screen):
         prev_player = game.player
 
     rotation = (prev_player.y - game.player.y) * -20
-    player = Object(game.player.x, game.player.y, 40, 40, rotation, "square", game.player.color, (0,)*3)
-    draw_polygon(game, screen, player.points, game.player.color, 0)
-    draw_polygon(game, screen, player.points, game.primary_color, 1)
+    game.player_render.x = game.player.x
+    game.player_render.y = game.player.y
+    game.player_render.rotation = rotation
+    game.player_render.recompute()
+
+    draw_polygon(game, screen, game.player_render.points, game.player.color, 0)
+    draw_polygon(game, screen, game.player_render.points, game.primary_color, 1)
 
 def draw_leaderboard(game, screen):
     if game.current_level != 0:
@@ -146,7 +150,7 @@ def draw_leaderboard(game, screen):
                 text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color, "world")
                 margin = 5
                 width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color, "world")
-                x, y = (world_to_screen(game, game.level_length + 40, 140 + i*35))
+                x, y = (world_to_screen(game, game.level_length + 40, 160 + 36*i))
                 py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
                 screen.blit(text, (x, y))

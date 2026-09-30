@@ -23,6 +23,11 @@ gravity_colors = {
     -2: (0, 0, 255)
 }
 
+size_colors = {
+    1: (0, 255, 0),
+    0.5: (255, 0, 255)
+}
+
 orb_pad_colors = {
     "small": (255, 0, 255),
     "normal": (255, 255, 0),
@@ -109,7 +114,7 @@ building_tutorial = [
     "",
     "SHAPES",
     "Building shapes - square, triangle, slope, circle",
-    "Functional shapes - end, checkpoint, gamemode, speed, gravity, orb, pad, coin",
+    "Functional shapes - end, checkpoint, gamemode, speed, gravity, size, orb, pad, coin",
     "",
     "CHECKPOINTS",
     "Checkpoints are marked with a C, the first checkpoint is marked S and cannot be deleted",
@@ -119,6 +124,7 @@ building_tutorial = [
     "Gamemode - Cube, ship, ball, wave, ufo, robot, spider",
     "Speed - Default speed is 2",
     "Gravity - Default gravity is 1, can also be negative",
+    "Size - Default size is 1 which is 40 pixels"
     "Orb - Small, normal, big, gravity, heavy or dash",
     "Pad - Small, normal, big, gravity or spider",
     "Coin - Set the number of points it should give",

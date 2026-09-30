@@ -55,15 +55,16 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 2,
-          "gravity": 1
+          "gravity": 1,
+          "size": 1
         },
         "group_id": 0
       }
     ],
     "victors": {
       "Rolf": [
-        718,
-        6,
+        729,
+        7,
         0,
         0
       ],
@@ -16878,7 +16879,8 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 2.0,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -16902,7 +16904,8 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 2.0,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -16926,7 +16929,8 @@
         "modifier": {
           "gamemode": "wave",
           "speed": 3.0,
-          "gravity": 2.0
+          "gravity": 2.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -16950,7 +16954,8 @@
         "modifier": {
           "gamemode": "wave",
           "speed": 3.0,
-          "gravity": 1
+          "gravity": 1,
+          "size": 1
         },
         "group_id": 0
       },
@@ -16974,7 +16979,8 @@
         "modifier": {
           "gamemode": "wave",
           "speed": 2.0,
-          "gravity": 2.0
+          "gravity": 2.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -16998,7 +17004,8 @@
         "modifier": {
           "gamemode": "ball",
           "speed": 3.0,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -17022,7 +17029,8 @@
         "modifier": {
           "gamemode": "ball",
           "speed": 2.0,
-          "gravity": -1.0
+          "gravity": -1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -17046,7 +17054,8 @@
         "modifier": {
           "gamemode": "ball",
           "speed": 2.0,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -17070,7 +17079,8 @@
         "modifier": {
           "gamemode": "ship",
           "speed": 2.0,
-          "gravity": 1
+          "gravity": 1,
+          "size": 1
         },
         "group_id": 0
       },
@@ -17094,14 +17104,15 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 3.0,
-          "gravity": 0.5
+          "gravity": 0.5,
+          "size": 1
         },
         "group_id": 0
       }
     ],
     "victors": {
       "Rolf": [
-        2894,
+        2896,
         3,
         0,
         0
@@ -17210,14 +17221,15 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 2,
-          "gravity": 1
+          "gravity": 1,
+          "size": 1
         },
         "group_id": 0
       }
     ],
     "victors": {
       "Rolf": [
-        20,
+        31,
         0,
         0,
         0
@@ -23487,7 +23499,8 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 1.4,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -23511,7 +23524,8 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 1.4,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -23535,7 +23549,8 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 1.4,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -23559,7 +23574,8 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 1.4,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -23583,7 +23599,8 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 1.4,
-          "gravity": 1.0
+          "gravity": 1.0,
+          "size": 1
         },
         "group_id": 0
       },
@@ -23607,14 +23624,15 @@
         "modifier": {
           "gamemode": "cube",
           "speed": 1.4,
-          "gravity": 0.5
+          "gravity": 0.5,
+          "size": 1
         },
         "group_id": 0
       }
     ],
     "victors": {
       "Rolf": [
-        2551,
+        2561,
         0,
         0,
         0

@@ -205,7 +205,7 @@ def flip_objects(game, way):
                     flipped_center = center_pos - (center - center_pos)
                     obj.x = int(flipped_center - obj.width / 2)
 
-                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size"):
                         obj.rotation = -obj.rotation
                         
                     elif obj.shape == "right slope":
@@ -228,7 +228,7 @@ def flip_objects(game, way):
                     flipped_center = center_pos - (center - center_pos)
                     obj.y = int(flipped_center - obj.height / 2)
 
-                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity"):
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size"):
                         obj.rotation = -obj.rotation
                         
                     elif obj.shape == "right slope":
@@ -381,7 +381,7 @@ def create_level(game):
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 255, 0), game.primary_color, {"gamemode": "cube", "speed": 2, "gravity": 1})],
+        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 255, 0), game.primary_color, {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1})],
         "victors": {}
     })
     game.title = ["Created New Level", time.perf_counter() + 2]
@@ -439,7 +439,8 @@ def open_menu(game, menu):
         game.textboxes = [
             TextBox("Gamemode", ""),
             TextBox("Speed", ""),
-            TextBox("Gravity", "")
+            TextBox("Gravity", ""),
+            TextBox("Size", "")
         ]
 
     if game.active_textbox:     

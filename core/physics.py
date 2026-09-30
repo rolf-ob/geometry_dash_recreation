@@ -3,11 +3,11 @@ from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, gamemode_colors
 
 def check_collision(game):
-    fall_speed = -40 / game.speed*abs(game.gravity)
+    fall_speed = -game.size / game.speed*abs(game.gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
     game.min_height = 0
-    game.max_height = HEIGHT - 40
+    game.max_height = HEIGHT - game.size
     game.on_ground = False
 
     for obj in game.shapes:
@@ -21,7 +21,7 @@ def check_collision(game):
                     game.min_height = max(game.min_height, obj.y+obj.height)
                     slide = True
                 elif (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
-                    game.max_height = min(game.max_height, obj.y - 40)
+                    game.max_height = min(game.max_height, obj.y - game.size)
                     slide = True
 
             if game.gamemode == "wave" and game.player.x <= obj.x + obj.width < game.player.x+game.speed:
@@ -61,6 +61,7 @@ def check_collision(game):
                 
                 game.gamemode = obj.modifier
                 game.player.color = gamemode_colors[game.gamemode]
+                game.player_render.color = gamemode_colors[game.gamemode]
                 game.player.recompute()
 
                 if game.gamemode == "wave":
@@ -68,8 +69,7 @@ def check_collision(game):
 
     for obj in game.speeds:
         if collide(game.player, obj) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1], obj)):
-            if game.speed != float(obj.modifier):
-                game.speed = float(obj.modifier)
+            game.speed = float(obj.modifier)
 
     for obj in game.gravitys:
         if collide(game.player, obj) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1], obj)) and game.gravity != float(obj.modifier):
@@ -78,6 +78,15 @@ def check_collision(game):
             game.gravity = float(obj.modifier)
             if game.gamemode == "wave":
                 game.wave_trail.append((game.player.x + 20, game.player.y))
+
+    for obj in game.sizes:
+        if collide(game.player, obj) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1], obj)):
+            game.size = float(obj.modifier)*40
+            game.player.width = game.size
+            game.player.height = game.size
+            game.player_render.width = game.size
+            game.player_render.height = game.size
+            game.player.recompute()
 
     if game.player.y == game.max_height:
         if game.gravity > 0:
@@ -183,10 +192,10 @@ def check_collision(game):
             game.collected_coins[0] += 1
             game.collected_coins[1] += obj.modifier
 
-    game.hitbox_trail.append(Object(game.player.x, game.player.y, 40, 40, 0, "square", (0,)*3, hitbox_color))
+    game.hitbox_trail.append(Object(game.player.x, game.player.y, game.size, game.size, 0, "square", (0,)*3, hitbox_color))
 
 def update_position(game):
-    fall_speed = -40 / game.speed*abs(game.gravity)
+    fall_speed = -game.size / game.speed*abs(game.gravity)
 
     if round(game.y_vel) != fall_speed:
         if game.gamemode == "cube":
@@ -209,7 +218,7 @@ def update_position(game):
 
         elif game.gamemode == "wave":
             game.y_vel = 1 if game.clicking > 0 else -1
-            if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - 40 or game.player.y == 0):
+            if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - game.size or game.player.y == 0):
                 game.wave_trail.append((game.player.x + 20, game.player.y))
 
         elif game.gamemode == "ufo":
