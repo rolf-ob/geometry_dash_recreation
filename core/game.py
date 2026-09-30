@@ -8,7 +8,7 @@ from entities.object import Object
 from core.building import toggle_building
 from entities.serialization import levels_to_data, data_to_levels, save_json
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, gamemode_colors, speed_color, gravity_colors, size_colors, orb_pad_colors, coin_color
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, gamemode_colors, speed_color, gravity_colors, size_colors, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
 
 class Game():
@@ -53,6 +53,7 @@ class Game():
         self.on_ground = False
 
         self.last_frame_time = time.perf_counter()
+        self.last_save_time = time.perf_counter()
         self.clicking = 0
         self.clicked = False
         self.robot_fuel = 0
@@ -438,6 +439,9 @@ class Game():
             py.display.flip()
             self.limit_fps(self.fps * self.speedhack_multiplier if self.speedhack else self.fps)
             self.fps_counter.tick()
+
+            if now - self.last_save_time >= AUTOSAVE_INTERVAL:
+                self.save_to_file()
 
         self.save_to_file()
         py.quit()

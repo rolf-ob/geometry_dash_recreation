@@ -3,7 +3,6 @@ Optimization
 - Prevent opposite side axes to exist, squares only need 2 axes not 4
 
 Build mode features
-- Autosave
 - Undo and redo
 
 Gameplay features

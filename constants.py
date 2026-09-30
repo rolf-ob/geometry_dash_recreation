@@ -3,6 +3,7 @@ HEIGHT = 720
 PLAYER_X = 360
 FONT_SIZE = 24
 FIXED_STEP = 1 / 240
+AUTOSAVE_INTERVAL = 120
 
 gamemode_colors = {
     "wave": (0, 255, 255),
