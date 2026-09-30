@@ -52,7 +52,7 @@ def draw_objects(game, screen):
                     screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color), world_to_screen(game, obj.x + 5, obj.y + 5))
 
             elif obj.shape == "coin":
-                if obj.modifier and not obj.interacted:
+                if not obj.interacted:
                     color = (200, 255, 200) if obj.selected else obj.color
                     outline_color = obj.outline if not game.show_hitboxes else (255, 0, 0)
                     draw_polygon(game, screen, obj.points, color, 0)

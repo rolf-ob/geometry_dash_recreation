@@ -72,8 +72,9 @@ def check_collision(game):
 
     for obj in game.gravitys:
         if collide(game.player, obj) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1], obj)) and game.gravity != float(obj.modifier):
+            if game.gravity/abs(game.gravity) != float(obj.modifier)/abs(float(obj.modifier)): 
+                game.y_vel *= -1
             game.gravity = float(obj.modifier)
-            game.y_vel *= -1
             if game.gamemode == "wave":
                 game.wave_trail.append((game.player.x + 20, game.player.y))
 

@@ -3,6 +3,8 @@ Optimization
 - Prevent opposite side axes to exist, squares only need 2 axes not 4
 
 Gameplay features
+- Dont switch to checkpoint 0 when exiting build mode
+- Player size portal
 - Music
 - Camera going up and down with player
 - Sliding on slopes or rotated squares

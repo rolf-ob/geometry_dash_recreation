@@ -144,13 +144,25 @@ def handle_input(game):
 
         elif event.type == py.KEYDOWN:
             if game.active_textbox:
+
                 if event.key == py.K_RETURN:
+
                     if game.building and not game.editing_level:
+                        obj_selected = False
+                        cp_selected = False
+
                         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                             if obj.selected:
                                 game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
                                 obj.recompute()
-                        game.active_textbox.text = ""
+                                if obj.shape == "checkpoint": cp_selected = True
+                                else: obj_selected = True
+
+                        if not obj_selected and cp_selected:
+                            open_menu(game, "checkpoint attributes")
+                        else:
+                            game.active_textbox.text = ""
+                    
                     else:
                         game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
 
