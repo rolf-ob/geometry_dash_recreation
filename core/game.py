@@ -309,20 +309,11 @@ class Game():
         self.background_color = tuple(self.level["meta"]["background color"])
         self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 
-        checkpoints = self.level["checkpoints"].copy()
-        self.level["checkpoints"] = [checkpoints[0]]
-        checkpoints.pop(0)
-        checkpoints_x = [cp.x for cp in checkpoints]
-        if checkpoints:
-            for i in range(len(checkpoints_x)):
-                for x in checkpoints_x.copy():
-                    if x == min(checkpoints_x):
-                        self.level["checkpoints"].append(checkpoints[checkpoints_x.index(x)])
-                        checkpoints.pop(checkpoints_x.index(x))
-                        checkpoints_x.remove(x)
-                        break
-        
-        self.checkpoints = self.level["checkpoints"]
+        rest = sorted(
+            self.level["checkpoints"][1:].items(),
+            key=lambda cp : cp.x
+        )
+        self.checkpoints = [self.level["checkpoints"][0] + rest]
         self.checkpoint = 0
         
         self.shapes = []

@@ -42,7 +42,7 @@ def toggle_pause(game):
         game.camera_x = game.player.x - PLAYER_X
         game.camera_y = 0
         game.camera_zoom = 1
-        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
+        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
 def switch_checkpoint(game, way):
     if way == "previous":
@@ -104,10 +104,10 @@ def pan(game, y):
 def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
         game.camera_zoom += game.camera_zoom/10
-        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
+        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
     elif y < 0 and (game.paused or game.completed or game.building) and game.camera_zoom > 1:
         game.camera_zoom = max(1, game.camera_zoom - game.camera_zoom/10)
-        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
+        game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
 def handle_input(game):
     keys = py.key.get_pressed()
@@ -136,7 +136,7 @@ def handle_input(game):
             game.view_width = game.width * (HEIGHT / game.height)
             game.view_height = game.height * (HEIGHT / game.height)
             game.scale = game.height / HEIGHT
-            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
+            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)), "screen")
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
         elif event.type == py.TEXTINPUT and game.active_textbox:

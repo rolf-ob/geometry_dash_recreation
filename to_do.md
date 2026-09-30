@@ -10,11 +10,8 @@ Gameplay features
 - Sliding on slopes or rotated squares
 - CBF
 
-Visual features
-- Text scales with zoom
-
 Build mode features
-- Autosave 
+- Autosave
 - Save to a temporary file that replaces levels.json once fully saved
 
 User

@@ -3,6 +3,7 @@ from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, gamemode_colors
 
 def check_collision(game):
+    fall_speed = -40 / game.speed*abs(game.gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
     game.min_height = 0
@@ -72,7 +73,7 @@ def check_collision(game):
 
     for obj in game.gravitys:
         if collide(game.player, obj) and obj.modifier and (game.hitbox_trail and not polygons_collide(game.hitbox_trail[-1], obj)) and game.gravity != float(obj.modifier):
-            if game.gravity/abs(game.gravity) != float(obj.modifier)/abs(float(obj.modifier)): 
+            if game.gravity != 0 and obj.modifier != 0 and game.gravity/abs(game.gravity) != float(obj.modifier)/abs(float(obj.modifier)): 
                 game.y_vel *= -1
             game.gravity = float(obj.modifier)
             if game.gamemode == "wave":
@@ -88,7 +89,7 @@ def check_collision(game):
         game.y_vel = 0
     
     for obj in game.orbs:
-        if round(game.y_vel) != -40 / game.speed*abs(game.gravity):
+        if round(game.y_vel) != fall_speed:
             if obj.modifier and obj.modifier != "dash":
                 if not obj.interacted and game.clicking > 0 and not game.clicked and not game.on_ground and collide(game.player, obj):
                     obj.interacted = True
@@ -174,7 +175,7 @@ def check_collision(game):
 
             elif obj.modifier == "spider" and game.gamemode != "wave":
                 game.gravity *= -1
-                game.y_vel = -40 / game.speed*abs(game.gravity)
+                game.y_vel = fall_speed
 
     for obj in game.coins:
         if not obj.interacted and not game.cheated and collide(game.player, obj):
@@ -187,7 +188,7 @@ def check_collision(game):
 def update_position(game):
     fall_speed = -40 / game.speed*abs(game.gravity)
 
-    if round(game.y_vel) != -40 / game.speed*abs(game.gravity):
+    if round(game.y_vel) != fall_speed:
         if game.gamemode == "cube":
             if game.clicking > 0 and game.on_ground:
                 game.clicked = True

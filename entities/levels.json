@@ -62,7 +62,7 @@
     ],
     "victors": {
       "Rolf": [
-        705,
+        718,
         6,
         0,
         0
@@ -17101,7 +17101,7 @@
     ],
     "victors": {
       "Rolf": [
-        2891,
+        2894,
         3,
         0,
         0
@@ -17146,6 +17146,46 @@
         ],
         "modifier": 2.0,
         "group_id": 0
+      },
+      {
+        "x": 160,
+        "y": 80,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 160,
+        "y": 200,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
       }
     ],
     "decoration": [],
@@ -17177,7 +17217,13 @@
     ],
     "victors": {
       "Rolf": [
-        10,
+        20,
+        0,
+        0,
+        0
+      ],
+      "a": [
+        1,
         0,
         0,
         0
@@ -23568,7 +23614,7 @@
     ],
     "victors": {
       "Rolf": [
-        2542,
+        2551,
         0,
         0,
         0

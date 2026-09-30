@@ -373,7 +373,7 @@ def reset_camera(game):
     game.building_camera_x = 0
     game.building_camera_y = 0
     game.camera_zoom = 1
-    game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)))
+    game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
 def create_level(game):
     game.levels.insert(game.current_level + 1, {
