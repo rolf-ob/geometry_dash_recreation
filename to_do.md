@@ -2,16 +2,15 @@ Optimization
 - Render and check for things in cells that are for example 400 wide
 - Prevent opposite side axes to exist, squares only need 2 axes not 4
 
+Build mode features
+- Autosave
+- Undo and redo
+
 Gameplay features
-- Player size portal
 - Music
 - Camera going up and down with player
 - Sliding on slopes or rotated squares
 - CBF
-
-Build mode features
-- Autosave
-- Save to a temporary file that replaces levels.json once fully saved
 
 User
 - Each level as its own json file

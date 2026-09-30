@@ -6,7 +6,7 @@ from core.physics import update
 from rendering.rendering import draw
 from entities.object import Object
 from core.building import toggle_building
-from entities.serialization import levels_to_data, data_to_levels
+from entities.serialization import levels_to_data, data_to_levels, save_json
 from rendering.textcache import TextCache
 from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, gamemode_colors, speed_color, gravity_colors, size_colors, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
@@ -380,21 +380,16 @@ class Game():
         self.restart()
 
     def save_to_file(self):
-        with open("entities/levels.json", "w") as f:
-            json.dump(levels_to_data(self.levels), f, indent=2)
+        save_json("entities/levels.json", levels_to_data(self.levels))
 
         self.accessibility["name"] = self.name
         self.accessibility["fps"] = self.fps
         self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
         self.accessibility["respawn time"] = self.respawn_time
         self.accessibility["dark mode"] = self.dark_mode
-        controls = {}
-        for action, keys in self.controls.items():
-            controls[action] = [py.key.name(key) for key in keys]
-        
+        controls = {[action]: [py.key.name(key) for key in keys] for action, keys in self.controls.items()}
         settings = {"accessibility": self.accessibility, "controls": controls}
-        with open("players/settings.json", "w") as f:
-            json.dump(settings, f, indent=2)
+        save_json("players/settings.json", settings)
 
         self.title = ["Settings and levels saved", time.perf_counter() + 2]
 
