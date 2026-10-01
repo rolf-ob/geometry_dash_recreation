@@ -26,6 +26,42 @@ def check_collision(game):
                         game.max_height = min(game.max_height, obj.y - game.player.height)
                         slide = True
 
+                elif obj.shape == "right slope" and obj.rotation == 0:
+                    prev_player = game.hitboxes[-1].aabb if game.hitboxes else game.player.aabb
+                    player = game.player.aabb
+
+                    prev_player_y = round((prev_player["bottom"] - obj.y) / obj.height, 12)
+                    player_y = round((player["bottom"] - obj.y) / obj.height, 12)
+
+                    prev_y = round((prev_player["left"] - obj.x) / obj.width, 12)
+                    y = round((player["left"] - obj.x) / obj.width, 12)
+                    next_y = round((player["left"]+game.speed - obj.x) / obj.width, 12)
+
+                    if (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                        game.max_height = min(game.max_height, obj.y - game.player.height)
+                        slide = True
+                    elif (prev_player_y < prev_y and y < player_y) or y == player_y and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                        game.max_height = min(game.max_height, obj.y - game.player.height + next_y*obj.height)
+                        slide = True
+
+                elif obj.shape == "left slope" and obj.rotation == 0:
+                    prev_player = game.hitboxes[-1].aabb if game.hitboxes else game.player.aabb
+                    player = game.player.aabb
+
+                    prev_player_y = round((prev_player["bottom"] - obj.y) / obj.height, 12)
+                    player_y = round((player["bottom"] - obj.y) / obj.height, 12)
+
+                    prev_y = round(1-(prev_player["right"] - obj.x) / obj.width, 12)
+                    y = round(1-(player["right"] - obj.x) / obj.width, 12)
+                    next_y = round(1-(player["right"]+game.speed - obj.x) / obj.width, 12)
+
+                    if (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                        game.max_height = min(game.max_height, obj.y - game.player.height)
+                        slide = True
+                    elif (prev_player_y < prev_y and y < player_y) or y == player_y and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                        game.max_height = min(game.max_height, obj.y - game.player.height + next_y*obj.height)
+                        slide = True
+
                 if game.gamemode == "wave" and game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                     game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 

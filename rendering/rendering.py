@@ -62,6 +62,7 @@ def draw_objects(game, screen):
         elif obj.shape == "orb" and obj.modifier == "dash":
             color = (200, 255, 200) if obj.selected else obj.color
             outline_color = (255, 0, 0) if game.show_hitboxes else obj.outline
+            outline_thickness = 1 if game.show_hitboxes else int(1*game.camera_zoom)
 
             if color == (0, 0):
                 if game.building:
@@ -71,14 +72,15 @@ def draw_objects(game, screen):
             
             if outline_color == (0, 0):
                 if game.show_hitboxes:
-                    draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+                    draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
             else:
-                draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+                draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
 
         elif obj.shape == "coin":
             if not obj.interacted:
                 color = (200, 255, 200) if obj.selected else obj.color
                 outline_color = (255, 0, 0) if game.show_hitboxes else obj.outline
+                outline_thickness = 1 if game.show_hitboxes else int(1*game.camera_zoom)
 
                 if color == (0, 0):
                     if game.building:
@@ -90,13 +92,14 @@ def draw_objects(game, screen):
                 
                 if outline_color == (0, 0):
                     if game.show_hitboxes:
-                        draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+                        draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
                 else:
-                    draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+                    draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
         
         else:
             color = (200, 255, 200) if obj.selected else obj.color
             outline_color = (255, 0, 0) if game.show_hitboxes else obj.outline
+            outline_thickness = 1 if game.show_hitboxes else int(1*game.camera_zoom)
 
             if color == (0, 0):
                 if game.building:
@@ -106,9 +109,9 @@ def draw_objects(game, screen):
             
             if outline_color == (0, 0):
                 if game.show_hitboxes:
-                    draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+                    draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
             else:
-                draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+                draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
 
 def draw_decoration(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x

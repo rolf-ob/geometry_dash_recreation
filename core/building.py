@@ -6,7 +6,7 @@ from core.textbox import TextBox
 from entities.object import Object
 from entities.spacial import collide, get_nearby_objects
 from rendering.rendering import screen_to_world
-from constants import PLAYER_X, FONT_SIZE
+from constants import PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 
 def toggle_building(game):
     game.building = not game.building
@@ -432,7 +432,7 @@ def switch_layer(game, shift):
 
 def reset_camera(game, ctrl):
     if ctrl: game.building_camera_x = 0
-    game.building_camera_y = 0
+    game.building_camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
     game.camera_zoom = 1
     game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 

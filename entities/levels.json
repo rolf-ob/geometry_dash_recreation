@@ -67,8 +67,8 @@
     ],
     "victors": {
       "Rolf": [
-        866,
-        13,
+        947,
+        14,
         0,
         0
       ],
@@ -18092,7 +18092,7 @@
     ],
     "victors": {
       "Rolf": [
-        3267,
+        3269,
         3,
         0,
         0
@@ -18121,23 +18121,128 @@
     "background": [],
     "objects": [
       {
-        "x": 1040,
-        "y": 360,
-        "width": 20,
-        "height": 120,
+        "x": 1060,
+        "y": 640,
+        "width": 80,
+        "height": 80,
         "rotation": 0,
-        "shape": "teleport",
+        "shape": "left slope",
         "color": [
           255,
-          128,
-          0
+          255,
+          255
         ],
         "outline": [
           0,
           0,
           0
         ],
-        "modifier": 600,
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1220,
+        "y": 640,
+        "width": 80,
+        "height": 80,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1140,
+        "y": 640,
+        "width": 80,
+        "height": 80,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 880,
+        "y": 640,
+        "width": 160,
+        "height": 80,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 800,
+        "y": 640,
+        "width": 80,
+        "height": 80,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 640,
+        "y": 640,
+        "width": 160,
+        "height": 80,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
         "group_id": 0,
         "bucket": "objects"
       }
@@ -18152,8 +18257,8 @@
         "rotation": 0,
         "shape": "checkpoint",
         "color": [
-          0,
           255,
+          128,
           0
         ],
         "outline": [
@@ -18162,7 +18267,7 @@
           0
         ],
         "modifier": {
-          "gamemode": "cube",
+          "gamemode": "ufo",
           "speed": 2,
           "gravity": 1,
           "size": 1
@@ -18173,7 +18278,7 @@
     ],
     "victors": {
       "Rolf": [
-        444,
+        718,
         0,
         0,
         0

@@ -60,8 +60,6 @@ class Game():
         self.robot_fuel = 0
 
         self.building = False
-        self.building_camera_x = 0
-        self.building_camera_y = 0
         self.layer = 1
         self.layer_view = False
         self.scale_mode = False
@@ -83,8 +81,6 @@ class Game():
         self.speedhack = False
         self.show_player = True
 
-        self.load_level()
-
         py.mouse.set_visible(False)
         self.font = py.font.SysFont("Arial", FONT_SIZE)
         self.text_cache = TextCache(self.font)
@@ -92,6 +88,8 @@ class Game():
         self.fps_counter = FpsCounter()
         py.display.set_caption("Geometry Dash")
         py.key.stop_text_input()
+
+        self.load_level()
 
     def switch_attribute(self, way):
         if self.textboxes != []:
@@ -122,7 +120,7 @@ class Game():
         try:
             if self.building:
                 self.capture_level_state("do")
-                
+
                 if not self.editing_level:
                     if obj.shape != "checkpoint":
                         if field_name == "width":
@@ -390,6 +388,7 @@ class Game():
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
         self.camera_zoom = 1
+        self.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * self.scale * self.camera_zoom)), "world")
 
         start_x = self.player.x - self.checkpoints[0].x
         checkpoint_x = self.checkpoints[self.checkpoint].x - self.checkpoints[0].x
@@ -436,6 +435,9 @@ class Game():
         self.background_color = tuple(self.level["meta"]["background color"])
         if restart:
             self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
+
+        self.building_camera_x = 0
+        self.building_camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
 
         self.current_group_id = 0
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):

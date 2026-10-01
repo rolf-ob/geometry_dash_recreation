@@ -60,7 +60,7 @@ def switch_checkpoint(game, way):
 
 def switch_level(game, way):
     game.building_camera_x = 0
-    game.building_camera_y = 0
+    game.building_camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
     if way == "previous":
         game.current_level = (game.current_level-1) % len(game.levels)
     elif way == "next":
