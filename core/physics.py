@@ -251,10 +251,15 @@ def update_position(game):
                 game.y_vel = fall_speed
             else:
                 game.y_vel = max(fall_speed, game.y_vel - 0.05)
-    
+
+    if game.dashing:
+        y_movement = -max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * game.speed
+    else:
+        y_movement = game.y_vel*game.speed*game.gravity
+
     game.camera_x += game.speed
     game.player.x += game.speed
-    game.player.y = max(game.min_height, min(game.max_height, game.player.y - game.y_vel*game.speed*game.gravity)) if not game.dashing else game.player.y
+    game.player.y = max(game.min_height, min(game.max_height, game.player.y - y_movement))
     game.player.recompute()
 
     start_x = game.player.x - game.checkpoints[0].x

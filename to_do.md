@@ -2,9 +2,8 @@ Build mode features
 - Undo and redo
 
 Gameplay features
-- Dash orb rotation
-- Level music
 - Camera going up and down with player
+- Level music
 - Sliding on slopes or rotated squares
 - CBF
 

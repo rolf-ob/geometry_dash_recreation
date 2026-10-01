@@ -53,6 +53,22 @@ def draw_objects(game, screen):
             if obj.selected:
                 screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
 
+        elif obj.shape == "orb" and obj.modifier == "dash":
+            color = (200, 255, 200) if obj.selected else obj.color
+            outline_color = (255, 0, 0) if game.show_hitboxes else obj.outline
+
+            if color == (0, 0):
+                if game.building:
+                    draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
+            else:
+                draw_polygon(game, screen, obj.points, color, 0)
+            
+            if outline_color == (0, 0):
+                if game.show_hitboxes:
+                    draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+            else:
+                draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
+
         elif obj.shape == "coin":
             if not obj.interacted:
                 color = (200, 255, 200) if obj.selected else obj.color
