@@ -1,4 +1,5 @@
 from collections import defaultdict
+from copy import deepcopy
 import time, json
 import pygame as py
 
@@ -8,9 +9,9 @@ from core.physics import update
 from rendering.rendering import draw
 from entities.object import Object
 from core.building import toggle_building
-from entities.serialization import levels_to_data, data_to_levels, save_json
+from entities.serialization import level_to_dict, dict_to_level, levels_to_data, data_to_levels, save_json
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, gamemode_colors, speed_color, gravity_colors, size_colors, orb_pad_colors, coin_color
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, gamemode_colors, speed_color, gravity_colors, size_colors, teleport_color, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
 
 class Game():
@@ -67,6 +68,9 @@ class Game():
         self.editing_level = False
         self.buckets = {"hitboxes": defaultdict(list)}
 
+        self.level_states = []
+        self.undone_states = []
+
         self.textboxes = []
         self.active_textbox = None
 
@@ -117,6 +121,8 @@ class Game():
     def apply_edit(self, obj, field_name, text):
         try:
             if self.building:
+                self.capture_level_state("do")
+                
                 if not self.editing_level:
                     if obj.shape != "checkpoint":
                         if field_name == "width":
@@ -138,7 +144,7 @@ class Game():
                             elif len(rgb) == 1 and rgb[0] == "0":
                                 setattr(obj, field_name, (0, 0))
 
-                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "orb", "pad", "coin"):
+                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "coin"):
                             setattr(obj, field_name, text)
 
                             if text == "end":
@@ -164,6 +170,11 @@ class Game():
                             elif text == "size":
                                 obj.width = 20
                                 obj.height = 80
+
+                            elif text == "teleport":
+                                obj.width = 20
+                                obj.height = 120
+                                obj.color = teleport_color
 
                             elif text == "orb":
                                 obj.width = 40
@@ -219,6 +230,9 @@ class Game():
                             setattr(obj, field_name, max(0.1, min(10, float(text))))
                             if float(text) in size_colors.keys():
                                 obj.color = size_colors[float(text)]
+
+                        elif obj.shape == "teleport" and field_name == "modifier":
+                            setattr(obj, field_name, int(text))
 
                         elif obj.shape == "orb" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
                             setattr(obj, field_name, text)
@@ -297,6 +311,36 @@ class Game():
         except ValueError:
             pass
 
+    def capture_level_state(self, edit):
+        if edit == "undo":
+            self.undone_states.append(deepcopy(level_to_dict(self.level)))
+
+        elif edit == "redo":
+            self.level_states.append(deepcopy(level_to_dict(self.level)))
+        
+        elif edit == "do":
+            self.undone_states = []
+            self.level_states.append(deepcopy(level_to_dict(self.level)))
+            if len(self.level_states) > MAX_EDIT_HISTORY:
+                self.level_states.pop(0)
+
+    def restore_level_state(self, edit):
+        if edit == "undo" and self.level_states:
+            self.capture_level_state(edit)
+
+            self.level = dict_to_level(self.level_states[-1])
+            self.levels[self.current_level] = self.level
+            self.load_level(False)
+            self.level_states.pop()
+            
+        elif edit == "redo" and self.undone_states:
+            self.capture_level_state(edit)
+
+            self.level = dict_to_level(self.undone_states[-1])
+            self.levels[self.current_level] = self.level
+            self.load_level(False)
+            self.undone_states.pop()
+
     def rebuild_buckets(self):
         self.buckets = {
             "background": defaultdict(list),
@@ -365,8 +409,9 @@ class Game():
         self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
     
-    def load_level(self):
-        self.level = self.levels[self.current_level]
+    def load_level(self, restart=True):
+        if restart:
+            self.level = self.levels[self.current_level]
 
         self.background = self.level["background"]
         self.objects = self.level["objects"]
@@ -389,14 +434,16 @@ class Game():
         self.level_roof = self.level["meta"]["roof"]
         self.level_floor = self.level["meta"]["floor"]
         self.background_color = tuple(self.level["meta"]["background color"])
-        self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
+        if restart:
+            self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 
         self.current_group_id = 0
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
             if obj.group_id >= self.current_group_id:
                 self.current_group_id = obj.group_id + 1
-        
-        self.restart()
+
+        if restart:
+            self.restart()
 
     def save_to_file(self):
         save_json("entities/levels.json", levels_to_data(self.levels))

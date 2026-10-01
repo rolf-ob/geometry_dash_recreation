@@ -1,10 +1,6 @@
-Build mode features
-- Undo and redo
-
 Gameplay features
-- Teleport portals
-- Level music
 - Sliding on slopes
+- Level music
 - CBF
 
 User

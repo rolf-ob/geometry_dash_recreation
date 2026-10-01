@@ -74,7 +74,7 @@ def check_collision(game):
                 game.speed = float(obj.modifier)
 
         elif obj.shape == "gravity":
-            if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)) and game.gravity != float(obj.modifier):
+            if collide(game.player, obj) and obj.modifier != None and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)) and game.gravity != float(obj.modifier):
                 if game.gravity != 0 and obj.modifier != 0 and game.gravity/abs(game.gravity) != float(obj.modifier)/abs(float(obj.modifier)): 
                     game.y_vel *= -1
                 game.gravity = float(obj.modifier)
@@ -89,6 +89,10 @@ def check_collision(game):
                 game.player_render.width = size
                 game.player_render.height = size
                 game.player.recompute()
+
+        elif obj.shape == "teleport":
+            if collide(game.player, obj) and obj.modifier != None and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+                game.player.y = max(game.level["meta"]["roof"], min(game.level["meta"]["floor"] - game.player.height, obj.modifier))
         
         elif obj.shape == "orb":
             if round(game.y_vel) != fall_speed:

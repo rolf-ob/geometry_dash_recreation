@@ -22,7 +22,7 @@ class Object:
         self.recompute()
     
     def recompute_points(self):
-        if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity", "size", "pad"):
+        if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity", "size", "teleport", "pad"):
             corners = [
                 (self.x, self.y),
                 (self.x + self.width, self.y),

@@ -6,6 +6,7 @@ FIXED_STEP = 1 / 240
 AUTOSAVE_INTERVAL = 120
 BUCKET_WIDTH = 400
 CAMERA_MARGIN = 100
+MAX_EDIT_HISTORY = 100
 
 gamemode_colors = {
     "wave": (0, 255, 255),
@@ -30,6 +31,8 @@ size_colors = {
     1: (0, 255, 0),
     0.5: (255, 0, 255)
 }
+
+teleport_color = (255, 128, 0)
 
 orb_pad_colors = {
     "small": (255, 0, 255),
@@ -120,7 +123,7 @@ building_tutorial = [
     "",
     "SHAPES",
     "Building shapes - square, triangle, slope, circle",
-    "Functional shapes - end, checkpoint, gamemode, speed, gravity, size, orb, pad, coin",
+    "Functional shapes - end, checkpoint, gamemode, speed, gravity, size, teleport, orb, pad, coin",
     "Set color or outline to 0 to make them transparent",
     "",
     "CHECKPOINTS",
@@ -131,7 +134,8 @@ building_tutorial = [
     "Gamemode - Cube, ship, ball, wave, ufo, robot, spider",
     "Speed - Default speed is 2",
     "Gravity - Default gravity is 1, can also be negative",
-    "Size - Default size is 1 which is 40 pixels"
+    "Size - Default size is 1 which is 40 pixels",
+    "Teleport - Teleports the player to a specific height",
     "Orb - Small, normal, big, gravity, heavy or dash",
     "Pad - Small, normal, big, gravity or spider",
     "Coin - Set the number of points it should give",

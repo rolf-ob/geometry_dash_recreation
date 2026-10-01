@@ -67,7 +67,7 @@
     ],
     "victors": {
       "Rolf": [
-        854,
+        866,
         13,
         0,
         0
@@ -18121,36 +18121,15 @@
     "background": [],
     "objects": [
       {
-        "x": 640,
-        "y": 560,
-        "width": 40,
-        "height": 40,
-        "rotation": 0.0,
-        "shape": "orb",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": "dash",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 680,
-        "y": 680,
-        "width": 40,
-        "height": 40,
+        "x": 1040,
+        "y": 360,
+        "width": 20,
+        "height": 120,
         "rotation": 0,
-        "shape": "orb",
+        "shape": "teleport",
         "color": [
           255,
-          0,
+          128,
           0
         ],
         "outline": [
@@ -18158,7 +18137,7 @@
           0,
           0
         ],
-        "modifier": "big",
+        "modifier": 600,
         "group_id": 0,
         "bucket": "objects"
       }
@@ -18168,58 +18147,6 @@
       {
         "x": 360,
         "y": 680,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "checkpoint",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": {
-          "gamemode": "wave",
-          "speed": 2,
-          "gravity": 1,
-          "size": 1
-        },
-        "group_id": 0,
-        "bucket": "checkpoints"
-      },
-      {
-        "x": 360,
-        "y": 600,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "checkpoint",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": {
-          "gamemode": "ship",
-          "speed": 2,
-          "gravity": 1,
-          "size": 1
-        },
-        "group_id": 0,
-        "bucket": "checkpoints"
-      },
-      {
-        "x": 360,
-        "y": 640,
         "width": 40,
         "height": 40,
         "rotation": 0,
@@ -18246,7 +18173,7 @@
     ],
     "victors": {
       "Rolf": [
-        426,
+        444,
         0,
         0,
         0

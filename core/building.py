@@ -22,6 +22,9 @@ def toggle_building(game):
         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
             obj.selected = False
 
+        game.level_states = []
+        game.undone_states = []
+
         game.editing_level = False
         close_menu(game)
         if game.paused:
@@ -40,6 +43,8 @@ def place_object(game):
     objects = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width)
 
     if not any(collide(mouse, obj) for obj in objects):
+        game.capture_level_state("do")
+
         new_obj = Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3)
         layer.append(new_obj)
         new_obj.bucket = name
@@ -105,6 +110,8 @@ def select_object(game, shifting):
             open_menu(game, "checkpoint attributes")
 
 def move_scale_objects(game, direction, shift, ctrl, alt):
+    game.capture_level_state("do")
+    
     if shift:
         distance = 1
     elif ctrl:
@@ -167,6 +174,8 @@ def rotate_objects(game, way, shift, ctrl, alt):
                 y_positions.append(point[1])
 
     if x_positions:
+        game.capture_level_state("do")
+
         min_x = min(x_positions)
         max_x = max(x_positions)
         min_y = min(y_positions)
@@ -205,6 +214,8 @@ def flip_objects(game, way):
                 positions.append(point[axis])
 
     if positions:
+        game.capture_level_state("do")
+
         min_pos = min(positions)
         max_pos = max(positions)
         center_pos = min_pos + (max_pos - min_pos) / 2
@@ -216,7 +227,7 @@ def flip_objects(game, way):
                     flipped_center = center_pos - (center - center_pos)
                     obj.x = int(flipped_center - obj.width / 2)
 
-                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size"):
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport"):
                         obj.rotation = -obj.rotation
                         
                     elif obj.shape == "right slope":
@@ -239,7 +250,7 @@ def flip_objects(game, way):
                     flipped_center = center_pos - (center - center_pos)
                     obj.y = int(flipped_center - obj.height / 2)
 
-                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size"):
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport"):
                         obj.rotation = -obj.rotation
                         
                     elif obj.shape == "right slope":
@@ -267,6 +278,8 @@ def deselect_objects(game):
         close_menu(game)
 
 def duplicate_objects(game):
+    game.capture_level_state("do")
+
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
             if obj.selected:
@@ -282,6 +295,8 @@ def duplicate_objects(game):
     game.rebuild_buckets()
 
 def delete_objects(game):
+    game.capture_level_state("do")
+
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
             if obj.selected and obj != game.checkpoints[0]:
@@ -293,6 +308,8 @@ def delete_objects(game):
     close_menu(game)
 
 def snap_grid_objects(game):
+    game.capture_level_state("do")
+
     for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
         if obj.selected:
             if obj.x % 40 > 20:
@@ -318,6 +335,8 @@ def snap_grid_objects(game):
     game.rebuild_buckets()
 
 def group_objects(game, group):
+    game.capture_level_state("do")
+
     if group == "group":
         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
             if obj.selected:
@@ -330,6 +349,8 @@ def group_objects(game, group):
                 obj.group_id = 0
 
 def layer_objects(game, way):
+    game.capture_level_state("do")
+
     if way == "last":
         for layer in (game.background, game.objects, game.decoration):
             for obj in reversed(layer.copy()):
@@ -361,6 +382,8 @@ def layer_objects(game, way):
     game.rebuild_buckets()
 
 def move_objects_to_layer(game, layer_name):
+    game.capture_level_state("do")
+
     target_layer = {
         "background": game.background,
         "objects": game.objects,
@@ -415,10 +438,10 @@ def reset_camera(game, ctrl):
 
 def undo_edit(game, ctrl):
     if ctrl:
-        print("undo") #! apply edit, place, move/scale, rotate, flip, duplicate, delete, snap grid, group, ungroup, change layer order, change layer
+        game.restore_level_state("undo")
 
     else:
-        print("redo")
+        game.restore_level_state("redo")
 
 def create_level(game):
     game.levels.insert(game.current_level + 1, {
