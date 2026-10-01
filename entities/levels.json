@@ -65,7 +65,7 @@
     ],
     "victors": {
       "Rolf": [
-        765,
+        804,
         9,
         0,
         0
@@ -435,15 +435,15 @@
     ],
     "objects": [
       {
-        "x": 10400,
-        "y": 220,
-        "width": 500,
-        "height": 220,
-        "rotation": 180,
-        "shape": "left slope",
+        "x": 9400,
+        "y": 240,
+        "width": 240,
+        "height": 240,
+        "rotation": 0,
+        "shape": "circle",
         "color": [
           0,
-          0,
+          255,
           0
         ],
         "outline": [
@@ -452,19 +452,19 @@
           0
         ],
         "modifier": null,
-        "group_id": 101,
+        "group_id": 0,
         "bucket": "objects"
       },
       {
-        "x": 10810,
-        "y": 224,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
+        "x": 1606,
+        "y": 300,
+        "width": 20,
+        "height": 120,
+        "rotation": 270.0,
+        "shape": "gravity",
         "color": [
           0,
-          0,
+          255,
           0
         ],
         "outline": [
@@ -472,197 +472,8 @@
           0,
           0
         ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10720,
-        "y": 264,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10630,
-        "y": 304,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10540,
-        "y": 344,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10765,
-        "y": 244,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10675,
-        "y": 284,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10585,
-        "y": 324,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10495,
-        "y": 364,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10450,
-        "y": 384,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
-        "bucket": "objects"
-      },
-      {
-        "x": 10405,
-        "y": 404,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 101,
+        "modifier": 1.0,
+        "group_id": 0,
         "bucket": "objects"
       },
       {
@@ -684,27 +495,6 @@
         ],
         "modifier": null,
         "group_id": 100,
-        "bucket": "objects"
-      },
-      {
-        "x": 9400,
-        "y": 240,
-        "width": 240,
-        "height": 240,
-        "rotation": 0,
-        "shape": "circle",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
         "bucket": "objects"
       },
       {
@@ -830,27 +620,6 @@
           0
         ],
         "modifier": "cube",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1606,
-        "y": 300,
-        "width": 20,
-        "height": 120,
-        "rotation": 270.0,
-        "shape": "gravity",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": 1.0,
         "group_id": 0,
         "bucket": "objects"
       },
@@ -15408,48 +15177,6 @@
         "bucket": "objects"
       },
       {
-        "x": 9020,
-        "y": 280,
-        "width": 500,
-        "height": 200,
-        "rotation": 0,
-        "shape": "left slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 9520,
-        "y": 280,
-        "width": 240,
-        "height": 100,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
         "x": 9320,
         "y": 140,
         "width": 18,
@@ -17695,6 +17422,363 @@
         "modifier": null,
         "group_id": 0,
         "bucket": "objects"
+      },
+      {
+        "x": 7080,
+        "y": 380,
+        "width": 20,
+        "height": 80,
+        "rotation": 0,
+        "shape": "size",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": 1.0,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 4700,
+        "y": 540,
+        "width": 20,
+        "height": 80,
+        "rotation": 0,
+        "shape": "size",
+        "color": [
+          255,
+          0,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": 0.5,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 10400,
+        "y": 220,
+        "width": 500,
+        "height": 220,
+        "rotation": 180,
+        "shape": "left slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10810,
+        "y": 224,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10720,
+        "y": 264,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10630,
+        "y": 304,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10540,
+        "y": 344,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10765,
+        "y": 244,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10675,
+        "y": 284,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10585,
+        "y": 324,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10495,
+        "y": 364,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10450,
+        "y": 384,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 10405,
+        "y": 404,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 101,
+        "bucket": "objects"
+      },
+      {
+        "x": 12420,
+        "y": 460,
+        "width": 20,
+        "height": 80,
+        "rotation": 0,
+        "shape": "size",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": 1.0,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 11220,
+        "y": 260,
+        "width": 20,
+        "height": 80,
+        "rotation": 0,
+        "shape": "size",
+        "color": [
+          255,
+          0,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": 0.5,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 9520,
+        "y": 280,
+        "width": 240,
+        "height": 100,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 9020,
+        "y": 280,
+        "width": 500,
+        "height": 200,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          0,
+          0,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
       }
     ],
     "decoration": [],
@@ -17824,7 +17908,7 @@
           "gamemode": "wave",
           "speed": 2.0,
           "gravity": 2.0,
-          "size": 1
+          "size": 0.5
         },
         "group_id": 0,
         "bucket": "checkpoints"
@@ -17962,7 +18046,7 @@
     ],
     "victors": {
       "Rolf": [
-        3030,
+        3166,
         3,
         0,
         0
@@ -17989,16 +18073,1423 @@
     "background": [],
     "objects": [
       {
-        "x": 660,
-        "y": 340,
+        "x": 2000,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1960,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1920,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1760,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1720,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1680,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1640,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1600,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1560,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1520,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1280,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1240,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1480,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1440,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1400,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1360,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1320,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1200,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1160,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1120,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1080,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1040,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1000,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 960,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 920,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 880,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 680,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 760,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 840,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1960,
+        "y": 680,
         "width": 40,
         "height": 40,
         "rotation": 0,
         "shape": "square",
         "color": [
           255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
           0,
           0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 2000,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 680,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 720,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 760,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 800,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 840,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 880,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 920,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 960,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1000,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1040,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1080,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1120,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1160,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1400,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1440,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1200,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1240,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1280,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1320,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1360,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1480,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1520,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1560,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1600,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1640,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1680,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1720,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1760,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1800,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1840,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1880,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1920,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 800,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 720,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1880,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1840,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1800,
+        "y": 620,
+        "width": 40,
+        "height": 40,
+        "rotation": 0.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
         ],
         "outline": [
           0,
@@ -18011,16 +19502,732 @@
       },
       {
         "x": 640,
-        "y": 360,
+        "y": 560,
         "width": 40,
         "height": 40,
         "rotation": 0,
-        "shape": "square",
+        "shape": "orb",
         "color": [
           0,
+          255,
           0
         ],
         "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": "dash",
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 680,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 720,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 760,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 920,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 960,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1000,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1040,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1080,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1120,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1160,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1400,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1440,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1200,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1240,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1280,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1320,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1360,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1480,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1520,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1560,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1600,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1640,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1680,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1720,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1760,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1800,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 2000,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1920,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1840,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1880,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1960,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 800,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 840,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 880,
+        "y": 500,
+        "width": 40,
+        "height": 40,
+        "rotation": 180.0,
+        "shape": "spike",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
           0,
           0
         ],
@@ -18056,6627 +20263,17 @@
         },
         "group_id": 0,
         "bucket": "checkpoints"
-      },
-      {
-        "x": 760,
-        "y": 280,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "checkpoint",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": {
-          "gamemode": "cube",
-          "speed": 2,
-          "gravity": 1,
-          "size": 1
-        },
-        "group_id": 0,
-        "bucket": "checkpoints"
       }
     ],
     "victors": {
       "Rolf": [
-        109,
+        241,
         0,
         0,
         0
       ],
       "a": [
         1,
-        0,
-        0,
-        0
-      ]
-    }
-  },
-  {
-    "meta": {
-      "length": 4640,
-      "background color": [
-        20,
-        20,
-        20
-      ],
-      "title": "Acropolis",
-      "points": 0
-    },
-    "background": [
-      {
-        "x": -160,
-        "y": 0,
-        "width": 4800,
-        "height": 160,
-        "rotation": 0.0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "background"
-      }
-    ],
-    "objects": [
-      {
-        "x": 2110,
-        "y": 440,
-        "width": 40,
-        "height": 43,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          255,
-          0,
-          255
-        ],
-        "modifier": "small",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2200,
-        "y": 390,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 983.0,
-        "y": 260.0,
-        "width": 18,
-        "height": 42,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": -160,
-        "y": 480,
-        "width": 4800,
-        "height": 240,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3440,
-        "y": 200,
-        "width": 1200,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3513,
-        "y": 280,
-        "width": 18,
-        "height": 38,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 8,
-        "bucket": "objects"
-      },
-      {
-        "x": 3455.0,
-        "y": 402.0,
-        "width": 20,
-        "height": 38,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 9,
-        "bucket": "objects"
-      },
-      {
-        "x": 3437.0,
-        "y": 420.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 9,
-        "bucket": "objects"
-      },
-      {
-        "x": 3506.0,
-        "y": 414.0,
-        "width": 20,
-        "height": 26,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 9,
-        "bucket": "objects"
-      },
-      {
-        "x": 3523.0,
-        "y": 435.0,
-        "width": 20,
-        "height": 5,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 9,
-        "bucket": "objects"
-      },
-      {
-        "x": 3484,
-        "y": 280,
-        "width": 20,
-        "height": 19,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 8,
-        "bucket": "objects"
-      },
-      {
-        "x": 3789,
-        "y": 357,
-        "width": 37,
-        "height": 43,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2040,
-        "y": 440,
-        "width": 60,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 37,
-        "bucket": "objects"
-      },
-      {
-        "x": 4240,
-        "y": 350,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          255,
-          255,
-          0
-        ],
-        "outline": [
-          255,
-          255,
-          0
-        ],
-        "modifier": "normal",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3540,
-        "y": 360,
-        "width": 120,
-        "height": 120,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 840,
-        "y": 400,
-        "width": 200,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 870,
-        "y": 376,
-        "width": 20,
-        "height": 24,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 31,
-        "bucket": "objects"
-      },
-      {
-        "x": -160,
-        "y": 160,
-        "width": 1320,
-        "height": 100,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1160,
-        "y": 160,
-        "width": 1040,
-        "height": 160,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1074,
-        "y": 440,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 1200,
-        "y": 360,
-        "width": 40,
-        "height": 120,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 999.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 21,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1056,
-        "y": 457,
-        "width": 20,
-        "height": 23,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 1038,
-        "y": 412,
-        "width": 20,
-        "height": 68,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 1353.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1146,
-        "y": 443,
-        "width": 20,
-        "height": 37,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 1128,
-        "y": 460,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 1164,
-        "y": 407,
-        "width": 19,
-        "height": 73,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 1182,
-        "y": 448,
-        "width": 20,
-        "height": 32,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 936,
-        "y": 376,
-        "width": 20,
-        "height": 24,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 31,
-        "bucket": "objects"
-      },
-      {
-        "x": 1337.0,
-        "y": 454.0,
-        "width": 20,
-        "height": 26,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1412,
-        "y": 320,
-        "width": 70,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1386,
-        "y": 440,
-        "width": 54,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1270.0,
-        "y": 450.0,
-        "width": 20,
-        "height": 30,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1254.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1238.0,
-        "y": 420.0,
-        "width": 20,
-        "height": 60,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1320.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1302.0,
-        "y": 448.0,
-        "width": 20,
-        "height": 32,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1285.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1456.0,
-        "y": 460.0,
-        "width": 24,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 29,
-        "bucket": "objects"
-      },
-      {
-        "x": 1438.0,
-        "y": 444.0,
-        "width": 20,
-        "height": 36,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 29,
-        "bucket": "objects"
-      },
-      {
-        "x": 1794.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 53,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 34,
-        "bucket": "objects"
-      },
-      {
-        "x": 1905.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 1941.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 28,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 1830,
-        "y": 320,
-        "width": 60,
-        "height": 120,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1688,
-        "y": 360,
-        "width": 40,
-        "height": 120,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2080,
-        "y": 320,
-        "width": 120,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1900,
-        "y": 400,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1634.0,
-        "y": 431.0,
-        "width": 20,
-        "height": 49,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 32,
-        "bucket": "objects"
-      },
-      {
-        "x": 1617.0,
-        "y": 452.0,
-        "width": 20,
-        "height": 28,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 32,
-        "bucket": "objects"
-      },
-      {
-        "x": 1601.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 32,
-        "bucket": "objects"
-      },
-      {
-        "x": 1923.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 60,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 1763.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 33,
-        "bucket": "objects"
-      },
-      {
-        "x": 1727.0,
-        "y": 440.0,
-        "width": 20,
-        "height": 40,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 33,
-        "bucket": "objects"
-      },
-      {
-        "x": 2004.0,
-        "y": 429.0,
-        "width": 20,
-        "height": 51,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 38,
-        "bucket": "objects"
-      },
-      {
-        "x": 1986.0,
-        "y": 413.0,
-        "width": 20,
-        "height": 67,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 38,
-        "bucket": "objects"
-      },
-      {
-        "x": 2940.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2200,
-        "y": 200,
-        "width": 100,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2280,
-        "y": 200,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2200,
-        "y": 160,
-        "width": 240,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2410,
-        "y": 240,
-        "width": 30,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2200,
-        "y": 400,
-        "width": 75,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2160,
-        "y": 440,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 41,
-        "bucket": "objects"
-      },
-      {
-        "x": 2540,
-        "y": 425,
-        "width": 140,
-        "height": 55,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2540,
-        "y": 260,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          0,
-          0,
-          0
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": "heavy",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2620,
-        "y": 240,
-        "width": 60,
-        "height": 120,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2440,
-        "y": 200,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2680.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2900.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2680.0,
-        "y": 441.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 90,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2860.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2880.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2820.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2840.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2780.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2800.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2740.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2760.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2700.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2720.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2720,
-        "y": 420,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2960,
-        "y": 240,
-        "width": 40,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2960,
-        "y": 400,
-        "width": 240,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3000,
-        "y": 240,
-        "width": 160,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2860,
-        "y": 340,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2800,
-        "y": 320,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          255,
-          0,
-          255
-        ],
-        "modifier": "small",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2920.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2700.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2740.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2720.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2780.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2760.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2820.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2800.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2860.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2840.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2900.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2880.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2680.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2920.0,
-        "y": 240.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2940.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 270,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2940.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 270,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3160,
-        "y": 240,
-        "width": 280,
-        "height": 120,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3799,
-        "y": 347,
-        "width": 27,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2980.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3080.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3140.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 270,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3160,
-        "y": 390,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3400,
-        "y": 400,
-        "width": 40,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3440,
-        "y": 440,
-        "width": 100,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3200.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 90,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3280.0,
-        "y": 360.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3290,
-        "y": 390,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3380,
-        "y": 360,
-        "width": 20,
-        "height": 120,
-        "rotation": 0,
-        "shape": "gravity",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          255,
-          0,
-          255
-        ],
-        "modifier": -0.5,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3660,
-        "y": 400,
-        "width": 980,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4096.0,
-        "y": 340.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3610.0,
-        "y": 340.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 6,
-        "bucket": "objects"
-      },
-      {
-        "x": 4383.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4364.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4021,
-        "y": 312,
-        "width": 27,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3400,
-        "y": 360,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3740.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3700,
-        "y": 338,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3720.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3660.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3700.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3680.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3838.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3856.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3913.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3932.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3875.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3894.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4192,
-        "y": 360,
-        "width": 45,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4136.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4116.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4096.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4076.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4307.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4420,
-        "y": 350,
-        "width": 40,
-        "height": 50,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4420,
-        "y": 340,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4326.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4520,
-        "y": 280,
-        "width": 40,
-        "height": 120,
-        "rotation": 0,
-        "shape": "gamemode",
-        "color": [
-          255,
-          0,
-          0
-        ],
-        "outline": [
-          255,
-          0,
-          0
-        ],
-        "modifier": "ball",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4530,
-        "y": 280,
-        "width": 20,
-        "height": 120,
-        "rotation": 0,
-        "shape": "gravity",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          255,
-          0
-        ],
-        "modifier": 1,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1630,
-        "y": 380,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1358.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 27,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 47,
-        "bucket": "objects"
-      },
-      {
-        "x": 1341.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 41,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 47,
-        "bucket": "objects"
-      },
-      {
-        "x": 1293.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 27,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 47,
-        "bucket": "objects"
-      },
-      {
-        "x": 1324.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 47,
-        "bucket": "objects"
-      },
-      {
-        "x": 1375.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 30,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 47,
-        "bucket": "objects"
-      },
-      {
-        "x": 2080,
-        "y": 360,
-        "width": 20,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2098,
-        "y": 360,
-        "width": 20,
-        "height": 34,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3472.0,
-        "y": 410.0,
-        "width": 20,
-        "height": 30,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 9,
-        "bucket": "objects"
-      },
-      {
-        "x": 3490.0,
-        "y": 424.0,
-        "width": 20,
-        "height": 16,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 9,
-        "bucket": "objects"
-      },
-      {
-        "x": 3570.0,
-        "y": 340.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 6,
-        "bucket": "objects"
-      },
-      {
-        "x": 3780.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3760.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3951.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3970.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3989.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4176.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4156.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4250.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3839.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3823.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4048.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3300.0,
-        "y": 360.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4640,
-        "y": 0,
-        "width": 1,
-        "height": 720,
-        "rotation": 0,
-        "shape": "end",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          255,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2315,
-        "y": 320,
-        "width": 225,
-        "height": 160,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4180.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4228.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4276.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4244.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4260.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1534.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 28,
-        "bucket": "objects"
-      },
-      {
-        "x": 1516.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 33,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 28,
-        "bucket": "objects"
-      },
-      {
-        "x": 1480.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 28,
-        "bucket": "objects"
-      },
-      {
-        "x": 1498.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 60,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 28,
-        "bucket": "objects"
-      },
-      {
-        "x": 1552.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 28,
-        "bucket": "objects"
-      },
-      {
-        "x": 1034.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 50,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1016.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 27,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1088.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1052.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 35,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1106.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 30,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1070.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 45,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1124.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 60,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1142.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 840,
-        "y": 260,
-        "width": 20,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 22,
-        "bucket": "objects"
-      },
-      {
-        "x": 858,
-        "y": 260,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 22,
-        "bucket": "objects"
-      },
-      {
-        "x": 903,
-        "y": 336,
-        "width": 20,
-        "height": 64,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 31,
-        "bucket": "objects"
-      },
-      {
-        "x": 920,
-        "y": 381,
-        "width": 20,
-        "height": 19,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 31,
-        "bucket": "objects"
-      },
-      {
-        "x": 886,
-        "y": 361,
-        "width": 20,
-        "height": 39,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 31,
-        "bucket": "objects"
-      },
-      {
-        "x": 4021,
-        "y": 352,
-        "width": 40,
-        "height": 48,
-        "rotation": 0.0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4056.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3799,
-        "y": 280,
-        "width": 41,
-        "height": 37,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4007,
-        "y": 280,
-        "width": 41,
-        "height": 32,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4269.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3894.0,
-        "y": 307.0,
-        "width": 40,
-        "height": 40,
-        "rotation": 180,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4003.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3987.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4231.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4402.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4345.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4288.0,
-        "y": 380.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4196.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 4212.0,
-        "y": 280.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 3500,
-        "y": 280,
-        "width": 20,
-        "height": 27,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 8,
-        "bucket": "objects"
-      },
-      {
-        "x": 3454,
-        "y": 280,
-        "width": 20,
-        "height": 30,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 8,
-        "bucket": "objects"
-      },
-      {
-        "x": 3468,
-        "y": 280,
-        "width": 20,
-        "height": 41,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 8,
-        "bucket": "objects"
-      },
-      {
-        "x": 3438,
-        "y": 280,
-        "width": 20,
-        "height": 25,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 8,
-        "bucket": "objects"
-      },
-      {
-        "x": 3590.0,
-        "y": 327.0,
-        "width": 20,
-        "height": 33,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 6,
-        "bucket": "objects"
-      },
-      {
-        "x": 3581.0,
-        "y": 331.0,
-        "width": 20,
-        "height": 29,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 6,
-        "bucket": "objects"
-      },
-      {
-        "x": 3603.0,
-        "y": 335.0,
-        "width": 20,
-        "height": 25,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 6,
-        "bucket": "objects"
-      },
-      {
-        "x": 3527,
-        "y": 280,
-        "width": 17,
-        "height": 17,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 8,
-        "bucket": "objects"
-      },
-      {
-        "x": 3710.0,
-        "y": 335.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3700,
-        "y": 338,
-        "width": 20,
-        "height": 20,
-        "rotation": 315,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3695,
-        "y": 351,
-        "width": 20,
-        "height": 20,
-        "rotation": 270,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3698,
-        "y": 361,
-        "width": 20,
-        "height": 20,
-        "rotation": 225,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3709,
-        "y": 361,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3719,
-        "y": 358,
-        "width": 20,
-        "height": 20,
-        "rotation": 135,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3724,
-        "y": 345,
-        "width": 20,
-        "height": 20,
-        "rotation": 90,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 3721,
-        "y": 335,
-        "width": 20,
-        "height": 20,
-        "rotation": 45,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 7,
-        "bucket": "objects"
-      },
-      {
-        "x": 1360,
-        "y": 380,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "orb",
-        "color": [
-          255,
-          0,
-          255
-        ],
-        "outline": [
-          255,
-          0,
-          255
-        ],
-        "modifier": "small",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1368.0,
-        "y": 443.0,
-        "width": 20,
-        "height": 37,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1309.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 34,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 47,
-        "bucket": "objects"
-      },
-      {
-        "x": 822,
-        "y": 260,
-        "width": 20,
-        "height": 31,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 22,
-        "bucket": "objects"
-      },
-      {
-        "x": 804,
-        "y": 260,
-        "width": 20,
-        "height": 80,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 22,
-        "bucket": "objects"
-      },
-      {
-        "x": 786,
-        "y": 260,
-        "width": 20,
-        "height": 27,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 22,
-        "bucket": "objects"
-      },
-      {
-        "x": 1111,
-        "y": 455,
-        "width": 20,
-        "height": 25,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 19,
-        "bucket": "objects"
-      },
-      {
-        "x": 964.0,
-        "y": 260.0,
-        "width": 20,
-        "height": 35,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1079,
-        "y": 321,
-        "width": 40,
-        "height": 40,
-        "rotation": 90.3,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1100,
-        "y": 333,
-        "width": 20,
-        "height": 20,
-        "rotation": 90.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1100,
-        "y": 323,
-        "width": 20,
-        "height": 20,
-        "rotation": 45.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1087,
-        "y": 315,
-        "width": 20,
-        "height": 20,
-        "rotation": 0.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1077,
-        "y": 318,
-        "width": 20,
-        "height": 20,
-        "rotation": 315.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1077,
-        "y": 329,
-        "width": 20,
-        "height": 20,
-        "rotation": 270.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1077,
-        "y": 339,
-        "width": 20,
-        "height": 20,
-        "rotation": 225.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1090,
-        "y": 347,
-        "width": 20,
-        "height": 20,
-        "rotation": 180.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1100,
-        "y": 344,
-        "width": 20,
-        "height": 20,
-        "rotation": 135.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 24,
-        "bucket": "objects"
-      },
-      {
-        "x": 1008,
-        "y": 314,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1018.0,
-        "y": 311.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1008,
-        "y": 314,
-        "width": 20,
-        "height": 20,
-        "rotation": 315,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1003,
-        "y": 327,
-        "width": 20,
-        "height": 20,
-        "rotation": 270,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1006,
-        "y": 337,
-        "width": 20,
-        "height": 20,
-        "rotation": 225,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1017,
-        "y": 337,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1027,
-        "y": 334,
-        "width": 20,
-        "height": 20,
-        "rotation": 135,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1032,
-        "y": 321,
-        "width": 20,
-        "height": 20,
-        "rotation": 90,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1029,
-        "y": 311,
-        "width": 20,
-        "height": 20,
-        "rotation": 45,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 25,
-        "bucket": "objects"
-      },
-      {
-        "x": 1514,
-        "y": 387,
-        "width": 40,
-        "height": 40,
-        "rotation": 90.3,
-        "shape": "circle",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1535,
-        "y": 399,
-        "width": 20,
-        "height": 20,
-        "rotation": 90.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1535,
-        "y": 389,
-        "width": 20,
-        "height": 20,
-        "rotation": 45.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1522,
-        "y": 381,
-        "width": 20,
-        "height": 20,
-        "rotation": 0.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1512,
-        "y": 384,
-        "width": 20,
-        "height": 20,
-        "rotation": 315.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1512,
-        "y": 395,
-        "width": 20,
-        "height": 20,
-        "rotation": 270.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1512,
-        "y": 405,
-        "width": 20,
-        "height": 20,
-        "rotation": 225.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1525,
-        "y": 413,
-        "width": 20,
-        "height": 20,
-        "rotation": 180.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1535,
-        "y": 410,
-        "width": 20,
-        "height": 20,
-        "rotation": 135.3,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 26,
-        "bucket": "objects"
-      },
-      {
-        "x": 1652.0,
-        "y": 439.0,
-        "width": 20,
-        "height": 41,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 32,
-        "bucket": "objects"
-      },
-      {
-        "x": 1840,
-        "y": 440,
-        "width": 40,
-        "height": 10,
-        "rotation": 0.0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1750,
-        "y": 362,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1968.0,
-        "y": 460.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 38,
-        "bucket": "objects"
-      },
-      {
-        "x": 1888.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 1958.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 34,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 1994.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 1976.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 17,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 2011.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 33,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 2028.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 2046.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 50,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 2470,
-        "y": 310,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2130,
-        "y": 360,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2315,
-        "y": 310,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2230,
-        "y": 280,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2275,
-        "y": 360,
-        "width": 40,
-        "height": 120,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2216,
-        "y": 280,
-        "width": 20,
-        "height": 31,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 43,
-        "bucket": "objects"
-      },
-      {
-        "x": 2198,
-        "y": 280,
-        "width": 20,
-        "height": 60,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 43,
-        "bucket": "objects"
-      },
-      {
-        "x": 2320,
-        "y": 200,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2315,
-        "y": 200,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2520,
-        "y": 160,
-        "width": 2120,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2410,
-        "y": 230,
-        "width": 30,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1160,
-        "y": 320,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1393,
-        "y": 430,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2520,
-        "y": 240,
-        "width": 20,
-        "height": 36,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2392,
-        "y": 260,
-        "width": 20,
-        "height": 60,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 45,
-        "bucket": "objects"
-      },
-      {
-        "x": 2374,
-        "y": 300,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 45,
-        "bucket": "objects"
-      },
-      {
-        "x": 2356,
-        "y": 294,
-        "width": 20,
-        "height": 26,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 45,
-        "bucket": "objects"
-      },
-      {
-        "x": 2440,
-        "y": 160,
-        "width": 80,
-        "height": 20,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2460,
-        "y": 180,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          255,
-          0,
-          0
-        ],
-        "outline": [
-          255,
-          0,
-          0
-        ],
-        "modifier": "big",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2640,
-        "y": 400,
-        "width": 40,
-        "height": 25,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2620,
-        "y": 360,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2640,
-        "y": 390,
-        "width": 40,
-        "height": 10,
-        "rotation": 0,
-        "shape": "pad",
-        "color": [
-          0,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          255,
-          255
-        ],
-        "modifier": "gravity",
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2600,
-        "y": 240,
-        "width": 20,
-        "height": 60,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 30,
-        "bucket": "objects"
-      },
-      {
-        "x": 2600,
-        "y": 300,
-        "width": 20,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 30,
-        "bucket": "objects"
-      },
-      {
-        "x": 2063.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 40,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 35,
-        "bucket": "objects"
-      },
-      {
-        "x": 2100,
-        "y": 441,
-        "width": 20,
-        "height": 39,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 37,
-        "bucket": "objects"
-      },
-      {
-        "x": 2140,
-        "y": 440,
-        "width": 20,
-        "height": 40,
-        "rotation": 0,
-        "shape": "left slope",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 41,
-        "bucket": "objects"
-      },
-      {
-        "x": 1670.0,
-        "y": 412.0,
-        "width": 20,
-        "height": 68,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 32,
-        "bucket": "objects"
-      },
-      {
-        "x": 1745.0,
-        "y": 420.0,
-        "width": 20,
-        "height": 60,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 33,
-        "bucket": "objects"
-      },
-      {
-        "x": 1812.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 34,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 34,
-        "bucket": "objects"
-      },
-      {
-        "x": 1776.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 20,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 34,
-        "bucket": "objects"
-      },
-      {
-        "x": 2160,
-        "y": 420,
-        "width": 22,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 41,
-        "bucket": "objects"
-      },
-      {
-        "x": 2180,
-        "y": 403,
-        "width": 22,
-        "height": 37,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 41,
-        "bucket": "objects"
-      },
-      {
-        "x": 2020,
-        "y": 441,
-        "width": 20,
-        "height": 39,
-        "rotation": 0,
-        "shape": "left slope",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 37,
-        "bucket": "objects"
-      },
-      {
-        "x": 2297,
-        "y": 322,
-        "width": 20,
-        "height": 38,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 44,
-        "bucket": "objects"
-      },
-      {
-        "x": 2279,
-        "y": 336,
-        "width": 20,
-        "height": 24,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 44,
-        "bucket": "objects"
-      },
-      {
-        "x": 2580,
-        "y": 240,
-        "width": 20,
-        "height": 36,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2539,
-        "y": 365,
-        "width": 20,
-        "height": 60,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2621,
-        "y": 405,
-        "width": 20,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2439,
-        "y": 270,
-        "width": 20,
-        "height": 50,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 2457,
-        "y": 300,
-        "width": 18,
-        "height": 20,
-        "rotation": 0,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1394.0,
-        "y": 320.0,
-        "width": 20,
-        "height": 38,
-        "rotation": 180,
-        "shape": "spike",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          255,
-          255,
-          255
-        ],
-        "modifier": null,
-        "group_id": 47,
-        "bucket": "objects"
-      }
-    ],
-    "decoration": [],
-    "checkpoints": [
-      {
-        "x": 360,
-        "y": 440,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "checkpoint",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": {
-          "gamemode": "cube",
-          "speed": 2,
-          "gravity": 1,
-          "size": 1
-        },
-        "group_id": 0,
-        "bucket": "checkpoints"
-      }
-    ],
-    "victors": {
-      "Rolf": [
-        2603,
         0,
         0,
         0

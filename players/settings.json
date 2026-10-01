@@ -131,6 +131,9 @@
     "toggle debug": [
       "f3"
     ],
+    "toggle buckets": [
+      "f4"
+    ],
     "save to file": [
       "f"
     ],

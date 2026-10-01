@@ -38,7 +38,9 @@ def get_nearby_objects(buckets, start, end):
     for bucket in range(start_bucket, end_bucket+1):
         if bucket in buckets:
             for obj in buckets[bucket]:
-                if id(obj) not in seen:
+                if id(obj) in seen:
+                    pass
+                else:
                     seen.add(id(obj))
                     objects.append(obj)
 

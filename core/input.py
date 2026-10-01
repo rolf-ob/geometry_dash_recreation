@@ -9,14 +9,14 @@ def click(game, type, button, shift):
         if type == "click":
             game.clicking += 1
             if game.gamemode == "wave":
-                game.wave_trail.append((game.player.x + 20, game.player.y))
+                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
         elif type == "release":
             game.clicking = max(0, game.clicking - 1)
             if game.clicking == 0:
                 game.clicked = False
             
             if game.gamemode == "wave":
-                game.wave_trail.append((game.player.x + 20, game.player.y))
+                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
     
     elif button == 1 and type == "release" and not shift:
         place_object(game)
@@ -285,6 +285,8 @@ def handle_input(game):
                     toggle_dark_mode(game)
                 elif any(event.key == key for key in game.controls["toggle debug"]):
                     game.debug = not game.debug
+                elif any(event.key == key for key in game.controls["toggle buckets"]):
+                    game.show_buckets = not game.show_buckets
                 elif any(event.key == key for key in game.controls["save to file"]):
                     game.save_to_file()
                     

@@ -1,7 +1,12 @@
+Bugs
+- Objects in later buckets always get rendered above even if earlier in game.objects list
+- Layering has to be redone on every object move
+
 Build mode features
 - Undo and redo
 
 Gameplay features
+- Dash orb rotation
 - Level music
 - Camera going up and down with player
 - Sliding on slopes or rotated squares

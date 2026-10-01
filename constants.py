@@ -51,7 +51,7 @@ controls_tutorial = [
     "Go Up - Spacebar, W, Return/Enter, Left Mouse",
     "Restart Level - R",
     "Switch Level - Q, E",
-    "Pan/Scroll/Zoom - Scroll + Ctrl/Shift/None",
+    "Pan/Scroll/Zoom (Paused) - Scroll + Ctrl/Shift/None",
     "",
     "PRACTICE CHEATS",
     "Cheats disables points earning and switches end color",
@@ -65,6 +65,7 @@ controls_tutorial = [
     "OTHER",
     "Dark Mode - M",
     "Debug Overlay - F3",
+    "Show Spacial Buckets - F4",
     "Save To File - F"
 ]
 operator_tutorial = [

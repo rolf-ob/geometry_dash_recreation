@@ -2,7 +2,7 @@ import pygame as py
 import time
 
 from entities.spacial import get_nearby_objects
-from constants import WIDTH, HEIGHT, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
+from constants import WIDTH, HEIGHT, BUCKET_WIDTH, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
     camera_x = game.camera_x if not game.building else game.building_camera_x
@@ -32,7 +32,7 @@ def draw_background(game, screen):
                 draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
         else:
             draw_polygon(game, screen, obj.points, color, 0)
-        draw_polygon(game, screen, obj.points, obj.outline, 1)
+        draw_polygon(game, screen, obj.points, obj.outline, int(1*game.camera_zoom))
 
 def draw_objects(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
@@ -68,9 +68,9 @@ def draw_objects(game, screen):
                 
                 if outline_color == (0, 0):
                     if game.show_hitboxes:
-                        draw_polygon(game, screen, obj.points, outline_color, 1)
+                        draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
                 else:
-                    draw_polygon(game, screen, obj.points, outline_color, 1)
+                    draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
         
         else:
             color = (200, 255, 200) if obj.selected else obj.color
@@ -84,9 +84,9 @@ def draw_objects(game, screen):
             
             if outline_color == (0, 0):
                 if game.show_hitboxes:
-                    draw_polygon(game, screen, obj.points, outline_color, 1)
+                    draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
             else:
-                draw_polygon(game, screen, obj.points, outline_color, 1)
+                draw_polygon(game, screen, obj.points, outline_color, int(1*game.camera_zoom))
 
 def draw_decoration(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
@@ -98,7 +98,7 @@ def draw_decoration(game, screen):
                 draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
         else:
             draw_polygon(game, screen, obj.points, color, 0)
-        draw_polygon(game, screen, obj.points, obj.outline, 1)
+        draw_polygon(game, screen, obj.points, obj.outline, int(1*game.camera_zoom))
 
 def draw_checkpoints(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
@@ -107,7 +107,7 @@ def draw_checkpoints(game, screen):
         text = "S" if obj == game.checkpoints[0] else "C"
         color = (200, 255, 200) if obj.selected else obj.color
         draw_polygon(game, screen, obj.points, color, 0)
-        draw_polygon(game, screen, obj.points, obj.outline, 1)
+        draw_polygon(game, screen, obj.points, obj.outline, int(1*game.camera_zoom))
         screen.blit(game.text_cache.get_surface(text, (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
 
 def draw_hitboxes(game, screen):
@@ -122,18 +122,18 @@ def draw_wave_trail(game, screen):
 
         start_top = point
         if game.gamemode == "wave":
-            end_top = (game.player.x + 20, game.player.y) if i == len(game.wave_trail) - 1 else game.wave_trail[i + 1]
+            end_top = (game.player.x + game.player.width/2, game.player.y) if i == len(game.wave_trail) - 1 else game.wave_trail[i + 1]
         else:
             if i == len(game.wave_trail) - 1:
                 break
             else:
                 end_top = game.wave_trail[i + 1]
 
-        camera_x = game.camera_x if not game.building else game.building_camera_x
+        camera_x = game.building_camera_x if game.building else game.camera_x
         if camera_x < end_top[0] < camera_x + game.view_width or camera_x < start_top[0] < camera_x + game.view_width:
             start_bottom = (point[0], point[1] + game.size)
 
-            end_bottom = (game.player.x + 20, game.player.y + game.size) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.size)
+            end_bottom = (game.player.x + game.player.width/2, game.player.y + game.size) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.size)
 
             points = [
                 world_to_screen(game, *start_top),
@@ -143,7 +143,7 @@ def draw_wave_trail(game, screen):
             ]
 
             py.draw.polygon(screen, (0, 255, 255), points)
-            py.draw.polygon(screen, game.primary_color, points, 1)
+            py.draw.polygon(screen, game.primary_color, points, int(1*game.camera_zoom))
 
 def draw_player(game, screen):
     if game.hitboxes:
@@ -158,7 +158,17 @@ def draw_player(game, screen):
     game.player_render.recompute()
 
     draw_polygon(game, screen, game.player_render.points, game.player.color, 0)
-    draw_polygon(game, screen, game.player_render.points, game.primary_color, 1)
+    draw_polygon(game, screen, game.player_render.points, game.primary_color, int(1*game.camera_zoom))
+
+def draw_buckets(game, screen):
+    camera_x = game.building_camera_x if game.building else game.camera_x 
+    start_bucket = int(camera_x // BUCKET_WIDTH)
+    end_bucket = int((camera_x + game.view_width) // BUCKET_WIDTH)
+
+    for bucket in range(start_bucket, end_bucket+1):
+        top = world_to_screen(game, bucket*400, game.camera_y)
+        bottom = world_to_screen(game, bucket*400, game.camera_y + game.view_height)
+        py.draw.line(screen, (0, 255, 0), top, bottom, 1)
 
 def draw_leaderboard(game, screen):
     if game.current_level != 0:
@@ -173,7 +183,7 @@ def draw_leaderboard(game, screen):
         if game.victors:
             sorted_victors = sorted(
                 game.victors.items(),
-                key=lambda item : item[1][1],
+                key=lambda item: item[1][1],
                 reverse=True
             )
             for i, (victor, stats) in enumerate(sorted_victors):
@@ -324,6 +334,9 @@ def draw(game):
     if game.show_player and game.current_level != 0:
         draw_wave_trail(game, screen)
         draw_player(game, screen)
+
+    if game.show_buckets:
+        draw_buckets(game, screen)
 
     if game.completed or game.paused or game.current_level == 0:
         draw_leaderboard(game, screen)

@@ -73,6 +73,7 @@ class Game():
 
         self.cheated = False
         self.debug = False
+        self.show_buckets = False
         self.paused = False
         self.show_hitboxes = False
         self.noclip = False
@@ -322,7 +323,7 @@ class Game():
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
         self.y_vel = 0
-        self.dashing = False
+        self.dashing = None
 
         start_x = self.player.x - self.checkpoints[0].x
         checkpoint_x = self.checkpoints[self.checkpoint].x - self.checkpoints[0].x
@@ -340,7 +341,7 @@ class Game():
         
         self.hitboxes = []
         self.buckets["hitboxes"] = defaultdict(list)
-        self.wave_trail = [(self.player.x + 20, self.player.y)] if self.gamemode == "wave" else []
+        self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
     
     def load_level(self):
         self.level = self.levels[self.current_level]
@@ -351,7 +352,7 @@ class Game():
 
         rest = sorted(
             self.level["checkpoints"][1:],
-            key=lambda cp : cp.x
+            key=lambda cp: cp.x
         )
         self.checkpoints = [self.level["checkpoints"][0]] + rest
         if not hasattr(self, "checkpoint"):

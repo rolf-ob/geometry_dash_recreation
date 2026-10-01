@@ -27,7 +27,7 @@ def check_collision(game):
                         slide = True
 
                 if game.gamemode == "wave" and game.player.x <= obj.x + obj.width < game.player.x+game.speed:
-                    game.wave_trail.append((game.player.x + 20, game.player.y))
+                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
                 elif not slide and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
                     if not game.noclip:
@@ -41,7 +41,7 @@ def check_collision(game):
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
                 elif game.gamemode == "wave" and game.wave_trail[-1][1] != game.player.y:
-                    game.wave_trail.append((game.player.x + 20, game.player.y))
+                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif obj.shape == "end":
             if collide(game.player, obj):
@@ -59,7 +59,7 @@ def check_collision(game):
                 if game.gamemode != obj.modifier:
 
                     if game.gamemode == "wave":
-                        game.wave_trail.append((game.player.x + 20, game.player.y))
+                        game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
                     
                     game.gamemode = obj.modifier
                     game.player.color = gamemode_colors[game.gamemode]
@@ -67,7 +67,7 @@ def check_collision(game):
                     game.player.recompute()
 
                     if game.gamemode == "wave":
-                        game.wave_trail = [(game.player.x + 20, game.player.y)]
+                        game.wave_trail = [(game.player.x + game.player.width/2, game.player.y)]
 
         elif obj.shape == "speed":
             if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
@@ -79,7 +79,7 @@ def check_collision(game):
                     game.y_vel *= -1
                 game.gravity = float(obj.modifier)
                 if game.gamemode == "wave":
-                    game.wave_trail.append((game.player.x + 20, game.player.y))
+                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif obj.shape == "size":
             if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
@@ -128,18 +128,15 @@ def check_collision(game):
                         elif obj.modifier == "heavy" and game.gamemode != "wave":
                             game.y_vel = min(game.y_vel, -4)
 
-                elif obj.modifier and not game.clicked and not game.on_ground:
+                elif obj.modifier and not game.clicked:
                     if collide(game.player, obj) and game.clicking > 0:
                         obj.interacted = True
+                        game.dashing = obj
                         game.clicked = True
                     elif obj.interacted and game.clicking == 0:
                         obj.interacted = False
+                        game.dashing = None
                         game.y_vel = 0
-
-                    if obj.interacted:
-                        game.dashing = True
-                    else:
-                        game.dashing = False
         
         elif obj.shape == "pad":
             if obj.modifier and collide(game.player, obj) and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
@@ -185,6 +182,11 @@ def check_collision(game):
                 game.collected_coins[0] += 1
                 game.collected_coins[1] += obj.modifier
 
+    if game.dashing and game.clicking == 0:
+        game.dashing.interacted = False
+        game.dashing = None
+        game.y_vel = 0
+
     if game.player.y == game.max_height:
         if game.gravity > 0:
             game.on_ground = True
@@ -224,7 +226,7 @@ def update_position(game):
         elif game.gamemode == "wave":
             game.y_vel = 1 if game.clicking > 0 else -1
             if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - game.size or game.player.y == 0):
-                game.wave_trail.append((game.player.x + 20, game.player.y))
+                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif game.gamemode == "ufo":
             if game.clicking > 0 and not game.clicked:

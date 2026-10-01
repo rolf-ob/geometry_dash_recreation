@@ -126,19 +126,14 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
     elif direction == "right":
         add_x = distance
 
-    objects = []
-    for name in ("background", "objects", "decoration"):
-        objects.extend(get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width))
-    checkpoints = get_nearby_objects(game.buckets["checkpoints"], game.building_camera_x, game.building_camera_x + game.view_width)
-
     if not game.scale_mode:
-        for obj in (*objects, *checkpoints):
+        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
             if obj.selected:
                 obj.x += add_x
                 obj.y += add_y
                 game.recompute_object(obj)
     else:
-        for obj in objects:
+        for obj in (*game.background, *game.objects, *game.decoration):
             if obj.selected:
                 if add_x > 0 or obj.width > distance:
                     obj.width += add_x
@@ -287,6 +282,8 @@ def delete_objects(game):
             if obj.selected and obj != game.checkpoints[0]:
                 for bucket in get_buckets(obj):
                     game.buckets[obj.bucket][bucket].remove(obj)
+                if obj in game.checkpoints:
+                    game.level["checkpoints"].remove(obj)
                 layer.remove(obj)
     close_menu(game)
 
