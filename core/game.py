@@ -67,6 +67,7 @@ class Game():
         self.layer_view = False
         self.scale_mode = False
         self.editing_level = False
+        self.buckets = {"hitboxes": defaultdict(list)}
 
         self.textboxes = []
         self.active_textbox = None
@@ -292,12 +293,28 @@ class Game():
         except ValueError:
             pass
 
-    def recompute_object(self, obj):
-        for bucket in get_buckets(obj):
-            self.buckets[obj.bucket][bucket].remove(obj)
-        obj.recompute()
-        for bucket in get_buckets(obj):
-            self.buckets[obj.bucket][bucket].append(obj)
+    def rebuild_buckets(self):
+        self.buckets = {
+            "background": defaultdict(list),
+            "objects": defaultdict(list),
+            "decoration": defaultdict(list),
+            "checkpoints": defaultdict(list),
+            "hitboxes": self.buckets["hitboxes"]
+        }
+        self.z_order = {
+            id(obj): i for i, obj in enumerate((*self.background, *self.objects, *self.decoration))
+        }
+
+        for layer, name in (
+            (self.background, "background"),
+            (self.objects, "objects"),
+            (self.decoration, "decoration"),
+            (self.checkpoints, "checkpoints")
+        ):
+            for obj in layer:
+                for bucket in get_buckets(obj):
+                    self.buckets[name][bucket].append(obj)
+                    obj.bucket = name
 
     def restart(self):
         if not self.paused:
@@ -360,24 +377,7 @@ class Game():
         elif self.checkpoint > len(self.checkpoints)-1:
             self.checkpoint = len(self.checkpoints)-1
 
-        self.buckets = {
-            "background": defaultdict(list),
-            "objects": defaultdict(list),
-            "decoration": defaultdict(list),
-            "checkpoints": defaultdict(list),
-            "hitboxes": defaultdict(list)
-        }
-
-        for layer, name in (
-            (self.background, "background"),
-            (self.objects, "objects"),
-            (self.decoration, "decoration"),
-            (self.checkpoints, "checkpoints")
-        ):
-            for obj in layer:
-                for bucket in get_buckets(obj):
-                    self.buckets[name][bucket].append(obj)
-                    obj.bucket = name
+        self.rebuild_buckets()
 
         self.victors = self.level["victors"]
         self.level_length = self.level["meta"]["length"]

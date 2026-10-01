@@ -29,19 +29,19 @@ def get_buckets(obj):
     end_bucket = int(obj.aabb["right"] // BUCKET_WIDTH)
     return range(start_bucket, end_bucket+1)
 
-def get_nearby_objects(buckets, start, end):
+def get_nearby_objects(buckets, start, end, z_order=None):
     start_bucket = int(start // BUCKET_WIDTH)
     end_bucket = int(end // BUCKET_WIDTH)
     objects = []
     seen = set()
 
     for bucket in range(start_bucket, end_bucket+1):
-        if bucket in buckets:
-            for obj in buckets[bucket]:
-                if id(obj) in seen:
-                    pass
-                else:
-                    seen.add(id(obj))
-                    objects.append(obj)
+        for obj in buckets.get(bucket, []): #! Understand
+            if id(obj) not in seen:
+                seen.add(id(obj))
+                objects.append(obj)
+
+    if z_order:
+        objects.sort(key=lambda obj: z_order[id(obj)]) #! Understand
 
     return objects

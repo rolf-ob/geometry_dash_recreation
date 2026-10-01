@@ -161,7 +161,8 @@ def handle_input(game):
                         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                             if obj.selected:
                                 game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                game.recompute_object(obj)
+                                obj.recompute()
+                                game.rebuild_buckets()
                                 if obj.shape == "checkpoint": cp_selected = True
                                 else: obj_selected = True
 

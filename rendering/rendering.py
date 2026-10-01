@@ -24,7 +24,7 @@ def draw_polygon(game, screen, points, color, width):
 
 def draw_background(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
-    objects = get_nearby_objects(game.buckets["background"], camera_x, camera_x + game.view_width)
+    objects = get_nearby_objects(game.buckets["background"], camera_x, camera_x + game.view_width, game.z_order)
     for obj in objects:
         color = (200, 255, 200) if obj.selected else obj.color
         if color == (0, 0):
@@ -36,7 +36,7 @@ def draw_background(game, screen):
 
 def draw_objects(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
-    objects = get_nearby_objects(game.buckets["objects"], camera_x, camera_x + game.view_width)
+    objects = get_nearby_objects(game.buckets["objects"], camera_x, camera_x + game.view_width, game.z_order)
     for obj in objects:
         if obj.shape == "end":
             if game.building:
@@ -90,7 +90,7 @@ def draw_objects(game, screen):
 
 def draw_decoration(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
-    objects = get_nearby_objects(game.buckets["decoration"], camera_x, camera_x + game.view_width)
+    objects = get_nearby_objects(game.buckets["decoration"], camera_x, camera_x + game.view_width, game.z_order)
     for obj in objects:
         color = (200, 255, 200) if obj.selected else obj.color
         if color == (0, 0):

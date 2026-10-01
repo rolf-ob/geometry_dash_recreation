@@ -65,7 +65,7 @@
     ],
     "victors": {
       "Rolf": [
-        804,
+        805,
         9,
         0,
         0
@@ -435,15 +435,15 @@
     ],
     "objects": [
       {
-        "x": 9400,
-        "y": 240,
+        "x": 9520,
+        "y": 280,
         "width": 240,
-        "height": 240,
+        "height": 100,
         "rotation": 0,
-        "shape": "circle",
+        "shape": "right slope",
         "color": [
           0,
-          255,
+          0,
           0
         ],
         "outline": [
@@ -17739,12 +17739,12 @@
         "bucket": "objects"
       },
       {
-        "x": 9520,
+        "x": 9020,
         "y": 280,
-        "width": 240,
-        "height": 100,
+        "width": 500,
+        "height": 200,
         "rotation": 0,
-        "shape": "right slope",
+        "shape": "left slope",
         "color": [
           0,
           0,
@@ -17760,12 +17760,12 @@
         "bucket": "objects"
       },
       {
-        "x": 9020,
-        "y": 280,
-        "width": 500,
-        "height": 200,
+        "x": 9400,
+        "y": 240,
+        "width": 240,
+        "height": 240,
         "rotation": 0,
-        "shape": "left slope",
+        "shape": "circle",
         "color": [
           0,
           0,
@@ -20267,7 +20267,7 @@
     ],
     "victors": {
       "Rolf": [
-        241,
+        242,
         0,
         0,
         0
