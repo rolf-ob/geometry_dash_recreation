@@ -2,9 +2,9 @@ Build mode features
 - Undo and redo
 
 Gameplay features
-- Camera going up and down with player
+- Teleport portals
 - Level music
-- Sliding on slopes or rotated squares
+- Sliding on slopes
 - CBF
 
 User

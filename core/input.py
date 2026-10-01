@@ -2,7 +2,7 @@ import pygame as py
 import time
 
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
-from constants import HEIGHT, PLAYER_X, FONT_SIZE
+from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 
 def click(game, type, button, shift):
     if button in (0, 1) and not game.building:
@@ -46,7 +46,7 @@ def toggle_pause(game):
     
     if not game.paused and game.dead == 0 and not game.completed:
         game.camera_x = game.player.x - PLAYER_X
-        game.camera_y = 0
+        game.camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
         game.camera_zoom = 1
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 

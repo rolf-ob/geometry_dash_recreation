@@ -10,7 +10,7 @@ from entities.object import Object
 from core.building import toggle_building
 from entities.serialization import levels_to_data, data_to_levels, save_json
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, gamemode_colors, speed_color, gravity_colors, size_colors, orb_pad_colors, coin_color
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, gamemode_colors, speed_color, gravity_colors, size_colors, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
 
 class Game():
@@ -50,8 +50,6 @@ class Game():
         self.view_width = WIDTH
         self.view_height = HEIGHT
         self.scale = 1
-        self.min_height = 0
-        self.max_height = HEIGHT - 40
         self.on_ground = False
 
         self.last_frame_time = time.perf_counter()
@@ -250,6 +248,12 @@ class Game():
                 else:
                     if field_name == "length":
                         self.level["meta"]["length"] = max(0, int(text))
+                    
+                    elif field_name == "roof":
+                        self.level["meta"]["roof"] = min(0, int(text))
+
+                    elif field_name == "floor":
+                        self.level["meta"]["floor"] = max(720, int(text))
 
                     elif field_name == "background":
                         r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
@@ -326,21 +330,22 @@ class Game():
         self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
-        self.size = self.checkpoints[self.checkpoint].modifier["size"]*40
 
-        self.player = Object(0, 0, self.size, self.size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
+        size = self.checkpoints[self.checkpoint].modifier["size"]*40
+
+        self.player = Object(0, 0, size, size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
+        self.player_render = Object(0, 0, size, size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.player.recompute()
-        self.player_render = Object(0, 0, self.size, self.size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.player_render.recompute()
-
-        self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
-        self.camera_y = 0
-        self.camera_zoom = 1
 
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
         self.y_vel = 0
         self.dashing = None
+
+        self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
+        self.camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+        self.camera_zoom = 1
 
         start_x = self.player.x - self.checkpoints[0].x
         checkpoint_x = self.checkpoints[self.checkpoint].x - self.checkpoints[0].x
@@ -381,6 +386,8 @@ class Game():
 
         self.victors = self.level["victors"]
         self.level_length = self.level["meta"]["length"]
+        self.level_roof = self.level["meta"]["roof"]
+        self.level_floor = self.level["meta"]["floor"]
         self.background_color = tuple(self.level["meta"]["background color"])
         self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
 

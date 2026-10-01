@@ -1,13 +1,13 @@
 from entities.spacial import collide, polygons_collide, get_buckets, get_nearby_objects
 from entities.object import Object
-from constants import HEIGHT, FIXED_STEP, gamemode_colors
+from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
 
 def check_collision(game):
-    fall_speed = -game.size / game.speed*abs(game.gravity)
+    fall_speed = -game.player.height / game.speed*abs(game.gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
-    game.min_height = 0
-    game.max_height = HEIGHT - game.size
+    game.min_height = game.level["meta"]["roof"]
+    game.max_height = game.level["meta"]["floor"] - game.player.height
     game.on_ground = False
     objects = get_nearby_objects(game.buckets["objects"], game.player.aabb["left"], game.player.aabb["right"])
 
@@ -23,7 +23,7 @@ def check_collision(game):
                         game.min_height = max(game.min_height, obj.y+obj.height)
                         slide = True
                     elif (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
-                        game.max_height = min(game.max_height, obj.y - game.size)
+                        game.max_height = min(game.max_height, obj.y - game.player.height)
                         slide = True
 
                 if game.gamemode == "wave" and game.player.x <= obj.x + obj.width < game.player.x+game.speed:
@@ -83,11 +83,11 @@ def check_collision(game):
 
         elif obj.shape == "size":
             if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
-                game.size = float(obj.modifier)*40
-                game.player.width = game.size
-                game.player.height = game.size
-                game.player_render.width = game.size
-                game.player_render.height = game.size
+                size = float(obj.modifier)*40
+                game.player.width = size
+                game.player.height = size
+                game.player_render.width = size
+                game.player_render.height = size
                 game.player.recompute()
         
         elif obj.shape == "orb":
@@ -190,19 +190,19 @@ def check_collision(game):
     if game.player.y == game.max_height:
         if game.gravity > 0:
             game.on_ground = True
-        game.y_vel = 0
+        game.y_vel = max(0, game.y_vel)
     elif game.player.y == game.min_height:
         if game.gravity < 0:
             game.on_ground = True
-        game.y_vel = 0
+        game.y_vel = min(0, game.y_vel)
 
-    hitbox = Object(game.player.x, game.player.y, game.size, game.size, 0, "square", (0,)*3, hitbox_color)
+    hitbox = Object(game.player.x, game.player.y, game.player.width, game.player.height, 0, "square", (0,)*3, hitbox_color)
     game.hitboxes.append(hitbox)
     for bucket in get_buckets(hitbox):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
 def update_position(game):
-    fall_speed = -game.size / game.speed*abs(game.gravity)
+    fall_speed = -game.player.height / game.speed*abs(game.gravity)
 
     if round(game.y_vel) != fall_speed:
         if game.gamemode == "cube":
@@ -224,8 +224,13 @@ def update_position(game):
             game.y_vel = max(fall_speed, game.y_vel - 0.05)
 
         elif game.gamemode == "wave":
-            game.y_vel = 1 if game.clicking > 0 else -1
-            if game.wave_trail[-1][1] != game.player.y and (game.player.y == HEIGHT - game.size or game.player.y == 0):
+            if game.clicking > 0:
+                game.clicked = True
+                game.y_vel = 1
+            else: 
+                game.y_vel = -1
+            
+            if game.wave_trail[-1][1] != game.player.y and (game.player.y in (game.min_height, game.max_height)):
                 game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif game.gamemode == "ufo":
@@ -257,10 +262,11 @@ def update_position(game):
     else:
         y_movement = game.y_vel*game.speed*game.gravity
 
-    game.camera_x += game.speed
     game.player.x += game.speed
     game.player.y = max(game.min_height, min(game.max_height, game.player.y - y_movement))
     game.player.recompute()
+    game.camera_x += game.speed
+    game.camera_y = max(min(game.camera_y, game.player.y - CAMERA_MARGIN), game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN)
 
     start_x = game.player.x - game.checkpoints[0].x
     checkpoint_x = game.checkpoints[game.checkpoint].x - game.checkpoints[0].x

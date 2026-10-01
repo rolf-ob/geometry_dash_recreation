@@ -22,6 +22,12 @@ def draw_polygon(game, screen, points, color, width):
     screen_points = [world_to_screen(game, x, y) for x, y in points]
     py.draw.polygon(screen, color, screen_points, width)
 
+def draw_floor_roof(game, screen):
+    roof = world_to_screen(game, 0, game.level["meta"]["roof"])[1]
+    floor = world_to_screen(game, 0, game.level["meta"]["floor"])[1]
+    py.draw.line(screen, game.primary_color, (0, roof), (game.width, roof), int(1*game.camera_zoom))
+    py.draw.line(screen, game.primary_color, (0, floor), (game.width, floor), int(1*game.camera_zoom))
+
 def draw_background(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["background"], camera_x, camera_x + game.view_width, game.z_order)
@@ -147,9 +153,9 @@ def draw_wave_trail(game, screen):
 
         camera_x = game.building_camera_x if game.building else game.camera_x
         if camera_x < end_top[0] < camera_x + game.view_width or camera_x < start_top[0] < camera_x + game.view_width:
-            start_bottom = (point[0], point[1] + game.size)
+            start_bottom = (point[0], point[1] + game.player.height)
 
-            end_bottom = (game.player.x + game.player.width/2, game.player.y + game.size) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.size)
+            end_bottom = (game.player.x + game.player.width/2, game.player.y + game.player.height) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.player.height)
 
             points = [
                 world_to_screen(game, *start_top),
@@ -324,8 +330,10 @@ def draw(game):
         game.screen.fill(game.secondary_color)
     else:
         game.screen.fill(game.background_color)
-    
 
+    if game.current_level != 0:
+        draw_floor_roof(game, screen)
+    
     if game.building:
         if not game.layer_view:
             draw_background(game, screen)

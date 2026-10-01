@@ -5,6 +5,7 @@ FONT_SIZE = 24
 FIXED_STEP = 1 / 240
 AUTOSAVE_INTERVAL = 120
 BUCKET_WIDTH = 400
+CAMERA_MARGIN = 100
 
 gamemode_colors = {
     "wave": (0, 255, 255),
@@ -109,6 +110,7 @@ building_tutorial = [
     "",
     "LEVEL SETTINGS",
     "Length - What x value the level ends at for the percentage display",
+    "Roof/Floor - What y value the levels roof/floor that stops the player is at",
     "Background- Sets the background color of the enire level",
     "Title - The title of the level",
     "Points - How many points you should get from completing the level",

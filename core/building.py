@@ -422,7 +422,7 @@ def undo_edit(game, ctrl):
 
 def create_level(game):
     game.levels.insert(game.current_level + 1, {
-        "meta": {"length": 100, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
+        "meta": {"length": 100, "roof": 0, "floor": 720, "background color": (255,)*3, "title": "Unnamed level", "points": 0},
         "background": [],
         "objects": [],
         "decoration": [],
@@ -461,6 +461,8 @@ def open_menu(game, menu):
         r, g, b = game.level["meta"]["background color"]
         game.textboxes = [
             TextBox("Length", game.level["meta"]["length"]),
+            TextBox("Roof", game.level["meta"]["roof"]),
+            TextBox("Floor", game.level["meta"]["floor"]),
             TextBox("Background", f"{str(r)} {str(g)} {str(b)}"),
             TextBox("Title", game.level["meta"]["title"]),
             TextBox("Points", game.level["meta"]["points"]),
