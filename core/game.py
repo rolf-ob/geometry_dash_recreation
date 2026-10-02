@@ -52,8 +52,8 @@ class Game():
         self.view_height = HEIGHT
         self.scale = 1
         self.on_ground = False
-        self.slid = False
-        self.sliding = False
+        self.slid = 0
+        self.sliding = 0
 
         self.last_frame_time = time.perf_counter()
         self.last_save_time = time.perf_counter()
@@ -407,6 +407,7 @@ class Game():
             obj.interacted = False
         
         self.hitboxes = []
+        self.current_hitbox = 0
         self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
     

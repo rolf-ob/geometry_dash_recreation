@@ -138,9 +138,15 @@ def draw_checkpoints(game, screen):
 def draw_hitboxes(game, screen):
     camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["hitboxes"], camera_x, camera_x + game.view_width)
-    for obj in objects:
+
+    if game.show_hitboxes:
+        for obj in objects[:game.current_hitbox]:
+            draw_polygon(game, screen, obj.points, obj.outline, 1)
+        draw_polygon(game, screen, game.player.points, game.player.color, 1)
+    
+    elif game.current_hitbox != len(game.hitboxes):
+        obj = game.hitboxes[game.current_hitbox]
         draw_polygon(game, screen, obj.points, obj.outline, 1)
-    draw_polygon(game, screen, game.player.points, game.player.color, 1)
 
 def draw_wave_trail(game, screen):
     for i, point in enumerate(game.wave_trail):
@@ -358,7 +364,7 @@ def draw(game):
         draw_objects(game, screen)
         draw_decoration(game, screen)
     
-    if game.show_hitboxes and game.hitboxes:
+    if game.hitboxes:
         draw_hitboxes(game, screen)
     
     if game.show_player and game.current_level != 0:

@@ -62,6 +62,7 @@ controls_tutorial = [
     "Switch Checkpoint - A, D",
     "Toggle Speed Changer - Z",
     "Toggle Hitboxes - X",
+    "Scroll Through Hitboxes - Scroll + Alt",
     "Toggle Collision (Only a cheat if you actually collide) - C",
     "Move One Frame Forward - V",
     "Toggle Player Visibility - N",

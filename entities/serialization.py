@@ -28,7 +28,7 @@ def levels_to_data(levels):
 def data_to_levels(data):
     return [dict_to_level(level) for level in data]
 
-def save_json(path, data): #! Understand
+def save_json(path, data):
     temp_path = path + ".tmp"
     with open(temp_path, "w") as f:
         json.dump(data, f, indent=2)

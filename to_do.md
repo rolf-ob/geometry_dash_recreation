@@ -1,11 +1,12 @@
-Render player slightly lower to not appear levitating
-#! Understand
-Test framerate under extreme pressure
+wave cant slide down certain 180 degree slopes
+sliding doesnt work with negative gravity
+
+Remaining until new release
+- Render player slightly lower/higher while sliding on slopes
+- Test framerate under extreme pressure
+- Ask multiple AI's to look through the code multiple times
 
 Gameplay features
-- Slide under rotation 180 slopes
-- Scroll through hitboxes with alt+scroll
-- Sliding on slopes
 - Level music
 - CBF
 

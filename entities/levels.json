@@ -67,7 +67,7 @@
     ],
     "victors": {
       "Rolf": [
-        1052,
+        1085,
         15,
         0,
         0
@@ -18092,7 +18092,7 @@
     ],
     "victors": {
       "Rolf": [
-        3270,
+        3271,
         3,
         0,
         0
@@ -18121,11 +18121,11 @@
     "background": [],
     "objects": [
       {
-        "x": 600,
+        "x": 2080,
         "y": 480,
-        "width": 120,
-        "height": 240,
-        "rotation": 0,
+        "width": 280,
+        "height": 160,
+        "rotation": 180,
         "shape": "left slope",
         "color": [
           255,
@@ -18142,32 +18142,11 @@
         "bucket": "objects"
       },
       {
-        "x": 860,
-        "y": 560,
-        "width": 80,
-        "height": 80,
-        "rotation": 0,
-        "shape": "left slope",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 1460,
-        "y": 640,
-        "width": 80,
-        "height": 80,
-        "rotation": 0,
+        "x": 1640,
+        "y": 480,
+        "width": 280,
+        "height": 160,
+        "rotation": 180,
         "shape": "right slope",
         "color": [
           255,
@@ -18184,31 +18163,10 @@
         "bucket": "objects"
       },
       {
-        "x": 1380,
-        "y": 640,
-        "width": 80,
-        "height": 80,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 800,
-        "y": 640,
+        "x": 1920,
+        "y": 480,
         "width": 160,
-        "height": 80,
+        "height": 160,
         "rotation": 0,
         "shape": "square",
         "color": [
@@ -18226,12 +18184,54 @@
         "bucket": "objects"
       },
       {
-        "x": 1300,
-        "y": 640,
-        "width": 80,
-        "height": 80,
-        "rotation": 0,
+        "x": 1320,
+        "y": 480,
+        "width": 160,
+        "height": 160,
+        "rotation": 180,
         "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1160,
+        "y": 480,
+        "width": 160,
+        "height": 160,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 200,
+        "y": 440,
+        "width": 2480,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
         "color": [
           255,
           255,
@@ -18248,10 +18248,10 @@
       },
       {
         "x": 1000,
-        "y": 640,
+        "y": 480,
         "width": 160,
-        "height": 80,
-        "rotation": 0,
+        "height": 160,
+        "rotation": 180.0,
         "shape": "right slope",
         "color": [
           255,
@@ -18268,97 +18268,29 @@
         "bucket": "objects"
       },
       {
-        "x": 1040,
-        "y": 660,
-        "width": 200,
-        "height": 60,
+        "x": 560,
+        "y": 540,
+        "width": 20,
+        "height": 120,
         "rotation": 0,
-        "shape": "right slope",
+        "shape": "gravity",
         "color": [
           255,
           255,
-          255
+          0
         ],
         "outline": [
           0,
           0,
           0
         ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 920,
-        "y": 200,
-        "width": 120,
-        "height": 40,
-        "rotation": 0,
-        "shape": "square",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
-        "group_id": 0,
-        "bucket": "objects"
-      },
-      {
-        "x": 940,
-        "y": 561,
-        "width": 120,
-        "height": 159,
-        "rotation": 0,
-        "shape": "right slope",
-        "color": [
-          255,
-          255,
-          255
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": null,
+        "modifier": -1.0,
         "group_id": 0,
         "bucket": "objects"
       }
     ],
     "decoration": [],
     "checkpoints": [
-      {
-        "x": 360,
-        "y": 680,
-        "width": 40,
-        "height": 40,
-        "rotation": 0,
-        "shape": "checkpoint",
-        "color": [
-          0,
-          255,
-          0
-        ],
-        "outline": [
-          0,
-          0,
-          0
-        ],
-        "modifier": {
-          "gamemode": "cube",
-          "speed": 2,
-          "gravity": 1.0,
-          "size": 1.0
-        },
-        "group_id": 0,
-        "bucket": "checkpoints"
-      },
       {
         "x": 360,
         "y": 680,
@@ -18378,6 +18310,32 @@
         ],
         "modifier": {
           "gamemode": "ship",
+          "speed": 2,
+          "gravity": 1.0,
+          "size": 1.0
+        },
+        "group_id": 0,
+        "bucket": "checkpoints"
+      },
+      {
+        "x": 360,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": {
+          "gamemode": "cube",
           "speed": 2,
           "gravity": 1,
           "size": 1
@@ -18414,7 +18372,7 @@
     ],
     "victors": {
       "Rolf": [
-        1124,
+        1254,
         0,
         0,
         0
@@ -18441,7 +18399,134 @@
       "points": 0
     },
     "background": [],
-    "objects": [],
+    "objects": [
+      {
+        "x": 1000,
+        "y": 560,
+        "width": 240,
+        "height": 160,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 1180,
+        "y": 680,
+        "width": 120,
+        "height": 40,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 920,
+        "y": 560,
+        "width": 80,
+        "height": 160,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 780,
+        "y": 480,
+        "width": 120,
+        "height": 160,
+        "rotation": 180,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 720,
+        "y": 680,
+        "width": 120,
+        "height": 40,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      },
+      {
+        "x": 800,
+        "y": 560,
+        "width": 120,
+        "height": 160,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0,
+        "bucket": "objects"
+      }
+    ],
     "decoration": [],
     "checkpoints": [
       {
@@ -18471,6 +18556,13 @@
         "bucket": "checkpoints"
       }
     ],
-    "victors": {}
+    "victors": {
+      "Rolf": [
+        29,
+        0,
+        0,
+        0
+      ]
+    }
   }
 ]

@@ -36,12 +36,12 @@ def get_nearby_objects(buckets, start, end, z_order=None):
     seen = set()
 
     for bucket in range(start_bucket, end_bucket+1):
-        for obj in buckets.get(bucket, []): #! Understand
+        for obj in buckets.get(bucket, []):
             if id(obj) not in seen:
                 seen.add(id(obj))
                 objects.append(obj)
 
     if z_order:
-        objects.sort(key=lambda obj: z_order[id(obj)]) #! Understand
+        objects.sort(key=lambda obj: z_order[id(obj)])
 
     return objects
