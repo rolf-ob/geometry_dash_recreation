@@ -52,6 +52,8 @@ class Game():
         self.view_height = HEIGHT
         self.scale = 1
         self.on_ground = False
+        self.slid = False
+        self.sliding = False
 
         self.last_frame_time = time.perf_counter()
         self.last_save_time = time.perf_counter()

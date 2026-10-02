@@ -1,5 +1,5 @@
 import pygame as py
-import time
+import time, math
 
 from entities.spacial import get_nearby_objects
 from constants import WIDTH, HEIGHT, BUCKET_WIDTH, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
@@ -176,10 +176,13 @@ def draw_player(game, screen):
     else:
         prev_player = game.player
 
-    rotation = (prev_player.y - game.player.y) * -20
+    x_diff = game.speed
+    y_diff = game.player.y - prev_player.y
+    radians = math.atan(y_diff / x_diff)
+    angle = math.degrees(radians)
     game.player_render.x = game.player.x
     game.player_render.y = game.player.y
-    game.player_render.rotation = rotation
+    game.player_render.rotation = angle
     game.player_render.recompute()
 
     draw_polygon(game, screen, game.player_render.points, game.player.color, 0)
@@ -221,10 +224,10 @@ def draw_leaderboard(game, screen):
                 screen.blit(text, (x, y))
         
         else:
-            text = game.text_cache.get_surface(f"No victors yet", game.primary_color, "world")
+            text = game.text_cache.get_surface(f"No stats yet", game.primary_color, "world")
             margin = 5
-            width, height = game.text_cache.get_size(f"No victors yet", game.primary_color, "world")
-            x, y = (world_to_screen(game, game.level_length + 40, 125 + height * HEIGHT / game.height))
+            width, height = game.text_cache.get_size(f"No stats yet", game.primary_color, "world")
+            x, y = x, y = (world_to_screen(game, game.level_length + 40, 160))
             py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
             py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))

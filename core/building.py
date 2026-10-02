@@ -84,7 +84,7 @@ def select_object(game, shifting):
                 top_obj.selected = not top_obj.selected
                 if top_obj.selected:
                     for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-                        if obj != top_obj:
+                        if id(obj) != id(top_obj):
                             if top_obj.group_id != 0 and obj.group_id == top_obj.group_id:
                                 obj.selected = True
                                 if obj.shape == "checkpoint": cp_selected = True
@@ -97,7 +97,7 @@ def select_object(game, shifting):
 
                 else:
                     for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-                        if obj != top_obj:
+                        if id(obj) != id(top_obj):
                             if top_obj.group_id != 0 and obj.group_id == top_obj.group_id:
                                 obj.selected = False
                     

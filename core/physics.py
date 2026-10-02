@@ -9,63 +9,52 @@ def check_collision(game):
     game.min_height = game.level["meta"]["roof"]
     game.max_height = game.level["meta"]["floor"] - game.player.height
     game.on_ground = False
+    game.slid = game.sliding
+    game.sliding = False
     objects = get_nearby_objects(game.buckets["objects"], game.player.aabb["left"], game.player.aabb["right"])
 
     for obj in objects:
         if obj.shape in ("square", "spike", "right slope", "left slope", "circle"):
-            slide = False
             if collide(game.player, obj):
+                on_right_edge = game.player.aabb["left"] <= obj.aabb["right"] < game.player.aabb["left"] + game.speed
                 if obj.shape == "square" and obj.rotation == 0:
                     prev_player = game.hitboxes[-1].aabb if game.hitboxes else game.player.aabb
                     player = game.player.aabb
 
-                    if (player["top"] <= obj.y+obj.height <= prev_player["top"] or player["top"] == obj.y+obj.height) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
-                        game.min_height = max(game.min_height, obj.y+obj.height)
-                        slide = True
-                    elif (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                    if (player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"] and not on_right_edge:
+                        game.min_height = max(game.min_height, obj.aabb["bottom"])
+                        game.y_vel = min(game.y_vel, 0)
+                        game.sliding = True
+                    elif (prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"] and not on_right_edge:
                         game.max_height = min(game.max_height, obj.y - game.player.height)
-                        slide = True
+                        game.y_vel = max(game.y_vel, 0)
+                        game.sliding = True
 
-                elif obj.shape == "right slope" and obj.rotation == 0:
+                elif obj.shape in ("right slope", "left slope") and obj.rotation == 0:
                     prev_player = game.hitboxes[-1].aabb if game.hitboxes else game.player.aabb
                     player = game.player.aabb
-
                     prev_player_y = round((prev_player["bottom"] - obj.y) / obj.height, 12)
                     player_y = round((player["bottom"] - obj.y) / obj.height, 12)
 
-                    prev_y = round((prev_player["left"] - obj.x) / obj.width, 12)
-                    y = round((player["left"] - obj.x) / obj.width, 12)
-                    next_y = round((player["left"]+game.speed - obj.x) / obj.width, 12)
+                    if obj.shape == "right slope":
+                        prev_y = round((prev_player["left"] - obj.x) / obj.width, 12)
+                        y = round((player["left"] - obj.x) / obj.width, 12)
+                        next_y = round((player["left"]+game.speed - obj.x) / obj.width, 12)
+                    else:
+                        prev_y = round(1-(prev_player["right"] - obj.x) / obj.width, 12)
+                        y = round(1-(player["right"] - obj.x) / obj.width, 12)
+                        next_y = round(1-(player["right"]+game.speed - obj.x) / obj.width, 12)
 
-                    if (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                    if (prev_player["bottom"] < obj.y < player["bottom"]) or obj.y == player["bottom"] and game.player.aabb["left"]-game.speed != obj.aabb["left"] and obj.aabb["left"] != game.player.aabb["left"] and not on_right_edge:
                         game.max_height = min(game.max_height, obj.y - game.player.height)
-                        slide = True
-                    elif (prev_player_y < prev_y and y < player_y) or y == player_y and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                        game.y_vel = max(game.y_vel, 0)
+                        game.sliding = True
+                    elif (prev_player_y < prev_y and y < player_y) or abs(y - player_y) < 1e-2 and not on_right_edge:
                         game.max_height = min(game.max_height, obj.y - game.player.height + next_y*obj.height)
-                        slide = True
+                        game.y_vel = max(game.y_vel, ((obj.y - game.player.height + y*obj.height) - (obj.y - game.player.height + next_y*obj.height)) / (game.speed*game.gravity))
+                        game.sliding = True
 
-                elif obj.shape == "left slope" and obj.rotation == 0:
-                    prev_player = game.hitboxes[-1].aabb if game.hitboxes else game.player.aabb
-                    player = game.player.aabb
-
-                    prev_player_y = round((prev_player["bottom"] - obj.y) / obj.height, 12)
-                    player_y = round((player["bottom"] - obj.y) / obj.height, 12)
-
-                    prev_y = round(1-(prev_player["right"] - obj.x) / obj.width, 12)
-                    y = round(1-(player["right"] - obj.x) / obj.width, 12)
-                    next_y = round(1-(player["right"]+game.speed - obj.x) / obj.width, 12)
-
-                    if (prev_player["bottom"] <= obj.y <= player["bottom"] or player["bottom"] == obj.y) and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
-                        game.max_height = min(game.max_height, obj.y - game.player.height)
-                        slide = True
-                    elif (prev_player_y < prev_y and y < player_y) or y == player_y and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
-                        game.max_height = min(game.max_height, obj.y - game.player.height + next_y*obj.height)
-                        slide = True
-
-                if game.gamemode == "wave" and game.player.x <= obj.x + obj.width < game.player.x+game.speed:
-                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
-
-                elif not slide and not game.player.x <= obj.x + obj.width < game.player.x+game.speed:
+                if not game.sliding and not on_right_edge:
                     if not game.noclip:
                         game.dead = FIXED_STEP
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
@@ -76,8 +65,6 @@ def check_collision(game):
                             game.noclip_deaths += 1
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
-                elif game.gamemode == "wave" and game.wave_trail[-1][1] != game.player.y:
-                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif obj.shape == "end":
             if collide(game.player, obj):
@@ -90,7 +77,7 @@ def check_collision(game):
                     else:
                         game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1])
 
-        if obj.shape == "gamemode":
+        elif obj.shape == "gamemode":
             if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
                 if game.gamemode != obj.modifier:
 
@@ -243,10 +230,9 @@ def check_collision(game):
 
 def update_position(game):
     fall_speed = -game.player.height / game.speed*abs(game.gravity)
-
     if round(game.y_vel) != fall_speed:
         if game.gamemode == "cube":
-            if game.clicking > 0 and game.on_ground:
+            if game.clicking > 0 and (game.on_ground or game.sliding):
                 game.clicked = True
                 game.y_vel = max(game.y_vel, 2.5)
             game.y_vel = max(fall_speed, game.y_vel - 0.05)
@@ -271,6 +257,8 @@ def update_position(game):
                 game.y_vel = -1
             
             if game.wave_trail[-1][1] != game.player.y and (game.player.y in (game.min_height, game.max_height)):
+                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
+            elif game.slid and not game.sliding or not game.slid and game.sliding:
                 game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif game.gamemode == "ufo":
@@ -303,7 +291,7 @@ def update_position(game):
         y_movement = game.y_vel*game.speed*game.gravity
 
     game.player.x += game.speed
-    game.player.y = max(game.min_height, min(game.max_height, game.player.y - y_movement))
+    game.player.y = max(game.min_height, min(game.max_height, round(game.player.y - y_movement, 12)))
     game.player.recompute()
     game.camera_x += game.speed
     game.camera_y = max(min(game.camera_y, game.player.y - CAMERA_MARGIN), game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN)
@@ -330,7 +318,6 @@ def update(game):
     if not game.completed and game.dead == 0:
 
         check_collision(game)
-
         if not game.completed and game.dead == 0:
             update_position(game)
 
