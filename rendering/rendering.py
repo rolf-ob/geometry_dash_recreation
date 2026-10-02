@@ -155,26 +155,20 @@ def draw_wave_trail(game, screen):
         if game.gamemode == "wave":
             end_top = (game.player.x + game.player.width/2, game.player.y) if i == len(game.wave_trail) - 1 else game.wave_trail[i + 1]
         else:
-            if i == len(game.wave_trail) - 1:
-                break
-            else:
-                end_top = game.wave_trail[i + 1]
+            if i == len(game.wave_trail) - 1: break
+            else: end_top = game.wave_trail[i + 1]
 
         camera_x = game.building_camera_x if game.building else game.camera_x
         if camera_x < end_top[0] < camera_x + game.view_width or camera_x < start_top[0] < camera_x + game.view_width:
             start_bottom = (point[0], point[1] + game.player.height)
-
             end_bottom = (game.player.x + game.player.width/2, game.player.y + game.player.height) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.player.height)
-
             points = [
                 world_to_screen(game, *start_top),
                 world_to_screen(game, *end_top),
                 world_to_screen(game, *end_bottom),
                 world_to_screen(game, *start_bottom)
             ]
-
             py.draw.polygon(screen, (0, 255, 255), points)
-            py.draw.polygon(screen, game.primary_color, points, int(1*game.camera_zoom))
 
 def draw_player(game, screen):
     if game.hitboxes:
@@ -186,8 +180,11 @@ def draw_player(game, screen):
     y_diff = game.player.y - prev_player.y
     radians = math.atan(y_diff / x_diff)
     angle = math.degrees(radians)
-    game.player_render.x = game.player.x
-    game.player_render.y = game.player.y
+    dip_angle = -90 - angle if angle < -45 else angle
+    dip = -(game.sliding * dip_angle / 5)
+    print(dip_angle, dip)
+    game.player_render.x = game.player.x + dip
+    game.player_render.y = game.player.y + dip
     game.player_render.rotation = angle
     game.player_render.recompute()
 

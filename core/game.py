@@ -374,7 +374,7 @@ class Game():
         self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
-
+        
         size = self.checkpoints[self.checkpoint].modifier["size"]*40
 
         self.player = Object(0, 0, size, size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
@@ -385,6 +385,7 @@ class Game():
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
         self.y_vel = 0
+        self.sliding = 0
         self.dashing = None
 
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X

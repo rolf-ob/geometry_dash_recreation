@@ -60,6 +60,7 @@ def switch_checkpoint(game, way):
     game.title = [f"Checkpoint {game.checkpoint}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
 
 def switch_level(game, way):
+    game.checkpoint = 0
     game.building_camera_x = 0
     game.building_camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
     if way == "previous":
