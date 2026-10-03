@@ -2,7 +2,7 @@ from constants import BUCKET_WIDTH
 
 def project(polygon, axis):
     dots = [x * axis[0] + y * axis[1] for x, y in polygon]
-    return min(dots), max(dots)
+    return min(dots) - 1e-9, max(dots) + 1e-9
 
 def polygons_collide(obj1, obj2):
     for shape in (obj1, obj2):

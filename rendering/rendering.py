@@ -140,12 +140,12 @@ def draw_hitboxes(game, screen):
     objects = get_nearby_objects(game.buckets["hitboxes"], camera_x, camera_x + game.view_width)
 
     if game.show_hitboxes:
-        for obj in objects[:game.current_hitbox]:
+        for obj in objects[:len(game.hitboxes) - game.current_hitbox]:
             draw_polygon(game, screen, obj.points, obj.outline, 1)
         draw_polygon(game, screen, game.player.points, game.player.color, 1)
     
-    elif game.current_hitbox != len(game.hitboxes):
-        obj = game.hitboxes[game.current_hitbox]
+    elif game.current_hitbox != 0:
+        obj = game.hitboxes[-game.current_hitbox]
         draw_polygon(game, screen, obj.points, obj.outline, 1)
 
 def draw_wave_trail(game, screen):
@@ -182,7 +182,6 @@ def draw_player(game, screen):
     angle = math.degrees(radians)
     dip_angle = -90 - angle if angle < -45 else angle
     dip = -(game.sliding * dip_angle / 5)
-    print(dip_angle, dip)
     game.player_render.x = game.player.x + dip
     game.player_render.y = game.player.y + dip
     game.player_render.rotation = angle

@@ -33,7 +33,6 @@ def toggle_pause(game):
         if not game.completed:
             game.cheated = True
     else:
-        game.current_hitbox = len(game.hitboxes)
         py.mouse.set_visible(False)
         close_menu(game)
         if not game.completed and (game.show_hitboxes or game.speedhack):
@@ -112,9 +111,9 @@ def pan(game, y):
 def view_separate_hitboxes(game, y):
     if game.paused:
         if y > 0:
-            game.current_hitbox = max(0, game.current_hitbox-1)
-        elif y < 0:
             game.current_hitbox = min(len(game.hitboxes), game.current_hitbox+1)
+        elif y < 0:
+            game.current_hitbox = max(0, game.current_hitbox-1)
 
 def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):

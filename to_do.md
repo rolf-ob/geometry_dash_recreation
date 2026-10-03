@@ -1,5 +1,3 @@
-going down low incline right slope gets gittery, not in reverse gravity
-
 Remaining until new release
 - Render player slightly lower/higher while sliding on slopes
 - Test framerate under extreme pressure
