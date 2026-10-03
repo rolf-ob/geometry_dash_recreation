@@ -1,11 +1,19 @@
-Remaining until new release
-- Render player slightly lower/higher while sliding on slopes
-- Test framerate under extreme pressure
-- Ask multiple AI's to look through the code multiple times
+Building features
+- Ability to change roof/floor color
+- Duplication of object groups
+- Object outline thickness attribute
+- Text shape
+- Triggers that change level or object attributes
+- Triggers that affect number values can have a transition speed (color, position etc)
 
 Gameplay features
 - Level music
 - CBF
+
+Visual features
+- Sort level leaderboard by order of completion time
+- Wave trail outline
+- Better wave trail compatability with sliding
 
 User
 - Each level as its own json file

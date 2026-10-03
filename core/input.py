@@ -4,7 +4,7 @@ import time
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
 from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 
-def click(game, type, button, shift):
+def click(game, type, button, shift, ctrl):
     if button in (0, 1) and not game.building:
         if type == "click":
             game.clicking += 1
@@ -21,8 +21,8 @@ def click(game, type, button, shift):
     elif button == 1 and type == "release" and not shift:
         place_object(game)
     
-    elif button == 3 and game.building and type == "release" and not shift:
-        select_object(game, False)
+    elif button == 3 and game.building and type == "release" and not (shift or ctrl):
+        select_object(game, False, False)
 
 def toggle_pause(game):
     game.paused = not game.paused
@@ -138,8 +138,8 @@ def handle_input(game):
 
     if shift and py.mouse.get_pressed()[0] and game.building:
         place_object(game)
-    if shift and py.mouse.get_pressed()[2] and game.building:
-        select_object(game, shift)
+    if (shift or ctrl) and py.mouse.get_pressed()[2] and game.building:
+        select_object(game, shift, ctrl)
 
     for event in py.event.get():
         if event.type == py.QUIT:
@@ -196,7 +196,7 @@ def handle_input(game):
             else:
                 if not game.building: #Playing controls
                     if any(event.key == key for key in game.controls["click"]):
-                        click(game, "click", 0, shift)
+                        click(game, "click", 0, shift, ctrl)
                     
                     elif any(event.key == key for key in game.controls["toggle pause"]):
                         toggle_pause(game)
@@ -320,12 +320,12 @@ def handle_input(game):
 
         elif event.type == py.KEYUP:
             if any(event.key == key for key in game.controls["click"]):
-                click(game, "release", 0, shift)
+                click(game, "release", 0, shift, ctrl)
         
         elif event.type == py.MOUSEBUTTONDOWN:
-            click(game, "click", event.button, shift)
+            click(game, "click", event.button, shift, ctrl)
         elif event.type == py.MOUSEBUTTONUP:
-            click(game, "release", event.button, shift)
+            click(game, "release", event.button, shift, ctrl)
         
         elif event.type == py.MOUSEWHEEL:
             if ctrl:

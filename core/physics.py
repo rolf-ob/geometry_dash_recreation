@@ -276,7 +276,7 @@ def update_position(game):
         elif game.gamemode == "ship":
             if game.clicking > 0:
                 game.clicked = True
-                game.y_vel += 0.035
+                game.y_vel = min(-fall_speed, game.y_vel + 0.035)
             game.y_vel = max(fall_speed, game.y_vel - 0.015)
 
         elif game.gamemode == "ball":

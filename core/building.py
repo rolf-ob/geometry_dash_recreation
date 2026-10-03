@@ -50,17 +50,17 @@ def place_object(game):
         new_obj.bucket = name
         game.rebuild_buckets()
 
-def select_object(game, shifting):
+def select_object(game, shift, ctrl):
     if not game.editing_level:
         mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
         mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
         name = ("background", "objects", "decoration")[game.layer]
         layer = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width, game.z_order)
         checkpoints  = get_nearby_objects(game.buckets["checkpoints"], game.building_camera_x, game.building_camera_x + game.view_width)
-
+        
         obj_selected = False
         cp_selected = False
-        if shifting:
+        if ctrl:
             for obj in (*layer, *checkpoints):
                 if collide(mouse, obj):
                     obj.selected = True
@@ -72,6 +72,25 @@ def select_object(game, shifting):
                             if other_obj.group_id == obj.group_id:
                                 other_obj.selected = True
                                 if other_obj.shape == "checkpoint": cp_selected = True
+                                else: obj_selected = True
+
+        elif shift:
+            top_obj = None
+            for obj in (*layer, *checkpoints):
+                if collide(mouse, obj):
+                    top_obj = obj
+                    
+            if top_obj:
+                top_obj.selected = True   
+                if top_obj.shape == "checkpoint": cp_selected = True
+                else: obj_selected = True
+                
+                if top_obj.group_id != 0:
+                    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+                        if id(obj) != id(top_obj):
+                            if obj.group_id == top_obj.group_id:
+                                obj.selected = True
+                                if obj.shape == "checkpoint": cp_selected = True
                                 else: obj_selected = True
         
         else:

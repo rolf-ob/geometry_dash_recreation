@@ -140,7 +140,7 @@ def draw_hitboxes(game, screen):
     objects = get_nearby_objects(game.buckets["hitboxes"], camera_x, camera_x + game.view_width)
 
     if game.show_hitboxes:
-        for obj in objects[:len(game.hitboxes) - game.current_hitbox]:
+        for obj in objects[:len(objects) - game.current_hitbox]:
             draw_polygon(game, screen, obj.points, obj.outline, 1)
         draw_polygon(game, screen, game.player.points, game.player.color, 1)
     
@@ -180,10 +180,15 @@ def draw_player(game, screen):
     y_diff = game.player.y - prev_player.y
     radians = math.atan(y_diff / x_diff)
     angle = math.degrees(radians)
-    dip_angle = -90 - angle if angle < -45 else angle
-    dip = -(game.sliding * dip_angle / 5)
+    theta = math.radians(abs(angle))
+    dip_amount = (
+        game.player.width / 2 *
+        (math.sin(theta) + math.cos(theta) - 1)
+    )
+    if angle < 0: dip_amount *= -1
+    dip = -game.sliding * dip_amount
     game.player_render.x = game.player.x + dip
-    game.player_render.y = game.player.y + dip
+    game.player_render.y = game.player.y
     game.player_render.rotation = angle
     game.player_render.recompute()
 

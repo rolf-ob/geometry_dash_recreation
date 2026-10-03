@@ -94,7 +94,7 @@ settings_tutorial = [
 building_tutorial = [
     "BUILDING CONTROLS",
     "Place Object - Left Mouse + Shift/None",
-    "Select Object - Right Mouse + Shift/None",
+    "Select Object - Right Mouse + Shift/Ctrl/None",
     "Switch Between Move and Scale - V",
     "Move/Scale Objects - W, A, S, D + Shift/Ctrl/Alt/None",
     "Rotate Objects - Q, E + Shift/Ctrl/Alt/None",
