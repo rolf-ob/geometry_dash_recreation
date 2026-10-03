@@ -424,7 +424,7 @@ class Game():
             self.level["checkpoints"][1:],
             key=lambda cp: cp.x
         )
-        self.level["checkpoints"].extend(rest)
+        self.level["checkpoints"] = [self.level["checkpoints"][0]] + rest
         self.checkpoints = self.level["checkpoints"]
         if not hasattr(self, "checkpoint"):
             self.checkpoint = 0
