@@ -195,24 +195,25 @@ class Game():
 
                         elif field_name == "shape" and text == "checkpoint":
                             setattr(obj, field_name, text)
+                            for layer, name in zip((self.background, self.objects, self.decoration), ("background", "objects", "decoration")):
+                                if obj in layer:
+                                    layer.remove(obj)
+                                    self.checkpoints.append(obj)
+
+                                    for bucket in get_buckets(obj):
+                                        self.buckets[name][bucket].remove(obj)
+                                    for bucket in get_buckets(obj):
+                                        self.buckets["checkpoints"][bucket].append(obj)
+
+                                    break
+                            
                             obj.width = 40
                             obj.height = 40
                             obj.rotation = 0
                             obj.color = (0, 255, 0)
                             obj.outline = (0,)*3
                             obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
-                            for layer in (self.background, self.objects, self.decoration):
-                                if obj in layer:
-                                    layer.remove(obj)
-                                    break
-                            
-                            for bucket in get_buckets(obj):
-                                self.buckets[obj.bucket][bucket].remove(obj)
-                            obj.bucket = "checkpoints"
-                            for bucket in get_buckets(obj):
-                                self.buckets[obj.bucket][bucket].append(obj)
-                            self.checkpoints.append(obj)
-                            self.level["checkpoints"].append(obj)
+                            obj.recompute()
 
                         elif obj.shape == "gamemode" and field_name == "modifier" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                             setattr(obj, field_name, text)
@@ -362,7 +363,6 @@ class Game():
             for obj in layer:
                 for bucket in get_buckets(obj):
                     self.buckets[name][bucket].append(obj)
-                    obj.bucket = name
 
     def restart(self):
         if not self.paused:
@@ -424,7 +424,8 @@ class Game():
             self.level["checkpoints"][1:],
             key=lambda cp: cp.x
         )
-        self.checkpoints = [self.level["checkpoints"][0]] + rest
+        self.level["checkpoints"].extend(rest)
+        self.checkpoints = self.level["checkpoints"]
         if not hasattr(self, "checkpoint"):
             self.checkpoint = 0
         elif self.checkpoint > len(self.checkpoints)-1:
@@ -459,7 +460,6 @@ class Game():
         self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
         self.accessibility["respawn time"] = self.respawn_time
         self.accessibility["dark mode"] = self.dark_mode
-        self.level["checkpoints"] = self.checkpoints
         controls = {action: [py.key.name(key) for key in keys] for action, keys in self.controls.items()}
         settings = {"accessibility": self.accessibility, "controls": controls}
         save_json("players/settings.json", settings)

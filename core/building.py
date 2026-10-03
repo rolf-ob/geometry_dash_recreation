@@ -47,7 +47,6 @@ def place_object(game):
 
         new_obj = Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3)
         layer.append(new_obj)
-        new_obj.bucket = name
         game.rebuild_buckets()
 
 def select_object(game, shift, ctrl):
@@ -306,9 +305,6 @@ def duplicate_objects(game):
                 
                 new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
                 layer.append(new_obj)
-                if layer == game.checkpoints:
-                    game.level["checkpoints"].append(new_obj)
-                new_obj.bucket = obj.bucket
                 new_obj.selected = False
     
     game.rebuild_buckets()
@@ -319,8 +315,6 @@ def delete_objects(game):
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
             if obj.selected and obj != game.checkpoints[0]:
-                if obj in game.checkpoints:
-                    game.level["checkpoints"].remove(obj)
                 layer.remove(obj)
     
     game.rebuild_buckets()
@@ -409,35 +403,11 @@ def move_objects_to_layer(game, layer_name):
         "decoration": game.decoration
     }[layer_name]
 
-    if layer_name == "background":
-        for layer in (game.background, game.objects, game.decoration):
-            for obj in layer.copy():
-                if obj.selected:
-                    layer.remove(obj)
-                    target_layer.append(obj)
-
-                    obj.recompute()
-                    obj.bucket = layer_name
-
-    elif layer_name == "objects":
-        for layer in (game.background, game.objects, game.decoration):
-            for obj in layer.copy():
-                if obj.selected:
-                    layer.remove(obj)
-                    target_layer.append(obj)
-
-                    obj.recompute()
-                    obj.bucket = layer_name
-
-    elif layer_name == "decoration":
-        for layer in (game.background, game.objects, game.decoration):
-            for obj in layer.copy():
-                if obj.selected:
-                    layer.remove(obj)
-                    target_layer.append(obj)
-
-                    obj.recompute()
-                    obj.bucket = layer_name
+    for layer in (game.background, game.objects, game.decoration):
+        for obj in layer.copy():
+            if obj.selected:
+                layer.remove(obj)
+                target_layer.append(obj)
 
     game.rebuild_buckets()
 

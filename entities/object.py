@@ -16,7 +16,6 @@ class Object:
     selected: bool = False
     interacted: bool = False
     group_id: int = 0
-    bucket: str = None
 
     def __post_init__(self):
         self.recompute()
@@ -121,5 +120,5 @@ class Object:
         return cls(
             x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
             shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]),
-            modifier=d["modifier"], group_id=d["group_id"], bucket=d["bucket"]
+            modifier=d["modifier"], group_id=d["group_id"]
         )
