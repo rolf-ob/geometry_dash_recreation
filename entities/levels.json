@@ -10,7 +10,8 @@
         255
       ],
       "title": "Main Menu",
-      "points": 0
+      "points": 0,
+      "song": null
     },
     "background": [],
     "objects": [
@@ -65,8 +66,8 @@
     ],
     "victors": {
       "Rolf": [
-        1211,
-        17,
+        1235,
+        21,
         0,
         0
       ],
@@ -78,6 +79,59 @@
       ],
       "Lucas": [
         4,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "meta": {
+      "length": 100,
+      "roof": 0,
+      "floor": 720,
+      "background color": [
+        255,
+        255,
+        255
+      ],
+      "title": "Unnamed level",
+      "points": 0,
+      "song": "climax.mp3"
+    },
+    "background": [],
+    "objects": [],
+    "decoration": [],
+    "checkpoints": [
+      {
+        "x": 360,
+        "y": 680,
+        "width": 40,
+        "height": 40,
+        "rotation": 0,
+        "shape": "checkpoint",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": {
+          "gamemode": "cube",
+          "speed": 2,
+          "gravity": 1,
+          "size": 1
+        },
+        "group_id": 0
+      }
+    ],
+    "victors": {
+      "Rolf": [
+        16,
         0,
         0,
         0

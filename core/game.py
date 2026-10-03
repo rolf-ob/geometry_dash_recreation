@@ -1,5 +1,6 @@
 from collections import defaultdict
 from copy import deepcopy
+from pathlib import Path
 import time, json
 import pygame as py
 
@@ -27,6 +28,8 @@ class Game():
             self.controls = {}
             for action, keys in settings["controls"].items():
                 self.controls[action] = [py.key.key_code(key) for key in keys]
+
+        self.songs = Path(__file__).parent.parent / "songs"
         
         self.running = True
 
@@ -288,6 +291,11 @@ class Game():
                         self.current_level = new_number
                         self.load_level()
 
+                    elif field_name == "song":
+                        song_path = self.songs / (text + ".mp3")
+                        if song_path.is_file():
+                            self.level["meta"]["song"] = text + ".mp3"
+
                     elif field_name == "reset stats" and text == "reset":
                         self.level["victors"] = {}
 
@@ -376,7 +384,6 @@ class Game():
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
         
         size = self.checkpoints[self.checkpoint].modifier["size"]*40
-
         self.player = Object(0, 0, size, size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.player_render = Object(0, 0, size, size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
         self.player.recompute()
@@ -411,6 +418,8 @@ class Game():
         self.current_hitbox = 0
         self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
+
+        if self.song: py.mixer.music.play()
     
     def load_level(self, restart=True):
         if restart:
@@ -440,6 +449,9 @@ class Game():
         self.background_color = tuple(self.level["meta"]["background color"])
         if restart:
             self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
+        self.song = self.level["meta"]["song"] if self.level["meta"]["song"] else None
+        if self.song:
+            py.mixer.music.load(self.songs / self.song)
 
         self.building_camera_x = 0
         self.building_camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN

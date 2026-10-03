@@ -7,7 +7,7 @@ Building features
 - Triggers that affect number values can have a transition speed (color, position etc)
 
 Gameplay features
-- Level music
+- Level song start time
 - CBF
 
 Visual features
