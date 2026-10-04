@@ -65,6 +65,8 @@ class Game():
         self.robot_fuel = 0
 
         self.building = False
+        self.building_camera_x = 0
+        self.building_camera_y = 0
         self.layer = 1
         self.layer_view = False
         self.scale_mode = False
@@ -397,6 +399,7 @@ class Game():
 
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+        self.camera_y = max(min(self.camera_y, self.player.y - CAMERA_MARGIN), self.player.y + self.player.height - HEIGHT + CAMERA_MARGIN)
         self.camera_zoom = 1
         self.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * self.scale * self.camera_zoom)), "world")
 
@@ -418,6 +421,8 @@ class Game():
         self.current_hitbox = 0
         self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
+
+        self.restart_time = time.perf_counter()
 
         if self.song:
             seconds_into_song = checkpoint_x / self.speed * FIXED_STEP
@@ -457,10 +462,8 @@ class Game():
         self.song = self.level["meta"]["song"] if self.level["meta"]["song"] else None
         if self.song:
             py.mixer.music.load(self.songs / self.song)
-
-        if restart:
-            self.building_camera_x = 0
-            self.building_camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+        else:
+            py.mixer.music.unload()
 
         self.current_group_id = 0
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
@@ -506,7 +509,7 @@ class Game():
             previous = now
             can_update = not self.paused and not self.building and self.current_level != 0
 
-            if frame_time > 0.05 and can_update and not self.completed and self.dead == 0:
+            if frame_time > 0.05 and can_update and not self.completed and self.dead == 0 and now - self.restart_time > 0.1:
                 self.restart()
                 accumulator = 0
                 frame_time = 0

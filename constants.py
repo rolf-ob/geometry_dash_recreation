@@ -50,6 +50,8 @@ controls_tutorial = [
     "HOW TO WIN",
     "Collecting coins and completing levels gives points",
     "Level points are displayed in the title",
+    "Join the community or give feedback:",
+    "https://discord.gg/DjAx26sH5z",
     "",
     "NAVIGATION",
     "Go Up - Spacebar, W, Return/Enter, Left Mouse",

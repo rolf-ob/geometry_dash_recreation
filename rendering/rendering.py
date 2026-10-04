@@ -85,10 +85,10 @@ def draw_objects(game, screen):
                 if color == (0, 0):
                     if game.building:
                         draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
-                        screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+                        screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.modifier))[0] / 2, obj.y + 5))
                 else:
                     draw_polygon(game, screen, obj.points, color, 0)
-                    screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+                    screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + obj.width / 2 - game.text_cache.get_size(str(obj.modifier), (0,)*3, "world")[0] / 2, obj.y + 5))
                 
                 if outline_color == (0, 0):
                     if game.show_hitboxes:

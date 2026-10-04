@@ -1,6 +1,7 @@
 from entities.spacial import collide, polygons_collide, get_buckets, get_nearby_objects
 from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
+import pygame as py
 
 def check_collision(game):
     fall_speed = -game.player.height / game.speed*abs(game.gravity)
@@ -89,6 +90,7 @@ def check_collision(game):
                 if not this_sliding and not on_right_edge:
                     if not game.noclip:
                         game.dead = FIXED_STEP
+                        py.mixer.music.pause()
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
                     else:
