@@ -3,7 +3,7 @@ import math, time
 
 from core.textbox import TextBox
 from entities.object import Object
-from entities.spacial import collide, get_nearby_objects
+from entities.spatial import collide, get_nearby_objects
 from rendering.rendering import screen_to_world
 from constants import PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 
@@ -245,7 +245,7 @@ def flip_objects(game, way):
                     flipped_center = center_pos - (center - center_pos)
                     obj.x = int(flipped_center - obj.width / 2)
 
-                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport"):
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport", "text"):
                         obj.rotation = -obj.rotation
                         
                     elif obj.shape == "right slope":
@@ -268,7 +268,7 @@ def flip_objects(game, way):
                     flipped_center = center_pos - (center - center_pos)
                     obj.y = int(flipped_center - obj.height / 2)
 
-                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport"):
+                    if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport", "text"):
                         obj.rotation = -obj.rotation
                         
                     elif obj.shape == "right slope":
@@ -434,7 +434,7 @@ def undo_edit(game, ctrl):
 
 def create_level(game):
     game.levels.insert(game.current_level + 1, {
-        "meta": {"length": 100, "roof": 0, "floor": 720, "background color": (255,)*3, "title": "Unnamed level", "points": 0, "song": ""},
+        "meta": {"length": 100, "roof": 0, "floor": 720, "roof color": (255,)*3, "floor color": (255,)*3, "background color": (255,)*3, "title": "Unnamed level", "points": 0, "song": ""},
         "background": [],
         "objects": [],
         "decoration": [],
@@ -470,12 +470,16 @@ def open_menu(game, menu):
         ]
     
     elif menu == "level settings":
-        r, g, b = game.level["meta"]["background color"]
+        r1, g1, b1 = game.level["meta"]["roof color"]
+        r2, g2, b2 = game.level["meta"]["floor color"]
+        r3, g3, b3 = game.level["meta"]["background color"]
         game.textboxes = [
             TextBox("Length", game.level["meta"]["length"]),
             TextBox("Roof", game.level["meta"]["roof"]),
             TextBox("Floor", game.level["meta"]["floor"]),
-            TextBox("Background", f"{str(r)} {str(g)} {str(b)}"),
+            TextBox("Roof Color", f"{str(r1)} {str(g1)} {str(b1)}"),
+            TextBox("Floor Color", f"{str(r2)} {str(g2)} {str(b2)}"),
+            TextBox("Background", f"{str(r3)} {str(g3)} {str(b3)}"),
             TextBox("Title", game.level["meta"]["title"]),
             TextBox("Points", game.level["meta"]["points"]),
             TextBox("Level Number", game.current_level),

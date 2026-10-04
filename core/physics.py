@@ -1,4 +1,4 @@
-from entities.spacial import collide, polygons_collide, get_buckets, get_nearby_objects
+from entities.spatial import collide, polygons_collide, get_buckets, get_nearby_objects
 from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
 import pygame as py
@@ -55,7 +55,7 @@ def check_collision(game):
                         game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
                         game.sliding = 1
                         this_sliding = True
-                    elif ((prev_player_y <= prev_y and y < player_y) or abs(y - player_y) < 1e-2) and not on_right_edge:
+                    elif ((prev_player_y <= prev_y and y < player_y) or abs(y - player_y) < 1e-2) and not (on_left_edge or on_right_edge):
                         game.max_height = min(game.max_height, obj.y - game.player.height + next_y*obj.height)
                         game.y_vel = max(game.y_vel, slope_vel) if game.gravity > 0 else min(game.y_vel, slope_vel)
                         game.sliding = 1
@@ -81,7 +81,7 @@ def check_collision(game):
                         game.y_vel = min(game.y_vel, 0) if game.gravity > 0 else max(game.y_vel, 0)
                         game.sliding = -1
                         this_sliding = True
-                    elif ((prev_player_y >= prev_y and y > player_y) or abs(y - player_y) < 1e-2) and not on_right_edge:
+                    elif ((prev_player_y >= prev_y and y > player_y) or abs(y - player_y) < 1e-2) and not (on_left_edge or on_right_edge):
                         game.min_height = max(game.min_height, obj.aabb["top"] + next_y*obj.height)
                         game.y_vel = min(game.y_vel, slope_vel) if game.gravity > 0 else max(game.y_vel, slope_vel)
                         game.sliding = -1

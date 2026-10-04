@@ -1,17 +1,17 @@
 Building features
-- Ability to change roof/floor color
+- Zooming out
 - Level song start time
 - Duplication of object groups
-- Object outline thickness attribute
-- Text shape
 - Triggers that change level or object attributes
 - Triggers that affect number values can have a transition speed (color, position etc)
 
 Gameplay features
+- Volume setting
+- Song checkpoint time calculates speed portals
 - CBF
 
 Visual features
-- Sort level leaderboard by order of completion time
+- Sort level leaderboard by order of completion date
 - Wave trail outline
 - Better wave trail compatability with sliding
 

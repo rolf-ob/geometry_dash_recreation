@@ -49,6 +49,7 @@ def toggle_pause(game):
     if not game.paused and game.dead == 0 and not game.completed:
         game.camera_x = game.player.x - PLAYER_X
         game.camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+        game.camera_y = max(min(game.camera_y, game.player.y - CAMERA_MARGIN * 2), game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN)
         game.camera_zoom = 1
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 

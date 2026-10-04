@@ -4,7 +4,7 @@ from pathlib import Path
 import time, json
 import pygame as py
 
-from entities.spacial import get_buckets
+from entities.spatial import get_buckets
 from core.input import handle_input
 from core.physics import update
 from rendering.rendering import draw
@@ -149,7 +149,7 @@ class Game():
                             elif len(rgb) == 1 and rgb[0] == "0":
                                 setattr(obj, field_name, (0, 0))
 
-                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "coin"):
+                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "coin", "text"):
                             setattr(obj, field_name, text)
 
                             if text == "end":
@@ -220,36 +220,40 @@ class Game():
                             obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
                             obj.recompute()
 
-                        elif obj.shape == "gamemode" and field_name == "modifier" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
-                            setattr(obj, field_name, text)
-                            obj.color = gamemode_colors[text]
+                        elif field_name == "modifier":
+                            if obj.shape == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
+                                setattr(obj, field_name, text)
+                                obj.color = gamemode_colors[text]
 
-                        elif obj.shape == "speed" and field_name == "modifier":
-                            setattr(obj, field_name, max(0.01, min(40, float(text))))
+                            elif obj.shape == "speed":
+                                setattr(obj, field_name, max(0.01, min(40, float(text))))
 
-                        elif obj.shape == "gravity" and field_name == "modifier":
-                            setattr(obj, field_name, float(text))
-                            if int(text) in gravity_colors.keys():
-                                obj.color = gravity_colors[int(text)]
+                            elif obj.shape == "gravity":
+                                setattr(obj, field_name, float(text))
+                                if int(text) in gravity_colors.keys():
+                                    obj.color = gravity_colors[int(text)]
 
-                        elif obj.shape == "size" and field_name == "modifier":
-                            setattr(obj, field_name, max(0.1, min(10, float(text))))
-                            if float(text) in size_colors.keys():
-                                obj.color = size_colors[float(text)]
+                            elif obj.shape == "size":
+                                setattr(obj, field_name, max(0.1, min(10, float(text))))
+                                if float(text) in size_colors.keys():
+                                    obj.color = size_colors[float(text)]
 
-                        elif obj.shape == "teleport" and field_name == "modifier":
-                            setattr(obj, field_name, int(text))
+                            elif obj.shape == "teleport":
+                                setattr(obj, field_name, int(text))
 
-                        elif obj.shape == "orb" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
-                            setattr(obj, field_name, text)
-                            obj.color = orb_pad_colors[text]
+                            elif obj.shape == "orb" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
+                                setattr(obj, field_name, text)
+                                obj.color = orb_pad_colors[text]
 
-                        elif obj.shape == "pad" and field_name == "modifier" and text in ("small", "normal", "big", "gravity", "spider"):
-                            setattr(obj, field_name, text)
-                            obj.color = orb_pad_colors[text]
+                            elif obj.shape == "pad" and text in ("small", "normal", "big", "gravity", "spider"):
+                                setattr(obj, field_name, text)
+                                obj.color = orb_pad_colors[text]
 
-                        elif obj.shape == "coin" and field_name == "modifier":
-                            setattr(obj, field_name, int(text))
+                            elif obj.shape == "coin":
+                                setattr(obj, field_name, int(text))
+
+                            elif obj.shape == "text":
+                                setattr(obj, field_name, text)
 
                     else:
                         if field_name == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
@@ -274,6 +278,16 @@ class Game():
 
                     elif field_name == "floor":
                         self.level["meta"]["floor"] = max(720, int(text))
+
+                    elif field_name == "roof color":
+                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
+                        self.level["meta"]["roof color"] = (r, g, b)
+                        self.roof_color = tuple(self.level["meta"]["roof color"])
+
+                    elif field_name == "floor color":
+                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
+                        self.level["meta"]["floor color"] = (r, g, b)
+                        self.floor_color = tuple(self.level["meta"]["floor color"])
 
                     elif field_name == "background":
                         r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
@@ -399,7 +413,7 @@ class Game():
 
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
-        self.camera_y = max(min(self.camera_y, self.player.y - CAMERA_MARGIN), self.player.y + self.player.height - HEIGHT + CAMERA_MARGIN)
+        self.camera_y = max(min(self.camera_y, self.player.y - CAMERA_MARGIN * 2), self.player.y + self.player.height - HEIGHT + CAMERA_MARGIN)
         self.camera_zoom = 1
         self.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * self.scale * self.camera_zoom)), "world")
 
@@ -457,6 +471,8 @@ class Game():
         self.level_roof = self.level["meta"]["roof"]
         self.level_floor = self.level["meta"]["floor"]
         self.background_color = tuple(self.level["meta"]["background color"])
+        self.roof_color = tuple(self.level["meta"]["roof color"])
+        self.floor_color = tuple(self.level["meta"]["floor color"])
         if restart:
             self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
         self.song = self.level["meta"]["song"] if self.level["meta"]["song"] else None

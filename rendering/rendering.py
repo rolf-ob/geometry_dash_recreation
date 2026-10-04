@@ -1,7 +1,7 @@
 import pygame as py
 import time, math
 
-from entities.spacial import get_nearby_objects
+from entities.spatial import get_nearby_objects
 from constants import WIDTH, HEIGHT, BUCKET_WIDTH, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
@@ -25,6 +25,8 @@ def draw_polygon(game, screen, points, color, width):
 def draw_floor_roof(game, screen):
     roof = world_to_screen(game, 0, game.level["meta"]["roof"])[1]
     floor = world_to_screen(game, 0, game.level["meta"]["floor"])[1]
+    py.draw.rect(screen, game.roof_color, (0, 0, game.width, roof))
+    py.draw.rect(screen, game.floor_color, (0, floor, game.width, game.height))
     py.draw.line(screen, game.primary_color, (0, roof), (game.width, roof), int(1*game.camera_zoom))
     py.draw.line(screen, game.primary_color, (0, floor), (game.width, floor), int(1*game.camera_zoom))
 
@@ -95,6 +97,23 @@ def draw_objects(game, screen):
                         draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
                 else:
                     draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
+
+        elif obj.shape == "text":
+            color = (200, 255, 200) if obj.selected else obj.color
+            outline_color = (255, 0, 0) if game.show_hitboxes else obj.outline
+            outline_thickness = 1 if game.show_hitboxes else int(1*game.camera_zoom)
+
+            if color == (0, 0):
+                if game.building:
+                    screen.blit(game.text_cache.get_surface(obj.modifier, color, "world"), world_to_screen(game, obj.x + obj.width / 2 - game.text_cache.get_size(obj.modifier, (0,)*3, "world")[0] / 2, obj.y + 5))
+            else:
+                screen.blit(game.text_cache.get_surface(obj.modifier, color, "world"), world_to_screen(game, obj.x + obj.width / 2 - game.text_cache.get_size(obj.modifier, (0,)*3, "world")[0] / 2, obj.y + 5))
+            
+            if outline_color == (0, 0):
+                if game.show_hitboxes:
+                    draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
+            else:
+                draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
         
         else:
             color = (200, 255, 200) if obj.selected else obj.color
