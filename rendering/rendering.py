@@ -57,7 +57,7 @@ def draw_objects(game, screen):
                 draw_polygon(game, screen, obj.points, color, 0)
             
             if obj.selected:
-                screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
+                screen.blit(game.text_cache.get_surface(str(obj.x), game.primary_color, "world"), world_to_screen(game, obj.x + 5, obj.aabb["bottom"]- 30))
 
         elif obj.shape == "orb" and obj.modifier == "dash":
             color = (200, 255, 200) if obj.selected else obj.color
@@ -348,18 +348,18 @@ def draw(game):
         draw_floor_roof(game, screen)
     
     if game.building:
-        if not game.layer_view:
-            draw_background(game, screen)
-            draw_objects(game, screen)
-            draw_decoration(game, screen)
-            draw_checkpoints(game, screen)
-        else:
+        if game.layer_view:
             if game.layer == 0:
                 draw_background(game, screen)
             elif game.layer == 1:
                 draw_objects(game, screen)
             elif game.layer == 2:
                 draw_decoration(game, screen)
+        else:
+            draw_background(game, screen)
+            draw_objects(game, screen)
+            draw_decoration(game, screen)
+            draw_checkpoints(game, screen)
     else:
         draw_background(game, screen)
         draw_objects(game, screen)

@@ -1,5 +1,6 @@
 Building features
 - Ability to change roof/floor color
+- Level song start time
 - Duplication of object groups
 - Object outline thickness attribute
 - Text shape
@@ -7,7 +8,6 @@ Building features
 - Triggers that affect number values can have a transition speed (color, position etc)
 
 Gameplay features
-- Level song start time
 - CBF
 
 Visual features

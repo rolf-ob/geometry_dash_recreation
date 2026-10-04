@@ -292,9 +292,9 @@ class Game():
                         self.load_level()
 
                     elif field_name == "song":
-                        song_path = self.songs / (text + ".mp3")
+                        song_path = self.songs / (text + ".ogg")
                         if song_path.is_file():
-                            self.level["meta"]["song"] = text + ".mp3"
+                            self.level["meta"]["song"] = text + ".ogg"
 
                     elif field_name == "reset stats" and text == "reset":
                         self.level["victors"] = {}
@@ -419,7 +419,12 @@ class Game():
         self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
 
-        if self.song: py.mixer.music.play()
+        if self.song:
+            seconds_into_song = checkpoint_x / self.speed * FIXED_STEP
+            py.mixer.music.play(-1, seconds_into_song)
+            
+            if self.paused:
+                py.mixer.music.pause()
     
     def load_level(self, restart=True):
         if restart:
@@ -453,8 +458,9 @@ class Game():
         if self.song:
             py.mixer.music.load(self.songs / self.song)
 
-        self.building_camera_x = 0
-        self.building_camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+        if restart:
+            self.building_camera_x = 0
+            self.building_camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
 
         self.current_group_id = 0
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):

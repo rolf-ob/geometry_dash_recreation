@@ -1,4 +1,3 @@
-from collections import defaultdict
 import pygame as py
 import math, time
 
@@ -11,11 +10,12 @@ from constants import PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 def toggle_building(game):
     game.building = not game.building
     if game.building:
+        py.mouse.set_visible(True)
+        py.mixer.music.stop()
         game.clicking = 0
         game.clicked = False
         game.layer = 1
         game.title = ["Objects", -1]
-        py.mouse.set_visible(True)
         close_menu(game)
 
     else:
@@ -426,9 +426,9 @@ def reset_camera(game, ctrl):
     game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
 def undo_edit(game, ctrl):
+    deselect_objects(game)
     if ctrl:
         game.restore_level_state("undo")
-
     else:
         game.restore_level_state("redo")
 

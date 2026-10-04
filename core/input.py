@@ -29,11 +29,13 @@ def toggle_pause(game):
 
     if game.paused:
         py.mouse.set_visible(True)
+        py.mixer.music.pause()
         open_menu(game, "settings")
         if not game.completed:
             game.cheated = True
     else:
         py.mouse.set_visible(False)
+        py.mixer.music.unpause()
         close_menu(game)
         if not game.completed and (game.show_hitboxes or game.speedhack):
             game.cheated = True

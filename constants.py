@@ -119,7 +119,7 @@ building_tutorial = [
     "Title - The title of the level",
     "Points - How many points you should get from completing the level",
     "Level Number - Which order in the levels this level is",
-    "Song - Name of the song to use in the level, add as mp3 to songs folder",
+    "Song - Name of the song to use in the level, add as ogg filetype to songs folder",
     "Reset stats - Type reset to clear all attempts and completions",
     "Delete - Type delete to delete the entire level permanently",
     "",
@@ -143,5 +143,5 @@ building_tutorial = [
     "Coin - Set the number of points it should give",
     "",
     "AVAILABLE SONGS",
-    "climax"
+    "climax",
 ]
