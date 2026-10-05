@@ -9,8 +9,6 @@ Gameplay features
 
 Visual features
 - Sort level leaderboard by order of completion date
-- Wave trail outline
-- Better wave trail compatability with sliding
 
 User
 - Each level as its own json file

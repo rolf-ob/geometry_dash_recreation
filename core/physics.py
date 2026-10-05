@@ -17,6 +17,7 @@ def check_collision(game):
     for obj in objects:
         if obj.shape in ("square", "spike", "right slope", "left slope", "circle"):
             if collide(game.player, obj):
+                prev_this_sliding = collide(game.hitboxes[-1], obj)
                 this_sliding = False
                 prev_player = game.hitboxes[-1].aabb if game.hitboxes else game.player.aabb
                 player = game.player.aabb
@@ -55,7 +56,7 @@ def check_collision(game):
                         game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
                         game.sliding = 1
                         this_sliding = True
-                    elif ((prev_player_y <= prev_y and y < player_y) or abs(y - player_y) < 1e-2) and not (on_left_edge or on_right_edge):
+                    elif ((prev_player_y <= prev_y and y < player_y) or abs(y - player_y) < 1e-2) and not on_right_edge:
                         game.max_height = min(game.max_height, obj.y - game.player.height + next_y*obj.height)
                         game.y_vel = max(game.y_vel, slope_vel) if game.gravity > 0 else min(game.y_vel, slope_vel)
                         game.sliding = 1
@@ -81,7 +82,7 @@ def check_collision(game):
                         game.y_vel = min(game.y_vel, 0) if game.gravity > 0 else max(game.y_vel, 0)
                         game.sliding = -1
                         this_sliding = True
-                    elif ((prev_player_y >= prev_y and y > player_y) or abs(y - player_y) < 1e-2) and not (on_left_edge or on_right_edge):
+                    elif ((prev_player_y >= prev_y and y > player_y) or abs(y - player_y) < 1e-2) and not on_right_edge:
                         game.min_height = max(game.min_height, obj.aabb["top"] + next_y*obj.height)
                         game.y_vel = min(game.y_vel, slope_vel) if game.gravity > 0 else max(game.y_vel, slope_vel)
                         game.sliding = -1
@@ -99,6 +100,9 @@ def check_collision(game):
                             game.noclip_deaths += 1
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
+
+                elif not prev_this_sliding and this_sliding:
+                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif obj.shape == "end":
             if collide(game.player, obj):

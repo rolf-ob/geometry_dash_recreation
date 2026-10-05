@@ -177,8 +177,9 @@ def draw_wave_trail(game, screen):
             if i == len(game.wave_trail) - 1: break
             else: end_top = game.wave_trail[i + 1]
 
-        camera_x = game.building_camera_x if game.building else game.camera_x
-        if camera_x < end_top[0] < camera_x + game.view_width or camera_x < start_top[0] < camera_x + game.view_width:
+        screen_start = screen_to_world(game, 0, 0)[0]
+        screen_end = screen_to_world(game, game.width, 0)[0]
+        if screen_start < end_top[0] < screen_end or screen_start < start_top[0] < screen_end:
             start_bottom = (point[0], point[1] + game.player.height)
             end_bottom = (game.player.x + game.player.width/2, game.player.y + game.player.height) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.player.height)
             points = [
@@ -188,6 +189,8 @@ def draw_wave_trail(game, screen):
                 world_to_screen(game, *start_bottom)
             ]
             py.draw.polygon(screen, (0, 255, 255), points)
+            py.draw.line(screen, (0,)*3, points[0], points[1], int(max(1, 1*game.camera_zoom)))
+            py.draw.line(screen, (0,)*3, points[2], points[3], int(max(1, 1*game.camera_zoom)))
 
 def draw_player(game, screen):
     if game.hitboxes:

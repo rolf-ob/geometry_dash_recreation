@@ -77,8 +77,8 @@
     ],
     "victors": {
       "Rolf": [
-        1358,
-        26,
+        1369,
+        29,
         0,
         0
       ],
@@ -3960,7 +3960,7 @@
     ],
     "victors": {
       "Rolf": [
-        15,
+        19,
         1,
         3,
         15
@@ -10174,7 +10174,368 @@
       "song start": 0
     },
     "background": [],
-    "objects": [],
+    "objects": [
+      {
+        "x": 1520,
+        "y": 480,
+        "width": 20,
+        "height": 120,
+        "rotation": 0,
+        "shape": "gravity",
+        "color": [
+          255,
+          0,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": 2.0,
+        "group_id": 0
+      },
+      {
+        "x": 1960,
+        "y": 400,
+        "width": 280,
+        "height": 120,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 1760,
+        "y": 560,
+        "width": 160,
+        "height": 160,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 1880,
+        "y": 400,
+        "width": 80,
+        "height": 280,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 3920,
+        "y": 520,
+        "width": 280,
+        "height": 120,
+        "rotation": 180,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 3720,
+        "y": 320,
+        "width": 160,
+        "height": 160,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 3840,
+        "y": 360,
+        "width": 80,
+        "height": 280,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 3320,
+        "y": 440,
+        "width": 20,
+        "height": 120,
+        "rotation": 0,
+        "shape": "gravity",
+        "color": [
+          0,
+          0,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": -2.0,
+        "group_id": 0
+      },
+      {
+        "x": 1160,
+        "y": 400,
+        "width": 280,
+        "height": 120,
+        "rotation": 0,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 960,
+        "y": 560,
+        "width": 160,
+        "height": 160,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 1080,
+        "y": 400,
+        "width": 80,
+        "height": 280,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 3320,
+        "y": 280,
+        "width": 640,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 2280,
+        "y": 440,
+        "width": 20,
+        "height": 120,
+        "rotation": 0,
+        "shape": "gravity",
+        "color": [
+          255,
+          255,
+          0
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": -1.0,
+        "group_id": 0
+      },
+      {
+        "x": 3000,
+        "y": 520,
+        "width": 280,
+        "height": 120,
+        "rotation": 180,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 2800,
+        "y": 320,
+        "width": 160,
+        "height": 160,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 2920,
+        "y": 360,
+        "width": 80,
+        "height": 280,
+        "rotation": 180,
+        "shape": "right slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 2400,
+        "y": 280,
+        "width": 640,
+        "height": 40,
+        "rotation": 0,
+        "shape": "square",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 4240,
+        "y": 0,
+        "width": 1,
+        "height": 720,
+        "rotation": 0,
+        "shape": "end",
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "outline": [
+          255,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      }
+    ],
     "decoration": [],
     "checkpoints": [
       {
@@ -10187,7 +10548,7 @@
         "color": [
           0,
           255,
-          0
+          255
         ],
         "outline": [
           255,
@@ -10195,8 +10556,8 @@
           255
         ],
         "modifier": {
-          "gamemode": "cube",
-          "speed": 2,
+          "gamemode": "wave",
+          "speed": 4.0,
           "gravity": 1,
           "size": 1
         },
@@ -10205,7 +10566,7 @@
     ],
     "victors": {
       "Rolf": [
-        1,
+        24,
         0,
         0,
         0
@@ -10260,12 +10621,12 @@
         "group_id": 0
       },
       {
-        "x": 1260,
-        "y": -160,
+        "x": 1355,
+        "y": -140,
         "width": 60,
         "height": 60,
         "rotation": 0,
-        "shape": "left slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -10280,12 +10641,12 @@
         "group_id": 0
       },
       {
-        "x": 1200,
-        "y": -100,
+        "x": 1415,
+        "y": -80,
         "width": 60,
         "height": 60,
         "rotation": 0,
-        "shape": "left slope",
+        "shape": "right slope",
         "color": [
           255,
           255,
@@ -10338,6 +10699,46 @@
         ],
         "modifier": null,
         "group_id": 0
+      },
+      {
+        "x": 1260,
+        "y": -160,
+        "width": 60,
+        "height": 60,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
+      },
+      {
+        "x": 1200,
+        "y": -100,
+        "width": 60,
+        "height": 60,
+        "rotation": 0,
+        "shape": "left slope",
+        "color": [
+          255,
+          255,
+          255
+        ],
+        "outline": [
+          0,
+          0,
+          0
+        ],
+        "modifier": null,
+        "group_id": 0
       }
     ],
     "decoration": [],
@@ -10370,7 +10771,7 @@
     ],
     "victors": {
       "Rolf": [
-        57,
+        66,
         0,
         0,
         0
