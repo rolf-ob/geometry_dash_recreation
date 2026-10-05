@@ -166,8 +166,9 @@ def handle_input(game):
                 if event.key == py.K_RETURN:
 
                     if game.building and not game.editing_level:
-                        obj_selected = False
                         cp_selected = False
+                        trigger_selected = False
+                        obj_selected = False
 
                         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                             if obj.selected:
@@ -175,10 +176,13 @@ def handle_input(game):
                                 obj.recompute()
                                 game.rebuild_buckets()
                                 if obj.shape == "checkpoint": cp_selected = True
+                                elif obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True
 
                         if not obj_selected and cp_selected:
                             open_menu(game, "checkpoint attributes")
+                        elif not obj_selected and trigger_selected:
+                            open_menu(game, "trigger attributes")
                         else:
                             game.active_textbox.text = ""
                     

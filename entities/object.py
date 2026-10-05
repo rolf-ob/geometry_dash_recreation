@@ -1,5 +1,5 @@
 import math
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, field, asdict
 
 @dataclass
 class Object:
@@ -16,13 +16,13 @@ class Object:
     selected: bool = False
     interacted: bool = False
     group_id: int = 0
-    trigger_id: int = 0
+    triggers: list = field(default_factory=list)
 
     def __post_init__(self):
         self.recompute()
     
     def recompute_points(self):
-        if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity", "size", "teleport", "pad", "text"):
+        if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity", "size", "teleport", "pad", "trigger", "text"):
             corners = [
                 (self.x, self.y),
                 (self.x + self.width, self.y),
@@ -121,5 +121,5 @@ class Object:
         return cls(
             x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
             shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]),
-            modifier=d["modifier"], group_id=d["group_id"], trigger_id=d["trigger_id"]
+            modifier=d["modifier"], group_id=d["group_id"], triggers=d["triggers"]
         )

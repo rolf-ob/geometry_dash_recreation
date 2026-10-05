@@ -244,6 +244,29 @@ def check_collision(game):
                     game.gravity *= -1
                     game.y_vel = fall_speed
 
+        elif obj.shape == "trigger":
+            if collide(game.player, obj) and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+                if obj.triggers and obj.modifier["attribute"] in ("shape", "color", "outline", "rotation", "x", "y", "width", "height"):
+                    game.activated_object_triggers[obj.triggers] = [obj.modifier["attribute"], obj.modifier["value"], obj.modifier["transition"]]
+
+                elif obj.modifier["attribute"] == "length":
+                    game.level_length = obj.modifier["value"]
+
+                elif obj.modifier["attribute"] == "roof":
+                    game.level_roof = obj.modifier["value"]
+
+                elif obj.modifier["attribute"] == "floor":
+                    game.level_floor = obj.modifier["value"]
+
+                elif obj.modifier["attribute"] == "roof color":
+                    game.roof_color = obj.modifier["value"]
+
+                elif obj.modifier["attribute"] == "floor color":
+                    game.floor_color = obj.modifier["value"]
+
+                elif obj.modifier["attribute"] == "background":
+                    game.background_color = obj.modifier["value"]
+
         elif obj.shape == "coin":
             if not obj.interacted and not game.cheated and collide(game.player, obj):
                 obj.interacted = True

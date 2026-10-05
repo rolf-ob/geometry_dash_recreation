@@ -59,13 +59,15 @@ def select_object(game, shift, ctrl):
         layer = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width, game.z_order)
         checkpoints  = get_nearby_objects(game.buckets["checkpoints"], game.building_camera_x, game.building_camera_x + game.view_width)
         
-        obj_selected = False
         cp_selected = False
+        trigger_selected = False
+        obj_selected = False
         if ctrl:
             for obj in (*layer, *checkpoints):
                 if collide(mouse, obj):
                     obj.selected = True
                     if obj.shape == "checkpoint": cp_selected = True
+                    elif obj.shape == "trigger": trigger_selected = True
                     else: obj_selected = True
 
                     if obj.group_id != 0:
@@ -73,6 +75,7 @@ def select_object(game, shift, ctrl):
                             if other_obj.group_id == obj.group_id:
                                 other_obj.selected = True
                                 if other_obj.shape == "checkpoint": cp_selected = True
+                                elif other_obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True
 
         elif shift:
@@ -84,6 +87,7 @@ def select_object(game, shift, ctrl):
             if top_obj:
                 top_obj.selected = True   
                 if top_obj.shape == "checkpoint": cp_selected = True
+                elif top_obj.shape == "trigger": trigger_selected = True
                 else: obj_selected = True
                 
                 if top_obj.group_id != 0:
@@ -92,6 +96,7 @@ def select_object(game, shift, ctrl):
                             if obj.group_id == top_obj.group_id:
                                 obj.selected = True
                                 if obj.shape == "checkpoint": cp_selected = True
+                                elif obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True
         
         else:
@@ -108,11 +113,13 @@ def select_object(game, shift, ctrl):
                             if top_obj.group_id != 0 and obj.group_id == top_obj.group_id:
                                 obj.selected = True
                                 if obj.shape == "checkpoint": cp_selected = True
+                                elif obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True
                             else:
                                 obj.selected = False
                     
                     if top_obj.shape == "checkpoint": cp_selected = True
+                    elif top_obj.shape == "trigger": trigger_selected = True
                     else: obj_selected = True
 
                 else:
@@ -123,11 +130,13 @@ def select_object(game, shift, ctrl):
                     
                     if not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints)):
                         close_menu(game)
-
+        
         if obj_selected:
             open_menu(game, "object attributes")
         elif cp_selected:
             open_menu(game, "checkpoint attributes")
+        elif trigger_selected:
+            open_menu(game, "trigger attributes")
 
 def move_scale_objects(game, direction, shift, ctrl, alt):
     game.capture_level_state("do")
@@ -304,7 +313,7 @@ def duplicate_objects(game):
 
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
-            if obj.selected:
+            if obj.selected and obj.shape != "trigger":
                 modifier = obj.modifier if obj.shape != "checkpoint" else obj.modifier.copy()
                 
                 new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
@@ -521,6 +530,22 @@ def open_menu(game, menu):
         ]
 
     elif menu == "object attributes":
+        common_triggers = None
+        for obj in (*game.background, *game.objects, *game.decoration):
+            if obj.selected:
+                if not common_triggers and obj.triggers:
+                    common_triggers = obj.triggers
+                
+                elif obj.triggers != common_triggers:
+                    common_triggers = "-"
+                    break
+        if not common_triggers: 
+            common_triggers = "-"
+        else:
+            shown_triggers = ""
+            for trigger in [str(trigger) for trigger in common_triggers]:
+                shown_triggers += trigger + " "
+
         game.textboxes = [
             TextBox("Shape", ""),
             TextBox("Color", ""),
@@ -528,7 +553,8 @@ def open_menu(game, menu):
             TextBox("Rotation", ""),
             TextBox("Width", ""),
             TextBox("Height", ""),
-            TextBox("Modifier", "")
+            TextBox("Modifier", ""),
+            TextBox("Triggers", shown_triggers)
         ]
 
     elif menu == "checkpoint attributes":
@@ -537,6 +563,16 @@ def open_menu(game, menu):
             TextBox("Speed", ""),
             TextBox("Gravity", ""),
             TextBox("Size", "")
+        ]
+
+    elif menu == "trigger attributes":
+        game.textboxes = [
+            TextBox("Color", ""),
+            TextBox("Outline", ""),
+            TextBox("Attribute", ""),
+            TextBox("Value", ""),
+            TextBox("Transition", ""),
+            TextBox("Triggers", "")
         ]
 
     if game.active_textbox:     

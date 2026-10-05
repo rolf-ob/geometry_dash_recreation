@@ -1,8 +1,8 @@
 {
   "meta": {
-    "length": 1,
+    "length": 100,
     "roof": 0,
-    "floor": 620,
+    "floor": 720,
     "roof color": [
       255,
       255,
@@ -18,41 +18,49 @@
       255,
       255
     ],
-    "title": "Main Menu",
+    "title": "Unnamed level",
     "points": 0,
-    "level number": 0,
-    "song": "menu.ogg",
+    "level number": 3,
+    "song": "",
     "song start": 0
   },
   "background": [],
   "objects": [
     {
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 720,
+      "x": 760,
+      "y": 600,
+      "width": 40,
+      "height": 120,
       "rotation": 0,
-      "shape": "end",
+      "shape": "trigger",
       "color": [
-        0,
         255,
-        0
+        255,
+        255
       ],
       "outline": [
-        255,
+        0,
         0,
         0
       ],
-      "modifier": null,
+      "modifier": {
+        "attribute": "background",
+        "value": [
+          255,
+          0,
+          0
+        ],
+        "transition": 0.0
+      },
       "group_id": 0,
-      "triggers": []
+      "triggers": 1
     }
   ],
   "decoration": [],
   "checkpoints": [
     {
       "x": 360,
-      "y": 620,
+      "y": 680,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -79,11 +87,11 @@
   ],
   "victors": {
     "Rolf": [
-      72,
-      15,
+      23,
       0,
       0,
-      1791203824.1366072
+      0,
+      0
     ]
   }
 }

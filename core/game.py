@@ -134,7 +134,7 @@ class Game():
                 self.capture_level_state("do")
 
                 if not self.editing_level:
-                    if obj.shape != "checkpoint":
+                    if obj.shape not in ("checkpoint", "trigger"):
                         if field_name == "width":
                             setattr(obj, field_name, max(0, int(text)))
                         elif field_name == "height":
@@ -147,14 +147,14 @@ class Game():
                             setattr(obj, field_name, round(rotation, 1))
                         
                         elif field_name in ("color", "outline"):
-                            rgb = text.split(" ")
+                            rgb = text.split()
                             if len(rgb) == 3:
                                 r, g, b = (max(0, min(255, int(value))) for value in rgb)
                                 setattr(obj, field_name, (r, g, b))
                             elif len(rgb) == 1 and rgb[0] == "0":
                                 setattr(obj, field_name, (0, 0))
 
-                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "coin", "text"):
+                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "trigger", "coin", "text"):
                             setattr(obj, field_name, text)
 
                             if text == "end":
@@ -194,6 +194,10 @@ class Game():
                                 obj.width = 40
                                 obj.height = 10
                                 obj.y += 10
+
+                            elif text == "trigger":
+                                obj.triggers = 0
+                                obj.modifier = {"attribute": "", "value": "", "transition": ""}
 
                             elif text == "coin":
                                 obj.width = 40
@@ -260,7 +264,11 @@ class Game():
                             elif obj.shape == "text":
                                 setattr(obj, field_name, text)
 
-                    else:
+                        elif field_name == "triggers":
+                            triggers = [int(trigger) for trigger in text.split()]
+                            setattr(obj, field_name, triggers)
+
+                    elif obj.shape == "checkpoint":
                         if field_name == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                             obj.modifier["gamemode"] = text
                             obj.color = gamemode_colors[text]
@@ -274,6 +282,73 @@ class Game():
                         elif field_name == "size":
                             obj.modifier["size"] = max(0.1, min(10, float(text)))
 
+                    elif obj.shape == "trigger":
+                        if field_name in ("color", "outline"):
+                            rgb = text.split()
+                            if len(rgb) == 3:
+                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                setattr(obj, field_name, (r, g, b))
+                            elif len(rgb) == 1 and rgb[0] == "0":
+                                setattr(obj, field_name, (0, 0))
+
+                        elif field_name == "attribute" and text in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "length", "roof", "floor", "roof color", "floor color", "background"):
+                            obj.modifier["attribute"] = text
+
+                        elif field_name == "value":
+                            if obj.modifier["attribute"] == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "trigger", "coin", "text"):
+                                if text != "slope":
+                                    obj.modifier["value"] = text
+                                else:
+                                    obj.modifier["value"] = "right slope"
+                            
+                            elif obj.modifier["attribute"] in ("color", "outline"):
+                                rgb = text.split()
+                                if len(rgb) == 3:
+                                    r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                    obj.modifier["value"] = (r, g, b)
+                                elif len(rgb) == 1 and rgb[0] == "0":
+                                    obj.modifier["value"] = (0, 0)
+                                
+                            elif obj.modifier["attribute"] in ("x", "y", "width", "height"):
+                                obj.modifier["value"] = int(text)
+
+                            elif obj.modifier["attribute"] == "rotation":
+                                rotation = float(text)
+                                rotation %= 360
+                                if rotation < 0:
+                                    rotation += 360
+                                obj.modifier["value"] = round(rotation, 1)
+
+                            elif obj.modifier["attribute"] == "length":
+                                obj.modifier["value"] = int(text)
+
+                            elif obj.modifier["attribute"] == "roof":
+                                obj.modifier["value"] = int(text)
+
+                            elif obj.modifier["attribute"] == "floor":
+                                obj.modifier["value"] = int(text)
+
+                            elif obj.modifier["attribute"] == "roof color":
+                                rgb = text.split()
+                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                obj.modifier["value"] = (r, g, b)
+
+                            elif obj.modifier["attribute"] == "floor color":
+                                rgb = text.split()
+                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                obj.modifier["value"] = (r, g, b)
+
+                            elif obj.modifier["attribute"] == "background":
+                                rgb = text.split()
+                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                obj.modifier["value"] = (r, g, b)
+
+                        elif field_name == "transition":
+                            obj.modifier["transition"] = float(text)
+
+                        elif field_name == "triggers":
+                            obj.triggers = int(text)
+
                 else:
                     if field_name == "length":
                         self.level["meta"]["length"] = max(0, int(text))
@@ -285,17 +360,17 @@ class Game():
                         self.level["meta"]["floor"] = max(720, int(text))
 
                     elif field_name == "roof color":
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
+                        r, g, b = (max(0, min(255, int(value))) for value in text.split())
                         self.level["meta"]["roof color"] = (r, g, b)
                         self.roof_color = tuple(self.level["meta"]["roof color"])
 
                     elif field_name == "floor color":
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
+                        r, g, b = (max(0, min(255, int(value))) for value in text.split())
                         self.level["meta"]["floor color"] = (r, g, b)
                         self.floor_color = tuple(self.level["meta"]["floor color"])
 
                     elif field_name == "background":
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split(" "))
+                        r, g, b = (max(0, min(255, int(value))) for value in text.split())
                         self.level["meta"]["background color"] = (r, g, b)
                         self.background_color = tuple(self.level["meta"]["background color"])
 
@@ -424,6 +499,13 @@ class Game():
                 self.victors[self.name] = [1, 0, 0, 0, 0]
             else:
                 self.victors[self.name][0] += 1
+        
+        self.level_length = self.level["meta"]["length"]
+        self.level_roof = self.level["meta"]["roof"]
+        self.level_floor = self.level["meta"]["floor"]
+        self.background_color = tuple(self.level["meta"]["background color"])
+        self.roof_color = tuple(self.level["meta"]["roof color"])
+        self.floor_color = tuple(self.level["meta"]["floor color"])
 
         self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
@@ -460,7 +542,9 @@ class Game():
         self.collected_coins = [0, 0]
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
             obj.interacted = False
-        
+
+        self.activated_object_triggers = {}
+        self.activated_level_triggers = {}
         self.hitboxes = []
         self.current_hitbox = 0
         self.buckets["hitboxes"] = defaultdict(list)
