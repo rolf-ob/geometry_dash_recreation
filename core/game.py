@@ -1,7 +1,7 @@
 from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
-import time, json
+import time, json, re
 import pygame as py
 
 from entities.spatial import get_buckets
@@ -10,7 +10,7 @@ from core.physics import update
 from rendering.rendering import draw
 from entities.object import Object
 from core.building import toggle_building
-from entities.serialization import level_to_dict, dict_to_level, levels_to_data, data_to_levels, save_json
+from entities.serialization import level_to_dict, dict_to_level, save_json
 from rendering.textcache import TextCache
 from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, gamemode_colors, speed_color, gravity_colors, size_colors, teleport_color, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
@@ -18,9 +18,12 @@ from core.fps_counter import FpsCounter
 class Game():
     def __init__(self):
         py.init()
-        
-        with open("entities/levels.json", "r") as f:
-            self.levels = data_to_levels(json.load(f))
+
+        self.levels = []
+        for file in Path("levels").glob("*.json"): #! Understand
+            with open(file, "r") as f:
+                self.levels.append(dict_to_level(json.load(f)))
+        self.levels.sort(key=lambda level: level["meta"]["level number"])
         
         with open("players/settings.json", "r") as f:
             settings = json.load(f)
@@ -297,7 +300,19 @@ class Game():
                         self.background_color = tuple(self.level["meta"]["background color"])
 
                     elif field_name == "title":
-                        self.level["meta"]["title"] = text
+                        file = Path("levels") / f"{self.level['meta']['title']}.json"
+
+                        base_name = text
+                        base_name = re.sub('[<>:"/\\|?*&]', '_', base_name)
+                        name = base_name
+                        number = 1
+                    
+                        while (Path("levels") / f"{name}.json").exists():
+                            name = f"{base_name}({number})"
+                            number += 1
+                        
+                        self.level["meta"]["title"] = name
+                        file.rename(Path("levels") / f"{self.level['meta']['title']}.json")
 
                     elif field_name == "points":
                         self.level["meta"]["points"] = int(text)
@@ -308,6 +323,9 @@ class Game():
                         self.levels.insert(new_number, self.level)
                         self.current_level = new_number
                         self.load_level()
+
+                        for i, level in enumerate(self.levels):
+                            level["meta"]["level number"] = i
 
                     elif field_name == "song":
                         song_path = self.songs / (text + ".ogg")
@@ -321,8 +339,11 @@ class Game():
                         self.level["victors"] = {}
 
                     elif field_name == "delete" and text == "delete":
+                        file = Path("levels") / f"{self.level['meta']['title']}.json"
+
                         self.current_level -= 1
                         self.levels.pop(self.current_level+1)
+                        file.unlink()
                         toggle_building(self)
 
             else:
@@ -400,7 +421,7 @@ class Game():
     def restart(self):
         if not self.paused:
             if self.name not in self.victors.keys():
-                self.victors[self.name] = [1, 0, 0, 0]
+                self.victors[self.name] = [1, 0, 0, 0, 0]
             else:
                 self.victors[self.name][0] += 1
 
@@ -501,7 +522,8 @@ class Game():
             self.restart()
 
     def save_to_file(self):
-        save_json("entities/levels.json", levels_to_data(self.levels))
+        for level in self.levels:
+            save_json(Path("levels") / f"{level["meta"]["title"]}.json", level_to_dict(level))
 
         self.accessibility["name"] = self.name
         self.accessibility["fps"] = self.fps

@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "length": 1,
+    "roof": 0,
+    "floor": 620,
+    "roof color": [
+      255,
+      255,
+      255
+    ],
+    "floor color": [
+      255,
+      255,
+      255
+    ],
+    "background color": [
+      255,
+      255,
+      255
+    ],
+    "title": "Main Menu",
+    "points": 0,
+    "level number": 0,
+    "song": "menu.ogg",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0
+    }
+  ],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 360,
+      "y": 620,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0
+    }
+  ],
+  "victors": {
+    "Rolf": [
+      15,
+      8,
+      0,
+      0,
+      1791194995.7362404
+    ]
+  }
+}

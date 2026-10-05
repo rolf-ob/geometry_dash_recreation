@@ -1,6 +1,7 @@
 from entities.spatial import collide, polygons_collide, get_buckets, get_nearby_objects
 from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
+import time
 import pygame as py
 
 def check_collision(game):
@@ -101,7 +102,7 @@ def check_collision(game):
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
 
-                elif not prev_this_sliding and this_sliding:
+                elif not prev_this_sliding and this_sliding and game.gamemode == "wave":
                     game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif obj.shape == "end":
@@ -109,11 +110,14 @@ def check_collision(game):
                 game.completed = True
                 if not game.cheated:
                     if game.name in game.victors.keys():
+                        print(game.victors[game.name])
                         game.victors[game.name][1] += 1
                         game.victors[game.name][2] = max(game.victors[game.name][2], game.collected_coins[0])
                         game.victors[game.name][3] = max(game.victors[game.name][3], game.collected_coins[1])
+                        game.victors[game.name][4] = time.time()
                     else:
-                        game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1])
+                        completion_time = time.time() if game.victors[game.name][4] == 0 else game.victors[game.name][4]
+                        game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1], completion_time)
 
         elif obj.shape == "gamemode":
             if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):

@@ -1,7 +1,9 @@
+from pathlib import Path
 import pygame as py
 import math, time
 
 from core.textbox import TextBox
+from entities.serialization import save_json, level_to_dict
 from entities.object import Object
 from entities.spatial import collide, get_nearby_objects
 from rendering.rendering import screen_to_world
@@ -433,14 +435,29 @@ def undo_edit(game, ctrl):
         game.restore_level_state("redo")
 
 def create_level(game):
+    base_name = "Unnamed level"
+    name = base_name
+    number = 1
+
+    while (Path("levels") / f"{name}.json").exists():
+        name = f"{base_name}({number})"
+        number += 1
+
     game.levels.insert(game.current_level + 1, {
-        "meta": {"length": 100, "roof": 0, "floor": 720, "roof color": (255,)*3, "floor color": (255,)*3, "background color": (255,)*3, "title": "Unnamed level", "points": 0, "song": "", "song start": 0},
+        "meta": {"length": 100, "roof": 0, "floor": 720, "roof color": (255,)*3, "floor color": (255,)*3, "background color": (255,)*3, "title": name, "points": 0, "level number": game.current_level + 1, "song": "", "song start": 0},
         "background": [],
         "objects": [],
         "decoration": [],
         "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 255, 0), game.primary_color, {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1})],
         "victors": {}
     })
+
+    for i, level in enumerate(game.levels):
+        level["meta"]["level number"] = i
+    
+    with open(Path("levels") / f"{name}.json", "w", encoding="utf-8") as f:
+        save_json(Path("levels") / f"{level["meta"]["title"]}.json", level_to_dict(level))
+    
     game.title = ["Created New Level", time.perf_counter() + 2]
 
 def edit_level(game):
@@ -483,7 +500,7 @@ def open_menu(game, menu):
             TextBox("Background", f"{str(r3)} {str(g3)} {str(b3)}"),
             TextBox("Title", game.level["meta"]["title"]),
             TextBox("Points", game.level["meta"]["points"]),
-            TextBox("Level Number", game.current_level),
+            TextBox("Level Number", game.level["meta"]["level number"]),
             TextBox("Song", game.song),
             TextBox("Song Start", game.song_start),
             TextBox("Reset stats", ""),

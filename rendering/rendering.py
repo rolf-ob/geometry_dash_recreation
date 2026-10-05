@@ -1,5 +1,5 @@
 import pygame as py
-import time, math
+import time, datetime, math
 
 from entities.spatial import get_nearby_objects
 from constants import WIDTH, HEIGHT, BUCKET_WIDTH, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
@@ -243,10 +243,12 @@ def draw_leaderboard(game, screen):
                 key=lambda item: item[1][1],
                 reverse=True
             )
+
             for i, (victor, stats) in enumerate(sorted_victors):
-                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color, "world")
+                completion_date = time.ctime(stats[4]) if stats[4] != 0 else "Not Completed"
+                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
                 margin = 5
-                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]}", game.primary_color, "world")
+                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
                 x, y = (world_to_screen(game, game.level_length + 40, 160 + 36*i))
                 py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)

@@ -1,3 +1,4 @@
+from pathlib import Path
 import json, os
 
 from entities.object import Object
@@ -22,16 +23,13 @@ def dict_to_level(level):
         "victors": level["victors"]
     }
 
-def levels_to_data(levels):
-    return [level_to_dict(level) for level in levels]
-
-def data_to_levels(data):
-    return [dict_to_level(level) for level in data]
-
 def save_json(path, data):
-    temp_path = path + ".tmp"
+    path = Path(path)
+    temp_path = path.with_suffix(path.suffix + ".tmp") #! Understand
+
     with open(temp_path, "w") as f:
         json.dump(data, f, indent=2)
         f.flush()
         os.fsync(f.fileno())
+
     os.replace(temp_path, path)

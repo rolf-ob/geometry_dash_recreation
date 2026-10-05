@@ -42,7 +42,7 @@ def toggle_pause(game):
 
         if game.player.x == game.checkpoints[game.checkpoint].x:
             if game.name not in game.victors.keys():
-                game.victors[game.name] = [1, 0, 0, 0]
+                game.victors[game.name] = [1, 0, 0, 0, 0]
             else:
                 game.victors[game.name][0] += 1
     

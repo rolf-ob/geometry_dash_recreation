@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "length": 100,
+    "roof": 0,
+    "floor": 720,
+    "roof color": [
+      255,
+      255,
+      255
+    ],
+    "floor color": [
+      255,
+      255,
+      255
+    ],
+    "background color": [
+      255,
+      255,
+      255
+    ],
+    "title": "PB_J",
+    "points": 0,
+    "level number": 3,
+    "song": "",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0
+    }
+  ],
+  "victors": {}
+}
