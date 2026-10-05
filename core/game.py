@@ -303,7 +303,7 @@ class Game():
                         file = Path("levels") / f"{self.level['meta']['title']}.json"
 
                         base_name = text
-                        base_name = re.sub('[<>:"/\\|?*&]', '_', base_name)
+                        base_name = re.sub('[<>:"/\\|?*& .]', '_', base_name)
                         name = base_name
                         number = 1
                     
@@ -469,8 +469,21 @@ class Game():
         self.restart_time = time.perf_counter()
 
         if self.song:
-            seconds_into_song = checkpoint_x / self.speed * FIXED_STEP
-            seconds_into_song += self.song_start
+            speeds = []
+            for obj in self.objects:
+                if obj.shape == "speed" and obj.x < self.checkpoints[self.checkpoint].x:
+                    speeds.append(obj)
+            speeds.sort(key=lambda speed: speed[0])
+
+            if speeds:
+                steps_into_level = (speeds[0].x - self.checkpoints[0].x) / self.checkpoints[0].modifier["speed"]
+                for i, speed in enumerate(speeds):
+                    if i < len(speeds):
+                        steps_into_level += (speeds[i+1].x - speed.x) / speed.modifier
+            else:
+                steps_into_level = 0
+            
+            seconds_into_song = steps_into_level * FIXED_STEP + self.song_start
             py.mixer.music.play(-1, seconds_into_song)
             
             if self.paused:
