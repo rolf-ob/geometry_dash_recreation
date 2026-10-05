@@ -12,6 +12,7 @@ from constants import PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 def toggle_building(game):
     game.building = not game.building
     if game.building:
+        game.load_level()
         py.mouse.set_visible(True)
         py.mixer.music.stop()
         game.clicking = 0

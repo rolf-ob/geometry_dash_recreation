@@ -70,8 +70,6 @@ class Game():
         self.robot_fuel = 0
 
         self.building = False
-        self.building_camera_x = 0
-        self.building_camera_y = 0
         self.layer = 1
         self.layer_view = False
         self.scale_mode = False
@@ -293,6 +291,7 @@ class Game():
 
                         elif field_name == "attribute" and text in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "length", "roof", "floor", "roof color", "floor color", "background"):
                             obj.modifier["attribute"] = text
+                            obj.modifier["value"] = ""
 
                         elif field_name == "value":
                             if obj.modifier["attribute"] == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "trigger", "coin", "text"):
@@ -499,6 +498,10 @@ class Game():
                 self.victors[self.name] = [1, 0, 0, 0, 0]
             else:
                 self.victors[self.name][0] += 1
+
+        for obj in (*self.background, *self.objects, *self.decoration):
+            obj.recompute()
+        self.rebuild_buckets()
         
         self.level_length = self.level["meta"]["length"]
         self.level_roof = self.level["meta"]["roof"]
@@ -543,8 +546,7 @@ class Game():
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
             obj.interacted = False
 
-        self.activated_object_triggers = {}
-        self.activated_level_triggers = {}
+        self.activated_triggers = {}
         self.hitboxes = []
         self.current_hitbox = 0
         self.buckets["hitboxes"] = defaultdict(list)
@@ -594,8 +596,6 @@ class Game():
         elif self.checkpoint > len(self.checkpoints)-1:
             self.checkpoint = len(self.checkpoints)-1
 
-        self.rebuild_buckets()
-
         self.victors = self.level["victors"]
         self.level_length = self.level["meta"]["length"]
         self.level_roof = self.level["meta"]["roof"]
@@ -618,6 +618,8 @@ class Game():
                 self.current_group_id = obj.group_id + 1
 
         if restart:
+            self.building_camera_x = 0
+            self.building_camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
             self.restart()
 
     def save_to_file(self):

@@ -22,49 +22,49 @@ class Object:
         self.recompute()
     
     def recompute_points(self):
-        if self.shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity", "size", "teleport", "pad", "trigger", "text"):
+        if self.real_shape in ("square", "end", "checkpoint", "gamemode", "speed", "gravity", "size", "teleport", "pad", "trigger", "text"):
             corners = [
-                (self.x, self.y),
-                (self.x + self.width, self.y),
-                (self.x + self.width, self.y + self.height),
-                (self.x, self.y + self.height),
+                (self.real_x, self.real_y),
+                (self.real_x + self.real_width, self.real_y),
+                (self.real_x + self.real_width, self.real_y + self.real_height),
+                (self.real_x, self.real_y + self.real_height),
             ]
-        elif self.shape == "spike":
+        elif self.real_shape == "spike":
             corners = [
-                (self.x, self.y + self.height),
-                (self.x + self.width / 2, self.y),
-                (self.x + self.width, self.y + self.height),
+                (self.real_x, self.real_y + self.real_height),
+                (self.real_x + self.real_width / 2, self.real_y),
+                (self.real_x + self.real_width, self.real_y + self.real_height),
             ]
-        elif self.shape == "right slope":
+        elif self.real_shape == "right slope":
             corners = [
-                (self.x, self.y),
-                (self.x + self.width, self.y + self.height),
-                (self.x, self.y + self.height)
-            ]
-
-        elif self.shape == "left slope":
-            corners = [
-                (self.x + self.width, self.y),
-                (self.x + self.width, self.y + self.height),
-                (self.x, self.y + self.height)
+                (self.real_x, self.real_y),
+                (self.real_x + self.real_width, self.real_y + self.real_height),
+                (self.real_x, self.real_y + self.real_height)
             ]
 
-        elif self.shape in ("circle", "orb", "coin"):
+        elif self.real_shape == "left slope":
+            corners = [
+                (self.real_x + self.real_width, self.real_y),
+                (self.real_x + self.real_width, self.real_y + self.real_height),
+                (self.real_x, self.real_y + self.real_height)
+            ]
+
+        elif self.real_shape in ("circle", "orb", "coin"):
             sides = 20
             corners = []
             for i in range(sides):
                 angle = 2 * math.pi * i / sides
                 corners.append((
-                    self.x + self.width / 2 * math.cos(angle) + self.width / 2,
-                    self.y + self.height / 2 * math.sin(angle) + self.height / 2
+                    self.real_x + self.real_width / 2 * math.cos(angle) + self.real_width / 2,
+                    self.real_y + self.real_height / 2 * math.sin(angle) + self.real_height / 2
                 ))
 
-        if self.rotation == 0:
+        if self.real_rotation == 0:
             self.points = corners
         else:
-            center_x = self.x + self.width / 2
-            center_y = self.y + self.height / 2
-            angle = math.radians(self.rotation)
+            center_x = self.real_x + self.real_width / 2
+            center_y = self.real_y + self.real_height / 2
+            angle = math.radians(self.real_rotation)
             cos_a, sin_a = math.cos(angle), math.sin(angle)
             self.points = []
             for point_x, point_y in corners:
@@ -104,6 +104,20 @@ class Object:
         self.aabb["right"] = max(x_values)
 
     def recompute(self):
+        self.real_x = self.x
+        self.real_y = self.y
+        self.real_width = self.width
+        self.real_height = self.height
+        self.real_rotation = self.rotation
+        self.real_shape = self.shape
+        self.real_color = self.color
+        self.real_outline = self.outline
+
+        self.recompute_points()
+        self.recompute_axes()
+        self.recompute_aabb()
+
+    def recompute_triggered(self):
         self.recompute_points()
         self.recompute_axes()
         self.recompute_aabb()

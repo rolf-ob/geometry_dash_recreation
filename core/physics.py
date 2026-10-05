@@ -245,9 +245,30 @@ def check_collision(game):
                     game.y_vel = fall_speed
 
         elif obj.shape == "trigger":
-            if collide(game.player, obj) and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+            if obj.modifier["value"] and collide(game.player, obj) and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
                 if obj.triggers and obj.modifier["attribute"] in ("shape", "color", "outline", "rotation", "x", "y", "width", "height"):
-                    game.activated_object_triggers[obj.triggers] = [obj.modifier["attribute"], obj.modifier["value"], obj.modifier["transition"]]
+                    for other_obj in (*game.background, *game.objects, *game.decoration):
+                        if id(other_obj) != id(obj) and other_obj.triggers and obj.triggers in other_obj.triggers:
+
+                            if obj.modifier["attribute"] == "shape":
+                                other_obj.real_shape = obj.modifier["value"]
+                            elif obj.modifier["attribute"] == "color":
+                                other_obj.real_color = obj.modifier["value"]
+                            elif obj.modifier["attribute"] == "outline":
+                                other_obj.real_outline = obj.modifier["value"]
+                            elif obj.modifier["attribute"] == "rotation":
+                                other_obj.real_rotation += obj.modifier["value"]
+                            elif obj.modifier["attribute"] == "x":
+                                other_obj.real_x += obj.modifier["value"]
+                            elif obj.modifier["attribute"] == "y":
+                                other_obj.real_y += obj.modifier["value"]
+                            elif obj.modifier["attribute"] == "width":
+                                other_obj.real_width = obj.modifier["value"]
+                            elif obj.modifier["attribute"] == "height":
+                                other_obj.real_height = obj.modifier["value"]
+
+                            other_obj.recompute_triggered()
+                    game.rebuild_buckets()
 
                 elif obj.modifier["attribute"] == "length":
                     game.level_length = obj.modifier["value"]
