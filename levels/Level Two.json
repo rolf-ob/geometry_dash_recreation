@@ -44,7 +44,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8120,
@@ -64,7 +65,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5280,
@@ -84,7 +86,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5280,
@@ -104,7 +107,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3164,
@@ -124,7 +128,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3050,
@@ -144,7 +149,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1820,
@@ -164,7 +170,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1380,
@@ -184,7 +191,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1340,
@@ -204,7 +212,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3126,
@@ -224,7 +233,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3088,
@@ -244,7 +254,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2080,
@@ -264,7 +275,8 @@
         0
       ],
       "modifier": "normal",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3010,
@@ -284,7 +296,8 @@
         0
       ],
       "modifier": "normal",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1740,
@@ -304,7 +317,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1780,
@@ -324,7 +338,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2890,
@@ -344,7 +359,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3720,
@@ -364,7 +380,8 @@
         0
       ],
       "modifier": "normal",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3088,
@@ -384,7 +401,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2930,
@@ -404,7 +422,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3740,
@@ -424,7 +443,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3800,
@@ -444,7 +464,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3700,
@@ -464,7 +485,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3900,
@@ -484,7 +506,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3860,
@@ -504,7 +527,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3800,
@@ -524,7 +548,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3780,
@@ -544,7 +569,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3860,
@@ -564,7 +590,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 3740,
@@ -584,7 +611,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4400,
@@ -604,7 +632,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4360,
@@ -624,7 +653,8 @@
         0
       ],
       "modifier": "small",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4440,
@@ -644,7 +674,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4360,
@@ -664,7 +695,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4400,
@@ -684,7 +716,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4360,
@@ -704,7 +737,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4602,
@@ -724,7 +758,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4640,
@@ -744,7 +779,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4678,
@@ -764,7 +800,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5280,
@@ -784,7 +821,8 @@
         0
       ],
       "modifier": "small",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5200,
@@ -804,7 +842,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5240,
@@ -824,7 +863,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5320,
@@ -844,7 +884,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5440,
@@ -864,7 +905,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5280,
@@ -884,7 +926,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5320,
@@ -904,7 +947,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5360,
@@ -924,7 +968,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5400,
@@ -944,7 +989,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5440,
@@ -964,7 +1010,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5280,
@@ -984,7 +1031,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5280,
@@ -1004,7 +1052,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5400,
@@ -1024,7 +1073,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 5360,
@@ -1044,7 +1094,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 6120,
@@ -1064,7 +1115,8 @@
         0
       ],
       "modifier": "small",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 6160,
@@ -1084,7 +1136,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 6200,
@@ -1104,7 +1157,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2234,
@@ -1124,7 +1178,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2120,
@@ -1144,7 +1199,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2196,
@@ -1164,7 +1220,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2158,
@@ -1184,7 +1241,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2158,
@@ -1204,7 +1262,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7440,
@@ -1224,7 +1283,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7600,
@@ -1244,7 +1304,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7680,
@@ -1264,7 +1325,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7640,
@@ -1284,7 +1346,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7600,
@@ -1304,7 +1367,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7560,
@@ -1324,7 +1388,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7520,
@@ -1344,7 +1409,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7480,
@@ -1364,7 +1430,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8320,
@@ -1384,7 +1451,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7940,
@@ -1404,7 +1472,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8260,
@@ -1424,7 +1493,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8220,
@@ -1444,7 +1514,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8420,
@@ -1464,7 +1535,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8380,
@@ -1484,7 +1556,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8340,
@@ -1504,7 +1577,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8300,
@@ -1524,7 +1598,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7880,
@@ -1544,7 +1619,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7840,
@@ -1564,7 +1640,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7840,
@@ -1584,7 +1661,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8040,
@@ -1604,7 +1682,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8000,
@@ -1624,7 +1703,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7960,
@@ -1644,7 +1724,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7920,
@@ -1664,7 +1745,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9500,
@@ -1684,7 +1766,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9180,
@@ -1704,7 +1787,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9340,
@@ -1724,7 +1808,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9640,
@@ -1744,7 +1829,8 @@
         0
       ],
       "modifier": "normal",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9840,
@@ -1764,7 +1850,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9680,
@@ -1784,7 +1871,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9680,
@@ -1804,7 +1892,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9840,
@@ -1824,7 +1913,8 @@
         0
       ],
       "modifier": "small",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7720,
@@ -1844,7 +1934,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8180,
@@ -1864,7 +1955,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8080,
@@ -1884,7 +1976,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8140,
@@ -1904,7 +1997,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8100,
@@ -1924,7 +2018,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8120,
@@ -1944,7 +2039,8 @@
         0
       ],
       "modifier": 15,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10000,
@@ -1964,7 +2060,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11780,
@@ -1984,7 +2081,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11820,
@@ -2004,7 +2102,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11860,
@@ -2024,7 +2123,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11900,
@@ -2044,7 +2144,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11940,
@@ -2064,7 +2165,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11980,
@@ -2084,7 +2186,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12020,
@@ -2104,7 +2207,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9220,
@@ -2124,7 +2228,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9260,
@@ -2144,7 +2249,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9300,
@@ -2164,7 +2270,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9340,
@@ -2184,7 +2291,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9380,
@@ -2204,7 +2312,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9420,
@@ -2224,7 +2333,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9460,
@@ -2244,7 +2354,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9500,
@@ -2264,7 +2375,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9540,
@@ -2284,7 +2396,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9580,
@@ -2304,7 +2417,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9240,
@@ -2324,7 +2438,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9280,
@@ -2344,7 +2459,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9320,
@@ -2364,7 +2480,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9360,
@@ -2384,7 +2501,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9400,
@@ -2404,7 +2522,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9440,
@@ -2424,7 +2543,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9480,
@@ -2444,7 +2564,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9520,
@@ -2464,7 +2585,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9560,
@@ -2484,7 +2606,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9600,
@@ -2504,7 +2627,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11800,
@@ -2524,7 +2648,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11840,
@@ -2544,7 +2669,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11880,
@@ -2564,7 +2690,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11920,
@@ -2584,7 +2711,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11960,
@@ -2604,7 +2732,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12000,
@@ -2624,7 +2753,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10080,
@@ -2644,7 +2774,8 @@
         0
       ],
       "modifier": "small",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10280,
@@ -2664,7 +2795,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10120,
@@ -2684,7 +2816,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10120,
@@ -2704,7 +2837,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11320,
@@ -2724,7 +2858,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10460,
@@ -2744,7 +2879,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10580,
@@ -2764,7 +2900,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10740,
@@ -2784,7 +2921,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10900,
@@ -2804,7 +2942,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11060,
@@ -2824,7 +2963,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9780,
@@ -2844,7 +2984,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9820,
@@ -2864,7 +3005,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9860,
@@ -2884,7 +3026,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9900,
@@ -2904,7 +3047,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9940,
@@ -2924,7 +3068,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9980,
@@ -2944,7 +3089,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10020,
@@ -2964,7 +3110,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10060,
@@ -2984,7 +3131,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9760,
@@ -3004,7 +3152,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9800,
@@ -3024,7 +3173,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9840,
@@ -3044,7 +3194,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9880,
@@ -3064,7 +3215,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9920,
@@ -3084,7 +3236,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 9960,
@@ -3104,7 +3257,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10000,
@@ -3124,7 +3278,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10040,
@@ -3144,7 +3299,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10100,
@@ -3164,7 +3320,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10140,
@@ -3184,7 +3341,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10080,
@@ -3204,7 +3362,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10120,
@@ -3224,7 +3383,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10180,
@@ -3244,7 +3404,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10160,
@@ -3264,7 +3425,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10200,
@@ -3284,7 +3446,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11160,
@@ -3304,7 +3467,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11440,
@@ -3324,7 +3488,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11840,
@@ -3344,7 +3509,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 19720,
@@ -3364,7 +3530,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11720,
@@ -3384,7 +3551,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11780,
@@ -3404,7 +3572,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11820,
@@ -3424,7 +3593,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11860,
@@ -3444,7 +3614,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11900,
@@ -3464,7 +3635,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11900,
@@ -3484,7 +3656,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12080,
@@ -3504,7 +3677,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12560,
@@ -3524,7 +3698,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12520,
@@ -3544,7 +3719,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11480,
@@ -3564,7 +3740,8 @@
         0
       ],
       "modifier": "normal",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11680,
@@ -3584,7 +3761,8 @@
         0
       ],
       "modifier": "big",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11320,
@@ -3604,7 +3782,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11200,
@@ -3624,7 +3803,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11240,
@@ -3644,7 +3824,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11280,
@@ -3664,7 +3845,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10380,
@@ -3684,7 +3866,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10420,
@@ -3704,7 +3887,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10460,
@@ -3724,7 +3908,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10500,
@@ -3744,7 +3929,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10540,
@@ -3764,7 +3950,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10580,
@@ -3784,7 +3971,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10620,
@@ -3804,7 +3992,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10360,
@@ -3824,7 +4013,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10400,
@@ -3844,7 +4034,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10440,
@@ -3864,7 +4055,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10480,
@@ -3884,7 +4076,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10520,
@@ -3904,7 +4097,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10560,
@@ -3924,7 +4118,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10600,
@@ -3944,7 +4139,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10660,
@@ -3964,7 +4160,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10700,
@@ -3984,7 +4181,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10640,
@@ -4004,7 +4202,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10680,
@@ -4024,7 +4223,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10740,
@@ -4044,7 +4244,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10780,
@@ -4064,7 +4265,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10720,
@@ -4084,7 +4286,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10800,
@@ -4104,7 +4307,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10760,
@@ -4124,7 +4328,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10820,
@@ -4144,7 +4349,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10860,
@@ -4164,7 +4370,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10900,
@@ -4184,7 +4391,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10940,
@@ -4204,7 +4412,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10980,
@@ -4224,7 +4433,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11020,
@@ -4244,7 +4454,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11060,
@@ -4264,7 +4475,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11100,
@@ -4284,7 +4496,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10840,
@@ -4304,7 +4517,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10880,
@@ -4324,7 +4538,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10920,
@@ -4344,7 +4559,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10960,
@@ -4364,7 +4580,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11000,
@@ -4384,7 +4601,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11040,
@@ -4404,7 +4622,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11080,
@@ -4424,7 +4643,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11140,
@@ -4444,7 +4664,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11180,
@@ -4464,7 +4685,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11120,
@@ -4484,7 +4706,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11160,
@@ -4504,7 +4727,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11220,
@@ -4524,7 +4748,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11260,
@@ -4544,7 +4769,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11200,
@@ -4564,7 +4790,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11280,
@@ -4584,7 +4811,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11240,
@@ -4604,7 +4832,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11300,
@@ -4624,7 +4853,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11340,
@@ -4644,7 +4874,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11380,
@@ -4664,7 +4895,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11420,
@@ -4684,7 +4916,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11460,
@@ -4704,7 +4937,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11500,
@@ -4724,7 +4958,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11540,
@@ -4744,7 +4979,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11580,
@@ -4764,7 +5000,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11320,
@@ -4784,7 +5021,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11360,
@@ -4804,7 +5042,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11400,
@@ -4824,7 +5063,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11440,
@@ -4844,7 +5084,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11480,
@@ -4864,7 +5105,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11520,
@@ -4884,7 +5126,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11560,
@@ -4904,7 +5147,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11620,
@@ -4924,7 +5168,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11660,
@@ -4944,7 +5189,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11600,
@@ -4964,7 +5210,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11640,
@@ -4984,7 +5231,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11700,
@@ -5004,7 +5252,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11740,
@@ -5024,7 +5273,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11680,
@@ -5044,7 +5294,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11760,
@@ -5064,7 +5315,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 11720,
@@ -5084,7 +5336,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12220,
@@ -5104,7 +5357,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12180,
@@ -5124,7 +5378,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12900,
@@ -5144,7 +5399,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12936,
@@ -5164,7 +5420,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12972,
@@ -5184,7 +5441,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12400,
@@ -5204,7 +5462,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12400,
@@ -5224,7 +5483,8 @@
         0
       ],
       "modifier": "normal",
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12560,
@@ -5244,7 +5504,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12520,
@@ -5264,7 +5525,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12480,
@@ -5284,7 +5546,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12520,
@@ -5304,7 +5567,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12480,
@@ -5324,7 +5588,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12560,
@@ -5344,7 +5609,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12370,
@@ -5364,7 +5630,8 @@
         0
       ],
       "modifier": 10,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     }
   ],
   "decoration": [
@@ -5386,7 +5653,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1000,
@@ -5406,7 +5674,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1120,
@@ -5426,7 +5695,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1120,
@@ -5446,7 +5716,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1240,
@@ -5466,7 +5737,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1280,
@@ -5486,7 +5758,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 880,
@@ -5506,7 +5779,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1200,
@@ -5526,7 +5800,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1100,
@@ -5546,7 +5821,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1000,
@@ -5566,7 +5842,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 920,
@@ -5586,7 +5863,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1000,
@@ -5606,7 +5884,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 460,
@@ -5626,7 +5905,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 560,
@@ -5646,7 +5926,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 640,
@@ -5666,7 +5947,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 720,
@@ -5686,7 +5968,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 760,
@@ -5706,7 +5989,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 840,
@@ -5726,7 +6010,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 800,
@@ -5746,7 +6031,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 760,
@@ -5766,7 +6052,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 640,
@@ -5786,7 +6073,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 560,
@@ -5806,7 +6094,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 480,
@@ -5826,7 +6115,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 560,
@@ -5846,7 +6136,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 1160,
@@ -5866,7 +6157,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 920,
@@ -5886,7 +6178,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 780,
@@ -5906,7 +6199,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 880,
@@ -5926,7 +6220,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 640,
@@ -5946,7 +6241,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 520,
@@ -5966,7 +6262,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     }
   ],
   "checkpoints": [
@@ -5993,7 +6290,8 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 2320,
@@ -6018,7 +6316,8 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 4000,
@@ -6043,7 +6342,8 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 7040,
@@ -6068,7 +6368,8 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 8800,
@@ -6093,7 +6394,8 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 10260,
@@ -6118,7 +6420,8 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 12160,
@@ -6143,7 +6446,8 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     },
     {
       "x": 19320,
@@ -6168,12 +6472,13 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     }
   ],
   "victors": {
     "Rolf": [
-      8,
+      12,
       0,
       0,
       0,

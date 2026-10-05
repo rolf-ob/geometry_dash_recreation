@@ -300,6 +300,8 @@ def deselect_objects(game):
 def duplicate_objects(game):
     game.capture_level_state("do")
 
+    object_groups = {}
+
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
             if obj.selected:
@@ -308,6 +310,17 @@ def duplicate_objects(game):
                 new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
                 layer.append(new_obj)
                 new_obj.selected = False
+
+                if obj.group_id != 0:
+                    if obj.group_id in object_groups:
+                        object_groups[obj.group_id].append(new_obj)
+                    else:
+                        object_groups[obj.group_id] = [new_obj]
+
+    for id in object_groups.keys():
+        for object in object_groups[id]:
+            object.group_id = game.current_group_id
+        game.current_group_id += 1
     
     game.rebuild_buckets()
 

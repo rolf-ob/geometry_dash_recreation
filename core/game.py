@@ -43,7 +43,7 @@ class Game():
         self.speedhack_multiplier = self.accessibility["speedhack multiplier"]
         self.respawn_time = self.accessibility["respawn time"]
         self.volume = self.accessibility["volume"]
-        py.mixer.music.set_volume(self.volume)
+        py.mixer.music.set_volume(self.volume / 100)
         self.dark_mode = self.accessibility["dark mode"]
         if self.dark_mode:
             self.primary_color = (255,)*3
@@ -360,8 +360,8 @@ class Game():
                     self.respawn_time = float(text)
 
                 elif field_name == "volume":
-                    self.volume = int(max(0, min(100, text)))
-                    py.mixer.music.set_volume(int(max(0, min(100, text))))
+                    self.volume = max(0, min(100, int(text)))
+                    py.mixer.music.set_volume(max(0, min(100, int(text))) / 100)
 
         except ValueError:
             pass
@@ -473,15 +473,17 @@ class Game():
             for obj in self.objects:
                 if obj.shape == "speed" and obj.x < self.checkpoints[self.checkpoint].x:
                     speeds.append(obj)
-            speeds.sort(key=lambda speed: speed[0])
+            speeds.sort(key=lambda obj: obj.x)
 
             if speeds:
                 steps_into_level = (speeds[0].x - self.checkpoints[0].x) / self.checkpoints[0].modifier["speed"]
                 for i, speed in enumerate(speeds):
-                    if i < len(speeds):
+                    if speed != speeds[-1]:
                         steps_into_level += (speeds[i+1].x - speed.x) / speed.modifier
+                    else:
+                        steps_into_level += (self.checkpoints[self.checkpoint].x - speed.x) / speed.modifier
             else:
-                steps_into_level = 0
+                steps_into_level = (self.checkpoints[self.checkpoint].x - self.checkpoints[0].x) / self.checkpoints[0].modifier["speed"]
             
             seconds_into_song = steps_into_level * FIXED_STEP + self.song_start
             py.mixer.music.play(-1, seconds_into_song)

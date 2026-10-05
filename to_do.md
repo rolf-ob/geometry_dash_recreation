@@ -1,7 +1,5 @@
 Features until update v1.1.0
     Building features
-    - Duplication of object groups
-    - Object trigger id's
     - Triggers that change level or object attributes
     - Triggers that affect number values can have a transition speed (color, position etc)
 

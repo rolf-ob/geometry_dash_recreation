@@ -110,7 +110,6 @@ def check_collision(game):
                 game.completed = True
                 if not game.cheated:
                     if game.name in game.victors.keys():
-                        print(game.victors[game.name])
                         game.victors[game.name][1] += 1
                         game.victors[game.name][2] = max(game.victors[game.name][2], game.collected_coins[0])
                         game.victors[game.name][3] = max(game.victors[game.name][3], game.collected_coins[1])

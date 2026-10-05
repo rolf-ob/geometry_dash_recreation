@@ -44,7 +44,8 @@
         0
       ],
       "modifier": null,
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     }
   ],
   "decoration": [],
@@ -72,16 +73,17 @@
         "gravity": 1,
         "size": 1
       },
-      "group_id": 0
+      "group_id": 0,
+      "trigger_id": 0
     }
   ],
   "victors": {
     "Rolf": [
-      19,
-      10,
+      48,
+      14,
       0,
       0,
-      1791198842.1045878
+      1791203264.4767725
     ]
   }
 }

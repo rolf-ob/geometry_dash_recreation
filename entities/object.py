@@ -16,6 +16,7 @@ class Object:
     selected: bool = False
     interacted: bool = False
     group_id: int = 0
+    trigger_id: int = 0
 
     def __post_init__(self):
         self.recompute()
@@ -120,5 +121,5 @@ class Object:
         return cls(
             x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
             shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]),
-            modifier=d["modifier"], group_id=d["group_id"]
+            modifier=d["modifier"], group_id=d["group_id"], trigger_id=d["trigger_id"]
         )
