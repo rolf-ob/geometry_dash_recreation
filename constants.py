@@ -91,7 +91,8 @@ settings_tutorial = [
     "Name - Your leaderboard name",
     "Speedhack - Speed multiplier for the speed changer",
     "FPS - Frames per second",
-    "Respawn Time - How quickly you respawn"
+    "Respawn Time - How quickly you respawn",
+    "Volume - How loud the music is from 0-100",
 ]
 building_tutorial = [
     "BUILDING CONTROLS",
@@ -123,6 +124,7 @@ building_tutorial = [
     "Points - How many points you should get from completing the level",
     "Level Number - Which order in the levels this level is",
     "Song - Name of the song to use in the level, add as ogg filetype to songs folder",
+    "Song Start - How many seconds into the song it should be at the start of the level",
     "Reset stats - Type reset to clear all attempts and completions",
     "Delete - Type delete to delete the entire level permanently",
     "",

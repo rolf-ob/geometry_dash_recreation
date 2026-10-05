@@ -122,8 +122,8 @@ def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
         game.camera_zoom += game.camera_zoom/10
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
-    elif y < 0 and (game.paused or game.completed or game.building) and game.camera_zoom > 1:
-        game.camera_zoom = max(1, game.camera_zoom - game.camera_zoom/10)
+    elif y < 0 and (game.paused or game.completed or game.building) and game.camera_zoom > 0.5:
+        game.camera_zoom = max(0.5, game.camera_zoom - game.camera_zoom/10)
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
 def handle_input(game):

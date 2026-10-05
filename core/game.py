@@ -39,6 +39,8 @@ class Game():
         self.fps = self.accessibility["fps"]
         self.speedhack_multiplier = self.accessibility["speedhack multiplier"]
         self.respawn_time = self.accessibility["respawn time"]
+        self.volume = self.accessibility["volume"]
+        py.mixer.music.set_volume(self.volume)
         self.dark_mode = self.accessibility["dark mode"]
         if self.dark_mode:
             self.primary_color = (255,)*3
@@ -311,6 +313,9 @@ class Game():
                         song_path = self.songs / (text + ".ogg")
                         if song_path.is_file():
                             self.level["meta"]["song"] = text + ".ogg"
+                    
+                    elif field_name == "song start":
+                        self.level["meta"]["song start"] = float(text)
 
                     elif field_name == "reset stats" and text == "reset":
                         self.level["victors"] = {}
@@ -332,6 +337,10 @@ class Game():
 
                 elif field_name == "respawn time":
                     self.respawn_time = float(text)
+
+                elif field_name == "volume":
+                    self.volume = int(max(0, min(100, text)))
+                    py.mixer.music.set_volume(int(max(0, min(100, text))))
 
         except ValueError:
             pass
@@ -440,6 +449,7 @@ class Game():
 
         if self.song:
             seconds_into_song = checkpoint_x / self.speed * FIXED_STEP
+            seconds_into_song += self.song_start
             py.mixer.music.play(-1, seconds_into_song)
             
             if self.paused:
@@ -476,6 +486,7 @@ class Game():
         if restart:
             self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.level["meta"]["points"])}", -1]
         self.song = self.level["meta"]["song"] if self.level["meta"]["song"] else None
+        self.song_start = self.level["meta"]["song start"]
         if self.song:
             py.mixer.music.load(self.songs / self.song)
         else:
@@ -496,6 +507,7 @@ class Game():
         self.accessibility["fps"] = self.fps
         self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
         self.accessibility["respawn time"] = self.respawn_time
+        self.accessibility["volume"] = self.volume
         self.accessibility["dark mode"] = self.dark_mode
         controls = {action: [py.key.name(key) for key in keys] for action, keys in self.controls.items()}
         settings = {"accessibility": self.accessibility, "controls": controls}

@@ -4,7 +4,8 @@
     "speedhack multiplier": 0.5,
     "fps": 240,
     "respawn time": 0.5,
-    "dark mode": true
+    "volume": 100,
+    "dark mode": false
   },
   "controls": {
     "click": [

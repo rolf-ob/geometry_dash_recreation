@@ -1,12 +1,9 @@
 Building features
-- Zooming out
-- Level song start time
 - Duplication of object groups
 - Triggers that change level or object attributes
 - Triggers that affect number values can have a transition speed (color, position etc)
 
 Gameplay features
-- Volume setting
 - Song checkpoint time calculates speed portals
 - CBF
 
