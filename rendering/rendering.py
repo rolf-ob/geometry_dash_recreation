@@ -31,7 +31,6 @@ def draw_floor_roof(game, screen):
     py.draw.line(screen, game.primary_color, (0, floor), (game.width, floor), int(max(1, 1*game.camera_zoom)))
 
 def draw_background(game, screen):
-    camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["background"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0], game.z_order)
     for obj in objects:
         color = (200, 255, 200) if obj.selected else obj.real_color
@@ -43,7 +42,6 @@ def draw_background(game, screen):
         draw_polygon(game, screen, obj.points, obj.real_outline, int(max(1, 1*game.camera_zoom)))
 
 def draw_objects(game, screen):
-    camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["objects"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0], game.z_order)
     for obj in objects:
         if obj.shape == "end":
@@ -133,7 +131,6 @@ def draw_objects(game, screen):
                 draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
 
 def draw_decoration(game, screen):
-    camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["decoration"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0], game.z_order)
     for obj in objects:
         color = (200, 255, 200) if obj.selected else obj.real_color
@@ -145,7 +142,6 @@ def draw_decoration(game, screen):
         draw_polygon(game, screen, obj.points, obj.real_outline, int(max(1, 1*game.camera_zoom)))
 
 def draw_checkpoints(game, screen):
-    camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["checkpoints"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
     for obj in objects:
         text = "S" if obj == game.checkpoints[0] else "C"
@@ -155,7 +151,6 @@ def draw_checkpoints(game, screen):
         screen.blit(game.text_cache.get_surface(text, (0,)*3, "world"), world_to_screen(game, obj.x + 5, obj.y + 5))
 
 def draw_hitboxes(game, screen):
-    camera_x = game.building_camera_x if game.building else game.camera_x
     objects = get_nearby_objects(game.buckets["hitboxes"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
 
     if game.show_hitboxes:
@@ -193,11 +188,7 @@ def draw_wave_trail(game, screen):
             py.draw.line(screen, (0,)*3, points[2], points[3], int(max(1, 1*game.camera_zoom)))
 
 def draw_player(game, screen):
-    if game.hitboxes:
-        prev_player = game.hitboxes[-1]
-    else:
-        prev_player = game.player
-
+    prev_player = game.hitboxes[-1]
     x_diff = game.speed
     y_diff = game.player.y - prev_player.y
     radians = math.atan(y_diff / x_diff)
@@ -389,8 +380,7 @@ def draw(game):
         draw_objects(game, screen)
         draw_decoration(game, screen)
     
-    if game.hitboxes:
-        draw_hitboxes(game, screen)
+    draw_hitboxes(game, screen)
     
     if game.show_player and game.current_level != 0:
         draw_wave_trail(game, screen)

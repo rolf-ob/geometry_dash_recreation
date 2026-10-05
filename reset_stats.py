@@ -1,12 +1,11 @@
 import json
+from pathlib import Path
 
-from entities.serialization import data_to_levels, levels_to_data
+from entities.serialization import dict_to_level, level_to_dict, save_json
 
-with open("entities/levels.json", "r") as f:
-    levels = data_to_levels(json.load(f))
-
-for level in levels:
-    level["victors"].clear()
-
-with open("entities/levels.json", "w") as f:
-    json.dump(levels_to_data(levels), f, indent=2)
+levels = []
+for file in Path("levels").glob("*.json"):
+    with open(file, "r") as f:
+        level = dict_to_level(json.load(f))
+        level["victors"].clear()
+        save_json(Path("levels") / f"{level["meta"]["title"]}.json", level_to_dict(level))

@@ -21,8 +21,11 @@ def aabb_collide(obj1, obj2):
         obj1.aabb["right"] < obj2.aabb["left"]
     )
 
-def collide(collider, obj):
-    return aabb_collide(collider, obj) and polygons_collide(collider, obj)
+def collide(collider, obj, previous=None):
+    if previous:
+        return not aabb_collide(previous, obj) and aabb_collide(collider, obj) and polygons_collide(collider, obj)
+    else:
+        return aabb_collide(collider, obj) and polygons_collide(collider, obj)
 
 def get_buckets(obj):
     start_bucket = int(obj.aabb["left"] // BUCKET_WIDTH)

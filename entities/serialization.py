@@ -25,7 +25,7 @@ def dict_to_level(level):
 
 def save_json(path, data):
     path = Path(path)
-    temp_path = path.with_suffix(path.suffix + ".tmp") #! Understand
+    temp_path = path.with_suffix(path.suffix + ".tmp")
 
     with open(temp_path, "w") as f:
         json.dump(data, f, indent=2)

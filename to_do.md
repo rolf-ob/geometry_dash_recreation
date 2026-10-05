@@ -1,12 +1,6 @@
 Features until update v1.1.0
-    Building features
-    - Triggers that affect number values can have a transition speed (color, position etc)
-
-    Other
+    - Trigger transition speed
     - Main levels
-    - Understand
-
-    User
     - Accounts with separate settings, stats and login
 
 Future features:

@@ -466,20 +466,39 @@ def create_level(game):
         name = f"{base_name}({number})"
         number += 1
 
-    game.levels.insert(game.current_level + 1, {
-        "meta": {"length": 100, "roof": 0, "floor": 720, "roof color": (255,)*3, "floor color": (255,)*3, "background color": (255,)*3, "title": name, "points": 0, "level number": game.current_level + 1, "song": "", "song start": 0},
+    new_level = {
+        "meta": {
+            "length": 100,
+            "roof": 0,
+            "floor": 720,
+            "roof color": (255,)*3,
+            "floor color": (255,)*3,
+            "background color": (255,)*3,
+            "title": name,
+            "points": 0,
+            "level number": game.current_level + 1,
+            "song": "",
+            "song start": 0
+        },
         "background": [],
         "objects": [],
         "decoration": [],
-        "checkpoints": [Object(PLAYER_X, 680, 40, 40, 0, "checkpoint", (0, 255, 0), game.primary_color, {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1})],
+        "checkpoints": [
+            Object(
+                PLAYER_X, 680, 40, 40, 0, "checkpoint",
+                (0, 255, 0), (0,)*3,
+                {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
+            )
+        ],
         "victors": {}
-    })
+    }
+
+    game.levels.insert(game.current_level + 1, new_level)
 
     for i, level in enumerate(game.levels):
         level["meta"]["level number"] = i
     
-    with open(Path("levels") / f"{name}.json", "w", encoding="utf-8") as f:
-        save_json(Path("levels") / f"{level["meta"]["title"]}.json", level_to_dict(level))
+    save_json(Path("levels") / f"{name}.json", level_to_dict(new_level))
     
     game.title = ["Created New Level", time.perf_counter() + 2]
 

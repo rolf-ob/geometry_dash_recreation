@@ -4,6 +4,32 @@ from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
 import time
 import pygame as py
 
+def apply_trigger(game, trigger):
+    for obj in (*game.background, *game.objects, *game.decoration):
+        if id(obj) != id(trigger) and obj.triggers and trigger.triggers in obj.triggers:
+        
+            if trigger.modifier["attribute"] == "shape":
+                obj.real_shape = trigger.modifier["value"]
+            elif trigger.modifier["attribute"] == "color":
+                obj.real_color = trigger.modifier["value"]
+            elif trigger.modifier["attribute"] == "outline":
+                obj.real_outline = trigger.modifier["value"]
+            elif trigger.modifier["attribute"] == "rotation":
+                obj.real_rotation += trigger.modifier["value"]
+            elif trigger.modifier["attribute"] == "x":
+                obj.real_x += trigger.modifier["value"]
+            elif trigger.modifier["attribute"] == "y":
+                obj.real_y += trigger.modifier["value"]
+            elif trigger.modifier["attribute"] == "width":
+                obj.real_width = trigger.modifier["value"]
+            elif trigger.modifier["attribute"] == "height":
+                obj.real_height = trigger.modifier["value"]
+
+    obj.recompute_triggered()
+
+    if trigger.modifier["attribute"] not in ("color", "outline"):
+        game.rebuild_buckets()
+
 def check_collision(game):
     fall_speed = -game.player.height / game.speed*abs(game.gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
@@ -20,7 +46,7 @@ def check_collision(game):
             if collide(game.player, obj):
                 prev_this_sliding = collide(game.hitboxes[-1], obj)
                 this_sliding = False
-                prev_player = game.hitboxes[-1].aabb if game.hitboxes else game.player.aabb
+                prev_player = game.hitboxes[-1].aabb
                 player = game.player.aabb
                 on_right_edge = player["left"] <= obj.aabb["right"] < player["left"]+game.speed
                 on_left_edge = prev_player["left"] <= obj.aabb["left"] <= player["left"]
@@ -96,7 +122,7 @@ def check_collision(game):
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
                     else:
-                        if game.hitboxes and game.hitboxes[-1].outline in ((0, 255, 0), (0, 255, 255)):
+                        if game.hitboxes[-1].outline in ((0, 255, 0), (0, 255, 255)):
                             game.cheated = True
                             game.noclip_deaths += 1
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
@@ -119,7 +145,7 @@ def check_collision(game):
                         game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1], completion_time)
 
         elif obj.shape == "gamemode":
-            if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier:
                 if game.gamemode != obj.modifier:
 
                     if game.gamemode == "wave":
@@ -134,11 +160,11 @@ def check_collision(game):
                         game.wave_trail = [(game.player.x + game.player.width/2, game.player.y)]
 
         elif obj.shape == "speed":
-            if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier:
                 game.speed = float(obj.modifier)
 
         elif obj.shape == "gravity":
-            if collide(game.player, obj) and obj.modifier != None and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)) and game.gravity != float(obj.modifier):
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier is not None and game.gravity != float(obj.modifier):
                 if game.gravity != 0 and obj.modifier != 0 and game.gravity/abs(game.gravity) != float(obj.modifier)/abs(float(obj.modifier)): 
                     game.y_vel *= -1
                 game.gravity = float(obj.modifier)
@@ -146,7 +172,7 @@ def check_collision(game):
                     game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif obj.shape == "size":
-            if collide(game.player, obj) and obj.modifier and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier:
                 size = float(obj.modifier)*40
                 game.player.width = size
                 game.player.height = size
@@ -155,120 +181,74 @@ def check_collision(game):
                 game.player.recompute()
 
         elif obj.shape == "teleport":
-            if collide(game.player, obj) and obj.modifier != None and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier is not None:
                 game.player.y = max(game.level["meta"]["roof"], min(game.level["meta"]["floor"] - game.player.height, obj.modifier))
         
         elif obj.shape == "orb":
             if round(game.y_vel) != fall_speed:
                 if obj.modifier and obj.modifier != "dash":
-                    if not obj.interacted and game.clicking > 0 and not game.clicked and collide(game.player, obj):
+                    if not obj.interacted and game.clicking > 0 and not game.clicked and collide(game.player, obj) and game.gamemode != "wave":
                         obj.interacted = True
                         game.clicked = True
 
-                        ship_multiplier = 0.3
-                        ufo_multiplier = 0.7
-
-                        if obj.modifier == "small" and game.gamemode != "wave":
+                        if obj.modifier == "small":
                             game.y_vel = max(game.y_vel, 2)
-                            if game.gamemode == "ship":
-                                game.y_vel *= ship_multiplier
-                            elif game.gamemode == "ufo":
-                                game.y_vel *= ufo_multiplier
 
-                        elif obj.modifier == "normal" and game.gamemode != "wave":
+                        elif obj.modifier == "normal":
                             game.y_vel = max(game.y_vel, 3)
-                            if game.gamemode == "ship":
-                                game.y_vel *= ship_multiplier
-                            elif game.gamemode == "ufo":
-                                game.y_vel *= ufo_multiplier
 
-                        elif obj.modifier == "big" and game.gamemode != "wave":
+                        elif obj.modifier == "big":
                             game.y_vel = max(game.y_vel, 4)
-                            if game.gamemode == "ship":
-                                game.y_vel *= ship_multiplier
-                            elif game.gamemode == "ufo":
-                                game.y_vel *= ufo_multiplier
 
-                        elif obj.modifier == "gravity" and game.gamemode != "wave":
+                        elif obj.modifier == "gravity":
                             game.gravity *= -1
                             game.y_vel = -1
 
-                        elif obj.modifier == "heavy" and game.gamemode != "wave":
+                        elif obj.modifier == "heavy":
                             game.y_vel = min(game.y_vel, -4)
+
+                        if obj.modifier not in ("gravity", "heavy"):
+                            if game.gamemode == "ship":
+                                game.y_vel *= 0.3
+                            elif game.gamemode == "ufo":
+                                game.y_vel *= 0.7
 
                 elif obj.modifier and not game.clicked:
                     if collide(game.player, obj) and game.clicking > 0:
                         obj.interacted = True
                         game.dashing = obj
                         game.clicked = True
-                    elif obj.interacted and game.clicking == 0:
-                        obj.interacted = False
-                        game.dashing = None
-                        game.y_vel = 0
         
         elif obj.shape == "pad":
-            if obj.modifier and collide(game.player, obj) and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
-                ship_multiplier = 0.5
-                ufo_multiplier = 0.7
-                
-                if obj.modifier == "small" and game.gamemode != "wave":
-                    game.y_vel = max(game.y_vel, 2)
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
+            if obj.modifier and collide(game.player, obj, game.hitboxes[-1]):
+                if game.gamemode != "wave":
+                    if obj.modifier == "small":
+                        game.y_vel = max(game.y_vel, 2)
 
-                elif obj.modifier == "normal" and game.gamemode != "wave":
-                    game.y_vel = max(game.y_vel, 3)
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
+                    elif obj.modifier == "normal":
+                        game.y_vel = max(game.y_vel, 3)
 
-                elif obj.modifier == "big" and game.gamemode != "wave":
-                    game.y_vel = max(game.y_vel, 4)
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
+                    elif obj.modifier == "big":
+                        game.y_vel = max(game.y_vel, 4)
 
-                elif obj.modifier == "gravity" and game.gamemode != "wave":
-                    game.gravity *= -1
-                    game.y_vel = -1
-                    if game.gamemode == "ship":
-                        game.y_vel *= ship_multiplier
-                    elif game.gamemode == "ufo":
-                        game.y_vel *= ufo_multiplier
+                    elif obj.modifier == "gravity":
+                        game.gravity *= -1
+                        game.y_vel = -1
 
-                elif obj.modifier == "spider" and game.gamemode != "wave":
-                    game.gravity *= -1
-                    game.y_vel = fall_speed
+                    elif obj.modifier == "spider":
+                        game.gravity *= -1
+                        game.y_vel = fall_speed
+
+                    if obj.modifier != "spider":
+                        if game.gamemode == "ship":
+                            game.y_vel *= 0.5
+                        elif game.gamemode == "ufo":
+                            game.y_vel *= 0.7
 
         elif obj.shape == "trigger":
-            if obj.modifier["value"] and collide(game.player, obj) and (game.hitboxes and not polygons_collide(game.hitboxes[-1], obj)):
+            if obj.modifier["value"] and collide(game.player, obj, game.hitboxes[-1]):
                 if obj.triggers and obj.modifier["attribute"] in ("shape", "color", "outline", "rotation", "x", "y", "width", "height"):
-                    for other_obj in (*game.background, *game.objects, *game.decoration):
-                        if id(other_obj) != id(obj) and other_obj.triggers and obj.triggers in other_obj.triggers:
-
-                            if obj.modifier["attribute"] == "shape":
-                                other_obj.real_shape = obj.modifier["value"]
-                            elif obj.modifier["attribute"] == "color":
-                                other_obj.real_color = obj.modifier["value"]
-                            elif obj.modifier["attribute"] == "outline":
-                                other_obj.real_outline = obj.modifier["value"]
-                            elif obj.modifier["attribute"] == "rotation":
-                                other_obj.real_rotation += obj.modifier["value"]
-                            elif obj.modifier["attribute"] == "x":
-                                other_obj.real_x += obj.modifier["value"]
-                            elif obj.modifier["attribute"] == "y":
-                                other_obj.real_y += obj.modifier["value"]
-                            elif obj.modifier["attribute"] == "width":
-                                other_obj.real_width = obj.modifier["value"]
-                            elif obj.modifier["attribute"] == "height":
-                                other_obj.real_height = obj.modifier["value"]
-
-                            other_obj.recompute_triggered()
-                    game.rebuild_buckets()
+                    apply_trigger(obj)
 
                 elif obj.modifier["attribute"] == "length":
                     game.level_length = obj.modifier["value"]
@@ -347,7 +327,7 @@ def update_position(game):
             
             if game.wave_trail[-1][1] != game.player.y and (game.player.y in (game.min_height, game.max_height)):
                 game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
-            elif game.slid and not game.sliding or not game.slid and game.sliding:
+            elif game.slid and not game.sliding:
                 game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
         elif game.gamemode == "ufo":

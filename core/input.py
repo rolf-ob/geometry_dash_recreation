@@ -222,7 +222,7 @@ def handle_input(game):
                         switch_level(game, "next")
 
                     elif any(event.key == key for key in game.controls["toggle speedhack"]):
-                        if game.hitboxes and not game.completed:
+                        if len(game.hitboxes) > 1 and not game.completed:
                             game.cheated = True
                         game.speedhack = not game.speedhack
                     
@@ -312,7 +312,7 @@ def handle_input(game):
                     game.switch_attribute("next")
 
                 elif any(event.key == key for key in game.controls["toggle hitboxes"]):
-                    if game.hitboxes and not game.completed:
+                    if len(game.hitboxes) > 1 and not game.completed:
                         game.cheated = True
                     game.show_hitboxes = not game.show_hitboxes
 

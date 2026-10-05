@@ -20,7 +20,7 @@ class Game():
         py.init()
 
         self.levels = []
-        for file in Path("levels").glob("*.json"): #! Understand
+        for file in Path("levels").glob("*.json"):
             with open(file, "r") as f:
                 self.levels.append(dict_to_level(json.load(f)))
         self.levels.sort(key=lambda level: level["meta"]["level number"])
@@ -547,7 +547,7 @@ class Game():
             obj.interacted = False
 
         self.activated_triggers = {}
-        self.hitboxes = []
+        self.hitboxes = [self.player]
         self.current_hitbox = 0
         self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
