@@ -4,6 +4,8 @@ from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
 import time
 import pygame as py
 
+from core.attribute_editing import apply_edit
+
 def apply_trigger(game, trigger):
     for obj in (*game.background, *game.objects, *game.decoration):
         if obj.shape != "trigger" and obj.triggers and trigger.triggers in obj.triggers:
@@ -26,7 +28,7 @@ def apply_trigger(game, trigger):
                     pass
             
             else:
-                game.apply_edit(obj, "real_" + trigger.modifier["attribute"], trigger.modifier["value"])
+                apply_edit(game, obj, "real_" + trigger.modifier["attribute"], trigger.modifier["value"])
 
     if trigger.modifier["attribute"] not in ("color", "outline", "modifier"):
         game.rebuild_buckets()
@@ -35,8 +37,8 @@ def check_collision(game):
     fall_speed = -game.player.height / game.speed*abs(game.gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
-    game.min_height = game.level["meta"]["roof"]
-    game.max_height = game.level["meta"]["floor"] - game.player.height
+    game.min_height = game.level_roof
+    game.max_height = game.level_floor - game.player.height
     game.on_ground = False
     game.slid = game.sliding
     game.sliding = 0
@@ -130,7 +132,10 @@ def check_collision(game):
                         break
 
                 elif not prev_this_sliding and this_sliding and game.gamemode == "wave":
-                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
+                    wave_part = (game.player.x + game.player.width/2, game.player.y)
+                    game.wave_trail.append(wave_part)
+                    for bucket in get_buckets(wave_part):
+                        game.buckets["hitboxes"][bucket].append(wave_part)
 
         elif obj.real_shape == "end":
             if collide(game.player, obj):
@@ -150,7 +155,10 @@ def check_collision(game):
                 if game.gamemode != obj.real_modifier:
 
                     if game.gamemode == "wave":
-                        game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
+                        wave_part = (game.player.x + game.player.width/2, game.player.y)
+                        game.wave_trail.append(wave_part)
+                        for bucket in get_buckets(wave_part):
+                            game.buckets["hitboxes"][bucket].append(wave_part)
                     
                     game.gamemode = obj.real_modifier
                     game.player.color = gamemode_colors[game.gamemode]
@@ -170,7 +178,10 @@ def check_collision(game):
                     game.y_vel *= -1
                 game.gravity = float(obj.real_modifier)
                 if game.gamemode == "wave":
-                    game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
+                    wave_part = (game.player.x + game.player.width/2, game.player.y)
+                    game.wave_trail.append(wave_part)
+                    for bucket in get_buckets(wave_part):
+                        game.buckets["hitboxes"][bucket].append(wave_part)
 
         elif obj.real_shape == "size":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
@@ -183,7 +194,7 @@ def check_collision(game):
 
         elif obj.real_shape == "teleport":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier is not None:
-                game.player.y = max(game.level["meta"]["roof"], min(game.level["meta"]["floor"] - game.player.height, obj.real_modifier))
+                game.player.y = max(game.level_roof, min(game.level_floor - game.player.height, obj.real_modifier))
         
         elif obj.real_shape == "orb":
             if round(game.y_vel) != fall_speed:
@@ -326,10 +337,11 @@ def update_position(game):
             else: 
                 game.y_vel = -1
             
-            if game.wave_trail[-1][1] != game.player.y and (game.player.y in (game.min_height, game.max_height)):
-                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
-            elif game.slid and not game.sliding:
-                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
+            if game.wave_trail[-1][1] != game.player.y and (game.player.y in (game.min_height, game.max_height)) or game.slid and not game.sliding:
+                wave_part = (game.player.x + game.player.width/2, game.player.y)
+                game.wave_trail.append(wave_part)
+                for bucket in get_buckets(wave_part):
+                    game.buckets["hitboxes"][bucket].append(wave_part)
 
         elif game.gamemode == "ufo":
             if game.clicking > 0 and not game.clicked:

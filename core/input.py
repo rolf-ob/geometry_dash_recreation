@@ -3,20 +3,28 @@ import time
 
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
 from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
+from core.attribute_editing import switch_attribute, apply_edit
+from entities.spatial import get_buckets
 
 def click(game, type, button, shift, ctrl):
     if button in (0, 1) and not game.building:
         if type == "click":
             game.clicking += 1
             if game.gamemode == "wave":
-                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
+                wave_part = (game.player.x + game.player.width/2, game.player.y)
+                game.wave_trail.append(wave_part)
+                for bucket in get_buckets(wave_part):
+                    game.buckets["hitboxes"][bucket].append(wave_part)
         elif type == "release":
             game.clicking = max(0, game.clicking - 1)
             if game.clicking == 0:
                 game.clicked = False
             
             if game.gamemode == "wave":
-                game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
+                wave_part = (game.player.x + game.player.width/2, game.player.y)
+                game.wave_trail.append(wave_part)
+                for bucket in get_buckets(wave_part):
+                    game.buckets["hitboxes"][bucket].append(wave_part)
     
     elif button == 1 and type == "release" and not shift:
         place_object(game)
@@ -41,14 +49,11 @@ def toggle_pause(game):
             game.cheated = True
 
         if game.player.x == game.checkpoints[game.checkpoint].x:
-            if game.name not in game.victors:
-                game.victors[game.name] = [1, 0, 0, 0, 0]
-            else:
-                game.victors[game.name][0] += 1
+            game.record_attempt()
     
     if not game.paused and game.dead == 0 and not game.completed:
         game.camera_x = game.player.x - PLAYER_X
-        game.camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+        game.camera_y = game.level_floor - HEIGHT + CAMERA_MARGIN
         game.camera_y = max(min(game.camera_y, game.player.y - CAMERA_MARGIN * 2), game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN)
         game.camera_zoom = 1
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
@@ -64,7 +69,7 @@ def switch_checkpoint(game, way):
 def switch_level(game, way):
     game.checkpoint = 0
     game.building_camera_x = 0
-    game.building_camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+    game.building_camera_y = game.level_floor - HEIGHT + CAMERA_MARGIN
     if way == "previous":
         game.current_level = (game.current_level-1) % len(game.levels)
     elif way == "next":
@@ -171,10 +176,11 @@ def handle_input(game):
 
                         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                             if obj.selected:
-                                game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                                apply_edit(game, obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
                                 if obj.shape == "checkpoint": cp_selected = True
                                 elif obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True
+                        game.capture_level_state("do")
 
                         if not obj_selected and cp_selected:
                             open_menu(game, "checkpoint attributes")
@@ -184,18 +190,19 @@ def handle_input(game):
                             game.active_textbox.text = ""
                     
                     else:
-                        game.apply_edit(None, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                        apply_edit(game, None, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                        game.capture_level_state("do")
 
                 elif event.key == py.K_BACKSPACE:
                     game.active_textbox.text = game.active_textbox.text[:-1]
                 
                 else:
                     if any(event.key == key for key in game.controls["previous attribute"]):
-                        game.switch_attribute("previous")
+                        switch_attribute(game, "previous")
                     elif any(event.key == key for key in game.controls["next attribute"]):
-                        game.switch_attribute("next")
+                        switch_attribute(game, "next")
                     elif any(event.key == key for key in game.controls["deselect attribute"]):
-                        game.switch_attribute("deselect")
+                        switch_attribute(game, "deselect")
 
             else:
                 if not game.building: #Playing controls
@@ -304,9 +311,9 @@ def handle_input(game):
                     game.save_to_file()
                     
                 elif any(event.key == key for key in game.controls["previous attribute"]):
-                    game.switch_attribute("previous")
+                    switch_attribute(game, "previous")
                 elif any(event.key == key for key in game.controls["next attribute"]):
-                    game.switch_attribute("next")
+                    switch_attribute(game, "next")
 
                 elif any(event.key == key for key in game.controls["toggle hitboxes"]):
                     if len(game.hitboxes) > 1 and not game.completed:

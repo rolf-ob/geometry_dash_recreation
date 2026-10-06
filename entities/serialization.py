@@ -27,7 +27,7 @@ def save_json(path, data):
     path = Path(path)
     temp_path = path.with_suffix(path.suffix + ".tmp")
 
-    with open(temp_path, "w") as f:
+    with open(temp_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
         f.flush()
         os.fsync(f.fileno())

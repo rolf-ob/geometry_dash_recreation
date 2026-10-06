@@ -12,7 +12,7 @@ from constants import PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 def toggle_building(game):
     game.building = not game.building
     if game.building:
-        game.load_level()
+        game.load_level(False)
         py.mouse.set_visible(True)
         py.mixer.music.stop()
         game.clicking = 0
@@ -446,7 +446,7 @@ def switch_layer(game, shift):
 
 def reset_camera(game, ctrl):
     if ctrl: game.building_camera_x = 0
-    game.building_camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+    game.building_camera_y = game.level_floor - HEIGHT + CAMERA_MARGIN
     game.camera_zoom = 1
     game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
@@ -560,7 +560,7 @@ def open_menu(game, menu):
                     common_triggers = "-"
                     break
         if not common_triggers: 
-            common_triggers = "-"
+            shown_triggers = "-"
         else:
             shown_triggers = ""
             for trigger in [str(trigger) for trigger in common_triggers]:

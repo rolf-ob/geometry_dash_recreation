@@ -1,7 +1,7 @@
 from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
-import time, json, re
+import time, json
 import pygame as py
 
 from entities.spatial import get_buckets
@@ -9,11 +9,10 @@ from core.input import handle_input
 from core.physics import update
 from rendering.rendering import draw
 from entities.object import Object
-from core.building import toggle_building
 from entities.serialization import level_to_dict, dict_to_level, save_json
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, gamemode_colors, speed_color, gravity_colors, size_colors, teleport_color, orb_pad_colors, coin_color
-from core.fps_counter import FpsCounter
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, gamemode_colors
+from core.fps_handler import FpsHandler
 
 class Game:
     def __init__(self):
@@ -31,13 +30,12 @@ class Game:
             self.controls = {}
             for action, keys in settings["controls"].items():
                 self.controls[action] = [py.key.key_code(key) for key in keys]
-
-        self.songs = Path(__file__).parent.parent / "songs"
         
         self.running = True
 
         self.operator = True
 
+        self.songs = Path("songs")
         self.name = self.accessibility["name"]
         self.fps = self.accessibility["fps"]
         self.speedhack_multiplier = self.accessibility["speedhack multiplier"]
@@ -65,16 +63,13 @@ class Game:
 
         self.last_frame_time = time.perf_counter()
         self.last_save_time = time.perf_counter()
-        self.clicking = 0
-        self.clicked = False
-        self.robot_fuel = 0
 
         self.building = False
         self.layer = 1
         self.layer_view = False
         self.scale_mode = False
         self.editing_level = False
-        self.buckets = {"hitboxes": defaultdict(list)}
+        self.buckets = {"hitboxes": defaultdict(list), "wave trail": defaultdict(list)}
 
         self.level_states = []
         self.undone_states = []
@@ -95,366 +90,11 @@ class Game:
         self.font = py.font.SysFont("Arial", FONT_SIZE)
         self.text_cache = TextCache(self.font)
         self.screen = py.display.set_mode((WIDTH, HEIGHT), py.RESIZABLE)
-        self.fps_counter = FpsCounter()
+        self.fps_handler = FpsHandler()
         py.display.set_caption("Geometry Dash")
         py.key.stop_text_input()
 
         self.load_level()
-
-    def switch_attribute(self, way):
-        if self.textboxes:
-            if way == "previous":
-                if not self.active_textbox:
-                    self.active_textbox = self.textboxes[-1]
-                    self.active_textbox.activate()
-                else:
-                    self.active_textbox.deactivate()
-                    self.active_textbox = self.textboxes[(self.textboxes.index(self.active_textbox) - 1) % len(self.textboxes)]
-                    self.active_textbox.activate()
-
-            elif way == "next":
-                if not self.active_textbox:
-                    self.active_textbox = self.textboxes[0]
-                    self.active_textbox.activate()
-                else:
-                    self.active_textbox.deactivate()
-                    self.active_textbox = self.textboxes[(self.textboxes.index(self.active_textbox) + 1) % len(self.textboxes)]
-                    self.active_textbox.activate()
-
-            elif way == "deselect":
-                if self.active_textbox:
-                    self.active_textbox.deactivate()
-                    self.active_textbox = None
-
-    def apply_edit(self, obj, real_field_name, text):
-        field_name = real_field_name.split("_")[-1]
-        real = "real_" if len(real_field_name.split(" ")) else ""
-        try:
-            if self.building or real == "real_":
-                self.capture_level_state("do")
-
-                if not self.editing_level:
-                    if obj.real_shape not in ("checkpoint", "trigger"):
-                        if field_name == "width":
-                            setattr(obj, real_field_name, max(0, int(text)))
-                        elif field_name == "height":
-                            setattr(obj, real_field_name, max(0, int(text)))
-                        elif field_name == "rotation":
-                            rotation = float(text)
-                            rotation %= 360
-                            if rotation < 0:
-                                rotation += 360
-                            setattr(obj, real_field_name, round(rotation, 1))
-                        
-                        elif field_name in ("color", "outline"):
-                            rgb = text.split()
-                            if len(rgb) == 3:
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                setattr(obj, real_field_name, (r, g, b))
-                            elif len(rgb) == 1 and rgb[0] == "0":
-                                setattr(obj, real_field_name, (0, 0))
-
-                        elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "trigger", "coin", "text"):
-                            setattr(obj, real_field_name, text)
-
-                            if real == "":
-                                if text == "end":
-                                    obj.y = 0
-                                    obj.width = 1
-                                    obj.height = 720
-                                    obj.color = (0, 255, 0)
-                                    obj.outline = (255, 0, 0)
-
-                                elif text == "gamemode":
-                                    obj.width = 40
-                                    obj.height = 120
-
-                                elif text == "speed":
-                                    obj.width = 40
-                                    obj.height = 120
-                                    obj.color = speed_color
-
-                                elif text == "gravity":
-                                    obj.width = 20
-                                    obj.height = 120
-
-                                elif text == "size":
-                                    obj.width = 20
-                                    obj.height = 80
-
-                                elif text == "teleport":
-                                    obj.width = 20
-                                    obj.height = 120
-                                    obj.color = teleport_color
-
-                                elif text == "orb":
-                                    obj.width = 40
-                                    obj.height = 40
-
-                                elif text == "pad":
-                                    obj.width = 40
-                                    obj.height = 10
-                                    obj.y += 10
-
-                                elif text == "trigger":
-                                    obj.triggers = 0
-                                    obj.modifier = {"attribute": "", "value": "", "transition": ""}
-
-                                elif text == "coin":
-                                    obj.width = 40
-                                    obj.height = 40
-                                    obj.color = coin_color
-
-                        elif field_name == "shape" and text == "slope":
-                            setattr(obj, real_field_name, "right slope")
-
-                        elif field_name == "shape" and text == "checkpoint":
-                            setattr(obj, real_field_name, text)
-                            for layer, name in zip((self.background, self.objects, self.decoration), ("background", "objects", "decoration")):
-                                if obj in layer:
-                                    layer.remove(obj)
-                                    self.checkpoints.append(obj)
-
-                                    for bucket in get_buckets(obj):
-                                        self.buckets[name][bucket].remove(obj)
-                                    for bucket in get_buckets(obj):
-                                        self.buckets["checkpoints"][bucket].append(obj)
-
-                                    break
-                            
-                            obj.width = 40
-                            obj.height = 40
-                            obj.rotation = 0
-                            obj.color = (0, 255, 0)
-                            obj.outline = (0,)*3
-                            obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
-                            obj.recompute()
-
-                        elif field_name == "modifier":
-                            if obj.real_shape == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
-                                setattr(obj, real_field_name, text)
-                                if real == "":
-                                    obj.color = gamemode_colors[text]
-
-                            elif obj.real_shape == "speed":
-                                setattr(obj, real_field_name, max(0.01, min(40, float(text))))
-
-                            elif obj.real_shape == "gravity":
-                                setattr(obj, real_field_name, float(text))
-                                if real == "" and int(text) in gravity_colors:
-                                    obj.color = gravity_colors[int(text)]
-
-                            elif obj.real_shape == "size":
-                                setattr(obj, real_field_name, max(0.1, min(10, float(text))))
-                                if real == "" and float(text) in size_colors:
-                                    obj.color = size_colors[float(text)]
-
-                            elif obj.real_shape == "teleport":
-                                setattr(obj, real_field_name, int(text))
-
-                            elif obj.real_shape == "orb" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
-                                setattr(obj, real_field_name, text)
-                                if real == "":
-                                    obj.color = orb_pad_colors[text]
-
-                            elif obj.real_shape == "pad" and text in ("small", "normal", "big", "gravity", "spider"):
-                                setattr(obj, real_field_name, text)
-                                if real == "":
-                                    obj.color = orb_pad_colors[text]
-
-                            elif obj.real_shape == "coin":
-                                setattr(obj, real_field_name, int(text))
-
-                            elif obj.real_shape == "text":
-                                setattr(obj, real_field_name, text)
-
-                        elif field_name == "triggers":
-                            triggers = [int(trigger) for trigger in text.split()]
-                            setattr(obj, real_field_name, triggers)
-
-                    elif obj.shape == "checkpoint":
-                        if field_name == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
-                            obj.modifier["gamemode"] = text
-                            obj.color = gamemode_colors[text]
-
-                        elif field_name == "speed":
-                            obj.modifier["speed"] = max(0.01, min(40, float(text)))
-
-                        elif field_name == "gravity":
-                            obj.modifier["gravity"] = float(text)
-
-                        elif field_name == "size":
-                            obj.modifier["size"] = max(0.1, min(10, float(text)))
-
-                    elif obj.shape == "trigger":
-                        if field_name in ("color", "outline"):
-                            rgb = text.split()
-                            if len(rgb) == 3:
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                setattr(obj, real_field_name, (r, g, b))
-                            elif len(rgb) == 1 and rgb[0] == "0":
-                                setattr(obj, real_field_name, (0, 0))
-
-                        elif field_name == "attribute" and text in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "modifier", "length", "roof", "floor", "roof color", "floor color", "background"):
-                            obj.modifier["attribute"] = text
-                            obj.modifier["value"] = ""
-
-                        elif field_name == "value":
-                            if obj.modifier["attribute"] == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "trigger", "coin", "text"):
-                                if text != "slope":
-                                    obj.modifier["value"] = text
-                                else:
-                                    obj.modifier["value"] = "right slope"
-                            
-                            elif obj.modifier["attribute"] in ("color", "outline"):
-                                rgb = text.split()
-                                if len(rgb) == 3:
-                                    r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                    obj.modifier["value"] = (r, g, b)
-                                elif len(rgb) == 1 and rgb[0] == "0":
-                                    obj.modifier["value"] = (0, 0)
-                                
-                            elif obj.modifier["attribute"] in ("x", "y", "width", "height"):
-                                obj.modifier["value"] = int(text)
-
-                            elif obj.modifier["attribute"] == "rotation":
-                                rotation = float(text)
-                                rotation %= 360
-                                if rotation < 0:
-                                    rotation += 360
-                                obj.modifier["value"] = round(rotation, 1)
-
-                            elif obj.modifier["attribute"] == "modifier":
-                                obj.modifier["value"] = text
-
-                            elif obj.modifier["attribute"] == "length":
-                                obj.modifier["value"] = int(text)
-
-                            elif obj.modifier["attribute"] == "roof":
-                                obj.modifier["value"] = int(text)
-
-                            elif obj.modifier["attribute"] == "floor":
-                                obj.modifier["value"] = int(text)
-
-                            elif obj.modifier["attribute"] == "roof color":
-                                rgb = text.split()
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                obj.modifier["value"] = (r, g, b)
-
-                            elif obj.modifier["attribute"] == "floor color":
-                                rgb = text.split()
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                obj.modifier["value"] = (r, g, b)
-
-                            elif obj.modifier["attribute"] == "background":
-                                rgb = text.split()
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                obj.modifier["value"] = (r, g, b)
-
-                        elif field_name == "transition":
-                            obj.modifier["transition"] = float(text)
-
-                        elif field_name == "triggers":
-                            obj.triggers = int(text)
-
-                    if field_name in ("shape", "rotation", "x", "y", "width", "height"):
-                        if real == "":
-                            obj.recompute()
-                        elif real == "real_":
-                            obj.recompute_triggered()
-                        self.rebuild_buckets()
-
-                else:
-                    if field_name == "length":
-                        self.level["meta"]["length"] = max(0, int(text))
-                    
-                    elif field_name == "roof":
-                        self.level["meta"]["roof"] = min(0, int(text))
-
-                    elif field_name == "floor":
-                        self.level["meta"]["floor"] = max(720, int(text))
-
-                    elif field_name == "roof color":
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split())
-                        self.level["meta"]["roof color"] = (r, g, b)
-                        self.roof_color = tuple(self.level["meta"]["roof color"])
-
-                    elif field_name == "floor color":
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split())
-                        self.level["meta"]["floor color"] = (r, g, b)
-                        self.floor_color = tuple(self.level["meta"]["floor color"])
-
-                    elif field_name == "background":
-                        r, g, b = (max(0, min(255, int(value))) for value in text.split())
-                        self.level["meta"]["background color"] = (r, g, b)
-                        self.background_color = tuple(self.level["meta"]["background color"])
-
-                    elif field_name == "title":
-                        file = Path("levels") / f"{self.level['meta']['title']}.json"
-
-                        base_name = text
-                        base_name = re.sub('[<>:"/\\|?*& .]', '_', base_name)
-                        name = base_name
-                        number = 1
-                    
-                        while (Path("levels") / f"{name}.json").exists():
-                            name = f"{base_name}({number})"
-                            number += 1
-                        
-                        self.level["meta"]["title"] = name
-                        file.rename(Path("levels") / f"{self.level['meta']['title']}.json")
-
-                    elif field_name == "points":
-                        self.level["meta"]["points"] = int(text)
-
-                    elif field_name == "level number":
-                        new_number = max(1, min(len(self.levels)-1, int(text)))
-                        self.levels.pop(self.current_level)
-                        self.levels.insert(new_number, self.level)
-                        self.current_level = new_number
-                        self.load_level()
-
-                        for i, level in enumerate(self.levels):
-                            level["meta"]["level number"] = i
-
-                    elif field_name == "song":
-                        song_path = self.songs / (text + ".ogg")
-                        if song_path.is_file():
-                            self.level["meta"]["song"] = text + ".ogg"
-                    
-                    elif field_name == "song start":
-                        self.level["meta"]["song start"] = float(text)
-
-                    elif field_name == "reset stats" and text == "reset":
-                        self.level["victors"] = {}
-
-                    elif field_name == "delete" and text == "delete":
-                        file = Path("levels") / f"{self.level['meta']['title']}.json"
-
-                        self.current_level -= 1
-                        self.levels.pop(self.current_level+1)
-                        file.unlink()
-                        toggle_building(self)
-
-            else:
-                if field_name == "name":
-                    self.name = text
-
-                elif field_name == "speedhack":
-                    self.speedhack_multiplier = max(0.01, float(text))
-
-                elif field_name == "fps":
-                    self.fps = max(48, int(text))
-
-                elif field_name == "respawn time":
-                    self.respawn_time = float(text)
-
-                elif field_name == "volume":
-                    self.volume = max(0, min(100, int(text)))
-                    py.mixer.music.set_volume(max(0, min(100, int(text))) / 100)
-
-        except ValueError:
-            pass
 
     def capture_level_state(self, edit):
         if edit == "undo":
@@ -492,7 +132,8 @@ class Game:
             "objects": defaultdict(list),
             "decoration": defaultdict(list),
             "checkpoints": defaultdict(list),
-            "hitboxes": self.buckets["hitboxes"]
+            "hitboxes": self.buckets["hitboxes"],
+            "wave trail": self.buckets["wave trail"]
         }
         self.z_order = {
             id(obj): i for i, obj in enumerate((*self.background, *self.objects, *self.decoration))
@@ -508,12 +149,15 @@ class Game:
                 for bucket in get_buckets(obj):
                     self.buckets[name][bucket].append(obj)
 
+    def record_attempt(self):
+        if self.name not in self.victors:
+            self.victors[self.name] = [1, 0, 0, 0, 0]
+        else:
+            self.victors[self.name][0] += 1
+
     def restart(self):
-        if not self.paused:
-            if self.name not in self.victors:
-                self.victors[self.name] = [1, 0, 0, 0, 0]
-            else:
-                self.victors[self.name][0] += 1
+        if not self.paused and not self.building and self.current_level != 0:
+            self.record_attempt()
 
         for obj in (*self.background, *self.objects, *self.decoration):
             obj.recompute()
@@ -541,6 +185,9 @@ class Game:
         self.y_vel = 0
         self.sliding = 0
         self.dashing = None
+        self.clicking = 0
+        self.clicked = False
+        self.robot_fuel = 0
 
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
         self.camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
@@ -567,6 +214,7 @@ class Game:
         self.current_hitbox = 0
         self.buckets["hitboxes"] = defaultdict(list)
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
+        self.buckets["wave trail"] = defaultdict(list)
 
         self.restart_time = time.perf_counter()
 
@@ -596,6 +244,10 @@ class Game:
     def load_level(self, restart=True):
         if restart:
             self.level = self.levels[self.current_level]
+        else:
+            for obj in (*self.background, *self.objects, *self.decoration):
+                obj.recompute()
+            self.rebuild_buckets()
 
         self.background = self.level["background"]
         self.objects = self.level["objects"]
@@ -654,18 +306,6 @@ class Game:
 
         self.title = ["Settings and levels saved", time.perf_counter() + 2]
 
-    def limit_fps(self, target_fps):
-        frame_duration = 1 / target_fps
-
-        remaining = frame_duration - (time.perf_counter() - self.last_frame_time)
-        if remaining > 0.001:
-            time.sleep(remaining - 0.0005)
-        
-        while time.perf_counter() - self.last_frame_time < frame_duration:
-            pass
-        
-        self.last_frame_time = time.perf_counter()
-
     def run(self):
         accumulator = 0
         previous = time.perf_counter()
@@ -697,8 +337,8 @@ class Game:
             
             draw(self)
             py.display.flip()
-            self.limit_fps(self.fps * self.speedhack_multiplier if self.speedhack else self.fps)
-            self.fps_counter.tick()
+            self.last_frame_time = self.fps_handler.limit_fps(self.fps * self.speedhack_multiplier if self.speedhack else self.fps, self.last_frame_time)
+            self.fps_handler.tick()
 
             if self.building and now - self.last_save_time >= AUTOSAVE_INTERVAL:
                 self.last_save_time = time.perf_counter()

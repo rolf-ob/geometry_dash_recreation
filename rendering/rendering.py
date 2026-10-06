@@ -23,8 +23,8 @@ def draw_polygon(game, screen, points, color, width):
     py.draw.polygon(screen, color, screen_points, width)
 
 def draw_floor_roof(game, screen):
-    roof = world_to_screen(game, 0, game.level["meta"]["roof"])[1]
-    floor = world_to_screen(game, 0, game.level["meta"]["floor"])[1]
+    roof = world_to_screen(game, 0, game.level_roof)[1]
+    floor = world_to_screen(game, 0, game.level_floor)[1]
     py.draw.rect(screen, game.roof_color, (0, 0, game.width, roof))
     py.draw.rect(screen, game.floor_color, (0, floor, game.width, game.height))
     py.draw.line(screen, game.primary_color, (0, roof), (game.width, roof), int(max(1, 1*game.camera_zoom)))
@@ -85,7 +85,7 @@ def draw_objects(game, screen):
                 if color == (0, 0):
                     if game.building:
                         draw_polygon(game, screen, obj.points, (128, 255, 255), 0)
-                        screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.modifier))[0] / 2, obj.y + 5))
+                        screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.modifier), (0,)*3, "world")[0] / 2, obj.y + 5))
                 else:
                     draw_polygon(game, screen, obj.points, color, 0)
                     screen.blit(game.text_cache.get_surface(str(obj.modifier), (0,)*3, "world"), world_to_screen(game, obj.x + obj.width / 2 - game.text_cache.get_size(str(obj.modifier), (0,)*3, "world")[0] / 2, obj.y + 5))
@@ -163,20 +163,21 @@ def draw_hitboxes(game, screen):
         draw_polygon(game, screen, obj.points, obj.real_outline, 1)
 
 def draw_wave_trail(game, screen):
-    for i, point in enumerate(game.wave_trail):
+    objects = get_nearby_objects(game.buckets["wave trail"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
 
+    for i, point in enumerate(objects):
         start_top = point
         if game.gamemode == "wave":
-            end_top = (game.player.x + game.player.width/2, game.player.y) if i == len(game.wave_trail) - 1 else game.wave_trail[i + 1]
+            end_top = (game.player.x + game.player.width/2, game.player.y) if i == len(objects) - 1 else objects[i + 1]
         else:
-            if i == len(game.wave_trail) - 1: break
-            else: end_top = game.wave_trail[i + 1]
+            if i == len(objects) - 1: break
+            else: end_top = objects[i + 1]
 
         screen_start = screen_to_world(game, 0, 0)[0]
         screen_end = screen_to_world(game, game.width, 0)[0]
         if screen_start < end_top[0] < screen_end or screen_start < start_top[0] < screen_end:
             start_bottom = (point[0], point[1] + game.player.height)
-            end_bottom = (game.player.x + game.player.width/2, game.player.y + game.player.height) if i == len(game.wave_trail) - 1 else (game.wave_trail[i + 1][0], game.wave_trail[i + 1][1] + game.player.height)
+            end_bottom = (game.player.x + game.player.width/2, game.player.y + game.player.height) if i == len(objects) - 1 else (objects[i + 1][0], objects[i + 1][1] + game.player.height)
             points = [
                 world_to_screen(game, *start_top),
                 world_to_screen(game, *end_top),
@@ -330,7 +331,7 @@ def draw_textboxes(game, screen):
 
 def draw_debug(game, screen):
     debug_items = [
-        f"FPS: {game.fps_counter.get_fps()}",
+        f"FPS: {game.fps_handler.get_fps()}",
         f"Clicking: {game.clicking}",
         f"Velocity: {round(game.y_vel, 2)}",
         f"Speed: {game.speed}",

@@ -135,7 +135,7 @@ building_tutorial = [
     "",
     "CHECKPOINTS",
     "Checkpoints are marked with a C, the first checkpoint is marked S and cannot be deleted",
-    "Have only checkpoints selected to change their modifiers"
+    "Have only checkpoints selected to change their modifiers",
     "",
     "TRIGGERS",
     "A trigger activates when you collide with it in-game",
