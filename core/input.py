@@ -41,7 +41,7 @@ def toggle_pause(game):
             game.cheated = True
 
         if game.player.x == game.checkpoints[game.checkpoint].x:
-            if game.name not in game.victors.keys():
+            if game.name not in game.victors:
                 game.victors[game.name] = [1, 0, 0, 0, 0]
             else:
                 game.victors[game.name][0] += 1
@@ -164,7 +164,6 @@ def handle_input(game):
             if game.active_textbox:
 
                 if event.key == py.K_RETURN:
-
                     if game.building and not game.editing_level:
                         cp_selected = False
                         trigger_selected = False
@@ -173,8 +172,6 @@ def handle_input(game):
                         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                             if obj.selected:
                                 game.apply_edit(obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                obj.recompute()
-                                game.rebuild_buckets()
                                 if obj.shape == "checkpoint": cp_selected = True
                                 elif obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True

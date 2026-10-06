@@ -1,5 +1,5 @@
 import pygame as py
-import time, datetime, math
+import time, math
 
 from entities.spatial import get_nearby_objects
 from constants import WIDTH, HEIGHT, BUCKET_WIDTH, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
@@ -259,7 +259,7 @@ def draw_leaderboard(game, screen):
         for level in game.levels:
             for (victor, stats) in level["victors"].items():
                 if stats[1] > 0:
-                    if victor in players.keys():
+                    if victor in players:
                         players[victor] += level["meta"]["points"]
                         players[victor] += stats[3]
                     else:

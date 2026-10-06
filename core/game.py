@@ -15,7 +15,7 @@ from rendering.textcache import TextCache
 from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, gamemode_colors, speed_color, gravity_colors, size_colors, teleport_color, orb_pad_colors, coin_color
 from core.fps_counter import FpsCounter
 
-class Game():
+class Game:
     def __init__(self):
         py.init()
 
@@ -102,7 +102,7 @@ class Game():
         self.load_level()
 
     def switch_attribute(self, way):
-        if self.textboxes != []:
+        if self.textboxes:
             if way == "previous":
                 if not self.active_textbox:
                     self.active_textbox = self.textboxes[-1]
@@ -126,87 +126,90 @@ class Game():
                     self.active_textbox.deactivate()
                     self.active_textbox = None
 
-    def apply_edit(self, obj, field_name, text):
+    def apply_edit(self, obj, real_field_name, text):
+        field_name = real_field_name.split("_")[-1]
+        real = "real_" if len(real_field_name.split(" ")) else ""
         try:
-            if self.building:
+            if self.building or real == "real_":
                 self.capture_level_state("do")
 
                 if not self.editing_level:
-                    if obj.shape not in ("checkpoint", "trigger"):
+                    if obj.real_shape not in ("checkpoint", "trigger"):
                         if field_name == "width":
-                            setattr(obj, field_name, max(0, int(text)))
+                            setattr(obj, real_field_name, max(0, int(text)))
                         elif field_name == "height":
-                            setattr(obj, field_name, max(0, int(text)))
+                            setattr(obj, real_field_name, max(0, int(text)))
                         elif field_name == "rotation":
                             rotation = float(text)
                             rotation %= 360
                             if rotation < 0:
                                 rotation += 360
-                            setattr(obj, field_name, round(rotation, 1))
+                            setattr(obj, real_field_name, round(rotation, 1))
                         
                         elif field_name in ("color", "outline"):
                             rgb = text.split()
                             if len(rgb) == 3:
                                 r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                setattr(obj, field_name, (r, g, b))
+                                setattr(obj, real_field_name, (r, g, b))
                             elif len(rgb) == 1 and rgb[0] == "0":
-                                setattr(obj, field_name, (0, 0))
+                                setattr(obj, real_field_name, (0, 0))
 
                         elif field_name == "shape" and text in ("square", "spike", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "trigger", "coin", "text"):
-                            setattr(obj, field_name, text)
+                            setattr(obj, real_field_name, text)
 
-                            if text == "end":
-                                obj.y = 0
-                                obj.width = 1
-                                obj.height = 720
-                                obj.color = (0, 255, 0)
-                                obj.outline = (255, 0, 0)
+                            if real == "":
+                                if text == "end":
+                                    obj.y = 0
+                                    obj.width = 1
+                                    obj.height = 720
+                                    obj.color = (0, 255, 0)
+                                    obj.outline = (255, 0, 0)
 
-                            elif text == "gamemode":
-                                obj.width = 40
-                                obj.height = 120
+                                elif text == "gamemode":
+                                    obj.width = 40
+                                    obj.height = 120
 
-                            elif text == "speed":
-                                obj.width = 40
-                                obj.height = 120
-                                obj.color = speed_color
+                                elif text == "speed":
+                                    obj.width = 40
+                                    obj.height = 120
+                                    obj.color = speed_color
 
-                            elif text == "gravity":
-                                obj.width = 20
-                                obj.height = 120
+                                elif text == "gravity":
+                                    obj.width = 20
+                                    obj.height = 120
 
-                            elif text == "size":
-                                obj.width = 20
-                                obj.height = 80
+                                elif text == "size":
+                                    obj.width = 20
+                                    obj.height = 80
 
-                            elif text == "teleport":
-                                obj.width = 20
-                                obj.height = 120
-                                obj.color = teleport_color
+                                elif text == "teleport":
+                                    obj.width = 20
+                                    obj.height = 120
+                                    obj.color = teleport_color
 
-                            elif text == "orb":
-                                obj.width = 40
-                                obj.height = 40
+                                elif text == "orb":
+                                    obj.width = 40
+                                    obj.height = 40
 
-                            elif text == "pad":
-                                obj.width = 40
-                                obj.height = 10
-                                obj.y += 10
+                                elif text == "pad":
+                                    obj.width = 40
+                                    obj.height = 10
+                                    obj.y += 10
 
-                            elif text == "trigger":
-                                obj.triggers = 0
-                                obj.modifier = {"attribute": "", "value": "", "transition": ""}
+                                elif text == "trigger":
+                                    obj.triggers = 0
+                                    obj.modifier = {"attribute": "", "value": "", "transition": ""}
 
-                            elif text == "coin":
-                                obj.width = 40
-                                obj.height = 40
-                                obj.color = coin_color
+                                elif text == "coin":
+                                    obj.width = 40
+                                    obj.height = 40
+                                    obj.color = coin_color
 
                         elif field_name == "shape" and text == "slope":
-                            setattr(obj, field_name, "right slope")
+                            setattr(obj, real_field_name, "right slope")
 
                         elif field_name == "shape" and text == "checkpoint":
-                            setattr(obj, field_name, text)
+                            setattr(obj, real_field_name, text)
                             for layer, name in zip((self.background, self.objects, self.decoration), ("background", "objects", "decoration")):
                                 if obj in layer:
                                     layer.remove(obj)
@@ -228,43 +231,46 @@ class Game():
                             obj.recompute()
 
                         elif field_name == "modifier":
-                            if obj.shape == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
-                                setattr(obj, field_name, text)
-                                obj.color = gamemode_colors[text]
+                            if obj.real_shape == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
+                                setattr(obj, real_field_name, text)
+                                if real == "":
+                                    obj.color = gamemode_colors[text]
 
-                            elif obj.shape == "speed":
-                                setattr(obj, field_name, max(0.01, min(40, float(text))))
+                            elif obj.real_shape == "speed":
+                                setattr(obj, real_field_name, max(0.01, min(40, float(text))))
 
-                            elif obj.shape == "gravity":
-                                setattr(obj, field_name, float(text))
-                                if int(text) in gravity_colors.keys():
+                            elif obj.real_shape == "gravity":
+                                setattr(obj, real_field_name, float(text))
+                                if real == "" and int(text) in gravity_colors:
                                     obj.color = gravity_colors[int(text)]
 
-                            elif obj.shape == "size":
-                                setattr(obj, field_name, max(0.1, min(10, float(text))))
-                                if float(text) in size_colors.keys():
+                            elif obj.real_shape == "size":
+                                setattr(obj, real_field_name, max(0.1, min(10, float(text))))
+                                if real == "" and float(text) in size_colors:
                                     obj.color = size_colors[float(text)]
 
-                            elif obj.shape == "teleport":
-                                setattr(obj, field_name, int(text))
+                            elif obj.real_shape == "teleport":
+                                setattr(obj, real_field_name, int(text))
 
-                            elif obj.shape == "orb" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
-                                setattr(obj, field_name, text)
-                                obj.color = orb_pad_colors[text]
+                            elif obj.real_shape == "orb" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
+                                setattr(obj, real_field_name, text)
+                                if real == "":
+                                    obj.color = orb_pad_colors[text]
 
-                            elif obj.shape == "pad" and text in ("small", "normal", "big", "gravity", "spider"):
-                                setattr(obj, field_name, text)
-                                obj.color = orb_pad_colors[text]
+                            elif obj.real_shape == "pad" and text in ("small", "normal", "big", "gravity", "spider"):
+                                setattr(obj, real_field_name, text)
+                                if real == "":
+                                    obj.color = orb_pad_colors[text]
 
-                            elif obj.shape == "coin":
-                                setattr(obj, field_name, int(text))
+                            elif obj.real_shape == "coin":
+                                setattr(obj, real_field_name, int(text))
 
-                            elif obj.shape == "text":
-                                setattr(obj, field_name, text)
+                            elif obj.real_shape == "text":
+                                setattr(obj, real_field_name, text)
 
                         elif field_name == "triggers":
                             triggers = [int(trigger) for trigger in text.split()]
-                            setattr(obj, field_name, triggers)
+                            setattr(obj, real_field_name, triggers)
 
                     elif obj.shape == "checkpoint":
                         if field_name == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
@@ -285,11 +291,11 @@ class Game():
                             rgb = text.split()
                             if len(rgb) == 3:
                                 r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                setattr(obj, field_name, (r, g, b))
+                                setattr(obj, real_field_name, (r, g, b))
                             elif len(rgb) == 1 and rgb[0] == "0":
-                                setattr(obj, field_name, (0, 0))
+                                setattr(obj, real_field_name, (0, 0))
 
-                        elif field_name == "attribute" and text in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "length", "roof", "floor", "roof color", "floor color", "background"):
+                        elif field_name == "attribute" and text in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "modifier", "length", "roof", "floor", "roof color", "floor color", "background"):
                             obj.modifier["attribute"] = text
                             obj.modifier["value"] = ""
 
@@ -317,6 +323,9 @@ class Game():
                                 if rotation < 0:
                                     rotation += 360
                                 obj.modifier["value"] = round(rotation, 1)
+
+                            elif obj.modifier["attribute"] == "modifier":
+                                obj.modifier["value"] = text
 
                             elif obj.modifier["attribute"] == "length":
                                 obj.modifier["value"] = int(text)
@@ -347,6 +356,13 @@ class Game():
 
                         elif field_name == "triggers":
                             obj.triggers = int(text)
+
+                    if field_name in ("shape", "rotation", "x", "y", "width", "height"):
+                        if real == "":
+                            obj.recompute()
+                        elif real == "real_":
+                            obj.recompute_triggered()
+                        self.rebuild_buckets()
 
                 else:
                     if field_name == "length":
@@ -494,7 +510,7 @@ class Game():
 
     def restart(self):
         if not self.paused:
-            if self.name not in self.victors.keys():
+            if self.name not in self.victors:
                 self.victors[self.name] = [1, 0, 0, 0, 0]
             else:
                 self.victors[self.name][0] += 1

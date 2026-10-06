@@ -1,3 +1,5 @@
+trigger id dict
+
 Features until update v1.1.0
     - Trigger transition speed
     - Main levels

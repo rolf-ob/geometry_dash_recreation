@@ -112,6 +112,7 @@ class Object:
         self.real_shape = self.shape
         self.real_color = self.color
         self.real_outline = self.outline
+        self.real_modifier = self.modifier
 
         self.recompute_points()
         self.recompute_axes()

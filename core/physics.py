@@ -1,4 +1,4 @@
-from entities.spatial import collide, polygons_collide, get_buckets, get_nearby_objects
+from entities.spatial import collide, get_buckets, get_nearby_objects
 from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
 import time
@@ -6,28 +6,29 @@ import pygame as py
 
 def apply_trigger(game, trigger):
     for obj in (*game.background, *game.objects, *game.decoration):
-        if id(obj) != id(trigger) and obj.triggers and trigger.triggers in obj.triggers:
-        
-            if trigger.modifier["attribute"] == "shape":
-                obj.real_shape = trigger.modifier["value"]
-            elif trigger.modifier["attribute"] == "color":
-                obj.real_color = trigger.modifier["value"]
-            elif trigger.modifier["attribute"] == "outline":
-                obj.real_outline = trigger.modifier["value"]
-            elif trigger.modifier["attribute"] == "rotation":
-                obj.real_rotation += trigger.modifier["value"]
-            elif trigger.modifier["attribute"] == "x":
-                obj.real_x += trigger.modifier["value"]
+        if obj.shape != "trigger" and obj.triggers and trigger.triggers in obj.triggers:
+            if trigger.modifier["attribute"] == "x":
+                try:
+                    obj.real_x += int(trigger.modifier["value"])
+                except ValueError:
+                    pass
+            
             elif trigger.modifier["attribute"] == "y":
-                obj.real_y += trigger.modifier["value"]
-            elif trigger.modifier["attribute"] == "width":
-                obj.real_width = trigger.modifier["value"]
-            elif trigger.modifier["attribute"] == "height":
-                obj.real_height = trigger.modifier["value"]
+                try:
+                    obj.real_y += int(trigger.modifier["value"])
+                except ValueError:
+                    pass
+            
+            elif trigger.modifier["attribute"] == "rotation":
+                try:
+                    obj.real_rotation += float(round(trigger.modifier["value"], 1))
+                except ValueError:
+                    pass
+            
+            else:
+                game.apply_edit(obj, "real_" + trigger.modifier["attribute"], trigger.modifier["value"])
 
-    obj.recompute_triggered()
-
-    if trigger.modifier["attribute"] not in ("color", "outline"):
+    if trigger.modifier["attribute"] not in ("color", "outline", "modifier"):
         game.rebuild_buckets()
 
 def check_collision(game):
@@ -42,7 +43,7 @@ def check_collision(game):
     objects = get_nearby_objects(game.buckets["objects"], game.player.aabb["left"], game.player.aabb["right"])
 
     for obj in objects:
-        if obj.shape in ("square", "spike", "right slope", "left slope", "circle"):
+        if obj.real_shape in ("square", "spike", "right slope", "left slope", "circle"):
             if collide(game.player, obj):
                 prev_this_sliding = collide(game.hitboxes[-1], obj)
                 this_sliding = False
@@ -51,58 +52,58 @@ def check_collision(game):
                 on_right_edge = player["left"] <= obj.aabb["right"] < player["left"]+game.speed
                 on_left_edge = prev_player["left"] <= obj.aabb["left"] <= player["left"]
 
-                if obj.shape == "square" and obj.rotation == 0:
+                if obj.real_shape == "square" and obj.real_rotation == 0:
                     if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not on_right_edge:
                         game.min_height = max(game.min_height, obj.aabb["bottom"])
                         game.y_vel = min(game.y_vel, 0) if game.gravity > 0 else max(game.y_vel, 0)
                         game.sliding = -1
                         this_sliding = True
                     elif ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not on_right_edge:
-                        game.max_height = min(game.max_height, obj.y - game.player.height)
+                        game.max_height = min(game.max_height, obj.real_y - game.player.height)
                         game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
                         game.sliding = 1
                         this_sliding = True
 
-                elif obj.shape in ("right slope", "left slope") and obj.rotation == 0:
-                    prev_player_y = (prev_player["bottom"] - obj.y) / obj.height
-                    player_y = (player["bottom"] - obj.y) / obj.height
+                elif obj.real_shape in ("right slope", "left slope") and obj.real_rotation == 0:
+                    prev_player_y = (prev_player["bottom"] - obj.real_y) / obj.real_height
+                    player_y = (player["bottom"] - obj.real_y) / obj.real_height
 
-                    if obj.shape == "right slope":
-                        prev_y = (prev_player["left"] - obj.x) / obj.width
-                        y = (player["left"] - obj.x) / obj.width
-                        next_y = (player["left"]+game.speed - obj.x) / obj.width
-                        slope_vel = -obj.height / (obj.width * game.gravity)
+                    if obj.real_shape == "right slope":
+                        prev_y = (prev_player["left"] - obj.real_x) / obj.real_width
+                        y = (player["left"] - obj.real_x) / obj.real_width
+                        next_y = (player["left"]+game.speed - obj.real_x) / obj.real_width
+                        slope_vel = -obj.real_height / (obj.real_width * game.gravity)
                     else:
-                        prev_y = 1-(prev_player["right"] - obj.x) / obj.width
-                        y = 1-(player["right"] - obj.x) / obj.width
-                        next_y = 1-(player["right"]+game.speed - obj.x) / obj.width
-                        slope_vel = obj.height / (obj.width * game.gravity)
+                        prev_y = 1-(prev_player["right"] - obj.real_x) / obj.real_width
+                        y = 1-(player["right"] - obj.real_x) / obj.real_width
+                        next_y = 1-(player["right"]+game.speed - obj.real_x) / obj.real_width
+                        slope_vel = obj.real_height / (obj.real_width * game.gravity)
                     
                     if ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not (on_left_edge or on_right_edge):
-                        game.max_height = min(game.max_height, obj.y - game.player.height)
+                        game.max_height = min(game.max_height, obj.real_y - game.player.height)
                         game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
                         game.sliding = 1
                         this_sliding = True
                     elif ((prev_player_y <= prev_y and y < player_y) or abs(y - player_y) < 1e-2) and not on_right_edge:
-                        game.max_height = min(game.max_height, obj.y - game.player.height + next_y*obj.height)
+                        game.max_height = min(game.max_height, obj.real_y - game.player.height + next_y*obj.real_height)
                         game.y_vel = max(game.y_vel, slope_vel) if game.gravity > 0 else min(game.y_vel, slope_vel)
                         game.sliding = 1
                         this_sliding = True
 
-                elif obj.shape in ("right slope", "left slope") and obj.rotation == 180:
-                    prev_player_y = (prev_player["top"] - obj.y) / obj.height
-                    player_y = (player["top"] - obj.y) / obj.height
+                elif obj.real_shape in ("right slope", "left slope") and obj.real_rotation == 180:
+                    prev_player_y = (prev_player["top"] - obj.real_y) / obj.real_height
+                    player_y = (player["top"] - obj.real_y) / obj.real_height
 
-                    if obj.shape == "right slope":
-                        prev_y = (prev_player["right"] - obj.x) / obj.width
-                        y = (player["right"] - obj.x) / obj.width
-                        next_y = (player["right"]+game.speed - obj.x) / obj.width
-                        slope_vel = -obj.height / (obj.width * game.gravity)
+                    if obj.real_shape == "right slope":
+                        prev_y = (prev_player["right"] - obj.real_x) / obj.real_width
+                        y = (player["right"] - obj.real_x) / obj.real_width
+                        next_y = (player["right"]+game.speed - obj.real_x) / obj.real_width
+                        slope_vel = -obj.real_height / (obj.real_width * game.gravity)
                     else:
-                        prev_y = 1-(prev_player["left"] - obj.x) / obj.width
-                        y = 1-(player["left"] - obj.x) / obj.width
-                        next_y = 1-(player["left"]+game.speed - obj.x) / obj.width
-                        slope_vel = obj.height / (obj.width * game.gravity)
+                        prev_y = 1-(prev_player["left"] - obj.real_x) / obj.real_width
+                        y = 1-(player["left"] - obj.real_x) / obj.real_width
+                        next_y = 1-(player["left"]+game.speed - obj.real_x) / obj.real_width
+                        slope_vel = obj.real_height / (obj.real_width * game.gravity)
 
                     if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not (on_left_edge or on_right_edge):
                         game.min_height = max(game.min_height, obj.aabb["bottom"])
@@ -110,7 +111,7 @@ def check_collision(game):
                         game.sliding = -1
                         this_sliding = True
                     elif ((prev_player_y >= prev_y and y > player_y) or abs(y - player_y) < 1e-2) and not on_right_edge:
-                        game.min_height = max(game.min_height, obj.aabb["top"] + next_y*obj.height)
+                        game.min_height = max(game.min_height, obj.aabb["top"] + next_y*obj.real_height)
                         game.y_vel = min(game.y_vel, slope_vel) if game.gravity > 0 else max(game.y_vel, slope_vel)
                         game.sliding = -1
                         this_sliding = True
@@ -131,11 +132,11 @@ def check_collision(game):
                 elif not prev_this_sliding and this_sliding and game.gamemode == "wave":
                     game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
-        elif obj.shape == "end":
+        elif obj.real_shape == "end":
             if collide(game.player, obj):
                 game.completed = True
                 if not game.cheated:
-                    if game.name in game.victors.keys():
+                    if game.name in game.victors:
                         game.victors[game.name][1] += 1
                         game.victors[game.name][2] = max(game.victors[game.name][2], game.collected_coins[0])
                         game.victors[game.name][3] = max(game.victors[game.name][3], game.collected_coins[1])
@@ -144,14 +145,14 @@ def check_collision(game):
                         completion_time = time.time() if game.victors[game.name][4] == 0 else game.victors[game.name][4]
                         game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1], completion_time)
 
-        elif obj.shape == "gamemode":
-            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier:
-                if game.gamemode != obj.modifier:
+        elif obj.real_shape == "gamemode":
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
+                if game.gamemode != obj.real_modifier:
 
                     if game.gamemode == "wave":
                         game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
                     
-                    game.gamemode = obj.modifier
+                    game.gamemode = obj.real_modifier
                     game.player.color = gamemode_colors[game.gamemode]
                     game.player_render.color = gamemode_colors[game.gamemode]
                     game.player.recompute()
@@ -159,120 +160,120 @@ def check_collision(game):
                     if game.gamemode == "wave":
                         game.wave_trail = [(game.player.x + game.player.width/2, game.player.y)]
 
-        elif obj.shape == "speed":
-            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier:
-                game.speed = float(obj.modifier)
+        elif obj.real_shape == "speed":
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
+                game.speed = float(obj.real_modifier)
 
-        elif obj.shape == "gravity":
-            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier is not None and game.gravity != float(obj.modifier):
-                if game.gravity != 0 and obj.modifier != 0 and game.gravity/abs(game.gravity) != float(obj.modifier)/abs(float(obj.modifier)): 
+        elif obj.real_shape == "gravity":
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier is not None and game.gravity != float(obj.real_modifier):
+                if game.gravity != 0 and obj.real_modifier != 0 and game.gravity/abs(game.gravity) != float(obj.real_modifier)/abs(float(obj.real_modifier)): 
                     game.y_vel *= -1
-                game.gravity = float(obj.modifier)
+                game.gravity = float(obj.real_modifier)
                 if game.gamemode == "wave":
                     game.wave_trail.append((game.player.x + game.player.width/2, game.player.y))
 
-        elif obj.shape == "size":
-            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier:
-                size = float(obj.modifier)*40
+        elif obj.real_shape == "size":
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
+                size = float(obj.real_modifier)*40
                 game.player.width = size
                 game.player.height = size
                 game.player_render.width = size
                 game.player_render.height = size
                 game.player.recompute()
 
-        elif obj.shape == "teleport":
-            if collide(game.player, obj, game.hitboxes[-1]) and obj.modifier is not None:
-                game.player.y = max(game.level["meta"]["roof"], min(game.level["meta"]["floor"] - game.player.height, obj.modifier))
+        elif obj.real_shape == "teleport":
+            if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier is not None:
+                game.player.y = max(game.level["meta"]["roof"], min(game.level["meta"]["floor"] - game.player.height, obj.real_modifier))
         
-        elif obj.shape == "orb":
+        elif obj.real_shape == "orb":
             if round(game.y_vel) != fall_speed:
-                if obj.modifier and obj.modifier != "dash":
+                if obj.real_modifier and obj.real_modifier != "dash":
                     if not obj.interacted and game.clicking > 0 and not game.clicked and collide(game.player, obj) and game.gamemode != "wave":
                         obj.interacted = True
                         game.clicked = True
 
-                        if obj.modifier == "small":
+                        if obj.real_modifier == "small":
                             game.y_vel = max(game.y_vel, 2)
 
-                        elif obj.modifier == "normal":
+                        elif obj.real_modifier == "normal":
                             game.y_vel = max(game.y_vel, 3)
 
-                        elif obj.modifier == "big":
+                        elif obj.real_modifier == "big":
                             game.y_vel = max(game.y_vel, 4)
 
-                        elif obj.modifier == "gravity":
+                        elif obj.real_modifier == "gravity":
                             game.gravity *= -1
                             game.y_vel = -1
 
-                        elif obj.modifier == "heavy":
+                        elif obj.real_modifier == "heavy":
                             game.y_vel = min(game.y_vel, -4)
 
-                        if obj.modifier not in ("gravity", "heavy"):
+                        if obj.real_modifier not in ("gravity", "heavy"):
                             if game.gamemode == "ship":
                                 game.y_vel *= 0.3
                             elif game.gamemode == "ufo":
                                 game.y_vel *= 0.7
 
-                elif obj.modifier and not game.clicked:
+                elif obj.real_modifier and not game.clicked:
                     if collide(game.player, obj) and game.clicking > 0:
                         obj.interacted = True
                         game.dashing = obj
                         game.clicked = True
         
-        elif obj.shape == "pad":
-            if obj.modifier and collide(game.player, obj, game.hitboxes[-1]):
+        elif obj.real_shape == "pad":
+            if obj.real_modifier and collide(game.player, obj, game.hitboxes[-1]):
                 if game.gamemode != "wave":
-                    if obj.modifier == "small":
+                    if obj.real_modifier == "small":
                         game.y_vel = max(game.y_vel, 2)
 
-                    elif obj.modifier == "normal":
+                    elif obj.real_modifier == "normal":
                         game.y_vel = max(game.y_vel, 3)
 
-                    elif obj.modifier == "big":
+                    elif obj.real_modifier == "big":
                         game.y_vel = max(game.y_vel, 4)
 
-                    elif obj.modifier == "gravity":
+                    elif obj.real_modifier == "gravity":
                         game.gravity *= -1
                         game.y_vel = -1
 
-                    elif obj.modifier == "spider":
+                    elif obj.real_modifier == "spider":
                         game.gravity *= -1
                         game.y_vel = fall_speed
 
-                    if obj.modifier != "spider":
+                    if obj.real_modifier != "spider":
                         if game.gamemode == "ship":
                             game.y_vel *= 0.5
                         elif game.gamemode == "ufo":
                             game.y_vel *= 0.7
 
-        elif obj.shape == "trigger":
-            if obj.modifier["value"] and collide(game.player, obj, game.hitboxes[-1]):
-                if obj.triggers and obj.modifier["attribute"] in ("shape", "color", "outline", "rotation", "x", "y", "width", "height"):
-                    apply_trigger(obj)
+        elif obj.real_shape == "trigger":
+            if obj.real_modifier["value"] and collide(game.player, obj, game.hitboxes[-1]):
+                if obj.triggers and obj.real_modifier["attribute"] in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "modifier"):
+                    apply_trigger(game, obj)
 
-                elif obj.modifier["attribute"] == "length":
-                    game.level_length = obj.modifier["value"]
+                elif obj.real_modifier["attribute"] == "length":
+                    game.level_length = obj.real_modifier["value"]
 
-                elif obj.modifier["attribute"] == "roof":
-                    game.level_roof = obj.modifier["value"]
+                elif obj.real_modifier["attribute"] == "roof":
+                    game.level_roof = obj.real_modifier["value"]
 
-                elif obj.modifier["attribute"] == "floor":
-                    game.level_floor = obj.modifier["value"]
+                elif obj.real_modifier["attribute"] == "floor":
+                    game.level_floor = obj.real_modifier["value"]
 
-                elif obj.modifier["attribute"] == "roof color":
-                    game.roof_color = obj.modifier["value"]
+                elif obj.real_modifier["attribute"] == "roof color":
+                    game.roof_color = obj.real_modifier["value"]
 
-                elif obj.modifier["attribute"] == "floor color":
-                    game.floor_color = obj.modifier["value"]
+                elif obj.real_modifier["attribute"] == "floor color":
+                    game.floor_color = obj.real_modifier["value"]
 
-                elif obj.modifier["attribute"] == "background":
-                    game.background_color = obj.modifier["value"]
+                elif obj.real_modifier["attribute"] == "background":
+                    game.background_color = obj.real_modifier["value"]
 
-        elif obj.shape == "coin":
+        elif obj.real_shape == "coin":
             if not obj.interacted and not game.cheated and collide(game.player, obj):
                 obj.interacted = True
                 game.collected_coins[0] += 1
-                game.collected_coins[1] += obj.modifier
+                game.collected_coins[1] += obj.real_modifier
 
     if game.dashing and game.clicking == 0:
         game.dashing.interacted = False
