@@ -309,25 +309,30 @@ def draw_title(game, screen):
         screen.blit(text, (x, y))
 
 def draw_textboxes(game, screen):
+    active = None
+
     for i, box in enumerate(game.textboxes):
         if not box.active:
-            text = game.text_cache.get_surface(f"{box.field_name}: {box.text}", game.primary_color, "screen")
+            box_text = box.text if box.field_name != "Password" else ("*") * len(box.text)
+            text = game.text_cache.get_surface(f"{box.field_name}: {box_text}", game.primary_color, "screen")
             margin = 5
-            width, height = game.text_cache.get_size(f"{box.field_name}: {box.text}", game.primary_color, "screen")
+            width, height = game.text_cache.get_size(f"{box.field_name}: {box_text}", game.primary_color, "screen")
             x, y = (20, i*(height + margin*2 - 2) + height)
             py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
             py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
-    
-    for i, box in enumerate(game.textboxes):
-        if box.active:
-            text = game.text_cache.get_surface(f"{box.field_name}: {box.text}", game.primary_color, "screen")
-            margin = 5
-            width, height = game.text_cache.get_size(f"{box.field_name}: {box.text}", game.primary_color, "screen")
-            x, y = (20, i*(height + margin*2 - 2) + height)
-            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
-            py.draw.rect(screen, (0, 200, 0), (x - margin, y - margin, width + margin*2, height + margin*2), 2)
-            screen.blit(text, (x, y))
+        else:
+            active = box
+
+    if active:
+        box_text = active.text if active.field_name != "Password" else ("*") * len(active.text)
+        text = game.text_cache.get_surface(f"{active.field_name}: {box_text}", game.primary_color, "screen")
+        margin = 5
+        width, height = game.text_cache.get_size(f"{active.field_name}: {box_text}", game.primary_color, "screen")
+        x, y = (20, i*(height + margin*2 - 2) + height)
+        py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+        py.draw.rect(screen, (0, 200, 0), (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+        screen.blit(text, (x, y))
 
 def draw_debug(game, screen):
     debug_items = [
@@ -353,57 +358,58 @@ def draw_debug(game, screen):
 def draw(game):
     screen = game.screen
 
-    if game.background_color == (0,)*3:
-        game.screen.fill(game.primary_color)
-    elif game.background_color == (255,)*3:
-        game.screen.fill(game.secondary_color)
-    else:
-        game.screen.fill(game.background_color)
+    if hasattr(game, "name") and game.name:
+        if game.background_color == (0,)*3:
+            game.screen.fill(game.primary_color)
+        elif game.background_color == (255,)*3:
+            game.screen.fill(game.secondary_color)
+        else:
+            game.screen.fill(game.background_color)
 
-    if game.current_level != 0:
-        draw_floor_roof(game, screen)
-    
-    if game.building:
-        if game.layer_view:
-            if game.layer == 0:
+        if game.current_level != 0:
+            draw_floor_roof(game, screen)
+        
+        if game.building:
+            if game.layer_view:
+                if game.layer == 0:
+                    draw_background(game, screen)
+                elif game.layer == 1:
+                    draw_objects(game, screen)
+                elif game.layer == 2:
+                    draw_decoration(game, screen)
+            else:
                 draw_background(game, screen)
-            elif game.layer == 1:
                 draw_objects(game, screen)
-            elif game.layer == 2:
                 draw_decoration(game, screen)
+                draw_checkpoints(game, screen)
         else:
             draw_background(game, screen)
             draw_objects(game, screen)
             draw_decoration(game, screen)
-            draw_checkpoints(game, screen)
-    else:
-        draw_background(game, screen)
-        draw_objects(game, screen)
-        draw_decoration(game, screen)
-    
-    draw_hitboxes(game, screen)
-    
-    if game.show_player and game.current_level != 0:
-        draw_wave_trail(game, screen)
-        draw_player(game, screen)
+        
+        draw_hitboxes(game, screen)
+        
+        if game.show_player and game.current_level != 0:
+            draw_wave_trail(game, screen)
+            draw_player(game, screen)
 
-    if game.show_buckets:
-        draw_buckets(game, screen)
+        if game.show_buckets:
+            draw_buckets(game, screen)
 
-    if game.completed or game.paused or game.current_level == 0:
-        draw_leaderboard(game, screen)
+        if game.completed or game.paused or game.current_level == 0:
+            draw_leaderboard(game, screen)
 
-    if game.title:
-        if game.title[1] == -1:
-            draw_title(game, screen)
-        else:
-            if time.perf_counter() > game.title[1]:
-                if not game.building:
-                    game.title = [game.level["meta"]["title"], -1] if game.current_level == 0 else [f"{game.level["meta"]["title"]} | Points: {str(game.points)}", -1]
-                else:
-                    game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
-            else:
+        if game.title:
+            if game.title[1] == -1:
                 draw_title(game, screen)
+            else:
+                if time.perf_counter() > game.title[1]:
+                    if not game.building:
+                        game.title = [game.level["meta"]["title"], -1] if game.current_level == 0 else [f"{game.level["meta"]["title"]} | Points: {str(game.points)}", -1]
+                    else:
+                        game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
+                else:
+                    draw_title(game, screen)
     
     draw_textboxes(game, screen)
 

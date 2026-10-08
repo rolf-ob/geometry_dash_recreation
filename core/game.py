@@ -7,6 +7,7 @@ import pygame as py
 from entities.spatial import get_buckets
 from core.input import handle_input
 from core.physics import update
+from core.textbox import TextBox
 from rendering.rendering import draw
 from entities.object import Object
 from entities.serialization import level_to_dict, dict_to_level, save_json
@@ -28,7 +29,6 @@ class Game:
         for user in Path("users").iterdir():
             self.users.append(str(user))
         self.users.sort()
-        print(self.users)
 
         self.songs = Path("songs")
         self.operator = True
@@ -50,9 +50,6 @@ class Game:
         self.done_states = []
         self.undone_states = []
 
-        self.textboxes = []
-        self.active_textbox = None
-
         self.cheated = False
         self.debug = False
         self.show_buckets = False
@@ -61,6 +58,8 @@ class Game:
         self.noclip = False
         self.speedhack = False
         self.show_player = True
+        self.primary_color = (0,)*3
+        self.secondary_color = (255,)*3
 
         self.last_frame_time = time.perf_counter()
         self.last_save_time = time.perf_counter()
@@ -73,7 +72,20 @@ class Game:
         py.mouse.set_visible(False)
         py.key.stop_text_input()
 
-        self.load_user("Rolf")
+        self.login()
+
+    def login(self):
+        self.controls = {
+            "previous attribute": [py.key.key_code("up")],
+            "next attribute": [py.key.key_code("down")],
+            "deselect attribute": [py.key.key_code("tab")]
+        }
+
+        self.textboxes = [
+            TextBox("Username", ""),
+            TextBox("Password", "")
+        ]
+        self.active_textbox = self.textboxes[0]
 
     def load_user(self, username):
         self.name = username
@@ -342,13 +354,19 @@ class Game:
         for level in self.levels:
             save_json(f"levels/{level["meta"]["title"]}.json", level_to_dict(level))
 
-        self.accessibility["fps"] = self.fps
-        self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
-        self.accessibility["respawn time"] = self.respawn_time
-        self.accessibility["volume"] = self.volume
-        self.accessibility["dark mode"] = self.dark_mode
-        save_json(f"users/{self.name}/accessibility.json", self.accessibility)
-        save_json(f"users/{self.name}/controls.json", self.controls)
+        if hasattr(self, "name") and self.name:
+            self.accessibility["fps"] = self.fps
+            self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
+            self.accessibility["respawn time"] = self.respawn_time
+            self.accessibility["volume"] = self.volume
+            self.accessibility["dark mode"] = self.dark_mode
+            save_json(f"users/{self.name}/accessibility.json", self.accessibility)
+
+            controls = {
+                action: [py.key.name(key) for key in keys]
+                for action, keys in self.controls.items()
+            }
+            save_json(f"users/{self.name}/controls.json", controls)
 
         self.title = ["Settings and levels saved", time.perf_counter() + 2]
 
@@ -374,17 +392,21 @@ class Game:
                     frame_time *= self.speedhack_multiplier
                 accumulator += frame_time
 
+                logged_in = True
+
             else:
                 can_update = False
+                logged_in = False
 
             handle_input(self)
 
-            while accumulator >= FIXED_STEP:
-                if can_update:
+            if logged_in:
+                while accumulator >= FIXED_STEP:
+                    if can_update:
+                        update(self)
+                    accumulator -= FIXED_STEP
+                if self.frame_steps == 1 or self.frame_steps >= self.fps // 3:
                     update(self)
-                accumulator -= FIXED_STEP
-            if self.frame_steps == 1 or self.frame_steps >= self.fps // 3:
-                update(self)
             
             draw(self)
             py.display.flip()
@@ -392,8 +414,12 @@ class Game:
             if self.building and now - self.last_save_time >= AUTOSAVE_INTERVAL:
                 self.last_save_time = time.perf_counter()
                 self.save_to_file()
-            
-            self.last_frame_time = self.fps_handler.limit_fps(self.fps * self.speedhack_multiplier if self.speedhack else self.fps, self.last_frame_time)
+
+            if hasattr(self, "name") and self.name:
+                fps = self.fps * self.speedhack_multiplier if self.speedhack else self.fps
+                self.last_frame_time = self.fps_handler.limit_fps(fps, self.last_frame_time)
+            else:
+                self.fps_handler.limit_fps(60, self.last_frame_time)
             self.fps_handler.tick()
 
         self.save_to_file()

@@ -1,7 +1,7 @@
 {
   "password": null,
   "speedhack multiplier": 0.5,
-  "fps": 240,
+  "fps": 60,
   "respawn time": 0.5,
   "volume": 50,
   "dark mode": false

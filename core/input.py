@@ -142,15 +142,18 @@ def zoom(game, y):
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
 def handle_input(game):
+    logged_in = hasattr(game, "name") and game.name
+
     keys = py.key.get_pressed()
     shift = True if keys[py.K_LSHIFT] else False
     ctrl = True if keys[py.K_LCTRL] else False
     alt = True if keys[py.K_LALT] else False
-
-    if any(keys[key] for key in game.controls["step frame"]) and not game.building:
-        step_frame(game)
-    else:
-        game.frame_steps = 0
+    
+    if logged_in:
+        if any(keys[key] for key in game.controls["step frame"]) and not game.building:
+            step_frame(game)
+        else:
+            game.frame_steps = 0
 
     if shift and py.mouse.get_pressed()[0] and game.building:
         place_object(game)
@@ -174,6 +177,7 @@ def handle_input(game):
             game.active_textbox.text += event.text
 
         elif event.type == py.KEYDOWN:
+            print(py.key.name(event.key), [key for key in game.controls["previous attribute"]])
             if game.active_textbox:
                 if event.key == py.K_RETURN:
                     if game.building and not game.editing_level:
@@ -205,14 +209,17 @@ def handle_input(game):
                 
                 else:
                     if any(event.key == key for key in game.controls["previous attribute"]):
+                        print("prev")
                         switch_attribute(game, "previous")
                     elif any(event.key == key for key in game.controls["next attribute"]):
+                        print("ne")
                         switch_attribute(game, "next")
                     elif any(event.key == key for key in game.controls["deselect attribute"]):
+                        print("tab")
                         switch_attribute(game, "deselect")
 
             else:
-                if hasattr(game, "name") and game.name:
+                if logged_in:
                     if not game.building:
                         playing_controls = {
                             "click": lambda: click(game, "click", 0, shift, ctrl),
@@ -303,16 +310,16 @@ def handle_input(game):
                         if any(event.key == key for key in game.controls[action]):
                             function()
 
-        elif event.type == py.KEYUP:
+        elif event.type == py.KEYUP and logged_in:
             if any(event.key == key for key in game.controls["click"]):
                 click(game, "release", 0, shift, ctrl)
         
-        elif event.type == py.MOUSEBUTTONDOWN:
+        elif event.type == py.MOUSEBUTTONDOWN and logged_in:
             click(game, "click", event.button, shift, ctrl)
-        elif event.type == py.MOUSEBUTTONUP:
+        elif event.type == py.MOUSEBUTTONUP and logged_in:
             click(game, "release", event.button, shift, ctrl)
         
-        elif event.type == py.MOUSEWHEEL:
+        elif event.type == py.MOUSEWHEEL and logged_in:
             if ctrl:
                 scroll(game, event.y)
             elif shift:
