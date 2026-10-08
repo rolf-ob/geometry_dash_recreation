@@ -1,13 +1,14 @@
 Features until update v1.1.0
+    - Account login, logout and creation
     - Trigger transition speed
     - Main levels
-    - Accounts with separate settings, stats and login
 
 Future features:
     Building features
     - Default level sizes
 
     Gameplay features
+    - Music affected by speedhack
     - CBF
 
     User

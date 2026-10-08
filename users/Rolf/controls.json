@@ -1,0 +1,150 @@
+{
+"click": [
+    "space",
+    "w",
+    "return",
+    "enter"
+],
+"toggle pause": [
+    "escape",
+    "s"
+],
+"restart level": [
+    "r"
+],
+"previous checkpoint": [
+    "a"
+],
+"next checkpoint": [
+    "d"
+],
+"previous level": [
+    "q"
+],
+"next level": [
+    "e"
+],
+"toggle speedhack": [
+    "z"
+],
+"toggle noclip": [
+    "c"
+],
+"toggle player visibility": [
+    "n"
+],
+"step frame": [
+    "v"
+],
+"move or scale": [
+    "v"
+],
+"up": [
+    "w"
+],
+"left": [
+    "a"
+],
+"down": [
+    "s"
+],
+"right": [
+    "d"
+],
+"rotate counter clockwise": [
+    "q"
+],
+"rotate clockwise": [
+    "e"
+],
+"flip horizontally": [
+    "i"
+],
+"flip vertically": [
+    "o"
+],
+"deselect objects": [
+    "u"
+],
+"duplicate objects": [
+    "y"
+],
+"delete objects": [
+    "backspace"
+],
+"snap grid objects": [
+    "g"
+],
+"group objects": [
+    "j"
+],
+"ungroup objects": [
+    "k"
+],
+"layer objects last": [
+    "1"
+],
+"layer objects back": [
+    "2"
+],
+"layer objects forward": [
+    "3"
+],
+"layer objects first": [
+    "4"
+],
+"move objects to background": [
+    "5"
+],
+"move objects to objects": [
+    "6"
+],
+"move objects to decoration": [
+    "7"
+],
+"switch layer": [
+    "c"
+],
+"toggle layer view": [
+    "<"
+],
+"reset camera": [
+    "r"
+],
+"undo edit": [
+    "z"
+],
+"edit level": [
+    "t"
+],
+"toggle dark mode": [
+    "m"
+],
+"toggle debug": [
+    "f3"
+],
+"toggle buckets": [
+    "f4"
+],
+"save to file": [
+    "f"
+],
+"previous attribute": [
+    "up"
+],
+"next attribute": [
+    "down"
+],
+"deselect attribute": [
+    "tab"
+],
+"toggle hitboxes": [
+    "x"
+],
+"create level": [
+    "h"
+],
+"toggle building": [
+    "b"
+]
+}

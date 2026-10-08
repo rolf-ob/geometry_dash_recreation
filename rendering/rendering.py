@@ -399,7 +399,7 @@ def draw(game):
         else:
             if time.perf_counter() > game.title[1]:
                 if not game.building:
-                    game.title = [game.level["meta"]["title"], -1] if game.current_level == 0 else [f"{game.level["meta"]["title"]} | Points: {str(game.level["meta"]["points"])}", -1]
+                    game.title = [game.level["meta"]["title"], -1] if game.current_level == 0 else [f"{game.level["meta"]["title"]} | Points: {str(game.points)}", -1]
                 else:
                     game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
             else:

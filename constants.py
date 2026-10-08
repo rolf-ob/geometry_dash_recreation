@@ -88,11 +88,11 @@ settings_tutorial = [
     "Deselect Setting - Tab",
     "",
     "SETTING DESCRIPTION",
-    "Name - Your leaderboard name",
     "Speedhack - Speed multiplier for the speed changer",
     "FPS - Frames per second",
     "Respawn Time - How quickly you respawn",
     "Volume - How loud the music is from 0-100",
+    "Log Out - Press enter while field is selected to log out"
 ]
 building_tutorial = [
     "BUILDING CONTROLS",

@@ -1,160 +1,160 @@
 {
   "accessibility": {
-    "name": "Rolf",
+    "password": "GDjustagame",
     "speedhack multiplier": 0.5,
-    "fps": 120,
+    "fps": 240,
     "respawn time": 0.5,
-    "volume": 70,
+    "volume": 50,
     "dark mode": false
   },
   "controls": {
     "click": [
-      "space",
-      "w",
-      "return",
-      "enter"
+      32,
+      119,
+      13,
+      1073741912
     ],
     "toggle pause": [
-      "escape",
-      "s"
+      27,
+      115
     ],
     "restart level": [
-      "r"
+      114
     ],
     "previous checkpoint": [
-      "a"
+      97
     ],
     "next checkpoint": [
-      "d"
+      100
     ],
     "previous level": [
-      "q"
+      113
     ],
     "next level": [
-      "e"
+      101
     ],
     "toggle speedhack": [
-      "z"
+      122
     ],
     "toggle noclip": [
-      "c"
+      99
     ],
     "toggle player visibility": [
-      "n"
+      110
     ],
     "step frame": [
-      "v"
+      118
     ],
     "move or scale": [
-      "v"
+      118
     ],
     "up": [
-      "w"
+      119
     ],
     "left": [
-      "a"
+      97
     ],
     "down": [
-      "s"
+      115
     ],
     "right": [
-      "d"
+      100
     ],
     "rotate counter clockwise": [
-      "q"
+      113
     ],
     "rotate clockwise": [
-      "e"
+      101
     ],
     "flip horizontally": [
-      "i"
+      105
     ],
     "flip vertically": [
-      "o"
+      111
     ],
     "deselect objects": [
-      "u"
+      117
     ],
     "duplicate objects": [
-      "y"
+      121
     ],
     "delete objects": [
-      "backspace"
+      8
     ],
     "snap grid objects": [
-      "g"
+      103
     ],
     "group objects": [
-      "j"
+      106
     ],
     "ungroup objects": [
-      "k"
+      107
     ],
     "layer objects last": [
-      "1"
+      49
     ],
     "layer objects back": [
-      "2"
+      50
     ],
     "layer objects forward": [
-      "3"
+      51
     ],
     "layer objects first": [
-      "4"
+      52
     ],
     "move objects to background": [
-      "5"
+      53
     ],
     "move objects to objects": [
-      "6"
+      54
     ],
     "move objects to decoration": [
-      "7"
+      55
     ],
     "switch layer": [
-      "c"
+      99
     ],
     "toggle layer view": [
-      "<"
+      60
     ],
     "reset camera": [
-      "r"
+      114
     ],
     "undo edit": [
-      "z"
+      122
     ],
     "edit level": [
-      "t"
+      116
     ],
     "toggle dark mode": [
-      "m"
+      109
     ],
     "toggle debug": [
-      "f3"
+      1073741884
     ],
     "toggle buckets": [
-      "f4"
+      1073741885
     ],
     "save to file": [
-      "f"
+      102
     ],
     "previous attribute": [
-      "up"
+      1073741906
     ],
     "next attribute": [
-      "down"
+      1073741905
     ],
     "deselect attribute": [
-      "tab"
+      9
     ],
     "toggle hitboxes": [
-      "x"
+      120
     ],
     "create level": [
-      "h"
+      104
     ],
     "toggle building": [
-      "b"
+      98
     ]
   }
 }

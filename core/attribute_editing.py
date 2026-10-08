@@ -270,12 +270,15 @@ def apply_edit(game, obj, real_field_name, text):
             else:
                 if field_name == "length":
                     game.level["meta"]["length"] = max(0, int(text))
+                    game.length = max(0, int(text))
                 
                 elif field_name == "roof":
                     game.level["meta"]["roof"] = min(game.level["meta"]["floor"] - 400, int(text))
+                    game.roof = min(game.level["meta"]["floor"] - 400, int(text))
 
                 elif field_name == "floor":
                     game.level["meta"]["floor"] = max(game.level["meta"]["roof"] + 400, int(text))
+                    game.floor = max(game.level["meta"]["roof"] + 400, int(text))
 
                 elif field_name == "roof color":
                     r, g, b = (max(0, min(255, int(value))) for value in text.split())
@@ -310,27 +313,32 @@ def apply_edit(game, obj, real_field_name, text):
 
                 elif field_name == "points":
                     game.level["meta"]["points"] = int(text)
+                    game.points = int(text)
 
                 elif field_name == "level number":
                     new_number = max(1, min(len(game.levels)-1, int(text)))
                     game.levels.pop(game.current_level)
                     game.levels.insert(new_number, game.level)
                     game.current_level = new_number
-                    game.load_level(False)
 
                     for i, level in enumerate(game.levels):
                         level["meta"]["level number"] = i
+                    
+                    game.load_level(False)
 
                 elif field_name == "song":
                     song_path = game.songs / (text + ".ogg")
                     if song_path.is_file():
                         game.level["meta"]["song"] = text + ".ogg"
+                        game.song = text + ".ogg"
                 
                 elif field_name == "song start":
                     game.level["meta"]["song start"] = float(text)
+                    game.song_start = float(text)
 
                 elif field_name == "reset stats" and text == "reset":
                     game.level["victors"] = {}
+                    game.victors = {}
 
                 elif field_name == "delete" and text == "delete":
                     file = Path("levels") / f"{game.level['meta']['title']}.json"
@@ -341,10 +349,7 @@ def apply_edit(game, obj, real_field_name, text):
                     toggle_building(game)
 
         else:
-            if field_name == "name":
-                game.name = text
-
-            elif field_name == "speedhack":
+            if field_name == "speedhack":
                 game.speedhack_multiplier = max(0.01, float(text))
 
             elif field_name == "fps":
@@ -356,6 +361,9 @@ def apply_edit(game, obj, real_field_name, text):
             elif field_name == "volume":
                 game.volume = max(0, min(100, int(text)))
                 py.mixer.music.set_volume(max(0, min(100, int(text))) / 100)
+
+            elif field_name == "log out":
+                pass #!
 
     except ValueError:
         pass

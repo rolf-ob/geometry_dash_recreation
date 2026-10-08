@@ -559,26 +559,26 @@ def close_menu(game):
 def open_menu(game, menu):
     if menu == "settings":
         game.textboxes = [
-            TextBox("Name", game.name),
             TextBox("Speedhack", game.speedhack_multiplier),
             TextBox("FPS", game.fps),
             TextBox("Respawn Time", game.respawn_time),
             TextBox("Volume", game.volume),
+            TextBox("Log Out", "")
         ]
     
     elif menu == "level settings":
-        r1, g1, b1 = game.level["meta"]["roof color"]
-        r2, g2, b2 = game.level["meta"]["floor color"]
-        r3, g3, b3 = game.level["meta"]["background color"]
+        r1, g1, b1 = game.roof_color
+        r2, g2, b2 = game.floor_color
+        r3, g3, b3 = game.background_color
         game.textboxes = [
-            TextBox("Length", game.level["meta"]["length"]),
-            TextBox("Roof", game.level["meta"]["roof"]),
-            TextBox("Floor", game.level["meta"]["floor"]),
+            TextBox("Length", game.level_length),
+            TextBox("Roof", game.level_roof),
+            TextBox("Floor", game.level_floor),
             TextBox("Roof Color", f"{str(r1)} {str(g1)} {str(b1)}"),
             TextBox("Floor Color", f"{str(r2)} {str(g2)} {str(b2)}"),
             TextBox("Background", f"{str(r3)} {str(g3)} {str(b3)}"),
             TextBox("Title", game.level["meta"]["title"]),
-            TextBox("Points", game.level["meta"]["points"]),
+            TextBox("Points", game.points),
             TextBox("Level Number", game.level["meta"]["level number"]),
             TextBox("Song", game.song),
             TextBox("Song Start", game.song_start),
