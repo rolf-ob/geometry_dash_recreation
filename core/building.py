@@ -25,7 +25,7 @@ def toggle_building(game):
         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
             obj.selected = False
 
-        game.level_states = []
+        game.done_states = []
         game.undone_states = []
 
         game.editing_level = False
@@ -483,7 +483,7 @@ def switch_layer(game, shift):
 
 def reset_camera(game, ctrl):
     if ctrl: game.building_camera_x = 0
-    game.building_camera_y = game.level_floor - HEIGHT + CAMERA_MARGIN
+    game.building_camera_y = game.floor - HEIGHT + CAMERA_MARGIN
     game.camera_zoom = 1
     game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
@@ -571,9 +571,9 @@ def open_menu(game, menu):
         r2, g2, b2 = game.floor_color
         r3, g3, b3 = game.background_color
         game.textboxes = [
-            TextBox("Length", game.level_length),
-            TextBox("Roof", game.level_roof),
-            TextBox("Floor", game.level_floor),
+            TextBox("Length", game.length),
+            TextBox("Roof", game.roof),
+            TextBox("Floor", game.floor),
             TextBox("Roof Color", f"{str(r1)} {str(g1)} {str(b1)}"),
             TextBox("Floor Color", f"{str(r2)} {str(g2)} {str(b2)}"),
             TextBox("Background", f"{str(r3)} {str(g3)} {str(b3)}"),

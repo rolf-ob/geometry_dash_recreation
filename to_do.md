@@ -1,5 +1,4 @@
 Features until update v1.1.0
-    - Accounts remove from tracking and add to gitignore
     - Account login, logout and creation
     - Trigger transition speed
     - Main levels

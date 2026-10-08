@@ -39,8 +39,8 @@ def check_collision(game):
     fall_speed = -game.player.height / game.speed*abs(game.gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
-    game.min_height = game.level_roof
-    game.max_height = game.level_floor - game.player.height
+    game.min_height = game.roof
+    game.max_height = game.floor - game.player.height
     game.on_ground = False
     game.slid = game.sliding
     game.sliding = 0
@@ -196,7 +196,7 @@ def check_collision(game):
 
         elif obj.real_shape == "teleport":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier is not None:
-                game.player.y = max(game.level_roof, min(game.level_floor - game.player.height, obj.real_modifier))
+                game.player.y = max(game.roof, min(game.floor - game.player.height, obj.real_modifier))
         
         elif obj.real_shape == "orb":
             if round(game.y_vel) != fall_speed:
@@ -265,13 +265,13 @@ def check_collision(game):
                     apply_trigger(game, obj)
 
                 elif obj.real_modifier["attribute"] == "length":
-                    game.level_length = obj.real_modifier["value"]
+                    game.length = obj.real_modifier["value"]
 
                 elif obj.real_modifier["attribute"] == "roof":
-                    game.level_roof = obj.real_modifier["value"]
+                    game.roof = obj.real_modifier["value"]
 
                 elif obj.real_modifier["attribute"] == "floor":
-                    game.level_floor = obj.real_modifier["value"]
+                    game.floor = obj.real_modifier["value"]
 
                 elif obj.real_modifier["attribute"] == "roof color":
                     game.roof_color = obj.real_modifier["value"]
@@ -382,7 +382,7 @@ def update_position(game):
 
     start_x = game.player.x - game.checkpoints[0].x
     checkpoint_x = game.checkpoints[game.checkpoint].x - game.checkpoints[0].x
-    end_x = game.level_length - game.checkpoints[0].x - game.player.width
+    end_x = game.length - game.checkpoints[0].x - game.player.width
     game.starting_percent = 0 if end_x == 0 else min(100, round(checkpoint_x / end_x * 100))
     game.percent = 0 if end_x == 0 else min(100, round(start_x / end_x * 100))
 

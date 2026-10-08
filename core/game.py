@@ -360,17 +360,22 @@ class Game:
             now = time.perf_counter()
             frame_time = now - previous
             previous = now
-            can_update = not self.paused and not self.building and self.current_level != 0
 
-            if frame_time > 0.05 and can_update and not self.completed and self.dead == 0 and now - self.restart_time > 0.1:
-                self.restart()
-                accumulator = 0
-                frame_time = 0
-                self.title = ["You're too laggy!", time.perf_counter() + 2]
-            
-            if self.speedhack:
-                frame_time *= self.speedhack_multiplier
-            accumulator += frame_time
+            if hasattr(self, "name") and self.name:
+                can_update = not self.paused and not self.building and self.current_level != 0
+
+                if frame_time > 0.05 and can_update and not self.completed and self.dead == 0 and now - self.restart_time > 0.1:
+                    self.restart()
+                    accumulator = 0
+                    frame_time = 0
+                    self.title = ["You're too laggy!", time.perf_counter() + 2]
+                
+                if self.speedhack:
+                    frame_time *= self.speedhack_multiplier
+                accumulator += frame_time
+
+            else:
+                can_update = False
 
             handle_input(self)
 

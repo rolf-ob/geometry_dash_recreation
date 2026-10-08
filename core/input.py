@@ -53,10 +53,19 @@ def toggle_pause(game):
     
     if not game.paused and game.dead == 0 and not game.completed:
         game.camera_x = game.player.x - PLAYER_X
-        game.camera_y = game.level_floor - HEIGHT + CAMERA_MARGIN
+        game.camera_y = game.floor - HEIGHT + CAMERA_MARGIN
         game.camera_y = max(min(game.camera_y, game.player.y - CAMERA_MARGIN * 2), game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN)
         game.camera_zoom = 1
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
+
+def toggle_dark_mode(game):
+    game.dark_mode = not game.dark_mode
+    if game.dark_mode:
+        game.primary_color = (255,)*3
+        game.secondary_color = (0,)*3
+    else:
+        game.primary_color = (0,)*3
+        game.secondary_color = (255,)*3
 
 def switch_checkpoint(game, way):
     if way == "previous":
@@ -69,7 +78,7 @@ def switch_checkpoint(game, way):
 def switch_level(game, way):
     game.checkpoint = 0
     game.building_camera_x = 0
-    game.building_camera_y = game.level_floor - HEIGHT + CAMERA_MARGIN
+    game.building_camera_y = game.floor - HEIGHT + CAMERA_MARGIN
     if way == "previous":
         game.current_level = (game.current_level-1) % len(game.levels)
     elif way == "next":
@@ -77,14 +86,15 @@ def switch_level(game, way):
     
     game.load_level()
 
-def toggle_dark_mode(game):
-    game.dark_mode = not game.dark_mode
-    if game.dark_mode:
-        game.primary_color = (255,)*3
-        game.secondary_color = (0,)*3
-    else:
-        game.primary_color = (0,)*3
-        game.secondary_color = (255,)*3
+def toggle_speedhack(game):
+    if len(game.hitboxes) > 1 and not game.completed:
+        game.cheated = True
+    game.speedhack = not game.speedhack
+
+def toggle_hitboxes(game):
+    if len(game.hitboxes) > 1 and not game.completed:
+        game.cheated = True
+    game.show_hitboxes = not game.show_hitboxes
 
 def step_frame(game):
     if game.paused:
@@ -133,12 +143,10 @@ def zoom(game, y):
 
 def handle_input(game):
     keys = py.key.get_pressed()
-
     shift = True if keys[py.K_LSHIFT] else False
     ctrl = True if keys[py.K_LCTRL] else False
     alt = True if keys[py.K_LALT] else False
 
-    #Held events
     if any(keys[key] for key in game.controls["step frame"]) and not game.building:
         step_frame(game)
     else:
@@ -167,7 +175,6 @@ def handle_input(game):
 
         elif event.type == py.KEYDOWN:
             if game.active_textbox:
-
                 if event.key == py.K_RETURN:
                     if game.building and not game.editing_level:
                         cp_selected = False
@@ -205,129 +212,96 @@ def handle_input(game):
                         switch_attribute(game, "deselect")
 
             else:
-                if not game.building: #Playing controls
-                    if any(event.key == key for key in game.controls["click"]):
-                        click(game, "click", 0, shift, ctrl)
+                if hasattr(game, "name") and game.name:
+                    if not game.building:
+                        playing_controls = {
+                            "click": lambda: click(game, "click", 0, shift, ctrl),
+                            "toggle pause": lambda: toggle_pause(game),
+                            "restart level": game.restart,
+
+                            "previous checkpoint": lambda: switch_checkpoint(game, "previous"),
+                            "next checkpoint": lambda: switch_checkpoint(game, "next"),
+
+                            "previous level": lambda: switch_level(game, "previous"),
+                            "next level": lambda: switch_level(game, "next"),
+
+                            "toggle speedhack": lambda: toggle_speedhack(game),
+                            "toggle noclip": lambda: setattr(game, "noclip", not game.noclip)
+                        }
+                        for action, function in playing_controls.items():
+                            if any(event.key == key for key in game.controls[action]):
+                                function()
+                        
+                    else:
+                        building_controls = {
+                            "move or scale": lambda: setattr(game, "scale_mode", not game.scale_mode),
                     
-                    elif any(event.key == key for key in game.controls["toggle pause"]):
-                        toggle_pause(game)
+                            "up": lambda: move_scale_objects(game, "up", shift, ctrl, alt),
+                            "left": lambda: move_scale_objects(game, "left", shift, ctrl, alt),
+                            "down": lambda: move_scale_objects(game, "down", shift, ctrl, alt),
+                            "right": lambda: move_scale_objects(game, "right", shift, ctrl, alt),
                     
-                    elif any(event.key == key for key in game.controls["restart level"]):
-                        game.restart()
-
-                    elif any(event.key == key for key in game.controls["previous checkpoint"]):
-                        switch_checkpoint(game, "previous")
-                    elif any(event.key == key for key in game.controls["next checkpoint"]):
-                        switch_checkpoint(game, "next")
+                            "rotate counter clockwise": lambda: rotate_objects(game, "counter clockwise", shift, ctrl, alt),
+                            "rotate clockwise": lambda: rotate_objects(game, "clockwise", shift, ctrl, alt),
                     
-                    elif any(event.key == key for key in game.controls["previous level"]):
-                        switch_level(game, "previous")
-                    elif any(event.key == key for key in game.controls["next level"]):
-                        switch_level(game, "next")
-
-                    elif any(event.key == key for key in game.controls["toggle speedhack"]):
-                        if len(game.hitboxes) > 1 and not game.completed:
-                            game.cheated = True
-                        game.speedhack = not game.speedhack
+                            "flip horizontally": lambda: flip_objects(game, "horizontally"),
+                            "flip vertically": lambda: flip_objects(game, "vertically"),
                     
-                    elif any(event.key == key for key in game.controls["toggle noclip"]):
-                        game.noclip = not game.noclip
-
-                else: #Building controls
-                    if any(event.key == key for key in game.controls["move or scale"]):
-                        game.scale_mode = not game.scale_mode
-                    elif any(event.key == key for key in game.controls["up"]):
-                        move_scale_objects(game, "up", shift, ctrl, alt)
-                    elif any(event.key == key for key in game.controls["left"]):
-                        move_scale_objects(game, "left", shift, ctrl, alt)
-                    elif any(event.key == key for key in game.controls["down"]):
-                        move_scale_objects(game, "down", shift, ctrl, alt)
-                    elif any(event.key == key for key in game.controls["right"]):
-                        move_scale_objects(game, "right", shift, ctrl, alt)
-
-                    elif any(event.key == key for key in game.controls["rotate counter clockwise"]):
-                        rotate_objects(game, "counter clockwise", shift, ctrl, alt)
-                    elif any(event.key == key for key in game.controls["rotate clockwise"]):
-                        rotate_objects(game, "clockwise", shift, ctrl, alt)
-
-                    elif any(event.key == key for key in game.controls["flip horizontally"]):
-                        flip_objects(game, "horizontally")
-                    elif any(event.key == key for key in game.controls["flip vertically"]):
-                        flip_objects(game, "vertically")
+                            "deselect objects": lambda: deselect_objects(game),
+                            "duplicate objects": lambda: duplicate_objects(game),
+                            "delete objects": lambda: delete_objects(game),
                     
-                    elif any(event.key == key for key in game.controls["deselect objects"]):
-                        deselect_objects(game)
-                    elif any(event.key == key for key in game.controls["duplicate objects"]):
-                        duplicate_objects(game)
-                    elif any(event.key == key for key in game.controls["delete objects"]):
-                        delete_objects(game)
-
-                    elif any(event.key == key for key in game.controls["snap grid objects"]):
-                        snap_grid_objects(game)
-
-                    elif any(event.key == key for key in game.controls["group objects"]):
-                        group_objects(game, "group")
-                    elif any(event.key == key for key in game.controls["ungroup objects"]):
-                        group_objects(game, "ungroup")
-
-                    elif any(event.key == key for key in game.controls["layer objects last"]):
-                        layer_objects(game, "last")
-                    elif any(event.key == key for key in game.controls["layer objects back"]):
-                        layer_objects(game, "back")
-                    elif any(event.key == key for key in game.controls["layer objects forward"]):
-                        layer_objects(game, "forward")
-                    elif any(event.key == key for key in game.controls["layer objects first"]):
-                        layer_objects(game, "first")
-
-                    elif any(event.key == key for key in game.controls["move objects to background"]):
-                        move_objects_to_layer(game, "background")
-                    elif any(event.key == key for key in game.controls["move objects to objects"]):
-                        move_objects_to_layer(game, "objects")
-                    elif any(event.key == key for key in game.controls["move objects to decoration"]):
-                        move_objects_to_layer(game, "decoration")
+                            "snap grid objects": lambda: snap_grid_objects(game),
                     
-                    elif any(event.key == key for key in game.controls["switch layer"]):
-                        switch_layer(game, shift)
-                    elif any(event.key == key for key in game.controls["toggle layer view"]):
-                        game.layer_view = not game.layer_view
-
-                    elif any(event.key == key for key in game.controls["reset camera"]):
-                        reset_camera(game, ctrl)
-
-                    elif any(event.key == key for key in game.controls["undo edit"]):
-                        undo_edit(game, ctrl)
+                            "group objects": lambda: group_objects(game, "group"),
+                            "ungroup objects": lambda: group_objects(game, "ungroup"),
                     
-                    elif any(event.key == key for key in game.controls["edit level"]):
-                        edit_level(game)
-
-                #Universal controls
-                if any(event.key == key for key in game.controls["toggle dark mode"]):
-                    toggle_dark_mode(game)
-                elif any(event.key == key for key in game.controls["toggle debug"]):
-                    game.debug = not game.debug
-                elif any(event.key == key for key in game.controls["toggle buckets"]):
-                    game.show_buckets = not game.show_buckets
-                elif any(event.key == key for key in game.controls["save to file"]):
-                    game.save_to_file()
+                            "layer objects last": lambda: layer_objects(game, "last"),
+                            "layer objects back": lambda: layer_objects(game, "back"),
+                            "layer objects forward": lambda: layer_objects(game, "forward"),
+                            "layer objects first": lambda: layer_objects(game, "first"),
                     
-                elif any(event.key == key for key in game.controls["previous attribute"]):
-                    switch_attribute(game, "previous")
-                elif any(event.key == key for key in game.controls["next attribute"]):
-                    switch_attribute(game, "next")
-
-                elif any(event.key == key for key in game.controls["toggle hitboxes"]):
-                    if len(game.hitboxes) > 1 and not game.completed:
-                        game.cheated = True
-                    game.show_hitboxes = not game.show_hitboxes
-
-                elif any(event.key == key for key in game.controls["toggle player visibility"]):
-                    game.show_player = not game.show_player
-
-                elif any(event.key == key for key in game.controls["create level"]) and game.operator:
-                    create_level(game)
+                            "move objects to background": lambda: move_objects_to_layer(game, "background"),
+                            "move objects to objects": lambda: move_objects_to_layer(game, "objects"),
+                            "move objects to decoration": lambda: move_objects_to_layer(game, "decoration"),
                     
-                elif any(event.key == key for key in game.controls["toggle building"]) and game.operator:
-                    toggle_building(game)
+                            "switch layer": lambda: switch_layer(game, shift),
+                            "toggle layer view": lambda: setattr(game, "layer_view", not game.layer_view),
+                    
+                            "reset camera": lambda: reset_camera(game, ctrl),
+                    
+                            "undo edit": lambda: undo_edit(game, ctrl),
+
+                            "edit level": lambda: edit_level(game),
+                        }
+                        for action, function in building_controls.items():
+                            if any(event.key == key for key in game.controls[action]):
+                                function()
+                    
+                    universal_controls = {
+                        "toggle dark mode": lambda: toggle_dark_mode(game),
+                        "toggle debug": lambda: setattr(game, "debug", not game.debug),
+                        "toggle buckets": lambda: setattr(game, "show_buckets", not game.show_buckets),
+                        "save to file": game.save_to_file,
+                
+                        "previous attribute": lambda: switch_attribute(game, "previous"),
+                        "next attribute": lambda: switch_attribute(game, "next"),
+                
+                        "toggle hitboxes": lambda: toggle_hitboxes(game),
+                
+                        "toggle player visibility": lambda: setattr(game, "show_player", not game.show_player),
+                    }
+                    for action, function in universal_controls.items():
+                        if any(event.key == key for key in game.controls[action]):
+                            function()
+
+                    operator_controls = {
+                        "create level": create_level(game),
+                        "toggle building": toggle_building(game)
+                    }
+                    for action, function in operator_controls.items():
+                        if any(event.key == key for key in game.controls[action]):
+                            function()
 
         elif event.type == py.KEYUP:
             if any(event.key == key for key in game.controls["click"]):
