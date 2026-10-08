@@ -71,7 +71,7 @@ class Game:
         self.editing_level = False
         self.buckets = {"hitboxes": defaultdict(list), "wave trail": defaultdict(list)}
 
-        self.level_states = []
+        self.done_states = []
         self.undone_states = []
 
         self.textboxes = []
@@ -96,33 +96,69 @@ class Game:
 
         self.load_level()
 
-    def capture_level_state(self, edit):
+    def capture_state(self, edit, all=False):
+        if self.editing_level or all:
+            state = {
+                "all": True,
+                "levels": deepcopy([level_to_dict(level) for level in self.levels]),
+                "current level": self.current_level
+            }
+        else:
+            state = {
+                "all": False,
+                "level": deepcopy(level_to_dict(self.level))
+            }
+
         if edit == "undo":
-            self.undone_states.append(deepcopy(level_to_dict(self.level)))
+            self.undone_states.append(state)
 
         elif edit == "redo":
-            self.level_states.append(deepcopy(level_to_dict(self.level)))
+            self.done_states.append(state)
         
         elif edit == "do":
-            self.undone_states = []
-            self.level_states.append(deepcopy(level_to_dict(self.level)))
-            if len(self.level_states) > MAX_EDIT_HISTORY:
-                self.level_states.pop(0)
+            self.done_states.append(state)
+            self.undone_states.clear()
+            if len(self.done_states) > MAX_EDIT_HISTORY:
+                self.done_states.pop(0)
+    
+    def restore_state(self, edit):
+        if edit == "undo":
+            if not self.done_states:
+                return
 
-    def restore_level_state(self, edit):
-        if edit == "undo" and self.level_states:
-            self.capture_level_state(edit)
-
-            self.level = dict_to_level(self.level_states[-1])
-            self.levels[self.current_level] = self.level
-            self.load_level(False)
-            self.level_states.pop()
+            state = self.done_states[-1]
+            self.capture_state("undo", all=state["all"])
             
-        elif edit == "redo" and self.undone_states:
-            self.capture_level_state(edit)
+            if state["all"]:
+                self.levels = [dict_to_level(level) for level in deepcopy(state["levels"])]
 
-            self.level = dict_to_level(self.undone_states[-1])
-            self.levels[self.current_level] = self.level
+                self.current_level = state["current level"]
+                self.level = self.levels[self.current_level]
+
+            else:
+                self.level = dict_to_level(deepcopy(state["level"]))
+                self.levels[self.current_level] = self.level
+
+            self.load_level(False)
+            self.done_states.pop()
+            
+        elif edit == "redo":
+            if not self.undone_states:
+                return
+
+            state = self.undone_states[-1]
+            self.capture_state("redo", all=state["all"])
+
+            if self.done_states["all"]:
+                self.levels = [dict_to_level(level) for level in deepcopy(state["levels"])]
+            
+                self.current_level = state["current level"]
+                self.level = self.levels[self.current_level]
+
+            else:
+                self.level = dict_to_level(deepcopy(state["level"]))
+                self.levels[self.current_level] = self.level
+
             self.load_level(False)
             self.undone_states.pop()
 
@@ -244,14 +280,15 @@ class Game:
     def load_level(self, restart=True):
         if restart:
             self.level = self.levels[self.current_level]
-        else:
-            for obj in (*self.background, *self.objects, *self.decoration):
-                obj.recompute()
-            self.rebuild_buckets()
 
         self.background = self.level["background"]
         self.objects = self.level["objects"]
         self.decoration = self.level["decoration"]
+
+        if not restart:
+            for obj in (*self.background, *self.objects, *self.decoration):
+                obj.recompute()
+            self.rebuild_buckets()
 
         rest = sorted(
             self.level["checkpoints"][1:],

@@ -46,7 +46,7 @@ def place_object(game):
     objects = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width)
 
     if not any(collide(mouse, obj) for obj in objects):
-        game.capture_level_state("do")
+        game.capture_state("do")
 
         new_obj = Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3)
         layer.append(new_obj)
@@ -140,7 +140,7 @@ def select_object(game, shift, ctrl):
             open_menu(game, "trigger attributes")
 
 def move_scale_objects(game, direction, shift, ctrl, alt):
-    game.capture_level_state("do")
+    game.capture_state("do")
     
     if shift:
         distance = 1
@@ -204,7 +204,7 @@ def rotate_objects(game, way, shift, ctrl, alt):
                 y_positions.append(point[1])
 
     if x_positions:
-        game.capture_level_state("do")
+        game.capture_state("do")
 
         min_x = min(x_positions)
         max_x = max(x_positions)
@@ -244,7 +244,7 @@ def flip_objects(game, way):
                 positions.append(point[axis])
 
     if positions:
-        game.capture_level_state("do")
+        game.capture_state("do")
 
         min_pos = min(positions)
         max_pos = max(positions)
@@ -308,7 +308,7 @@ def deselect_objects(game):
         close_menu(game)
 
 def duplicate_objects(game):
-    game.capture_level_state("do")
+    game.capture_state("do")
 
     object_groups = {}
 
@@ -335,7 +335,7 @@ def duplicate_objects(game):
     game.rebuild_buckets()
 
 def delete_objects(game):
-    game.capture_level_state("do")
+    game.capture_state("do")
 
     for layer in (game.background, game.objects, game.decoration, game.checkpoints):
         for obj in layer.copy():
@@ -346,7 +346,7 @@ def delete_objects(game):
     close_menu(game)
 
 def snap_grid_objects(game):
-    game.capture_level_state("do")
+    game.capture_state("do")
 
     for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
         if obj.selected:
@@ -373,7 +373,7 @@ def snap_grid_objects(game):
     game.rebuild_buckets()
 
 def group_objects(game, group):
-    game.capture_level_state("do")
+    game.capture_state("do")
 
     if group == "group":
         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
@@ -387,7 +387,7 @@ def group_objects(game, group):
                 obj.group_id = 0
 
 def layer_objects(game, way):
-    game.capture_level_state("do")
+    game.capture_state("do")
 
     if way == "last":
         for layer in (game.background, game.objects, game.decoration):
@@ -420,7 +420,7 @@ def layer_objects(game, way):
     game.rebuild_buckets()
 
 def move_objects_to_layer(game, layer_name):
-    game.capture_level_state("do")
+    game.capture_state("do")
 
     target_layer = {
         "background": game.background,
@@ -453,9 +453,9 @@ def reset_camera(game, ctrl):
 def undo_edit(game, ctrl):
     deselect_objects(game)
     if ctrl:
-        game.restore_level_state("undo")
+        game.restore_state("undo")
     else:
-        game.restore_level_state("redo")
+        game.restore_state("redo")
 
 def create_level(game):
     base_name = "Unnamed level"

@@ -180,7 +180,7 @@ def handle_input(game):
                                 if obj.shape == "checkpoint": cp_selected = True
                                 elif obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True
-                        game.capture_level_state("do")
+                        game.capture_state("do")
 
                         if not obj_selected and cp_selected:
                             open_menu(game, "checkpoint attributes")
@@ -191,7 +191,7 @@ def handle_input(game):
                     
                     else:
                         apply_edit(game, None, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                        game.capture_level_state("do")
+                        game.capture_state("do")
 
                 elif event.key == py.K_BACKSPACE:
                     game.active_textbox.text = game.active_textbox.text[:-1]
