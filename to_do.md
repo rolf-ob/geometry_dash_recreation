@@ -1,6 +1,4 @@
 Features until update v1.1.0
-    - Trigger id dict
-    - Trigger activation by x order
     - Trigger transition speed
     - Main levels
     - Accounts with separate settings, stats and login

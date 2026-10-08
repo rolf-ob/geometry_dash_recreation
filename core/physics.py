@@ -7,28 +7,30 @@ import pygame as py
 from core.attribute_editing import apply_edit
 
 def apply_trigger(game, trigger):
-    for obj in (*game.background, *game.objects, *game.decoration):
-        if obj.shape != "trigger" and obj.triggers and trigger.triggers in obj.triggers:
-            if trigger.modifier["attribute"] == "x":
-                try:
-                    obj.real_x += int(trigger.modifier["value"])
-                except ValueError:
-                    pass
-            
-            elif trigger.modifier["attribute"] == "y":
-                try:
-                    obj.real_y += int(trigger.modifier["value"])
-                except ValueError:
-                    pass
-            
-            elif trigger.modifier["attribute"] == "rotation":
-                try:
-                    obj.real_rotation += float(round(trigger.modifier["value"], 1))
-                except ValueError:
-                    pass
-            
-            else:
-                apply_edit(game, obj, "real_" + trigger.modifier["attribute"], trigger.modifier["value"])
+    for obj in game.trigger_ids[trigger.triggers]:
+        if trigger.modifier["attribute"] == "x":
+            try:
+                obj.real_x += int(trigger.modifier["value"])
+                obj.recompute_triggered()
+            except ValueError:
+                pass
+        
+        elif trigger.modifier["attribute"] == "y":
+            try:
+                obj.real_y += int(trigger.modifier["value"])
+                obj.recompute_triggered()
+            except ValueError:
+                pass
+        
+        elif trigger.modifier["attribute"] == "rotation":
+            try:
+                obj.real_rotation += float(round(trigger.modifier["value"], 1))
+                obj.recompute_triggered()
+            except ValueError:
+                pass
+        
+        else:
+            apply_edit(game, obj, "real_" + trigger.modifier["attribute"], trigger.modifier["value"])
 
     if trigger.modifier["attribute"] not in ("color", "outline", "modifier"):
         game.rebuild_buckets()

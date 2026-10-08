@@ -284,6 +284,12 @@ class Game:
         self.background = self.level["background"]
         self.objects = self.level["objects"]
         self.decoration = self.level["decoration"]
+        self.trigger_ids = defaultdict(list)
+
+        for obj in (*self.background, *self.objects, *self.decoration):
+            if obj.shape != "trigger" and obj.triggers:
+                for id in obj.triggers:
+                    self.trigger_ids[id].append(obj)
 
         if not restart:
             for obj in (*self.background, *self.objects, *self.decoration):

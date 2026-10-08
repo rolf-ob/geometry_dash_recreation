@@ -316,7 +316,7 @@ def apply_edit(game, obj, real_field_name, text):
                     game.levels.pop(game.current_level)
                     game.levels.insert(new_number, game.level)
                     game.current_level = new_number
-                    game.load_level()
+                    game.load_level(False)
 
                     for i, level in enumerate(game.levels):
                         level["meta"]["level number"] = i

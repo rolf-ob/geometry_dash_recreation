@@ -20,12 +20,61 @@
     ],
     "title": "Unnamed level(1)",
     "points": 0,
-    "level number": 4,
+    "level number": 3,
     "song": "",
     "song start": 0
   },
   "background": [],
-  "objects": [],
+  "objects": [
+    {
+      "x": 760,
+      "y": 640,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "attribute": "y",
+        "value": 80,
+        "transition": ""
+      },
+      "group_id": 0,
+      "triggers": 1
+    },
+    {
+      "x": 1040,
+      "y": 600,
+      "width": 40,
+      "height": 120,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": [
+        1
+      ]
+    }
+  ],
   "decoration": [],
   "checkpoints": [
     {
@@ -55,5 +104,13 @@
       "triggers": []
     }
   ],
-  "victors": {}
+  "victors": {
+    "Rolf": [
+      15,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
 }
