@@ -347,8 +347,8 @@ class Game:
         self.accessibility["respawn time"] = self.respawn_time
         self.accessibility["volume"] = self.volume
         self.accessibility["dark mode"] = self.dark_mode
-        settings = {"accessibility": self.accessibility, "controls": self.controls}
-        save_json(f"users/{self.name}/accessibility", settings)
+        save_json(f"users/{self.name}/accessibility.json", self.accessibility)
+        save_json(f"users/{self.name}/controls.json", self.controls)
 
         self.title = ["Settings and levels saved", time.perf_counter() + 2]
 

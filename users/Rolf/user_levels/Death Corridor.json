@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "length": "Death Corridor",
+    "roof": 0,
+    "floor": 720,
+    "roof color": [
+      255,
+      255,
+      255
+    ],
+    "floor color": [
+      255,
+      255,
+      255
+    ],
+    "background color": [
+      255,
+      255,
+      255
+    ],
+    "title": [
+      "Death Corridor"
+    ],
+    "points": 80,
+    "level number": 0,
+    "song": "",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [
+    {
+      "x": 740,
+      "y": 0,
+      "width": 160,
+      "height": 320,
+      "rotation": 180,
+      "shape": "slope",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 660,
+      "y": 480,
+      "width": 320,
+      "height": 160,
+      "rotation": 270,
+      "shape": "slope",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 900,
+      "y": 0,
+      "width": 400,
+      "height": 320,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 900,
+      "y": 400,
+      "width": 400,
+      "height": 320,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1300,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "wave",
+        "speed": 2,
+        "gravity": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "victors": {
+    "Rolf": [
+      2,
+      0
+    ]
+  }
+}
