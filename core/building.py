@@ -140,44 +140,48 @@ def select_object(game, shift, ctrl):
             open_menu(game, "trigger attributes")
 
 def move_scale_objects(game, direction, shift, ctrl, alt):
-    game.capture_state("do")
-    
-    if shift:
-        distance = 1
-    elif ctrl:
-        distance = 200
-    elif alt:
-        distance = 20
-    else:
-        distance = 40
-    
-    add_x = 0
-    add_y = 0
-    if direction == "up":
-        add_y = -distance
-    elif direction == "left":
-        add_x = -distance
-    elif direction == "down":
-        add_y = distance
-    elif direction == "right":
-        add_x = distance
+    selected = []
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            selected.append(obj)
 
-    if not game.scale_mode:
-        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-            if obj.selected:
+    if selected:
+        game.capture_state("do")
+    
+        if shift:
+            distance = 1
+        elif ctrl:
+            distance = 200
+        elif alt:
+            distance = 20
+        else:
+            distance = 40
+        
+        add_x = 0
+        add_y = 0
+        if direction == "up":
+            add_y = -distance
+        elif direction == "left":
+            add_x = -distance
+        elif direction == "down":
+            add_y = distance
+        elif direction == "right":
+            add_x = distance
+
+        if not game.scale_mode:
+            for obj in selected:
                 obj.x += add_x
                 obj.y += add_y
                 obj.recompute()
-    else:
-        for obj in (*game.background, *game.objects, *game.decoration):
-            if obj.selected:
+        else:
+            for obj in selected:
                 if add_x > 0 or obj.width > distance:
                     obj.width += add_x
                 if add_y > 0 or obj.height > distance:
                     obj.height += add_y
                 obj.recompute()
-    
-    game.rebuild_buckets()
+        
+        game.rebuild_buckets()
 
 def rotate_objects(game, way, shift, ctrl, alt):
     if shift:
@@ -308,48 +312,65 @@ def deselect_objects(game):
         close_menu(game)
 
 def duplicate_objects(game):
-    game.capture_state("do")
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            selected = True
+            break
 
-    object_groups = {}
+    if selected:
+        game.capture_state("do")
 
-    for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-        for obj in layer.copy():
-            if obj.selected and obj.shape != "trigger":
-                modifier = obj.modifier if obj.shape != "checkpoint" else obj.modifier.copy()
-                
-                new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
-                layer.append(new_obj)
-                new_obj.selected = False
+        object_groups = {}
 
-                if obj.group_id != 0:
-                    if obj.group_id in object_groups:
-                        object_groups[obj.group_id].append(new_obj)
-                    else:
-                        object_groups[obj.group_id] = [new_obj]
+        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+            for obj in layer.copy():
+                if obj.selected and obj.shape != "trigger":
+                    modifier = obj.modifier if obj.shape != "checkpoint" else obj.modifier.copy()
+                    
+                    new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
+                    layer.append(new_obj)
+                    new_obj.selected = False
 
-    for id in object_groups.keys():
-        for object in object_groups[id]:
-            object.group_id = game.current_group_id
-        game.current_group_id += 1
-    
-    game.rebuild_buckets()
+                    if obj.group_id != 0:
+                        if obj.group_id in object_groups:
+                            object_groups[obj.group_id].append(new_obj)
+                        else:
+                            object_groups[obj.group_id] = [new_obj]
+
+        for id in object_groups.keys():
+            for object in object_groups[id]:
+                object.group_id = game.current_group_id
+            game.current_group_id += 1
+        
+        game.rebuild_buckets()
 
 def delete_objects(game):
-    game.capture_state("do")
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            selected = True
+            break
 
-    for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-        for obj in layer.copy():
-            if obj.selected and obj != game.checkpoints[0]:
-                layer.remove(obj)
+    if selected:
+        game.capture_state("do")
+
+        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
+            for obj in layer.copy():
+                if obj.selected and obj != game.checkpoints[0]:
+                    layer.remove(obj)
     
     game.rebuild_buckets()
     close_menu(game)
 
 def snap_grid_objects(game):
-    game.capture_state("do")
-
+    selected = []
     for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
         if obj.selected:
+            selected.append(obj)
+
+    if selected:
+        game.capture_state("do")
+
+        for obj in selected:
             if obj.x % 40 > 20:
                 obj.x += 40 - obj.x % 40
             else:
@@ -369,72 +390,88 @@ def snap_grid_objects(game):
             if obj.rotation < 0:
                 obj.rotation = round(obj.rotation + 360, 1)
             obj.recompute()
-    
-    game.rebuild_buckets()
+        
+        game.rebuild_buckets()
 
 def group_objects(game, group):
-    game.capture_state("do")
+    selected = []
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            selected.append(obj)
 
-    if group == "group":
-        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-            if obj.selected:
+    if selected:
+        game.capture_state("do")
+
+        if group == "group":
+            for obj in selected:
                 obj.group_id = game.current_group_id
-        game.current_group_id += 1
+            game.current_group_id += 1
 
-    elif group == "ungroup":
-        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-            if obj.selected:
+        elif group == "ungroup":
+            for obj in selected:
                 obj.group_id = 0
 
 def layer_objects(game, way):
-    game.capture_state("do")
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            selected = True
+            break
 
-    if way == "last":
-        for layer in (game.background, game.objects, game.decoration):
-            for obj in reversed(layer.copy()):
-                if obj.selected:
-                    layer.remove(obj)
-                    layer.insert(0, obj)
+    if selected:
+        game.capture_state("do")
 
-    elif way == "back":
-        for layer in (game.background, game.objects, game.decoration):
-            for i, obj in enumerate(layer.copy()):
-                if obj.selected:
-                    layer.remove(obj)
-                    layer.insert(max(0, i-1), obj)
+        if way == "last":
+            for layer in (game.background, game.objects, game.decoration):
+                for obj in reversed(layer.copy()):
+                    if obj.selected:
+                        layer.remove(obj)
+                        layer.insert(0, obj)
 
-    elif way == "forward":
-        for layer in (game.background, game.objects, game.decoration):
-            for i, obj in reversed(list(enumerate(layer.copy()))):
-                if obj.selected:
-                    layer.remove(obj)
-                    layer.insert(i+1, obj)
+        elif way == "back":
+            for layer in (game.background, game.objects, game.decoration):
+                for i, obj in enumerate(layer.copy()):
+                    if obj.selected:
+                        layer.remove(obj)
+                        layer.insert(max(0, i-1), obj)
 
-    elif way == "first":
+        elif way == "forward":
+            for layer in (game.background, game.objects, game.decoration):
+                for i, obj in reversed(list(enumerate(layer.copy()))):
+                    if obj.selected:
+                        layer.remove(obj)
+                        layer.insert(i+1, obj)
+
+        elif way == "first":
+            for layer in (game.background, game.objects, game.decoration):
+                for obj in layer.copy():
+                    if obj.selected:
+                        layer.remove(obj)
+                        layer.append(obj)
+
+        game.rebuild_buckets()
+
+def move_objects_to_layer(game, layer_name):
+    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+        if obj.selected:
+            selected = True
+            break
+
+    if selected:
+        game.capture_state("do")
+
+        target_layer = {
+            "background": game.background,
+            "objects": game.objects,
+            "decoration": game.decoration
+        }[layer_name]
+
         for layer in (game.background, game.objects, game.decoration):
             for obj in layer.copy():
                 if obj.selected:
                     layer.remove(obj)
-                    layer.append(obj)
+                    target_layer.append(obj)
 
-    game.rebuild_buckets()
-
-def move_objects_to_layer(game, layer_name):
-    game.capture_state("do")
-
-    target_layer = {
-        "background": game.background,
-        "objects": game.objects,
-        "decoration": game.decoration
-    }[layer_name]
-
-    for layer in (game.background, game.objects, game.decoration):
-        for obj in layer.copy():
-            if obj.selected:
-                layer.remove(obj)
-                target_layer.append(obj)
-
-    game.rebuild_buckets()
+        game.rebuild_buckets()
 
 def switch_layer(game, shift):
     if shift:
