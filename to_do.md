@@ -1,7 +1,4 @@
-login page textbox bug
-
 Features until update v1.1.0
-    - Account login, logout and creation
     - Trigger transition speed
     - Main levels
 

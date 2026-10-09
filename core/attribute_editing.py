@@ -363,7 +363,7 @@ def apply_edit(game, obj, real_field_name, text):
                 py.mixer.music.set_volume(max(0, min(100, int(text))) / 100)
 
             elif field_name == "log out":
-                pass #!
+                game.open_login_page()
 
     except ValueError:
         pass

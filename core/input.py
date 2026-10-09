@@ -1,10 +1,11 @@
 import pygame as py
-import time
+import time, json, os
 
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
 from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 from core.attribute_editing import switch_attribute, apply_edit
 from entities.spatial import get_buckets
+from entities.serialization import save_json
 
 def click(game, type, button, shift, ctrl):
     if button in (0, 1) and not game.building:
@@ -203,10 +204,40 @@ def handle_input(game):
                         game.capture_state("do")
 
                     else:
-                        game.login_info[game.active_textbox.field_name.lower()] = game.active_textbox.text
-                        game.active_textbox.text = ""
-                        if game.login_info["username"] and game.login_info["password"]:
-                            game.load_user(game.login_info["username"])
+                        if game.active_textbox.field_name.lower() == "create user":
+                            if f"users\\{game.textboxes[0].text}" not in game.users:
+                                if game.textboxes[1].text:
+                                    with open(f"users/Default/accessibility.json", "r") as f:
+                                        default_accessibility = json.load(f)
+                                    default_accessibility["password"] = game.textboxes[1].text
+                            
+                                    with open(f"users/Default/controls.json", "r") as f:
+                                        default_controls = json.load(f)
+
+                                    os.makedirs(f"users/{game.textboxes[0].text}/user_levels")
+                                    save_json(f"users/{game.textboxes[0].text}/accessibility.json", default_accessibility)
+                                    save_json(f"users/{game.textboxes[0].text}/controls.json", default_controls)
+                                    game.users.append(f"users\\{game.textboxes[0].text}")
+                                    game.users.sort()
+                                    game.load_user(game.textboxes[0].text)
+
+                                else:
+                                    game.title = ["Please enter a password along with your username", time.perf_counter() + 2]
+                            else:
+                                game.title = ["Username taken, try mixing in uppercase letters", time.perf_counter() + 2]
+
+                        elif game.active_textbox.field_name.lower() == "log in":
+                            if f"users\\{game.textboxes[0].text}" in game.users:
+                                with open(f"users/{game.textboxes[0].text}/accessibility.json", "r") as f:
+                                    settings = json.load(f)
+                                    password = settings["password"]
+                                
+                                if game.textboxes[1].text == password:
+                                    game.load_user(game.textboxes[0].text)
+                                else:
+                                    game.title = ["Invalid password", time.perf_counter() + 2]
+                            else:
+                                game.title = ["Invalid username, maybe you forgot an uppercase letter?", time.perf_counter() + 2]
 
                 elif event.key == py.K_BACKSPACE:
                     game.active_textbox.text = game.active_textbox.text[:-1]
@@ -221,7 +252,6 @@ def handle_input(game):
 
             else:
                 if game.name:
-                    print(event.key)
                     if not game.building:
                         playing_controls = {
                             "click": lambda: click(game, "click", 0, shift, ctrl),
@@ -240,7 +270,6 @@ def handle_input(game):
                         for action, function in playing_controls.items():
                             if any(event.key == key for key in game.controls[action]):
                                 function()
-                        print("playing")
                         
                     else:
                         building_controls = {
@@ -287,7 +316,6 @@ def handle_input(game):
                         for action, function in building_controls.items():
                             if any(event.key == key for key in game.controls[action]):
                                 function()
-                        print("building", game.building)
                     
                     universal_controls = {
                         "toggle dark mode": lambda: toggle_dark_mode(game),
@@ -305,12 +333,11 @@ def handle_input(game):
                     for action, function in universal_controls.items():
                         if any(event.key == key for key in game.controls[action]):
                             function()
-                    print("universal")
 
                     if game.operator:
                         operator_controls = {
-                            "create level": create_level(game),
-                            "toggle building": toggle_building(game)
+                            "create level": lambda: create_level(game),
+                            "toggle building": lambda: toggle_building(game)
                         }
                         for action, function in operator_controls.items():
                             if any(event.key == key for key in game.controls[action]):

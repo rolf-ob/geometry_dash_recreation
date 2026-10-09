@@ -46,6 +46,12 @@ orb_pad_colors = {
 
 coin_color = (255, 255, 0)
 
+login_page_tutorial = [
+    "Use up and down arrows to change selected textbox",
+    "Press Enter while Create User is selected to create a user with the typed in username and password (case sensitive)",
+    "Press Enter while Log In is selected to log into the account that has that username, given that the password is correct"
+]
+
 controls_tutorial = [
     "HOW TO WIN",
     "Collecting coins and completing levels gives points",
@@ -82,7 +88,7 @@ operator_tutorial = [
 ]
 settings_tutorial = [
     "CHANGE SETTINGS",
-    "Pause Level/Open Settings - Escape, S",
+    "Pause Level/Open Settings - Escape",
     "Select Setting - Up/Down Arrow",
     "Apply Setting - Return/Enter",
     "Deselect Setting - Tab",

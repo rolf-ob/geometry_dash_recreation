@@ -12,8 +12,6 @@ def make_shape(x, y, shape):
     )
 
 for shape in ["square", "right slope"]:
-    print(shape)
-
     def test_touching_shapes_collide():
         a = make_shape(0, 0, shape)
         b = make_shape(40, 0, shape)

@@ -2,7 +2,7 @@ import pygame as py
 import time, math
 
 from entities.spatial import get_nearby_objects
-from constants import WIDTH, HEIGHT, BUCKET_WIDTH, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
+from constants import WIDTH, HEIGHT, BUCKET_WIDTH, login_page_tutorial, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
 
 def world_to_screen(game, x, y):
     camera_x = game.camera_x if not game.building else game.building_camera_x
@@ -220,42 +220,11 @@ def draw_buckets(game, screen):
         py.draw.line(screen, (0, 255, 0), top, bottom, 1)
 
 def draw_leaderboard(game, screen):
-    if game.current_level != 0:
-        text = game.text_cache.get_surface(f"Leaderboard:", game.primary_color, "world")
-        margin = 5
-        width, height = game.text_cache.get_size(f"Leaderboard:", game.primary_color, "world")
-        x, y = (world_to_screen(game, game.length + 40, 125))
-        py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
-        py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
-        screen.blit(text, (x, y))
+    if not game.name:
+        for i, line in enumerate(login_page_tutorial):
+            screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), (200, 100 + 25*i))
 
-        if game.victors:
-            sorted_victors = sorted(
-                game.victors.items(),
-                key=lambda item: item[1][1],
-                reverse=True
-            )
-
-            for i, (victor, stats) in enumerate(sorted_victors):
-                completion_date = time.ctime(stats[4]) if stats[4] != 0 else "Not Completed"
-                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
-                margin = 5
-                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
-                x, y = (world_to_screen(game, game.length + 40, 160 + 36*i))
-                py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
-                py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
-                screen.blit(text, (x, y))
-        
-        else:
-            text = game.text_cache.get_surface(f"No stats yet", game.primary_color, "world")
-            margin = 5
-            width, height = game.text_cache.get_size(f"No stats yet", game.primary_color, "world")
-            x, y = x, y = (world_to_screen(game, game.length + 40, 160))
-            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
-            py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
-            screen.blit(text, (x, y))
-        
-    else:
+    elif game.current_level == 0:
         players = {}
         for level in game.levels:
             for (victor, stats) in level["victors"].items():
@@ -291,6 +260,41 @@ def draw_leaderboard(game, screen):
         for i, line in enumerate(settings_tutorial):
             screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), world_to_screen(game, 850, 60 + 25*i))
 
+    else:
+        text = game.text_cache.get_surface(f"Leaderboard:", game.primary_color, "world")
+        margin = 5
+        width, height = game.text_cache.get_size(f"Leaderboard:", game.primary_color, "world")
+        x, y = (world_to_screen(game, game.length + 40, 125))
+        py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+        py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+        screen.blit(text, (x, y))
+
+        if game.victors:
+            sorted_victors = sorted(
+                game.victors.items(),
+                key=lambda item: item[1][1],
+                reverse=True
+            )
+
+            for i, (victor, stats) in enumerate(sorted_victors):
+                completion_date = time.ctime(stats[4]) if stats[4] != 0 else "Not Completed"
+                text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
+                margin = 5
+                width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
+                x, y = (world_to_screen(game, game.length + 40, 160 + 36*i))
+                py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+                py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+                screen.blit(text, (x, y))
+        
+        else:
+            text = game.text_cache.get_surface(f"No stats yet", game.primary_color, "world")
+            margin = 5
+            width, height = game.text_cache.get_size(f"No stats yet", game.primary_color, "world")
+            x, y = x, y = (world_to_screen(game, game.length + 40, 160))
+            py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
+            py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
+            screen.blit(text, (x, y))
+
 def draw_title(game, screen):
     text = game.text_cache.get_surface(f"{game.title[0]}", game.primary_color, "screen")
     margin = 10
@@ -299,7 +303,7 @@ def draw_title(game, screen):
     py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
     py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
     screen.blit(text, (x, y))
-    if not game.building and game.current_level != 0:
+    if game.name and not game.building and game.current_level != 0:
         text = game.text_cache.get_surface(f"{game.starting_percent}%-{game.percent}%", game.primary_color, "screen")
         margin = 10
         width, height = game.text_cache.get_size(f"{game.starting_percent}%-{game.percent}%", game.primary_color, "screen")
@@ -401,20 +405,23 @@ def draw(game):
         if game.show_buckets:
             draw_buckets(game, screen)
 
-        if game.completed or game.paused or game.current_level == 0:
-            draw_leaderboard(game, screen)
+    if not game.name or game.completed or game.paused or game.current_level == 0:
+        draw_leaderboard(game, screen)
 
-        if game.title:
-            if game.title[1] == -1:
-                draw_title(game, screen)
-            else:
-                if time.perf_counter() > game.title[1]:
-                    if not game.building:
+    if game.title:
+        if game.title[1] == -1:
+            draw_title(game, screen)
+        else:
+            if time.perf_counter() > game.title[1]:
+                if not game.building:
+                    if game.name:
                         game.title = [game.level["meta"]["title"], -1] if game.current_level == 0 else [f"{game.level["meta"]["title"]} | Points: {str(game.points)}", -1]
                     else:
-                        game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
+                        game.title = ["WARNING! YOUR PASSWORD CAN BE READ BY ANYONE WITH ACCESS TO THE GAME FILES!", -1]
                 else:
-                    draw_title(game, screen)
+                    game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
+            else:
+                draw_title(game, screen)
     
     draw_textboxes(game, screen)
 

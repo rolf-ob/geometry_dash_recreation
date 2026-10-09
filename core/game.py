@@ -41,9 +41,6 @@ class Game:
         self.scale = 1
 
         self.building = False
-        self.layer = 1
-        self.layer_view = False
-        self.scale_mode = False
         self.editing_level = False
         self.buckets = {"hitboxes": defaultdict(list), "wave trail": defaultdict(list)}
 
@@ -51,13 +48,6 @@ class Game:
         self.undone_states = []
 
         self.cheated = False
-        self.debug = False
-        self.show_buckets = False
-        self.paused = False
-        self.show_hitboxes = False
-        self.noclip = False
-        self.speedhack = False
-        self.show_player = True
         self.frame_steps = 0
         self.primary_color = (0,)*3
         self.secondary_color = (255,)*3
@@ -72,10 +62,23 @@ class Game:
         py.display.set_caption("Geometry Dash")
         py.key.stop_text_input()
 
-        self.name = None
-        self.login()
+        self.open_login_page()
 
-    def login(self):
+    def open_login_page(self):
+        self.name = None
+        self.layer = 1
+        self.layer_view = False
+        self.scale_mode = False
+        self.debug = False
+        self.show_buckets = False
+        self.paused = False
+        self.show_hitboxes = False
+        self.noclip = False
+        self.speedhack = False
+        self.show_player = True
+
+        self.title = ["WARNING! YOUR PASSWORD CAN BE READ BY ANYONE WITH ACCESS TO THE GAME FILES!", -1]
+
         self.controls = {
             "previous attribute": [py.key.key_code("up")],
             "next attribute": [py.key.key_code("down")],
@@ -84,11 +87,12 @@ class Game:
 
         self.textboxes = [
             TextBox("Username", ""),
-            TextBox("Password", "")
+            TextBox("Password", ""),
+            TextBox("Create User", ""),
+            TextBox("Log In", "")
         ]
         self.active_textbox = self.textboxes[0]
-
-        self.login_info = {"username": None, "password": None}
+        self.active_textbox.activate()
 
     def load_user(self, username):
         self.name = username
@@ -105,7 +109,6 @@ class Game:
                 action: [py.key.key_code(key) for key in keys]
                 for action, keys in settings.items()
             }
-            print(self.controls)
         
         self.fps = self.accessibility["fps"]
         self.speedhack_multiplier = self.accessibility["speedhack multiplier"]
