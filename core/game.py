@@ -58,6 +58,7 @@ class Game:
         self.noclip = False
         self.speedhack = False
         self.show_player = True
+        self.frame_steps = 0
         self.primary_color = (0,)*3
         self.secondary_color = (255,)*3
 
@@ -69,16 +70,16 @@ class Game:
         self.fps_handler = FpsHandler()
         self.screen = py.display.set_mode((WIDTH, HEIGHT), py.RESIZABLE)
         py.display.set_caption("Geometry Dash")
-        py.mouse.set_visible(False)
         py.key.stop_text_input()
 
+        self.name = None
         self.login()
 
     def login(self):
         self.controls = {
             "previous attribute": [py.key.key_code("up")],
             "next attribute": [py.key.key_code("down")],
-            "deselect attribute": [py.key.key_code("tab")]
+            "deselect attribute": []
         }
 
         self.textboxes = [
@@ -87,8 +88,12 @@ class Game:
         ]
         self.active_textbox = self.textboxes[0]
 
+        self.login_info = {"username": None, "password": None}
+
     def load_user(self, username):
         self.name = username
+        self.textboxes = []
+        self.active_textbox = None
 
         with open(f"users/{self.name}/accessibility.json", "r") as f:
             settings = json.load(f)
@@ -100,6 +105,7 @@ class Game:
                 action: [py.key.key_code(key) for key in keys]
                 for action, keys in settings.items()
             }
+            print(self.controls)
         
         self.fps = self.accessibility["fps"]
         self.speedhack_multiplier = self.accessibility["speedhack multiplier"]
@@ -113,6 +119,8 @@ class Game:
         else:
             self.primary_color = (0,)*3
             self.secondary_color = (255,)*3
+
+        py.mouse.set_visible(False)
         
         self.current_level = 0
         self.load_level()
@@ -354,7 +362,7 @@ class Game:
         for level in self.levels:
             save_json(f"levels/{level["meta"]["title"]}.json", level_to_dict(level))
 
-        if hasattr(self, "name") and self.name:
+        if self.name:
             self.accessibility["fps"] = self.fps
             self.accessibility["speedhack multiplier"] = self.speedhack_multiplier
             self.accessibility["respawn time"] = self.respawn_time
@@ -379,7 +387,7 @@ class Game:
             frame_time = now - previous
             previous = now
 
-            if hasattr(self, "name") and self.name:
+            if self.name:
                 can_update = not self.paused and not self.building and self.current_level != 0
 
                 if frame_time > 0.05 and can_update and not self.completed and self.dead == 0 and now - self.restart_time > 0.1:
@@ -392,15 +400,12 @@ class Game:
                     frame_time *= self.speedhack_multiplier
                 accumulator += frame_time
 
-                logged_in = True
-
             else:
                 can_update = False
-                logged_in = False
 
             handle_input(self)
 
-            if logged_in:
+            if self.name:
                 while accumulator >= FIXED_STEP:
                     if can_update:
                         update(self)
@@ -415,7 +420,7 @@ class Game:
                 self.last_save_time = time.perf_counter()
                 self.save_to_file()
 
-            if hasattr(self, "name") and self.name:
+            if self.name:
                 fps = self.fps * self.speedhack_multiplier if self.speedhack else self.fps
                 self.last_frame_time = self.fps_handler.limit_fps(fps, self.last_frame_time)
             else:
