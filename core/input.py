@@ -142,14 +142,12 @@ def zoom(game, y):
         game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
 
 def handle_input(game):
-    logged_in = hasattr(game, "name") and game.name
-
     keys = py.key.get_pressed()
     shift = True if keys[py.K_LSHIFT] else False
     ctrl = True if keys[py.K_LCTRL] else False
     alt = True if keys[py.K_LALT] else False
     
-    if logged_in:
+    if game.name:
         if any(keys[key] for key in game.controls["step frame"]) and not game.building:
             step_frame(game)
         else:
@@ -165,19 +163,19 @@ def handle_input(game):
             game.running = False
 
         elif event.type == py.VIDEORESIZE:
+            zoom = game.camera_zoom if game.name else 1
             game.width, game.height = event.size
             game.view_width = game.width * (HEIGHT / game.height)
             game.view_height = game.height * (HEIGHT / game.height)
             game.scale = game.height / HEIGHT
             game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)), "screen")
-            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * game.camera_zoom)), "world")
+            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * zoom)), "world")
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
         elif event.type == py.TEXTINPUT and game.active_textbox:
             game.active_textbox.text += event.text
 
         elif event.type == py.KEYDOWN:
-            print(py.key.name(event.key), [key for key in game.controls["previous attribute"]])
             if game.active_textbox:
                 if event.key == py.K_RETURN:
                     if game.building and not game.editing_level:
@@ -185,13 +183,13 @@ def handle_input(game):
                         trigger_selected = False
                         obj_selected = False
 
+                        game.capture_state("do")
                         for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                             if obj.selected:
                                 apply_edit(game, obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
                                 if obj.shape == "checkpoint": cp_selected = True
                                 elif obj.shape == "trigger": trigger_selected = True
                                 else: obj_selected = True
-                        game.capture_state("do")
 
                         if not obj_selected and cp_selected:
                             open_menu(game, "checkpoint attributes")
@@ -200,26 +198,30 @@ def handle_input(game):
                         else:
                             game.active_textbox.text = ""
                     
-                    else:
+                    elif game.name:
                         apply_edit(game, None, game.active_textbox.field_name.lower(), game.active_textbox.text)
                         game.capture_state("do")
+
+                    else:
+                        game.login_info[game.active_textbox.field_name.lower()] = game.active_textbox.text
+                        game.active_textbox.text = ""
+                        if game.login_info["username"] and game.login_info["password"]:
+                            game.load_user(game.login_info["username"])
 
                 elif event.key == py.K_BACKSPACE:
                     game.active_textbox.text = game.active_textbox.text[:-1]
                 
                 else:
                     if any(event.key == key for key in game.controls["previous attribute"]):
-                        print("prev")
                         switch_attribute(game, "previous")
                     elif any(event.key == key for key in game.controls["next attribute"]):
-                        print("ne")
                         switch_attribute(game, "next")
                     elif any(event.key == key for key in game.controls["deselect attribute"]):
-                        print("tab")
                         switch_attribute(game, "deselect")
 
             else:
-                if logged_in:
+                if game.name:
+                    print(event.key)
                     if not game.building:
                         playing_controls = {
                             "click": lambda: click(game, "click", 0, shift, ctrl),
@@ -238,6 +240,7 @@ def handle_input(game):
                         for action, function in playing_controls.items():
                             if any(event.key == key for key in game.controls[action]):
                                 function()
+                        print("playing")
                         
                     else:
                         building_controls = {
@@ -284,6 +287,7 @@ def handle_input(game):
                         for action, function in building_controls.items():
                             if any(event.key == key for key in game.controls[action]):
                                 function()
+                        print("building", game.building)
                     
                     universal_controls = {
                         "toggle dark mode": lambda: toggle_dark_mode(game),
@@ -301,25 +305,27 @@ def handle_input(game):
                     for action, function in universal_controls.items():
                         if any(event.key == key for key in game.controls[action]):
                             function()
+                    print("universal")
 
-                    operator_controls = {
-                        "create level": create_level(game),
-                        "toggle building": toggle_building(game)
-                    }
-                    for action, function in operator_controls.items():
-                        if any(event.key == key for key in game.controls[action]):
-                            function()
+                    if game.operator:
+                        operator_controls = {
+                            "create level": create_level(game),
+                            "toggle building": toggle_building(game)
+                        }
+                        for action, function in operator_controls.items():
+                            if any(event.key == key for key in game.controls[action]):
+                                function()
 
-        elif event.type == py.KEYUP and logged_in:
+        elif event.type == py.KEYUP and game.name:
             if any(event.key == key for key in game.controls["click"]):
                 click(game, "release", 0, shift, ctrl)
         
-        elif event.type == py.MOUSEBUTTONDOWN and logged_in:
+        elif event.type == py.MOUSEBUTTONDOWN and game.name:
             click(game, "click", event.button, shift, ctrl)
-        elif event.type == py.MOUSEBUTTONUP and logged_in:
+        elif event.type == py.MOUSEBUTTONUP and game.name:
             click(game, "release", event.button, shift, ctrl)
         
-        elif event.type == py.MOUSEWHEEL and logged_in:
+        elif event.type == py.MOUSEWHEEL and game.name:
             if ctrl:
                 scroll(game, event.y)
             elif shift:

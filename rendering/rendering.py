@@ -310,7 +310,8 @@ def draw_title(game, screen):
 
 def draw_textboxes(game, screen):
     active = None
-
+    active_iteration = None
+    
     for i, box in enumerate(game.textboxes):
         if not box.active:
             box_text = box.text if box.field_name != "Password" else ("*") * len(box.text)
@@ -323,13 +324,14 @@ def draw_textboxes(game, screen):
             screen.blit(text, (x, y))
         else:
             active = box
+            active_iteration = i
 
     if active:
-        box_text = active.text if active.field_name != "Password" else ("*") * len(active.text)
+        box_text = active.text if active.field_name != "Password" else "*" * len(active.text)
         text = game.text_cache.get_surface(f"{active.field_name}: {box_text}", game.primary_color, "screen")
         margin = 5
         width, height = game.text_cache.get_size(f"{active.field_name}: {box_text}", game.primary_color, "screen")
-        x, y = (20, i*(height + margin*2 - 2) + height)
+        x, y = (20, active_iteration*(height + margin*2 - 2) + height)
         py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
         py.draw.rect(screen, (0, 200, 0), (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
@@ -358,7 +360,10 @@ def draw_debug(game, screen):
 def draw(game):
     screen = game.screen
 
-    if hasattr(game, "name") and game.name:
+    if not game.name:
+        game.screen.fill((255,)*3)
+
+    else:
         if game.background_color == (0,)*3:
             game.screen.fill(game.primary_color)
         elif game.background_color == (255,)*3:
