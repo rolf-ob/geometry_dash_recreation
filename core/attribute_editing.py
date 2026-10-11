@@ -1,6 +1,6 @@
 import pygame as py
-from pathlib import Path
 import re
+from pathlib import Path
 
 from constants import gamemode_colors, speed_color, gravity_colors, size_colors, teleport_color, orb_pad_colors, coin_color
 from entities.spatial import get_buckets
@@ -203,19 +203,14 @@ def apply_edit(game, obj, real_field_name, text):
                         obj.modifier["value"] = ""
 
                     elif field_name == "value":
-                        if obj.modifier["attribute"] == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "trigger", "coin", "text"):
+                        if obj.modifier["attribute"] == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "coin", "text"):
                             if text != "slope":
                                 obj.modifier["value"] = text
                             else:
                                 obj.modifier["value"] = "right slope"
                         
                         elif obj.modifier["attribute"] in ("color", "outline"):
-                            rgb = text.split()
-                            if len(rgb) == 3:
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                                obj.modifier["value"] = (r, g, b)
-                            elif len(rgb) == 1 and rgb[0] == "0":
-                                obj.modifier["value"] = (0, 0)
+                            obj.modifier["value"] = text
                             
                         elif obj.modifier["attribute"] in ("x", "y", "width", "height"):
                             obj.modifier["value"] = int(text)
@@ -309,7 +304,7 @@ def apply_edit(game, obj, real_field_name, text):
                             number += 1
                         
                         game.level["meta"]["title"] = name
-                        file.rename(Path("levels") / f"{game.level['meta']['title']}.json")
+                        file.rename(f"levels/{game.level['meta']['title']}.json")
 
                 elif field_name == "points":
                     game.level["meta"]["points"] = int(text)
@@ -366,4 +361,4 @@ def apply_edit(game, obj, real_field_name, text):
                 game.open_login_page()
 
     except ValueError:
-        pass
+        print("Invalid value", f"Object: {obj} Field: {real_field_name} Value: {text}")

@@ -6,7 +6,7 @@ FIXED_STEP = 1 / 240
 AUTOSAVE_INTERVAL = 120
 BUCKET_WIDTH = 400
 CAMERA_MARGIN = 100
-MAX_EDIT_HISTORY = 100
+MAX_EDIT_HISTORY = 20
 
 gamemode_colors = {
     "wave": (0, 255, 255),
@@ -135,7 +135,7 @@ building_tutorial = [
     "Delete - Type delete to delete the entire level permanently",
     "",
     "SHAPES",
-    "Building shapes - square, triangle, slope, circle",
+    "Building shapes - square, spike, slope, circle",
     "Functional shapes - end, checkpoint, gamemode, speed, gravity, size, teleport, orb, pad, trigger, coin, text",
     "Set color or outline to 0 to make them transparent",
     "",

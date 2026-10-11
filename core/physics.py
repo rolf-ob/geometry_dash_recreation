@@ -1,6 +1,6 @@
 from entities.spatial import collide, get_buckets, get_nearby_objects
 from entities.object import Object
-from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
+from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, BUCKET_WIDTH, gamemode_colors
 import time
 import pygame as py
 
@@ -13,21 +13,21 @@ def apply_trigger(game, trigger):
                 obj.real_x += int(trigger.modifier["value"])
                 obj.recompute_triggered()
             except ValueError:
-                pass
+                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
         
         elif trigger.modifier["attribute"] == "y":
             try:
                 obj.real_y += int(trigger.modifier["value"])
                 obj.recompute_triggered()
             except ValueError:
-                pass
+                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
         
         elif trigger.modifier["attribute"] == "rotation":
             try:
                 obj.real_rotation += float(round(trigger.modifier["value"], 1))
                 obj.recompute_triggered()
             except ValueError:
-                pass
+                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
         
         else:
             apply_edit(game, obj, "real_" + trigger.modifier["attribute"], trigger.modifier["value"])
@@ -76,12 +76,12 @@ def check_collision(game):
                         prev_y = (prev_player["left"] - obj.real_x) / obj.real_width
                         y = (player["left"] - obj.real_x) / obj.real_width
                         next_y = (player["left"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = -obj.real_height / (obj.real_width * game.gravity)
+                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
                     else:
                         prev_y = 1-(prev_player["right"] - obj.real_x) / obj.real_width
                         y = 1-(player["right"] - obj.real_x) / obj.real_width
                         next_y = 1-(player["right"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = obj.real_height / (obj.real_width * game.gravity)
+                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
                     
                     if ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not (on_left_edge or on_right_edge):
                         game.max_height = min(game.max_height, obj.real_y - game.player.height)
@@ -102,12 +102,12 @@ def check_collision(game):
                         prev_y = (prev_player["right"] - obj.real_x) / obj.real_width
                         y = (player["right"] - obj.real_x) / obj.real_width
                         next_y = (player["right"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = -obj.real_height / (obj.real_width * game.gravity)
+                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
                     else:
                         prev_y = 1-(prev_player["left"] - obj.real_x) / obj.real_width
                         y = 1-(player["left"] - obj.real_x) / obj.real_width
                         next_y = 1-(player["left"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = obj.real_height / (obj.real_width * game.gravity)
+                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
 
                     if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not (on_left_edge or on_right_edge):
                         game.min_height = max(game.min_height, obj.aabb["bottom"])
@@ -134,33 +134,27 @@ def check_collision(game):
                         break
 
                 elif not prev_this_sliding and this_sliding and game.gamemode == "wave":
-                    wave_part = (game.player.x + game.player.width/2, game.player.y)
-                    game.wave_trail.append(wave_part)
-                    for bucket in get_buckets(wave_part):
-                        game.buckets["hitboxes"][bucket].append(wave_part)
+                    game.add_wave_part()
 
         elif obj.real_shape == "end":
             if collide(game.player, obj):
                 game.completed = True
                 if not game.cheated:
                     if game.name in game.victors:
+                        completion_time = time.time() if game.victors[game.name][4] == 0 else game.victors[game.name][4]
                         game.victors[game.name][1] += 1
                         game.victors[game.name][2] = max(game.victors[game.name][2], game.collected_coins[0])
                         game.victors[game.name][3] = max(game.victors[game.name][3], game.collected_coins[1])
-                        game.victors[game.name][4] = time.time()
+                        game.victors[game.name][4] = completion_time
                     else:
-                        completion_time = time.time() if game.victors[game.name][4] == 0 else game.victors[game.name][4]
-                        game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1], completion_time)
+                        game.victors[game.name] = (1, 1, game.collected_coins[0], game.collected_coins[1], time.time())
 
         elif obj.real_shape == "gamemode":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
                 if game.gamemode != obj.real_modifier:
 
                     if game.gamemode == "wave":
-                        wave_part = (game.player.x + game.player.width/2, game.player.y)
-                        game.wave_trail.append(wave_part)
-                        for bucket in get_buckets(wave_part):
-                            game.buckets["hitboxes"][bucket].append(wave_part)
+                        game.add_wave_part()
                     
                     game.gamemode = obj.real_modifier
                     game.player.color = gamemode_colors[game.gamemode]
@@ -179,11 +173,9 @@ def check_collision(game):
                 if game.gravity != 0 and obj.real_modifier != 0 and game.gravity/abs(game.gravity) != float(obj.real_modifier)/abs(float(obj.real_modifier)): 
                     game.y_vel *= -1
                 game.gravity = float(obj.real_modifier)
+
                 if game.gamemode == "wave":
-                    wave_part = (game.player.x + game.player.width/2, game.player.y)
-                    game.wave_trail.append(wave_part)
-                    for bucket in get_buckets(wave_part):
-                        game.buckets["hitboxes"][bucket].append(wave_part)
+                    game.add_wave_part()
 
         elif obj.real_shape == "size":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
@@ -340,10 +332,7 @@ def update_position(game):
                 game.y_vel = -1
             
             if game.wave_trail[-1][1] != game.player.y and (game.player.y in (game.min_height, game.max_height)) or game.slid and not game.sliding:
-                wave_part = (game.player.x + game.player.width/2, game.player.y)
-                game.wave_trail.append(wave_part)
-                for bucket in get_buckets(wave_part):
-                    game.buckets["hitboxes"][bucket].append(wave_part)
+                game.add_wave_part()
 
         elif game.gamemode == "ufo":
             if game.clicking > 0 and not game.clicked:

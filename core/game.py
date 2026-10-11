@@ -12,7 +12,7 @@ from rendering.rendering import draw
 from entities.object import Object
 from entities.serialization import level_to_dict, dict_to_level, save_json
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, gamemode_colors
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, BUCKET_WIDTH, gamemode_colors
 from core.fps_handler import FpsHandler
 
 class Game:
@@ -21,7 +21,7 @@ class Game:
 
         self.levels = []
         for file in Path("levels").glob("*.json"):
-            with open(file, "r") as f:
+            with open(file, "r", encoding="utf-8") as f:
                 self.levels.append(dict_to_level(json.load(f)))
         self.levels.sort(key=lambda level: level["meta"]["level number"])
 
@@ -31,7 +31,9 @@ class Game:
         self.users.sort()
 
         self.songs = Path("songs")
+
         self.operator = True
+        self.name = "Rolf"
         self.running = True
 
         self.width = WIDTH
@@ -47,6 +49,7 @@ class Game:
         self.done_states = []
         self.undone_states = []
 
+        self.debug = False
         self.cheated = False
         self.frame_steps = 0
         self.primary_color = (0,)*3
@@ -62,21 +65,13 @@ class Game:
         py.display.set_caption("Geometry Dash")
         py.key.stop_text_input()
 
-        self.open_login_page()
+        if self.name:
+            self.load_user(self.name)
+        else:
+            self.open_login_page()
 
     def open_login_page(self):
         self.name = None
-        self.layer = 1
-        self.layer_view = False
-        self.scale_mode = False
-        self.debug = False
-        self.show_buckets = False
-        self.paused = False
-        self.show_hitboxes = False
-        self.noclip = False
-        self.speedhack = False
-        self.show_player = True
-
         self.title = ["WARNING! YOUR PASSWORD CAN BE READ BY ANYONE WITH ACCESS TO THE GAME FILES!", -1]
 
         self.controls = {
@@ -96,14 +91,23 @@ class Game:
 
     def load_user(self, username):
         self.name = username
+        self.layer = 1
+        self.layer_view = False
+        self.scale_mode = False
+        self.show_buckets = False
+        self.paused = False
+        self.show_hitboxes = False
+        self.noclip = False
+        self.speedhack = False
+        self.show_player = True
         self.textboxes = []
         self.active_textbox = None
 
-        with open(f"users/{self.name}/accessibility.json", "r") as f:
+        with open(f"users/{self.name}/accessibility.json", "r", encoding="utf-8") as f:
             settings = json.load(f)
             self.accessibility = settings
 
-        with open(f"users/{self.name}/controls.json", "r") as f:
+        with open(f"users/{self.name}/controls.json", "r", encoding="utf-8") as f:
             settings = json.load(f)
             self.controls = {
                 action: [py.key.key_code(key) for key in keys]
@@ -295,6 +299,12 @@ class Game:
         else:
             self.victors[self.name][0] += 1
 
+    def add_wave_part(self):
+        wave_part = (self.player.x + self.player.width/2, self.player.y)
+        self.wave_trail.append(wave_part)
+        self.buckets["wave trail"][wave_part[0] // BUCKET_WIDTH].append(self.wave_trail[-2])
+        self.buckets["wave trail"][wave_part[0] // BUCKET_WIDTH].append(wave_part)
+
     def capture_state(self, edit, all=False):
         if self.editing_level or all:
             state = {
@@ -348,7 +358,7 @@ class Game:
             state = self.undone_states[-1]
             self.capture_state("redo", all=state["all"])
 
-            if self.done_states["all"]:
+            if state["all"]:
                 self.levels = [dict_to_level(level) for level in deepcopy(state["levels"])]
             
                 self.current_level = state["current level"]

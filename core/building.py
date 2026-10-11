@@ -1,6 +1,6 @@
-from pathlib import Path
 import pygame as py
 import math, time
+from pathlib import Path
 
 from core.textbox import TextBox
 from entities.serialization import save_json, level_to_dict
@@ -312,10 +312,7 @@ def deselect_objects(game):
         close_menu(game)
 
 def duplicate_objects(game):
-    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-        if obj.selected:
-            selected = True
-            break
+    selected = any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints))
 
     if selected:
         game.capture_state("do")
@@ -345,10 +342,7 @@ def duplicate_objects(game):
         game.rebuild_buckets()
 
 def delete_objects(game):
-    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-        if obj.selected:
-            selected = True
-            break
+    selected = any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints))
 
     if selected:
         game.capture_state("do")
@@ -359,7 +353,8 @@ def delete_objects(game):
                     layer.remove(obj)
     
     game.rebuild_buckets()
-    close_menu(game)
+    if not game.checkpoints[0].selected:
+        close_menu(game)
 
 def snap_grid_objects(game):
     selected = []
@@ -412,10 +407,7 @@ def group_objects(game, group):
                 obj.group_id = 0
 
 def layer_objects(game, way):
-    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-        if obj.selected:
-            selected = True
-            break
+    selected = any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints))
 
     if selected:
         game.capture_state("do")
@@ -451,10 +443,7 @@ def layer_objects(game, way):
         game.rebuild_buckets()
 
 def move_objects_to_layer(game, layer_name):
-    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-        if obj.selected:
-            selected = True
-            break
+    selected = any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints))
 
     if selected:
         game.capture_state("do")
@@ -535,7 +524,7 @@ def create_level(game):
     for i, level in enumerate(game.levels):
         level["meta"]["level number"] = i
     
-    save_json(Path("levels") / f"{name}.json", level_to_dict(new_level))
+    save_json(f"levels/{name}.json", level_to_dict(new_level))
     
     game.title = ["Created New Level", time.perf_counter() + 2]
 

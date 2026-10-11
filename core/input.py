@@ -1,10 +1,9 @@
 import pygame as py
-import time, json, os
+import time, json, os, re
 
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
-from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
+from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN, BUCKET_WIDTH
 from core.attribute_editing import switch_attribute, apply_edit
-from entities.spatial import get_buckets
 from entities.serialization import save_json
 
 def click(game, type, button, shift, ctrl):
@@ -12,20 +11,15 @@ def click(game, type, button, shift, ctrl):
         if type == "click":
             game.clicking += 1
             if game.gamemode == "wave":
-                wave_part = (game.player.x + game.player.width/2, game.player.y)
-                game.wave_trail.append(wave_part)
-                for bucket in get_buckets(wave_part):
-                    game.buckets["hitboxes"][bucket].append(wave_part)
+                game.add_wave_part()
+        
         elif type == "release":
             game.clicking = max(0, game.clicking - 1)
             if game.clicking == 0:
                 game.clicked = False
             
             if game.gamemode == "wave":
-                wave_part = (game.player.x + game.player.width/2, game.player.y)
-                game.wave_trail.append(wave_part)
-                for bucket in get_buckets(wave_part):
-                    game.buckets["hitboxes"][bucket].append(wave_part)
+                game.add_wave_part()
     
     elif button == 1 and type == "release" and not shift:
         place_object(game)
@@ -164,13 +158,13 @@ def handle_input(game):
             game.running = False
 
         elif event.type == py.VIDEORESIZE:
-            zoom = game.camera_zoom if game.name else 1
+            camera_zoom = game.camera_zoom if game.name else 1
             game.width, game.height = event.size
             game.view_width = game.width * (HEIGHT / game.height)
             game.view_height = game.height * (HEIGHT / game.height)
             game.scale = game.height / HEIGHT
             game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale)), "screen")
-            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * zoom)), "world")
+            game.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * game.scale * camera_zoom)), "world")
             game.screen = py.display.set_mode((game.width, game.height), py.RESIZABLE)
 
         elif event.type == py.TEXTINPUT and game.active_textbox:
@@ -207,37 +201,39 @@ def handle_input(game):
                         if game.active_textbox.field_name.lower() == "create user":
                             if f"users\\{game.textboxes[0].text}" not in game.users:
                                 if game.textboxes[1].text:
-                                    with open(f"users/Default/accessibility.json", "r") as f:
+                                    with open(f"users/Default/accessibility.json", "r", encoding="utf-8") as f:
                                         default_accessibility = json.load(f)
                                     default_accessibility["password"] = game.textboxes[1].text
                             
-                                    with open(f"users/Default/controls.json", "r") as f:
+                                    with open(f"users/Default/controls.json", "r", encoding="utf-8") as f:
                                         default_controls = json.load(f)
 
-                                    os.makedirs(f"users/{game.textboxes[0].text}/user_levels")
-                                    save_json(f"users/{game.textboxes[0].text}/accessibility.json", default_accessibility)
-                                    save_json(f"users/{game.textboxes[0].text}/controls.json", default_controls)
-                                    game.users.append(f"users\\{game.textboxes[0].text}")
+                                    username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
+                                    os.makedirs(f"users/{username}/user_levels")
+                                    save_json(f"users/{username}/accessibility.json", default_accessibility)
+                                    save_json(f"users/{username}/controls.json", default_controls)
+                                    game.users.append(f"users\\{username}")
                                     game.users.sort()
-                                    game.load_user(game.textboxes[0].text)
+                                    game.load_user(username)
 
                                 else:
                                     game.title = ["Please enter a password along with your username", time.perf_counter() + 2]
                             else:
-                                game.title = ["Username taken, try mixing in uppercase letters", time.perf_counter() + 2]
+                                game.title = ["Username taken", time.perf_counter() + 2]
 
                         elif game.active_textbox.field_name.lower() == "log in":
-                            if f"users\\{game.textboxes[0].text}" in game.users:
-                                with open(f"users/{game.textboxes[0].text}/accessibility.json", "r") as f:
+                            username = game.textboxes[0].text.lower()
+                            if f"users\\{username}" in game.users:
+                                with open(f"users/{username}/accessibility.json", "r", encoding="utf-8") as f:
                                     settings = json.load(f)
                                     password = settings["password"]
                                 
                                 if game.textboxes[1].text == password:
-                                    game.load_user(game.textboxes[0].text)
+                                    game.load_user(username)
                                 else:
                                     game.title = ["Invalid password", time.perf_counter() + 2]
                             else:
-                                game.title = ["Invalid username, maybe you forgot an uppercase letter?", time.perf_counter() + 2]
+                                game.title = ["Invalid username", time.perf_counter() + 2]
 
                 elif event.key == py.K_BACKSPACE:
                     game.active_textbox.text = game.active_textbox.text[:-1]

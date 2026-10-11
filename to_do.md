@@ -1,20 +1,33 @@
-Features until update v1.1.0
-    - Trigger transition speed
-    - Main levels
+Bugs:
+- Missing wave trail on teleport
+- Slope velocity gets heavier with higher value gravity
+- Wave trail bug upside down slope 0 gravity
+- Undo redo doesn't update objects until new object placed? (Restore state doesnt call rebuild_buckets?)
+- When changing object color it renders the old one until obj.recompute gets called due to real_color (same issue as undo redo?)
+- Rotation drifts (use rounding?)
+- Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
 
-Future features:
-    Building features
-    - Default level sizes
+Update v1.1.0
+- Trigger transition speed
+- Main levels
+- Pyinstaller exe file
 
-    Gameplay features
-    - Music affected by speedhack
-    - CBF
+Optimization
+- Rebuild buckets for individual objects while keeping z-order
+- Too much dependency on Game class, experiment with multiple classes
 
-    User
-    - Separate global levels and personal levels, global can only be built by operator while personal can be built by anyone
-    - Sharing levels to other accounts by their username
-    - Changing controls in menu and changing tutorial with it
+Features
+- Default level sizes
+- Multi-point shape
+- Music affected by speedhack
+- CBF
 
-    UI
-    - Images/sprites
-    - Clickable UI menu and build mode
+User
+- Making private levels
+- Public levels
+- Public level stats like unique visitors, likes, dislikes, comments etc
+- Changing controls and tutorial with it
+
+UI
+- Images/sprites
+- Clickable UI menu and build mode
