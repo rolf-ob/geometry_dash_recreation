@@ -18,24 +18,23 @@
       255,
       255
     ],
-    "title": "Unnamed level(1)",
+    "title": "rotation tests",
     "points": 0,
-    "level number": 4,
+    "level number": 5,
     "song": "",
     "song start": 0
   },
-  "background": [],
-  "objects": [
+  "background": [
     {
-      "x": 760,
-      "y": 640,
-      "width": 40,
+      "x": 680,
+      "y": 360,
+      "width": 120,
       "height": 40,
       "rotation": 0,
-      "shape": "trigger",
+      "shape": "square",
       "color": [
-        255,
-        255,
+        0,
+        0,
         255
       ],
       "outline": [
@@ -43,21 +42,19 @@
         0,
         0
       ],
-      "modifier": {
-        "attribute": "y",
-        "value": 80,
-        "transition": ""
-      },
+      "modifier": null,
       "group_id": 0,
-      "triggers": 1
-    },
+      "triggers": []
+    }
+  ],
+  "objects": [
     {
-      "x": 1040,
-      "y": 600,
-      "width": 40,
-      "height": 120,
-      "rotation": 0,
-      "shape": "square",
+      "x": 680,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 0.0,
+      "shape": "right slope",
       "color": [
         255,
         255,
@@ -70,9 +67,7 @@
       ],
       "modifier": null,
       "group_id": 0,
-      "triggers": [
-        1
-      ]
+      "triggers": []
     }
   ],
   "decoration": [],
@@ -104,13 +99,5 @@
       "triggers": []
     }
   ],
-  "victors": {
-    "Rolf": [
-      20,
-      0,
-      0,
-      0,
-      0
-    ]
-  }
+  "victors": {}
 }

@@ -76,12 +76,14 @@ def check_collision(game):
                         prev_y = (prev_player["left"] - obj.real_x) / obj.real_width
                         y = (player["left"] - obj.real_x) / obj.real_width
                         next_y = (player["left"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
+                        gravity = game.gravity if game.gravity != 0 else 1e-9
+                        slope_vel = -obj.real_height / (obj.real_width * gravity)
                     else:
                         prev_y = 1-(prev_player["right"] - obj.real_x) / obj.real_width
                         y = 1-(player["right"] - obj.real_x) / obj.real_width
                         next_y = 1-(player["right"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
+                        gravity = game.gravity if game.gravity != 0 else 1e-9
+                        slope_vel = obj.real_height / (obj.real_width * gravity)
                     
                     if ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not (on_left_edge or on_right_edge):
                         game.max_height = min(game.max_height, obj.real_y - game.player.height)
@@ -102,12 +104,14 @@ def check_collision(game):
                         prev_y = (prev_player["right"] - obj.real_x) / obj.real_width
                         y = (player["right"] - obj.real_x) / obj.real_width
                         next_y = (player["right"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
+                        gravity = game.gravity if game.gravity != 0 else 1e-9
+                        slope_vel = -obj.real_height / (obj.real_width * gravity)
                     else:
                         prev_y = 1-(prev_player["left"] - obj.real_x) / obj.real_width
                         y = 1-(player["left"] - obj.real_x) / obj.real_width
                         next_y = 1-(player["left"]+game.speed - obj.real_x) / obj.real_width
-                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else -obj.real_height / (obj.real_width * 1e-9)
+                        gravity = game.gravity if game.gravity != 0 else 1e-9
+                        slope_vel = obj.real_height / (obj.real_width * gravity)
 
                     if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not (on_left_edge or on_right_edge):
                         game.min_height = max(game.min_height, obj.aabb["bottom"])
@@ -188,7 +192,11 @@ def check_collision(game):
 
         elif obj.real_shape == "teleport":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier is not None:
+                if game.gamemode == "wave":
+                    game.add_wave_part()
                 game.player.y = max(game.roof, min(game.floor - game.player.height, obj.real_modifier))
+                if game.gamemode == "wave":
+                    game.add_wave_part()
         
         elif obj.real_shape == "orb":
             if round(game.y_vel) != fall_speed:

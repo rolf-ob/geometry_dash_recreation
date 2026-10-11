@@ -371,6 +371,8 @@ class Game:
             self.load_level(False)
             self.undone_states.pop()
 
+        self.rebuild_buckets()
+
     def save_to_file(self):
         for level in self.levels:
             save_json(f"levels/{level["meta"]["title"]}.json", level_to_dict(level))

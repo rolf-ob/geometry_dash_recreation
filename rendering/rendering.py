@@ -38,7 +38,7 @@ def draw_object(game, screen, obj, hitbox=False):
         draw_polygon(game, screen, obj.points, color, 0)
     
     if outline_color == (0, 0):
-        if game.show_hitboxes:
+        if game.show_hitboxes and hitbox:
             draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
     else:
         draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
@@ -144,20 +144,21 @@ def draw_wave_trail(game, screen):
             if i == len(objects) - 1: break
             else: end_top = objects[i + 1]
 
-        screen_start = screen_to_world(game, 0, 0)[0]
-        screen_end = screen_to_world(game, game.width, 0)[0]
-        if screen_start < end_top[0] < screen_end or screen_start < start_top[0] < screen_end:
-            start_bottom = (point[0], point[1] + game.player.height)
-            end_bottom = (game.player.x + game.player.width/2, game.player.y + game.player.height) if i == len(objects) - 1 else (objects[i + 1][0], objects[i + 1][1] + game.player.height)
-            points = [
-                world_to_screen(game, *start_top),
-                world_to_screen(game, *end_top),
-                world_to_screen(game, *end_bottom),
-                world_to_screen(game, *start_bottom)
-            ]
-            py.draw.polygon(screen, (0, 255, 255), points)
-            py.draw.line(screen, (0,)*3, points[0], points[1], int(max(1, 1*game.camera_zoom)))
-            py.draw.line(screen, (0,)*3, points[2], points[3], int(max(1, 1*game.camera_zoom)))
+        if start_top[0] != end_top[0]:
+            screen_start = screen_to_world(game, 0, 0)[0]
+            screen_end = screen_to_world(game, game.width, 0)[0]
+            if screen_start < end_top[0] < screen_end or screen_start < start_top[0] < screen_end:
+                start_bottom = (point[0], point[1] + game.player.height)
+                end_bottom = (game.player.x + game.player.width/2, game.player.y + game.player.height) if i == len(objects) - 1 else (objects[i + 1][0], objects[i + 1][1] + game.player.height)
+                points = [
+                    world_to_screen(game, *start_top),
+                    world_to_screen(game, *end_top),
+                    world_to_screen(game, *end_bottom),
+                    world_to_screen(game, *start_bottom)
+                ]
+                py.draw.polygon(screen, (0, 255, 255), points)
+                py.draw.line(screen, (0,)*3, points[0], points[1], int(max(1, 1*game.camera_zoom)))
+                py.draw.line(screen, (0,)*3, points[2], points[3], int(max(1, 1*game.camera_zoom)))
 
 def draw_player(game, screen):
     prev_player = game.hitboxes[-1]
@@ -186,8 +187,8 @@ def draw_buckets(game, screen):
     end_bucket = int((camera_x + game.view_width) // BUCKET_WIDTH)
 
     for bucket in range(start_bucket, end_bucket+2):
-        top = world_to_screen(game, bucket*400, game.camera_y)
-        bottom = world_to_screen(game, bucket*400, game.camera_y + game.view_height)
+        top = world_to_screen(game, bucket * BUCKET_WIDTH, game.camera_y)
+        bottom = world_to_screen(game, bucket * BUCKET_WIDTH, game.camera_y + game.view_height)
         py.draw.line(screen, (0, 255, 0), top, bottom, 1)
 
 def draw_leaderboard(game, screen):

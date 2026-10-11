@@ -201,11 +201,11 @@ def handle_input(game):
                         if game.active_textbox.field_name.lower() == "create user":
                             if f"users\\{game.textboxes[0].text}" not in game.users:
                                 if game.textboxes[1].text:
-                                    with open(f"users/Default/accessibility.json", "r", encoding="utf-8") as f:
+                                    with open(f"users/default/accessibility.json", "r", encoding="utf-8") as f:
                                         default_accessibility = json.load(f)
                                     default_accessibility["password"] = game.textboxes[1].text
                             
-                                    with open(f"users/Default/controls.json", "r", encoding="utf-8") as f:
+                                    with open(f"users/default/controls.json", "r", encoding="utf-8") as f:
                                         default_controls = json.load(f)
 
                                     username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
@@ -222,7 +222,7 @@ def handle_input(game):
                                 game.title = ["Username taken", time.perf_counter() + 2]
 
                         elif game.active_textbox.field_name.lower() == "log in":
-                            username = game.textboxes[0].text.lower()
+                            username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
                             if f"users\\{username}" in game.users:
                                 with open(f"users/{username}/accessibility.json", "r", encoding="utf-8") as f:
                                     settings = json.load(f)

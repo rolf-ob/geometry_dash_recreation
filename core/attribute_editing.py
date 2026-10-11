@@ -255,12 +255,11 @@ def apply_edit(game, obj, real_field_name, text):
                     elif field_name == "triggers":
                         obj.triggers = int(text)
 
-                if field_name in ("shape", "rotation", "x", "y", "width", "height"):
-                    if real == "":
-                        obj.recompute()
-                    elif real == "real_":
-                        obj.recompute_triggered()
-                    game.rebuild_buckets()
+                if real == "":
+                    obj.recompute()
+                elif real == "real_":
+                    obj.recompute_triggered()
+                game.rebuild_buckets()
 
             else:
                 if field_name == "length":
@@ -295,7 +294,7 @@ def apply_edit(game, obj, real_field_name, text):
                         file = Path("levels") / f"{game.level['meta']['title']}.json"
 
                         base_name = text
-                        base_name = re.sub('[<>:"/\\|?*& .]', '_', base_name)
+                        base_name = re.sub('[<>:"/\\|?*&.]', '_', base_name)
                         name = base_name
                         number = 1
                     
@@ -304,7 +303,7 @@ def apply_edit(game, obj, real_field_name, text):
                             number += 1
                         
                         game.level["meta"]["title"] = name
-                        file.rename(f"levels/{game.level['meta']['title']}.json")
+                        file.rename(f"levels/{name}.json")
 
                 elif field_name == "points":
                     game.level["meta"]["points"] = int(text)

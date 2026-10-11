@@ -1,10 +1,7 @@
 Bugs:
-- Missing wave trail on teleport
-- Slope velocity gets heavier with higher value gravity
-- Wave trail bug upside down slope 0 gravity
-- Undo redo doesn't update objects until new object placed? (Restore state doesnt call rebuild_buckets?)
-- When changing object color it renders the old one until obj.recompute gets called due to real_color (same issue as undo redo?)
-- Rotation drifts (use rounding?)
+- Slope velocity gets heavier with higher value gravity, try to make slope_vel independent of gravity
+- Wave trail breaks on slopes when in 0 gravity
+- Rotation drifts for 0.1, 1 and 45 degrees (use rounding?)
 - Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
 
 Update v1.1.0
@@ -12,9 +9,11 @@ Update v1.1.0
 - Main levels
 - Pyinstaller exe file
 
-Optimization
+Optimization/structuring
+- Clean up apply_edit()
 - Rebuild buckets for individual objects while keeping z-order
 - Too much dependency on Game class, experiment with multiple classes
+- Add more tests
 
 Features
 - Default level sizes
