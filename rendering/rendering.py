@@ -162,7 +162,7 @@ def draw_wave_trail(game, screen):
 
 def draw_player(game, screen):
     prev_player = game.hitboxes[-1]
-    x_diff = game.speed
+    x_diff = min(game.speed, game.player.width)
     y_diff = game.player.y - prev_player.y
     radians = math.atan(y_diff / x_diff)
     angle = math.degrees(radians)
@@ -318,7 +318,7 @@ def draw_debug(game, screen):
         f"FPS: {game.fps_handler.get_fps()}",
         f"Clicking: {game.clicking}",
         f"Velocity: {round(game.y_vel, 2)}",
-        f"Speed: {game.speed}",
+        f"Speed: {min(game.speed, game.player.width)}",
         f"Gravity: {game.gravity}",
         f"Level: {game.current_level}",
         f"Zoom: {round(game.camera_zoom, 1)}",

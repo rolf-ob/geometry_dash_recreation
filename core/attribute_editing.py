@@ -140,7 +140,7 @@ def apply_edit(game, obj, real_field_name, text):
                                 obj.color = gamemode_colors[text]
 
                         elif obj.real_shape == "speed":
-                            setattr(obj, real_field_name, max(0.01, min(40, float(text))))
+                            setattr(obj, real_field_name, max(0.01, min(400, float(text))))
 
                         elif obj.real_shape == "gravity":
                             setattr(obj, real_field_name, float(text))
@@ -181,7 +181,7 @@ def apply_edit(game, obj, real_field_name, text):
                         obj.color = gamemode_colors[text]
 
                     elif field_name == "speed":
-                        obj.modifier["speed"] = max(0.01, min(40, float(text)))
+                        obj.modifier["speed"] = max(0.01, min(400, float(text)))
 
                     elif field_name == "gravity":
                         obj.modifier["gravity"] = float(text)

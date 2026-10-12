@@ -215,7 +215,6 @@ def rotate_objects(game, way, shift, ctrl, alt):
         max_y = max(y_positions)
         center_x = min_x + (max_x - min_x) / 2
         center_y = min_y + (max_y - min_y) / 2
-        print(min_x, max_x, min_y, max_y, center_x, center_y)
 
         for obj in (*game.background, *game.objects, *game.decoration):
             if obj.selected:
@@ -224,7 +223,6 @@ def rotate_objects(game, way, shift, ctrl, alt):
 
                 point_x = obj.x + obj.width / 2
                 point_y = obj.y + obj.height / 2
-                print(point_x, point_y)
                 delta_x, delta_y = point_x - center_x, point_y - center_y
                 rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
                 rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
@@ -233,7 +231,6 @@ def rotate_objects(game, way, shift, ctrl, alt):
                 obj.x = round(rotated_x - obj.width / 2)
                 obj.y = round(rotated_y - obj.height / 2)
                 obj.recompute()
-                print(obj.x, obj.y)
         
         game.rebuild_buckets()
 

@@ -33,7 +33,7 @@ class Game:
         self.songs = Path("songs")
 
         self.operator = True
-        self.name = "Rolf"
+        self.name = None
         self.running = True
 
         self.width = WIDTH
@@ -439,7 +439,7 @@ class Game:
                 fps = self.fps * self.speedhack_multiplier if self.speedhack else self.fps
                 self.last_frame_time = self.fps_handler.limit_fps(fps, self.last_frame_time)
             else:
-                self.fps_handler.limit_fps(60, self.last_frame_time)
+                self.last_frame_time = self.fps_handler.limit_fps(60, self.last_frame_time)
             self.fps_handler.tick()
 
         self.save_to_file()

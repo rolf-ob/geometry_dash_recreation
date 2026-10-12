@@ -36,7 +36,7 @@ def apply_trigger(game, trigger):
         game.rebuild_buckets()
 
 def check_collision(game):
-    fall_speed = -game.player.height / game.speed*abs(game.gravity)
+    fall_speed = -game.player.height / (game.speed * abs(game.gravity))
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
     game.min_height = game.roof
@@ -53,7 +53,7 @@ def check_collision(game):
                 this_sliding = False
                 prev_player = game.hitboxes[-1].aabb
                 player = game.player.aabb
-                on_right_edge = player["left"] <= obj.aabb["right"] < player["left"]+game.speed
+                on_right_edge = player["left"] <= obj.aabb["right"] < player["left"] + game.speed
                 on_left_edge = prev_player["left"] <= obj.aabb["left"] <= player["left"]
 
                 if obj.real_shape == "square" and obj.real_rotation == 0:
@@ -75,13 +75,13 @@ def check_collision(game):
                     if obj.real_shape == "right slope":
                         prev_y = (prev_player["left"] - obj.real_x) / obj.real_width
                         y = (player["left"] - obj.real_x) / obj.real_width
-                        next_y = (player["left"]+game.speed - obj.real_x) / obj.real_width
+                        next_y = (player["left"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
                         gravity = game.gravity if game.gravity != 0 else 1e-9
                         slope_vel = -obj.real_height / (obj.real_width * gravity)
                     else:
                         prev_y = 1-(prev_player["right"] - obj.real_x) / obj.real_width
                         y = 1-(player["right"] - obj.real_x) / obj.real_width
-                        next_y = 1-(player["right"]+game.speed - obj.real_x) / obj.real_width
+                        next_y = 1-(player["right"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
                         gravity = game.gravity if game.gravity != 0 else 1e-9
                         slope_vel = obj.real_height / (obj.real_width * gravity)
                     
@@ -103,13 +103,13 @@ def check_collision(game):
                     if obj.real_shape == "right slope":
                         prev_y = (prev_player["right"] - obj.real_x) / obj.real_width
                         y = (player["right"] - obj.real_x) / obj.real_width
-                        next_y = (player["right"]+game.speed - obj.real_x) / obj.real_width
+                        next_y = (player["right"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
                         gravity = game.gravity if game.gravity != 0 else 1e-9
                         slope_vel = -obj.real_height / (obj.real_width * gravity)
                     else:
                         prev_y = 1-(prev_player["left"] - obj.real_x) / obj.real_width
                         y = 1-(player["left"] - obj.real_x) / obj.real_width
-                        next_y = 1-(player["left"]+game.speed - obj.real_x) / obj.real_width
+                        next_y = 1-(player["left"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
                         gravity = game.gravity if game.gravity != 0 else 1e-9
                         slope_vel = obj.real_height / (obj.real_width * gravity)
 
@@ -312,7 +312,7 @@ def check_collision(game):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
 def update_position(game):
-    fall_speed = -game.player.height / game.speed*abs(game.gravity)
+    fall_speed = -game.player.height / (game.speed * abs(game.gravity))
     if round(game.y_vel) != fall_speed or game.gravity == 0:
         if game.gamemode == "cube":
             if game.clicking > 0 and (game.on_ground or game.sliding * game.gravity > 0):
@@ -367,14 +367,14 @@ def update_position(game):
                 game.y_vel = max(fall_speed, game.y_vel - 0.05)
 
     if game.dashing:
-        y_movement = -max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * game.speed
+        y_movement = -max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * min(game.speed, game.player.width)
     else:
-        y_movement = game.y_vel*game.speed*game.gravity
+        y_movement = min(game.y_vel * game.speed * game.gravity, game.player.width)
 
-    game.player.x += game.speed
+    game.player.x += min(game.speed, game.player.width)
     game.player.y = max(game.min_height, min(game.max_height, game.player.y - y_movement))
     game.player.recompute()
-    game.camera_x += game.speed
+    game.camera_x += min(game.speed, game.player.width)
     game.camera_y = max(min(game.camera_y, game.player.y - CAMERA_MARGIN), game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN)
 
     start_x = game.player.x - game.checkpoints[0].x
