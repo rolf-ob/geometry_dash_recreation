@@ -2,7 +2,7 @@ import pygame as py
 import time, json, os, re
 
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
-from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN, BUCKET_WIDTH
+from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 from core.attribute_editing import switch_attribute, apply_edit
 from entities.serialization import save_json
 

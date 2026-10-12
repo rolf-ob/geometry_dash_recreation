@@ -26,7 +26,154 @@
   },
   "background": [
     {
+      "x": 880,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 90,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 880,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
       "x": 680,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 90,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 680,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 480,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 90,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 480,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 280,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 90,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 280,
       "y": 360,
       "width": 120,
       "height": 40,
@@ -55,6 +202,69 @@
       "height": 40,
       "rotation": 0.0,
       "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 480,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 0.0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 280,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 880,
+      "y": 360,
+      "width": 120,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
       "color": [
         255,
         255,
@@ -99,5 +309,13 @@
       "triggers": []
     }
   ],
-  "victors": {}
+  "victors": {
+    "Rolf": [
+      17,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
 }

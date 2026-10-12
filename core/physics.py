@@ -1,6 +1,6 @@
 from entities.spatial import collide, get_buckets, get_nearby_objects
 from entities.object import Object
-from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, BUCKET_WIDTH, gamemode_colors
+from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
 import time
 import pygame as py
 
@@ -313,7 +313,7 @@ def check_collision(game):
 
 def update_position(game):
     fall_speed = -game.player.height / game.speed*abs(game.gravity)
-    if round(game.y_vel) != fall_speed:
+    if round(game.y_vel) != fall_speed or game.gravity == 0:
         if game.gamemode == "cube":
             if game.clicking > 0 and (game.on_ground or game.sliding * game.gravity > 0):
                 game.clicked = True
@@ -338,8 +338,8 @@ def update_position(game):
                 game.y_vel = 1
             else: 
                 game.y_vel = -1
-            
-            if game.wave_trail[-1][1] != game.player.y and (game.player.y in (game.min_height, game.max_height)) or game.slid and not game.sliding:
+
+            if game.wave_trail[-1][1] != game.player.y and game.player.y in (game.min_height, game.max_height) or game.slid != 0 and game.sliding == 0:
                 game.add_wave_part()
 
         elif game.gamemode == "ufo":

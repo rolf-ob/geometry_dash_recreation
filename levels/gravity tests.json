@@ -24,7 +24,29 @@
     "song": "",
     "song start": 0
   },
-  "background": [],
+  "background": [
+    {
+      "x": 800,
+      "y": 180,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
   "objects": [
     {
       "x": 600,
@@ -69,7 +91,7 @@
       "triggers": []
     },
     {
-      "x": 440,
+      "x": 480,
       "y": 540,
       "width": 20,
       "height": 120,
@@ -85,28 +107,7 @@
         0,
         0
       ],
-      "modifier": 2.0,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 800,
-      "y": 180,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "square",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
+      "modifier": 0.5,
       "group_id": 0,
       "triggers": []
     }
@@ -168,7 +169,7 @@
   ],
   "victors": {
     "Rolf": [
-      323,
+      383,
       0,
       0,
       0,

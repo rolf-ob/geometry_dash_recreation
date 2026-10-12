@@ -1,19 +1,18 @@
-Bugs:
-- Slope velocity gets heavier with higher value gravity, try to make slope_vel independent of gravity
-- Wave trail breaks on slopes when in 0 gravity
-- Rotation drifts for 0.1, 1 and 45 degrees (use rounding?)
-- Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
-
 Update v1.1.0
 - Trigger transition speed
 - Main levels
 - Pyinstaller exe file
 
+Bugs:
+- Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
+
 Optimization/structuring
+- Add more tests
 - Clean up apply_edit()
+- Selected objects list
+- Object groups dict similar to trigger dict and rework all obj.selected checking
 - Rebuild buckets for individual objects while keeping z-order
 - Too much dependency on Game class, experiment with multiple classes
-- Add more tests
 
 Features
 - Default level sizes
