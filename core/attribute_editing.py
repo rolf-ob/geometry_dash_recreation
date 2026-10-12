@@ -148,7 +148,7 @@ def apply_edit(game, obj, real_field_name, text):
                                 obj.color = gravity_colors[int(text)]
 
                         elif obj.real_shape == "size":
-                            setattr(obj, real_field_name, max(0.1, min(10, float(text))))
+                            setattr(obj, real_field_name, max(0.5, min(10, float(text))))
                             if real == "" and float(text) in size_colors:
                                 obj.color = size_colors[float(text)]
 
@@ -187,7 +187,9 @@ def apply_edit(game, obj, real_field_name, text):
                         obj.modifier["gravity"] = float(text)
 
                     elif field_name == "size":
-                        obj.modifier["size"] = max(0.1, min(10, float(text)))
+                        obj.modifier["size"] = max(0.5, min(10, float(text)))
+                        obj.width = max(0.5, min(10, float(text))) * 40
+                        obj.height = max(0.5, min(10, float(text))) * 40
 
                 elif obj.shape == "trigger":
                     if field_name in ("color", "outline"):

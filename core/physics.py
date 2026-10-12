@@ -36,7 +36,7 @@ def apply_trigger(game, trigger):
         game.rebuild_buckets()
 
 def check_collision(game):
-    fall_speed = -game.player.height / (game.speed * abs(game.gravity))
+    fall_speed = -game.speed * abs(game.gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
     game.min_height = game.roof
@@ -183,7 +183,7 @@ def check_collision(game):
 
         elif obj.real_shape == "size":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
-                size = float(obj.real_modifier)*40
+                size = float(obj.real_modifier) * 40
                 game.player.width = size
                 game.player.height = size
                 game.player_render.width = size
@@ -312,7 +312,7 @@ def check_collision(game):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
 def update_position(game):
-    fall_speed = -game.player.height / (game.speed * abs(game.gravity))
+    fall_speed = -game.speed * abs(game.gravity)
     if round(game.y_vel) != fall_speed or game.gravity == 0:
         if game.gamemode == "cube":
             if game.clicking > 0 and (game.on_ground or game.sliding * game.gravity > 0):
@@ -367,9 +367,9 @@ def update_position(game):
                 game.y_vel = max(fall_speed, game.y_vel - 0.05)
 
     if game.dashing:
-        y_movement = -max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * min(game.speed, game.player.width)
+        y_movement = -max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * game.speed
     else:
-        y_movement = min(game.y_vel * game.speed * game.gravity, game.player.width)
+        y_movement = max(min(game.y_vel * game.speed * game.gravity, game.player.height), -game.player.height)
 
     game.player.x += min(game.speed, game.player.width)
     game.player.y = max(game.min_height, min(game.max_height, game.player.y - y_movement))

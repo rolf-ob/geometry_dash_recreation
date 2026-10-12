@@ -1,6 +1,9 @@
-when hitbox on both sides of object no collision happens
+you can faze through objects at high speeds even if colliding
+you cant fall faster than -3 on 1 grav, -0.55 on 0.5 grav
+you sometimes move faster up and down than your height
 
 Update v1.1.0
+- Clear text cache upon level load
 - Trigger transition speed
 - Main levels
 - Pyinstaller exe file
@@ -19,6 +22,7 @@ Optimization/structuring
 - Rebuild buckets for individual objects while keeping z-order
 - Linux/Mac file name compatability
 - Too much dependency on Game class, experiment with multiple classes
+- Undo redo history list memory optimization
 
 Features
 - Default level sizes

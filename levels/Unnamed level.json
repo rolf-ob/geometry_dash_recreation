@@ -24,7 +24,50 @@
     "song": "",
     "song start": 0
   },
-  "background": [],
+  "background": [
+    {
+      "x": 920,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1800,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
   "objects": [
     {
       "x": 1703,
@@ -326,8 +369,8 @@
     {
       "x": 360,
       "y": 700,
-      "width": 40,
-      "height": 40,
+      "width": 20.0,
+      "height": 20.0,
       "rotation": 0,
       "shape": "checkpoint",
       "color": [
@@ -342,7 +385,7 @@
       ],
       "modifier": {
         "gamemode": "cube",
-        "speed": 20.0,
+        "speed": 400,
         "gravity": 1,
         "size": 0.5
       },
@@ -352,7 +395,7 @@
   ],
   "victors": {
     "rolf": [
-      48,
+      88,
       0,
       0,
       0,

@@ -199,7 +199,8 @@ def handle_input(game):
 
                     else:
                         if game.active_textbox.field_name.lower() == "create user":
-                            if f"users\\{game.textboxes[0].text}" not in game.users:
+                            username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
+                            if username not in game.users:
                                 if game.textboxes[1].text:
                                     with open(f"users/default/accessibility.json", "r", encoding="utf-8") as f:
                                         default_accessibility = json.load(f)
@@ -208,7 +209,6 @@ def handle_input(game):
                                     with open(f"users/default/controls.json", "r", encoding="utf-8") as f:
                                         default_controls = json.load(f)
 
-                                    username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
                                     os.makedirs(f"users/{username}/user_levels")
                                     save_json(f"users/{username}/accessibility.json", default_accessibility)
                                     save_json(f"users/{username}/controls.json", default_controls)
