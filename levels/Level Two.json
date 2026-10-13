@@ -20,7 +20,7 @@
     ],
     "title": "Level Two",
     "points": 0,
-    "level number": 3,
+    "level number": 2,
     "song": "glorious morning 2.ogg",
     "song start": 0
   },
@@ -6479,6 +6479,13 @@
   "victors": {
     "Rolf": [
       110,
+      0,
+      0,
+      0,
+      0
+    ],
+    "rolf": [
+      2,
       0,
       0,
       0,

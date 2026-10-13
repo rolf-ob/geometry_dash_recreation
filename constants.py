@@ -49,7 +49,8 @@ COIN_COLOR = (255, 255, 0)
 LOGIN_PAGE_TUTORIAL = [
     "Use up and down arrows to change selected textbox",
     "Press Enter while Create User is selected to create a user with the typed in username and password (case sensitive)",
-    "Press Enter while Log In is selected to log into the account that has that username, given that the password is correct"
+    "Press Enter while Log In is selected to log into the account that has that username, given that the password is correct",
+    "Remember to log out in the pause menu by pressing escape before you leave if you don't want others to have access to your account"
 ]
 
 CONTROLS_TUTORIAL = [
