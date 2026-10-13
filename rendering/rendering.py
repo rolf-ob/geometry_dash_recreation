@@ -350,7 +350,7 @@ def draw(game):
 
         all_viewable = not game.building or game.building and not game.layer_view
 
-        if all_viewable or game.building and game.layer_view and game.layer == 1:
+        if all_viewable or game.building and game.layer_view and game.layer == 0:
             draw_background(game, screen)
         if game.current_level != 0:
             draw_floor_roof(game, screen)
@@ -361,7 +361,7 @@ def draw(game):
             draw_player(game, screen)
         if game.building and not game.layer_view:
             draw_checkpoints(game, screen)
-        if all_viewable or game.building and game.layer_view and game.layer == 1:
+        if all_viewable or game.building and game.layer_view and game.layer == 2:
             draw_decoration(game, screen)
         
         draw_hitboxes(game, screen)

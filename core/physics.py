@@ -3,6 +3,7 @@ import time
 
 from core.attribute_editing import apply_edit
 from entities.spatial import collide, get_buckets, get_nearby_objects
+from collections import defaultdict
 from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, GAMEMODE_COLORS
 
@@ -168,6 +169,7 @@ def check_collision(game):
 
                     if game.gamemode == "wave":
                         game.wave_trail = [(game.player.x + game.player.width/2, game.player.y)]
+                        game.buckets["wave trail"] = defaultdict(list)
 
         elif obj.real_shape == "speed":
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier:
