@@ -403,8 +403,8 @@ class Game:
             if self.name:
                 can_update = not self.paused and not self.building and self.current_level != 0
 
-                if frame_time > 0.05 and can_update and not self.completed and self.dead == 0 and now - self.restart_time > 0.1:
-                    can_update = False
+                if frame_time > 0.1 and can_update and not self.completed and self.dead == 0 and now - self.restart_time > 0.1:
+                    self.restart()
                     accumulator = 0
                     frame_time = 0
                     self.title = ["You're too laggy!", time.perf_counter() + 2]
