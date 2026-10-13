@@ -27,306 +27,33 @@
   "background": [],
   "objects": [
     {
-      "x": 1860,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "left slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 2030,
-      "y": 580,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 2820,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1920,
-      "y": 580,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "left slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 2090,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 2400,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "square",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 2480,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 2640,
-      "y": 710,
-      "width": 40,
-      "height": 10,
-      "rotation": 0,
-      "shape": "pad",
-      "color": [
-        255,
-        255,
-        0
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": "normal",
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 2240,
-      "y": 710,
-      "width": 40,
-      "height": 10,
-      "rotation": 0,
-      "shape": "pad",
-      "color": [
-        255,
-        255,
-        0
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": "normal",
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1440,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "left slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1630,
-      "y": 560,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1520,
-      "y": 560,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "left slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1710,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1060,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "left slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
       "x": 1230,
       "y": 580,
       "width": 80,
       "height": 80,
       "rotation": 0,
       "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2588,
+      "y": 640,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "left slope",
       "color": [
         255,
         255,
@@ -363,28 +90,7 @@
       "triggers": []
     },
     {
-      "x": 1290,
-      "y": 640,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 640,
+      "x": 1060,
       "y": 640,
       "width": 80,
       "height": 80,
@@ -426,27 +132,6 @@
       "triggers": []
     },
     {
-      "x": 720,
-      "y": 560,
-      "width": 80,
-      "height": 80,
-      "rotation": 0,
-      "shape": "left slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
       "x": 910,
       "y": 640,
       "width": 80,
@@ -468,23 +153,233 @@
       "triggers": []
     },
     {
-      "x": 1380,
-      "y": 600,
-      "width": 40,
-      "height": 120,
+      "x": 720,
+      "y": 560,
+      "width": 80,
+      "height": 80,
       "rotation": 0,
-      "shape": "speed",
+      "shape": "left slope",
       "color": [
-        128,
-        128,
-        128
+        255,
+        255,
+        255
       ],
       "outline": [
         0,
         0,
         0
       ],
-      "modifier": 1.9,
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 640,
+      "y": 640,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "left slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1290,
+      "y": 640,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1593,
+      "y": 640,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1987,
+      "y": 640,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2140,
+      "y": 710,
+      "width": 40,
+      "height": 10,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1440,
+      "y": 710,
+      "width": 40,
+      "height": 10,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1800,
+      "y": 710,
+      "width": 40,
+      "height": 10,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2308,
+      "y": 640,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2748,
+      "y": 640,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2642,
+      "y": 656,
+      "width": 40,
+      "height": 10,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "small",
       "group_id": 0,
       "triggers": []
     }
@@ -493,6 +388,58 @@
   "checkpoints": [
     {
       "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2.0,
+        "gravity": 1.0,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1000,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2480,
       "y": 680,
       "width": 40,
       "height": 40,
@@ -520,7 +467,7 @@
   ],
   "victors": {
     "rolf": [
-      95,
+      39,
       0,
       0,
       0,
