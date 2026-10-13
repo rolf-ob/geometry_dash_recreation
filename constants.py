@@ -8,7 +8,7 @@ BUCKET_WIDTH = 400
 CAMERA_MARGIN = 100
 MAX_EDIT_HISTORY = 20
 
-gamemode_colors = {
+GAMEMODE_COLORS = {
     "wave": (0, 255, 255),
     "cube": (0, 255, 0),
     "ship": (255, 0, 255),
@@ -18,23 +18,23 @@ gamemode_colors = {
     "spider": (128, 0, 255)
 }
 
-speed_color = (128, 128, 128)
+SPEED_COLOR = (128, 128, 128)
 
-gravity_colors = {
+GRAVITY_COLORS = {
     1: (0, 255, 0),
     2: (255, 0, 255),
     -1: (255, 255, 0),
     -2: (0, 0, 255)
 }
 
-size_colors = {
+SIZE_COLORS = {
     1: (0, 255, 0),
     0.5: (255, 0, 255)
 }
 
-teleport_color = (255, 128, 0)
+TELEPORT_COLOR = (255, 128, 0)
 
-orb_pad_colors = {
+ORB_PAD_COLORS = {
     "small": (255, 0, 255),
     "normal": (255, 255, 0),
     "big": (255, 0, 0),
@@ -44,15 +44,15 @@ orb_pad_colors = {
     "dash": (0, 255, 0)
 }
 
-coin_color = (255, 255, 0)
+COIN_COLOR = (255, 255, 0)
 
-login_page_tutorial = [
+LOGIN_PAGE_TUTORIAL = [
     "Use up and down arrows to change selected textbox",
     "Press Enter while Create User is selected to create a user with the typed in username and password (case sensitive)",
     "Press Enter while Log In is selected to log into the account that has that username, given that the password is correct"
 ]
 
-controls_tutorial = [
+CONTROLS_TUTORIAL = [
     "HOW TO WIN",
     "Collecting coins and completing levels gives points",
     "Level points are displayed in the title",
@@ -81,12 +81,14 @@ controls_tutorial = [
     "Show Spacial Buckets - F4",
     "Save To File - F"
 ]
-operator_tutorial = [
+
+OPERATOR_TUTORIAL = [
     "OPERATOR CONTROLS",
     "Create Level - H",
     "Build Mode - B"
 ]
-settings_tutorial = [
+
+SETTINGS_TUTORIAL = [
     "CHANGE SETTINGS",
     "Pause Level/Open Settings - Escape",
     "Select Setting - Up/Down Arrow",
@@ -100,7 +102,8 @@ settings_tutorial = [
     "Volume - How loud the music is from 0-100",
     "Log Out - Press enter while field is selected to log out"
 ]
-building_tutorial = [
+
+BUILDING_TUTORIAL = [
     "BUILDING CONTROLS",
     "Place Object - Left Mouse + Shift/None",
     "Select Object - Right Mouse + Shift/Ctrl/None",

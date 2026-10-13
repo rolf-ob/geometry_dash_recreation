@@ -2,9 +2,9 @@ import pygame as py
 import re
 from pathlib import Path
 
-from constants import gamemode_colors, speed_color, gravity_colors, size_colors, teleport_color, orb_pad_colors, coin_color
 from entities.spatial import get_buckets
 from core.building import toggle_building
+from constants import GAMEMODE_COLORS, SPEED_COLOR, GRAVITY_COLORS, SIZE_COLORS, TELEPORT_COLOR, ORB_PAD_COLORS, COIN_COLOR
 
 def switch_attribute(game, way):
     if game.textboxes:
@@ -75,7 +75,7 @@ def apply_edit(game, obj, real_field_name, text):
                             elif text == "speed":
                                 obj.width = 40
                                 obj.height = 120
-                                obj.color = speed_color
+                                obj.color = SPEED_COLOR
 
                             elif text == "gravity":
                                 obj.width = 20
@@ -88,7 +88,7 @@ def apply_edit(game, obj, real_field_name, text):
                             elif text == "teleport":
                                 obj.width = 20
                                 obj.height = 120
-                                obj.color = teleport_color
+                                obj.color = TELEPORT_COLOR
 
                             elif text == "orb":
                                 obj.width = 40
@@ -106,7 +106,7 @@ def apply_edit(game, obj, real_field_name, text):
                             elif text == "coin":
                                 obj.width = 40
                                 obj.height = 40
-                                obj.color = coin_color
+                                obj.color = COIN_COLOR
 
                     elif field_name == "shape" and text == "slope":
                         setattr(obj, real_field_name, "right slope")
@@ -137,20 +137,20 @@ def apply_edit(game, obj, real_field_name, text):
                         if obj.real_shape == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                             setattr(obj, real_field_name, text)
                             if real == "":
-                                obj.color = gamemode_colors[text]
+                                obj.color = GAMEMODE_COLORS[text]
 
                         elif obj.real_shape == "speed":
                             setattr(obj, real_field_name, max(0.01, min(400, float(text))))
 
                         elif obj.real_shape == "gravity":
                             setattr(obj, real_field_name, float(text))
-                            if real == "" and int(text) in gravity_colors:
-                                obj.color = gravity_colors[int(text)]
+                            if real == "" and int(text) in GRAVITY_COLORS:
+                                obj.color = GRAVITY_COLORS[int(text)]
 
                         elif obj.real_shape == "size":
                             setattr(obj, real_field_name, max(0.5, min(10, float(text))))
-                            if real == "" and float(text) in size_colors:
-                                obj.color = size_colors[float(text)]
+                            if real == "" and float(text) in SIZE_COLORS:
+                                obj.color = SIZE_COLORS[float(text)]
 
                         elif obj.real_shape == "teleport":
                             setattr(obj, real_field_name, int(text))
@@ -158,12 +158,12 @@ def apply_edit(game, obj, real_field_name, text):
                         elif obj.real_shape == "orb" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
                             setattr(obj, real_field_name, text)
                             if real == "":
-                                obj.color = orb_pad_colors[text]
+                                obj.color = ORB_PAD_COLORS[text]
 
                         elif obj.real_shape == "pad" and text in ("small", "normal", "big", "gravity", "spider"):
                             setattr(obj, real_field_name, text)
                             if real == "":
-                                obj.color = orb_pad_colors[text]
+                                obj.color = ORB_PAD_COLORS[text]
 
                         elif obj.real_shape == "coin":
                             setattr(obj, real_field_name, int(text))
@@ -178,7 +178,7 @@ def apply_edit(game, obj, real_field_name, text):
                 elif obj.shape == "checkpoint":
                     if field_name == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                         obj.modifier["gamemode"] = text
-                        obj.color = gamemode_colors[text]
+                        obj.color = GAMEMODE_COLORS[text]
 
                     elif field_name == "speed":
                         obj.modifier["speed"] = max(0.01, min(400, float(text)))

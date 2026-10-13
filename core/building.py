@@ -2,11 +2,11 @@ import pygame as py
 import math, time
 from pathlib import Path
 
-from core.textbox import TextBox
 from entities.serialization import save_json, level_to_dict
-from entities.object import Object
 from entities.spatial import collide, get_nearby_objects
 from rendering.rendering import screen_to_world
+from core.textbox import TextBox
+from entities.object import Object
 from constants import PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 
 def toggle_building(game):
@@ -175,11 +175,12 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
                 obj.recompute()
         else:
             for obj in selected:
-                if add_x > 0 or obj.width > distance:
-                    obj.width += add_x
-                if add_y > 0 or obj.height > distance:
-                    obj.height += add_y
-                obj.recompute()
+                if obj.shape != "checkpoint":
+                    if add_x > 0 or obj.width > distance:
+                        obj.width += add_x
+                    if add_y > 0 or obj.height > distance:
+                        obj.height += add_y
+                    obj.recompute()
         
         game.rebuild_buckets()
 

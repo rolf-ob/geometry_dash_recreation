@@ -1,5 +1,5 @@
-from pathlib import Path
 import json, os
+from pathlib import Path
 
 from entities.object import Object
 

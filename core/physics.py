@@ -1,10 +1,10 @@
-from entities.spatial import collide, get_buckets, get_nearby_objects
-from entities.object import Object
-from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, gamemode_colors
-import time
 import pygame as py
+import time
 
 from core.attribute_editing import apply_edit
+from entities.spatial import collide, get_buckets, get_nearby_objects
+from entities.object import Object
+from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, GAMEMODE_COLORS
 
 def apply_trigger(game, trigger):
     for obj in game.trigger_ids[trigger.triggers]:
@@ -36,7 +36,8 @@ def apply_trigger(game, trigger):
         game.rebuild_buckets()
 
 def check_collision(game):
-    fall_speed = -game.speed * abs(game.gravity)
+    gravity = abs(game.gravity) if game.gravity != 0 else 1e-9
+    fall_speed = game.player.height / (-game.speed * gravity)
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
     game.min_height = game.roof
@@ -53,7 +54,7 @@ def check_collision(game):
                 this_sliding = False
                 prev_player = game.hitboxes[-1].aabb
                 player = game.player.aabb
-                on_right_edge = player["left"] <= obj.aabb["right"] < player["left"] + game.speed
+                on_right_edge = player["left"] == obj.aabb["right"]
                 on_left_edge = prev_player["left"] <= obj.aabb["left"] <= player["left"]
 
                 if obj.real_shape == "square" and obj.real_rotation == 0:
@@ -161,8 +162,8 @@ def check_collision(game):
                         game.add_wave_part()
                     
                     game.gamemode = obj.real_modifier
-                    game.player.color = gamemode_colors[game.gamemode]
-                    game.player_render.color = gamemode_colors[game.gamemode]
+                    game.player.color = GAMEMODE_COLORS[game.gamemode]
+                    game.player_render.color = GAMEMODE_COLORS[game.gamemode]
                     game.player.recompute()
 
                     if game.gamemode == "wave":
@@ -312,7 +313,8 @@ def check_collision(game):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
 def update_position(game):
-    fall_speed = -game.speed * abs(game.gravity)
+    gravity = abs(game.gravity) if game.gravity != 0 else 1e-9
+    fall_speed = game.player.height / (-game.speed * gravity)
     if round(game.y_vel) != fall_speed or game.gravity == 0:
         if game.gamemode == "cube":
             if game.clicking > 0 and (game.on_ground or game.sliding * game.gravity > 0):

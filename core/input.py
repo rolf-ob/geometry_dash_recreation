@@ -2,9 +2,9 @@ import pygame as py
 import time, json, os, re
 
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
-from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 from core.attribute_editing import switch_attribute, apply_edit
 from entities.serialization import save_json
+from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 
 def click(game, type, button, shift, ctrl):
     if button in (0, 1) and not game.building:
@@ -72,14 +72,14 @@ def switch_checkpoint(game, way):
 
 def switch_level(game, way):
     game.checkpoint = 0
-    game.building_camera_x = 0
-    game.building_camera_y = game.floor - HEIGHT + CAMERA_MARGIN
     if way == "previous":
         game.current_level = (game.current_level-1) % len(game.levels)
     elif way == "next":
         game.current_level = (game.current_level+1) % len(game.levels)
     
     game.load_level()
+    game.building_camera_x = 0
+    game.building_camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
 
 def toggle_speedhack(game):
     if len(game.hitboxes) > 1 and not game.completed:

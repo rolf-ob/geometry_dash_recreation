@@ -2,7 +2,7 @@ import pygame as py
 import time, math
 
 from entities.spatial import get_nearby_objects
-from constants import WIDTH, HEIGHT, BUCKET_WIDTH, login_page_tutorial, controls_tutorial, operator_tutorial, settings_tutorial, building_tutorial
+from constants import WIDTH, HEIGHT, BUCKET_WIDTH, LOGIN_PAGE_TUTORIAL, CONTROLS_TUTORIAL, OPERATOR_TUTORIAL, SETTINGS_TUTORIAL, BUILDING_TUTORIAL
 
 def world_to_screen(game, x, y):
     camera_x = game.camera_x if not game.building else game.building_camera_x
@@ -193,7 +193,7 @@ def draw_buckets(game, screen):
 
 def draw_leaderboard(game, screen):
     if not game.name:
-        for i, line in enumerate(login_page_tutorial):
+        for i, line in enumerate(LOGIN_PAGE_TUTORIAL):
             screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), (200, 100 + 25*i))
 
     elif game.current_level == 0:
@@ -219,18 +219,18 @@ def draw_leaderboard(game, screen):
             screen.blit(game.text_cache.get_surface(f"{i+1}: {player} | Points: {points}", game.primary_color, "world"), world_to_screen(game, 50, 85 + 25*i))
         
         if not game.building:
-            for i, line in enumerate(controls_tutorial):
+            for i, line in enumerate(CONTROLS_TUTORIAL):
                 screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), world_to_screen(game, 350, 60 + 25*i))
             
             if game.operator:
-                for i, line in enumerate(operator_tutorial):
-                    screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), world_to_screen(game, 350, 60 + 25*(len(controls_tutorial)+1) + 25*i))
+                for i, line in enumerate(OPERATOR_TUTORIAL):
+                    screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), world_to_screen(game, 350, 60 + 25*(len(CONTROLS_TUTORIAL)+1) + 25*i))
 
         else:
-            for i, line in enumerate(building_tutorial):
+            for i, line in enumerate(BUILDING_TUTORIAL):
                 screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), world_to_screen(game, 350, 60 + 25*i))
         
-        for i, line in enumerate(settings_tutorial):
+        for i, line in enumerate(SETTINGS_TUTORIAL):
             screen.blit(game.text_cache.get_surface(line, game.primary_color, "world"), world_to_screen(game, 850, 60 + 25*i))
 
     else:

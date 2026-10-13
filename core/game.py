@@ -1,19 +1,19 @@
-from collections import defaultdict
-from copy import deepcopy
-from pathlib import Path
-import time, json
 import pygame as py
+import time, json
+from copy import deepcopy
+from collections import defaultdict
+from pathlib import Path
 
 from entities.spatial import get_buckets
 from core.input import handle_input
 from core.physics import update
-from core.textbox import TextBox
 from rendering.rendering import draw
-from entities.object import Object
 from entities.serialization import level_to_dict, dict_to_level, save_json
+from entities.object import Object
 from rendering.textcache import TextCache
-from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, BUCKET_WIDTH, gamemode_colors
+from core.textbox import TextBox
 from core.fps_handler import FpsHandler
+from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, BUCKET_WIDTH, GAMEMODE_COLORS
 
 class Game:
     def __init__(self):
@@ -33,7 +33,7 @@ class Game:
         self.songs = Path("songs")
 
         self.operator = True
-        self.name = "rolf"
+        self.name = None
         self.running = True
 
         self.width = WIDTH
@@ -173,8 +173,6 @@ class Game:
 
         if restart:
             self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.points)}", -1]
-            self.building_camera_x = 0
-            self.building_camera_y = self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
             self.restart()
 
     def restart(self):
@@ -197,8 +195,8 @@ class Game:
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
         
         size = self.checkpoints[self.checkpoint].modifier["size"]*40
-        self.player = Object(0, 0, size, size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
-        self.player_render = Object(0, 0, size, size, 0, "square", gamemode_colors[self.gamemode], (0,)*3)
+        self.player = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)
+        self.player_render = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)
         self.player.recompute()
         self.player_render.recompute()
 
@@ -406,7 +404,7 @@ class Game:
                 can_update = not self.paused and not self.building and self.current_level != 0
 
                 if frame_time > 0.05 and can_update and not self.completed and self.dead == 0 and now - self.restart_time > 0.1:
-                    self.restart()
+                    can_update = False
                     accumulator = 0
                     frame_time = 0
                     self.title = ["You're too laggy!", time.perf_counter() + 2]
