@@ -123,6 +123,9 @@ class Object:
         self.recompute_axes()
         self.recompute_aabb()
 
+    def recompute_specific(self, attribute):
+        pass #!
+
     def to_dict(self):
         d = asdict(self)
         del d["selected"]
