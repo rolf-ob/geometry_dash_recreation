@@ -41,6 +41,8 @@ class Game:
         self.view_width = WIDTH
         self.view_height = HEIGHT
         self.scale = 1
+        self.building_camera_x = 0
+        self.building_camera_y = 40
 
         self.building = False
         self.editing_level = False

@@ -6,6 +6,21 @@ from core.attribute_editing import switch_attribute, apply_edit
 from entities.serialization import save_json
 from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 
+def create_user(game, username):
+    with open(f"users/default/accessibility.json", "r", encoding="utf-8") as f:
+        default_accessibility = json.load(f)
+    default_accessibility["password"] = game.textboxes[1].text
+
+    with open(f"users/default/controls.json", "r", encoding="utf-8") as f:
+        default_controls = json.load(f)
+
+    os.makedirs(f"users/{username}/user_levels")
+    save_json(f"users/{username}/accessibility.json", default_accessibility)
+    save_json(f"users/{username}/controls.json", default_controls)
+    game.users.append(f"users\\{username}")
+    game.users.sort()
+    game.load_user(username)
+
 def click(game, type, button, shift, ctrl):
     if button in (0, 1) and not game.building:
         if type == "click":
@@ -200,22 +215,10 @@ def handle_input(game):
                     else:
                         if game.active_textbox.field_name.lower() == "create user":
                             username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
-                            if username not in game.users:
+
+                            if username and f"users\\{username}" not in game.users:
                                 if game.textboxes[1].text:
-                                    with open(f"users/default/accessibility.json", "r", encoding="utf-8") as f:
-                                        default_accessibility = json.load(f)
-                                    default_accessibility["password"] = game.textboxes[1].text
-                            
-                                    with open(f"users/default/controls.json", "r", encoding="utf-8") as f:
-                                        default_controls = json.load(f)
-
-                                    os.makedirs(f"users/{username}/user_levels")
-                                    save_json(f"users/{username}/accessibility.json", default_accessibility)
-                                    save_json(f"users/{username}/controls.json", default_controls)
-                                    game.users.append(f"users\\{username}")
-                                    game.users.sort()
-                                    game.load_user(username)
-
+                                    create_user(game, username)
                                 else:
                                     game.title = ["Please enter a password along with your username", time.perf_counter() + 2]
                             else:
@@ -223,6 +226,7 @@ def handle_input(game):
 
                         elif game.active_textbox.field_name.lower() == "log in":
                             username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
+
                             if f"users\\{username}" in game.users:
                                 with open(f"users/{username}/accessibility.json", "r", encoding="utf-8") as f:
                                     settings = json.load(f)

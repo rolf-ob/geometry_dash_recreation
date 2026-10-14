@@ -32,6 +32,7 @@ def switch_attribute(game, way):
                 game.active_textbox = None
 
 def apply_edit(game, obj, real_field_name, text):
+    if text in ("inf", "nan"): text = "easter egg!"
     field_name = real_field_name.split("_")[-1]
     real = "real_" if len(real_field_name.split("_")) > 1 else ""
     try:
@@ -144,8 +145,8 @@ def apply_edit(game, obj, real_field_name, text):
 
                         elif obj.real_shape == "gravity":
                             setattr(obj, real_field_name, float(text))
-                            if real == "" and int(text) in GRAVITY_COLORS:
-                                obj.color = GRAVITY_COLORS[int(text)]
+                            if real == "" and float(text) in GRAVITY_COLORS:
+                                obj.color = GRAVITY_COLORS[float(text)]
 
                         elif obj.real_shape == "size":
                             setattr(obj, real_field_name, max(0.5, min(10, float(text))))

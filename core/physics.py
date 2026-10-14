@@ -37,8 +37,7 @@ def apply_trigger(game, trigger):
         game.rebuild_buckets()
 
 def check_collision(game):
-    gravity = abs(game.gravity) if game.gravity != 0 else 1e-9
-    fall_speed = game.player.height / (-game.speed * gravity)
+    fall_speed = game.player.height / (-game.speed * abs(game.gravity)) if game.gravity != 0 else 0
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
 
     game.min_height = game.roof
@@ -78,14 +77,12 @@ def check_collision(game):
                         prev_y = (prev_player["left"] - obj.real_x) / obj.real_width
                         y = (player["left"] - obj.real_x) / obj.real_width
                         next_y = (player["left"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        gravity = game.gravity if game.gravity != 0 else 1e-9
-                        slope_vel = -obj.real_height / (obj.real_width * gravity)
+                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
                     else:
                         prev_y = 1-(prev_player["right"] - obj.real_x) / obj.real_width
                         y = 1-(player["right"] - obj.real_x) / obj.real_width
                         next_y = 1-(player["right"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        gravity = game.gravity if game.gravity != 0 else 1e-9
-                        slope_vel = obj.real_height / (obj.real_width * gravity)
+                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
                     
                     if ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not (on_right_edge or on_left_edge):
                         game.max_height = min(game.max_height, obj.real_y - game.player.height)
@@ -106,14 +103,12 @@ def check_collision(game):
                         prev_y = (prev_player["right"] - obj.real_x) / obj.real_width
                         y = (player["right"] - obj.real_x) / obj.real_width
                         next_y = (player["right"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        gravity = game.gravity if game.gravity != 0 else 1e-9
-                        slope_vel = -obj.real_height / (obj.real_width * gravity)
+                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
                     else:
                         prev_y = 1-(prev_player["left"] - obj.real_x) / obj.real_width
                         y = 1-(player["left"] - obj.real_x) / obj.real_width
                         next_y = 1-(player["left"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        gravity = game.gravity if game.gravity != 0 else 1e-9
-                        slope_vel = obj.real_height / (obj.real_width * gravity)
+                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
 
                     if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not (on_left_edge or on_right_edge):
                         game.min_height = max(game.min_height, obj.aabb["bottom"])
@@ -315,8 +310,7 @@ def check_collision(game):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
 def update_position(game):
-    gravity = abs(game.gravity) if game.gravity != 0 else 1e-9
-    fall_speed = game.player.height / (-game.speed * gravity)
+    fall_speed = game.player.height / (-game.speed * abs(game.gravity)) if game.gravity != 0 else 0
     if round(game.y_vel) != fall_speed or game.gravity == 0:
         if game.gamemode == "cube":
             if game.clicking > 0 and (game.on_ground or game.sliding * game.gravity > 0):
