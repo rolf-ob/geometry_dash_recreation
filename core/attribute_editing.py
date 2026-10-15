@@ -6,6 +6,12 @@ from entities.spatial import get_buckets
 from core.building import toggle_building
 from constants import GAMEMODE_COLORS, SPEED_COLOR, GRAVITY_COLORS, SIZE_COLORS, TELEPORT_COLOR, ORB_PAD_COLORS, COIN_COLOR
 
+def check_illegal(text):
+    if text.lower() in ("inf", "-inf", "+inf", "nan", "-nan", "+nan", "infinity"):
+        return "easter egg!"
+    elif -1e99 < int(text) < 1e99:
+        return 0
+
 def switch_attribute(game, way):
     if game.textboxes:
         if way == "previous":
@@ -32,7 +38,6 @@ def switch_attribute(game, way):
                 game.active_textbox = None
 
 def apply_edit(game, obj, real_field_name, text):
-    if text in ("inf", "nan"): text = "easter egg!"
     field_name = real_field_name.split("_")[-1]
     real = "real_" if len(real_field_name.split("_")) > 1 else ""
     try:
@@ -40,10 +45,13 @@ def apply_edit(game, obj, real_field_name, text):
             if not game.editing_level:
                 if obj.real_shape not in ("checkpoint", "trigger"):
                     if field_name == "width":
+                        text = check_illegal(text)
                         setattr(obj, real_field_name, max(0, int(text)))
                     elif field_name == "height":
+                        text = check_illegal(text)
                         setattr(obj, real_field_name, max(0, int(text)))
                     elif field_name == "rotation":
+                        text = check_illegal(text)
                         rotation = float(text)
                         rotation %= 360
                         if rotation < 0:
@@ -141,19 +149,23 @@ def apply_edit(game, obj, real_field_name, text):
                                 obj.color = GAMEMODE_COLORS[text]
 
                         elif obj.real_shape == "speed":
+                            text = check_illegal(text)
                             setattr(obj, real_field_name, max(0.01, min(400, float(text))))
 
                         elif obj.real_shape == "gravity":
+                            text = check_illegal(text)
                             setattr(obj, real_field_name, float(text))
                             if real == "" and float(text) in GRAVITY_COLORS:
                                 obj.color = GRAVITY_COLORS[float(text)]
 
                         elif obj.real_shape == "size":
+                            text = check_illegal(text)
                             setattr(obj, real_field_name, max(0.5, min(10, float(text))))
                             if real == "" and float(text) in SIZE_COLORS:
                                 obj.color = SIZE_COLORS[float(text)]
 
                         elif obj.real_shape == "teleport":
+                            text = check_illegal(text)
                             setattr(obj, real_field_name, int(text))
 
                         elif obj.real_shape == "orb" and text in ("small", "normal", "big", "gravity", "heavy", "dash"):
@@ -167,6 +179,7 @@ def apply_edit(game, obj, real_field_name, text):
                                 obj.color = ORB_PAD_COLORS[text]
 
                         elif obj.real_shape == "coin":
+                            text = check_illegal(text)
                             setattr(obj, real_field_name, int(text))
 
                         elif obj.real_shape == "text":
@@ -182,12 +195,15 @@ def apply_edit(game, obj, real_field_name, text):
                         obj.color = GAMEMODE_COLORS[text]
 
                     elif field_name == "speed":
+                        text = check_illegal(text)
                         obj.modifier["speed"] = max(0.01, min(400, float(text)))
 
                     elif field_name == "gravity":
+                        text = check_illegal(text)
                         obj.modifier["gravity"] = float(text)
 
                     elif field_name == "size":
+                        text = check_illegal(text)
                         obj.modifier["size"] = max(0.5, min(10, float(text)))
                         obj.width = max(0.5, min(10, float(text))) * 40
                         obj.height = max(0.5, min(10, float(text))) * 40
@@ -219,6 +235,7 @@ def apply_edit(game, obj, real_field_name, text):
                             obj.modifier["value"] = int(text)
 
                         elif obj.modifier["attribute"] == "rotation":
+                            text = check_illegal(text)
                             rotation = float(text)
                             rotation %= 360
                             if rotation < 0:
@@ -229,12 +246,15 @@ def apply_edit(game, obj, real_field_name, text):
                             obj.modifier["value"] = text
 
                         elif obj.modifier["attribute"] == "length":
+                            text = check_illegal(text)
                             obj.modifier["value"] = int(text)
 
                         elif obj.modifier["attribute"] == "roof":
+                            text = check_illegal(text)
                             obj.modifier["value"] = int(text)
 
                         elif obj.modifier["attribute"] == "floor":
+                            text = check_illegal(text)
                             obj.modifier["value"] = int(text)
 
                         elif obj.modifier["attribute"] == "roof color":
@@ -253,9 +273,11 @@ def apply_edit(game, obj, real_field_name, text):
                             obj.modifier["value"] = (r, g, b)
 
                     elif field_name == "transition":
+                        text = check_illegal(text)
                         obj.modifier["transition"] = float(text)
 
                     elif field_name == "triggers":
+                        text = check_illegal(text)
                         obj.triggers = int(text)
 
                 if real == "":
@@ -266,14 +288,17 @@ def apply_edit(game, obj, real_field_name, text):
 
             else:
                 if field_name == "length":
+                    text = check_illegal(text)
                     game.level["meta"]["length"] = max(0, int(text))
                     game.length = max(0, int(text))
                 
                 elif field_name == "roof":
+                    text = check_illegal(text)
                     game.level["meta"]["roof"] = min(game.level["meta"]["floor"] - 400, int(text))
                     game.roof = min(game.level["meta"]["floor"] - 400, int(text))
 
                 elif field_name == "floor":
+                    text = check_illegal(text)
                     game.level["meta"]["floor"] = max(game.level["meta"]["roof"] + 400, int(text))
                     game.floor = max(game.level["meta"]["roof"] + 400, int(text))
 
@@ -309,10 +334,12 @@ def apply_edit(game, obj, real_field_name, text):
                         file.rename(f"levels/{name}.json")
 
                 elif field_name == "points":
+                    text = check_illegal(text)
                     game.level["meta"]["points"] = int(text)
                     game.points = int(text)
 
                 elif field_name == "level number":
+                    text = check_illegal(text)
                     new_number = max(1, min(len(game.levels)-1, int(text)))
                     game.levels.pop(game.current_level)
                     game.levels.insert(new_number, game.level)
@@ -330,6 +357,7 @@ def apply_edit(game, obj, real_field_name, text):
                         game.song = text + ".ogg"
                 
                 elif field_name == "song start":
+                    text = check_illegal(text)
                     game.level["meta"]["song start"] = float(text)
                     game.song_start = float(text)
 
@@ -347,15 +375,19 @@ def apply_edit(game, obj, real_field_name, text):
 
         else:
             if field_name == "speedhack":
+                text = check_illegal(text)
                 game.speedhack_multiplier = max(0.01, float(text))
 
             elif field_name == "fps":
+                text = check_illegal(text)
                 game.fps = max(48, int(text))
 
             elif field_name == "respawn time":
+                text = check_illegal(text)
                 game.respawn_time = float(text)
 
             elif field_name == "volume":
+                text = check_illegal(text)
                 game.volume = max(0, min(100, int(text)))
                 py.mixer.music.set_volume(max(0, min(100, int(text))) / 100)
 

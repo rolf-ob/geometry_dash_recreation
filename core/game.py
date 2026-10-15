@@ -22,7 +22,9 @@ class Game:
         self.levels = []
         for file in Path("levels").glob("*.json"):
             with open(file, "r", encoding="utf-8") as f:
-                self.levels.append(dict_to_level(json.load(f)))
+                level = dict_to_level(json.load(f))
+                level["meta"]["title"] = file.stem
+                self.levels.append(level)
         self.levels.sort(key=lambda level: level["meta"]["level number"])
 
         self.users = []

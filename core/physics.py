@@ -365,7 +365,7 @@ def update_position(game):
                 game.y_vel = max(fall_speed, game.y_vel - 0.05)
 
     if game.dashing:
-        y_movement = -max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * game.speed
+        y_movement = max(min(-max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * game.speed, game.player.height), -game.player.height)
     else:
         y_movement = max(min(game.y_vel * game.speed * game.gravity, game.player.height), -game.player.height)
 
