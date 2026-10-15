@@ -176,10 +176,10 @@ BUILDING_TUTORIAL = [
     "final battle",
     "glorious morning 2",
     "menu",
+    "moonsound",
     "optimizm",
     "radioactive",
     "slash inferno",
     "the race around the world",
     "the show",
-    "work",
 ]

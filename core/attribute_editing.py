@@ -9,8 +9,10 @@ from constants import GAMEMODE_COLORS, SPEED_COLOR, GRAVITY_COLORS, SIZE_COLORS,
 def check_illegal(text):
     if text.lower() in ("inf", "-inf", "+inf", "nan", "-nan", "+nan", "infinity"):
         return "easter egg!"
-    elif -1e99 < int(text) < 1e99:
+    elif -1e99 > float(text) > 1e99:
         return 0
+    else:
+        return text
 
 def switch_attribute(game, way):
     if game.textboxes:

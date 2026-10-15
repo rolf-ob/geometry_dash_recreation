@@ -20,6 +20,7 @@ Optimization/structuring
 - Undo redo history list memory optimization
 
 Features
+- Default music delay
 - Multi-select bounding box
 - Default level sizes
 - Multi-point shape
