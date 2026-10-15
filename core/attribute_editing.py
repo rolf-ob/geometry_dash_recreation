@@ -7,12 +7,12 @@ from core.building import toggle_building
 from constants import GAMEMODE_COLORS, SPEED_COLOR, GRAVITY_COLORS, SIZE_COLORS, TELEPORT_COLOR, ORB_PAD_COLORS, COIN_COLOR
 
 def check_illegal(text):
-    if text.lower() in ("inf", "-inf", "+inf", "nan", "-nan", "+nan", "infinity"):
-        return "easter egg!"
-    elif -1e99 > float(text) > 1e99:
-        return 0
-    else:
-        return text
+    if type(text) == str:
+        if text.lower() in ("inf", "-inf", "+inf", "nan", "-nan", "+nan", "infinity"):
+            return "easter egg!"
+        elif -1e99 > float(text) > 1e99:
+            return 0
+    return text
 
 def switch_attribute(game, way):
     if game.textboxes:
@@ -112,7 +112,7 @@ def apply_edit(game, obj, real_field_name, text):
 
                             elif text == "trigger":
                                 obj.triggers = 0
-                                obj.modifier = {"attribute": "", "value": "", "transition": ""}
+                                obj.modifier = {"attribute": "", "value": "", "transition": 0}
 
                             elif text == "coin":
                                 obj.width = 40

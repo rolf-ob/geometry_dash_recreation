@@ -7,35 +7,6 @@ from collections import defaultdict
 from entities.object import Object
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, GAMEMODE_COLORS
 
-def apply_trigger(game, trigger):
-    for obj in game.trigger_ids[trigger.triggers]:
-        if trigger.modifier["attribute"] == "x":
-            try:
-                obj.real_x += int(trigger.modifier["value"])
-                obj.recompute_triggered()
-            except ValueError:
-                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
-        
-        elif trigger.modifier["attribute"] == "y":
-            try:
-                obj.real_y += int(trigger.modifier["value"])
-                obj.recompute_triggered()
-            except ValueError:
-                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
-        
-        elif trigger.modifier["attribute"] == "rotation":
-            try:
-                obj.real_rotation += float(round(trigger.modifier["value"], 1))
-                obj.recompute_triggered()
-            except ValueError:
-                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
-        
-        else:
-            apply_edit(game, obj, "real_" + trigger.modifier["attribute"], trigger.modifier["value"])
-
-    if trigger.modifier["attribute"] not in ("color", "outline", "modifier"):
-        game.rebuild_buckets()
-
 def check_collision(game):
     fall_speed = game.player.height / (-game.speed * abs(game.gravity)) if game.gravity != 0 else 0
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
@@ -309,6 +280,72 @@ def check_collision(game):
     for bucket in get_buckets(hitbox):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
+def apply_trigger(game, trigger):
+    try:
+        if trigger.modifier["transition"] > 0 and int(trigger.modifier["value"]):
+            per_tick = trigger.modifier["value"] / trigger.modifier["transition"] * FIXED_STEP
+        else:
+            per_tick = trigger.modifier["value"]
+    except ValueError:
+        per_tick = trigger.modifier["value"]
+    
+    for obj in game.trigger_ids[trigger.triggers]:
+        if per_tick != trigger.modifier["value"]:
+            game.active_transitions.append([
+                obj,
+                per_tick,
+                trigger.modifier["attribute"],
+                trigger.modifier["value"],
+                getattr(obj, f"real_{trigger.modifier['attribute']}")
+            ])
+
+        if trigger.modifier["attribute"] == "x":
+            try:
+                obj.real_x += int(per_tick)
+                obj.recompute_triggered()
+            except ValueError:
+                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
+        
+        elif trigger.modifier["attribute"] == "y":
+            try:
+                obj.real_y += int(per_tick)
+                obj.recompute_triggered()
+            except ValueError:
+                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
+        
+        elif trigger.modifier["attribute"] == "rotation":
+            try:
+                obj.real_rotation += round(float(per_tick), 1)
+                obj.recompute_triggered()
+            except ValueError:
+                print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
+        
+        else:
+            apply_edit(game, obj, f"real_{trigger.modifier["attribute"]}", trigger.modifier["value"])
+
+def update_transitions(game):
+    for i, transition in enumerate(game.active_transitions):
+        transition[4] += transition[1]
+        obj, per_tick, attribute, end, value = transition
+        
+        if attribute == "x":
+            obj.real_x = int(value)
+            obj.recompute_triggered()
+        
+        elif attribute == "y":
+            obj.real_y = int(value)
+            obj.recompute_triggered()
+        
+        elif attribute == "rotation":
+            obj.real_rotation = round(float(value), 1)
+            obj.recompute_triggered()
+        
+        else:
+            apply_edit(game, obj, f"real_{attribute}", round(value))
+
+        if getattr(obj, f"real_{attribute}") == end:
+            game.active_transitions.pop(i)
+
 def update_position(game):
     fall_speed = game.player.height / (-game.speed * abs(game.gravity)) if game.gravity != 0 else 0
     if round(game.y_vel) != fall_speed or game.gravity == 0:
@@ -397,6 +434,7 @@ def update(game):
     if not game.completed and game.dead == 0:
 
         check_collision(game)
+        update_transitions(game)
         if not game.completed and game.dead == 0:
             update_position(game)
 

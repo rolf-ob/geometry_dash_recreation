@@ -1,14 +1,15 @@
 Update v1.1.0
-- Trigger transition speed
+- Test trigger with and without transition for color, outline, x, y, width, height, rotation, length, roof, floor, roof color, floor color, background
 - Main levels
 - Pyinstaller exe file
 
 Bugs:
-- When rotating 0.1 or 1 degrees, rouding makes position slighly inaccurate, fix by implementing true_x and true_y
+- When rotating 0.1 or 1 degrees, rouding makes position slighly inaccurate
 - Shift to multiselect objects, release mouse while hovering over selected object, object gets deselected
 - Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
 
 Optimization/structuring
+- Object true_x and true_y for rotation accuracy
 - Add more tests
 - Clean up apply_edit()
 - Selected objects list

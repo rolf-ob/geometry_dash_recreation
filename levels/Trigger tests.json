@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "length": 100,
+    "roof": 0,
+    "floor": 720,
+    "roof color": [
+      255,
+      255,
+      255
+    ],
+    "floor color": [
+      255,
+      255,
+      255
+    ],
+    "background color": [
+      255,
+      255,
+      255
+    ],
+    "title": "Trigger tests",
+    "points": 0,
+    "level number": 5,
+    "song": "",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [
+    {
+      "x": 840,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "attribute": "x",
+        "value": 100,
+        "transition": 1.0
+      },
+      "group_id": 0,
+      "triggers": 3
+    },
+    {
+      "x": 520,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": [
+        1
+      ]
+    },
+    {
+      "x": 1000,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "attribute": "width",
+        "value": 10,
+        "transition": 1.0
+      },
+      "group_id": 0,
+      "triggers": 4
+    },
+    {
+      "x": 680,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": [
+        2
+      ]
+    },
+    {
+      "x": 840,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": [
+        3
+      ]
+    },
+    {
+      "x": 1000,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": [
+        4
+      ]
+    },
+    {
+      "x": 520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "attribute": "x",
+        "value": 10,
+        "transition": 0
+      },
+      "group_id": 0,
+      "triggers": 1
+    },
+    {
+      "x": 680,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "attribute": "width",
+        "value": 10,
+        "transition": 0
+      },
+      "group_id": 0,
+      "triggers": 2
+    },
+    {
+      "x": 1200,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": [
+        5
+      ]
+    },
+    {
+      "x": 1200,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "attribute": "width",
+        "value": 400,
+        "transition": 1.0
+      },
+      "group_id": 0,
+      "triggers": 5
+    }
+  ],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 200,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "victors": {
+    "rolf": [
+      69,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

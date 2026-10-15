@@ -49,6 +49,7 @@ class Game:
         self.building = False
         self.editing_level = False
         self.buckets = {"hitboxes": defaultdict(list), "wave trail": defaultdict(list)}
+        self.selected_objects = []
 
         self.done_states = []
         self.undone_states = []
@@ -186,6 +187,7 @@ class Game:
         for obj in (*self.background, *self.objects, *self.decoration):
             obj.recompute()
         self.rebuild_buckets()
+        self.active_transitions = []
         
         self.length = self.level["meta"]["length"]
         self.roof = self.level["meta"]["roof"]
