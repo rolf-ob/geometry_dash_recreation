@@ -8,4 +8,8 @@ for file in Path("levels").glob("*.json"):
     with open(file, "r", encoding="utf-8") as f:
         level = dict_to_level(json.load(f))
         level["victors"].clear()
-        save_json(f"levels/{level["meta"]["title"]}.json", level_to_dict(level))
+        level["meta"]["title"] = file.stem
+        levels.append(level)
+
+for level in levels:
+    save_json(f"levels/{level["meta"]["title"]}.json", level_to_dict(level))
