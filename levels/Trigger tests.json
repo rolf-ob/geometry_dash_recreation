@@ -654,7 +654,7 @@
       ],
       "modifier": {
         "attribute": "width",
-        "value": 20,
+        "value": -20,
         "transition": 1.0
       },
       "group_id": 0,
@@ -679,7 +679,7 @@
       ],
       "modifier": {
         "attribute": "height",
-        "value": 20,
+        "value": -20,
         "transition": 1.0
       },
       "group_id": 0,
@@ -953,7 +953,7 @@
   ],
   "victors": {
     "rolf": [
-      194,
+      197,
       0,
       0,
       0,

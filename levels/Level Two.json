@@ -4668,7 +4668,7 @@
       "triggers": []
     },
     {
-      "x": 12400,
+      "x": 12480,
       "y": 640,
       "width": 40,
       "height": 80,
@@ -4689,7 +4689,7 @@
       "triggers": []
     },
     {
-      "x": 12400,
+      "x": 12480,
       "y": 630,
       "width": 40,
       "height": 10,
@@ -4710,75 +4710,12 @@
       "triggers": []
     },
     {
-      "x": 12560,
-      "y": 560,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "spike",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 12520,
-      "y": 480,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "spike",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 12480,
-      "y": 560,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "spike",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 12520,
+      "x": 12580,
       "y": 520,
-      "width": 40,
-      "height": 200,
+      "width": 80,
+      "height": 80,
       "rotation": 0,
-      "shape": "square",
+      "shape": "spike",
       "color": [
         255,
         255,
@@ -4794,30 +4731,9 @@
       "triggers": []
     },
     {
-      "x": 12480,
+      "x": 12580,
       "y": 600,
-      "width": 40,
-      "height": 120,
-      "rotation": 0,
-      "shape": "square",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 12560,
-      "y": 600,
-      "width": 40,
+      "width": 80,
       "height": 120,
       "rotation": 0,
       "shape": "square",
@@ -6000,7 +5916,7 @@
   ],
   "victors": {
     "rolf": [
-      223,
+      246,
       0,
       0,
       0,

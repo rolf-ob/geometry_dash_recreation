@@ -1,3 +1,14 @@
+low trigger transition speed crashes
+color triggers accept values outside 0-255
+color transition from (0, 0) breaks
+color transitions end at float due to floating point errors
+int truncates values, switch out for math.floor
+numeric modifier with transition crashes
+a b c accepted as color value
+color values in apply_edit need to be changed back to store tuple and not string
+check_illegal should use math.isinfinite
+speedhack and respawn time implement check_illegal
+
 Update v1.1.0
 - Rotation trigger negative value
 - Main levels
@@ -11,7 +22,7 @@ Bugs:
 Optimization/structuring
 - Object true_x and true_y for rotation accuracy
 - Add more tests
-- Clean up apply_edit()
+- Clean up apply_edit(), physics, "background" -> "background color"
 - Selected objects list
 - Object groups dict similar to trigger dict and rework all obj.selected checking
 - When recomputing object, only recompute rotation if it's changed, if not just add x and y to the existing points

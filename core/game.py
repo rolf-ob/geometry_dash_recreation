@@ -35,7 +35,7 @@ class Game:
         self.songs = Path("songs")
 
         self.operator = True
-        self.name = "rolf"
+        self.name = None
         self.running = True
 
         self.width = WIDTH

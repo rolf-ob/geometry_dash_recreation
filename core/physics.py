@@ -325,6 +325,9 @@ def apply_trigger(game, trigger):
                     per_tick
                 ])
 
+        if trigger.real_modifier["attribute"] in ("rotation", "x", "y", "width", "height"):
+            game.rebuild_buckets()
+
     elif trigger.real_modifier["attribute"] in ("length", "roof", "floor", "roof color", "floor color", "background"):
         attribute = trigger.modifier["attribute"]
         if trigger.modifier["attribute"] == "roof color": attribute = "roof_color"
@@ -334,7 +337,6 @@ def apply_trigger(game, trigger):
         if not transition:
             if trigger.modifier["attribute"] in ("roof color", "floor color", "background"):
                 value = [int(value) for value in trigger.modifier["value"].split(" ")]
-                print(value)
                 setattr(game, attribute, value)
             else:
                 setattr(game, attribute, trigger.modifier["value"])
@@ -359,7 +361,7 @@ def apply_trigger(game, trigger):
             ])
 
 def update_transitions(game):
-    for i, transition in enumerate(game.active_transitions):
+    for i, transition in enumerate(game.active_transitions.copy()):
         if transition[1] in ("color", "outline", "roof_color", "floor_color", "background_color"):
             transition[2] = [value + per_tick for value, per_tick in zip(transition[2], transition[4])]
             position = [round(value) for value in transition[2]]
@@ -400,6 +402,9 @@ def update_transitions(game):
 
         if position == end:
             game.active_transitions.pop(i)
+
+        if attribute in ("rotation", "x", "y", "width", "height"):
+            game.rebuild_buckets()
 
 def update_position(game):
     fall_speed = game.player.height / (-game.speed * abs(game.gravity)) if game.gravity != 0 else 0
