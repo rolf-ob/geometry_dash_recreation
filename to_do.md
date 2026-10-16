@@ -1,5 +1,5 @@
 Update v1.1.0
-- Test trigger with and without transition for color, outline, x, y, width, height, rotation, length, roof, floor, roof color, floor color, background
+- Rotation trigger negative value
 - Main levels
 - Pyinstaller exe file
 

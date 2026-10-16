@@ -259,20 +259,8 @@ def apply_edit(game, obj, real_field_name, text):
                             text = check_illegal(text)
                             obj.modifier["value"] = int(text)
 
-                        elif obj.modifier["attribute"] == "roof color":
-                            rgb = text.split()
-                            r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                            obj.modifier["value"] = (r, g, b)
-
-                        elif obj.modifier["attribute"] == "floor color":
-                            rgb = text.split()
-                            r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                            obj.modifier["value"] = (r, g, b)
-
-                        elif obj.modifier["attribute"] == "background":
-                            rgb = text.split()
-                            r, g, b = (max(0, min(255, int(value))) for value in rgb)
-                            obj.modifier["value"] = (r, g, b)
+                        elif obj.modifier["attribute"] in ("roof color", "floor color", "background"):
+                            obj.modifier["value"] = text
 
                     elif field_name == "transition":
                         text = check_illegal(text)
