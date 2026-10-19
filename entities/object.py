@@ -59,6 +59,9 @@ class Object:
                     self.real_y + self.real_height / 2 * math.sin(angle) + self.real_height / 2
                 ))
 
+        else:
+            print(f"Invalid object shape: {self.real_shape}")
+
         if self.real_rotation == 0:
             self.points = corners
         else:

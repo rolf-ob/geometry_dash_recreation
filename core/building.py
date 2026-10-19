@@ -565,7 +565,7 @@ def open_menu(game, menu):
             TextBox("Floor", game.floor),
             TextBox("Roof Color", f"{str(r1)} {str(g1)} {str(b1)}"),
             TextBox("Floor Color", f"{str(r2)} {str(g2)} {str(b2)}"),
-            TextBox("Background", f"{str(r3)} {str(g3)} {str(b3)}"),
+            TextBox("Background Color", f"{str(r3)} {str(g3)} {str(b3)}"),
             TextBox("Title", game.level["meta"]["title"]),
             TextBox("Points", game.points),
             TextBox("Level Number", game.level["meta"]["level number"]),

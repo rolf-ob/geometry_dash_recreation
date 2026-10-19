@@ -1,5 +1,5 @@
 Update v1.1.0
-- Main levels
+- First 4 main levels
 - Pyinstaller exe file
 
 Bugs:
@@ -21,7 +21,8 @@ Optimization/structuring
 
 Features
 - Show dash orb pointing
-- Default music delay
+- Level music delay
+- Level music volume
 - Multi-select bounding box
 - Default level sizes
 - Multi-point shape

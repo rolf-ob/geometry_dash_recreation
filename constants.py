@@ -129,7 +129,7 @@ BUILDING_TUTORIAL = [
     "Length - What x value the level ends at for the percentage display",
     "Roof/Floor - What y value the levels roof/floor that stops the player is at",
     "Roof/Floor Color - Sets the respective color",
-    "Background- Sets the background color of the enire level",
+    "Background Color- Sets the background color of the enire level",
     "Title - The title of the level",
     "Points - How many points you should get from completing the level",
     "Level Number - Which order in the levels this level is",
