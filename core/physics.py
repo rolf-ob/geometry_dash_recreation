@@ -262,7 +262,7 @@ def check_collision(game):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
 def apply_trigger(game, trigger):
-    if trigger.modifier["transition"] > 0 and trigger.modifier["attribute"] in ("color", "outline", "rotation", "x", "y", "width", "height"):
+    if trigger.modifier["transition"] > 0 and trigger.modifier["attribute"] in ("color", "outline", "rotation", "x", "y", "width", "height", "length", "roof", "floor", "roof_color", "floor_color", "background_color"):
         transition = True
     else:
         transition = False
@@ -380,14 +380,19 @@ def update_transitions(game):
         else:
             transition[2] += per_tick
             value = transition[2]
-            position = math.floor(value * 10) / 10
+            position = round(value * 10) / 10
         
         if attribute in ("x", "y"):
             setattr(obj, f"real_{attribute}", math.floor(position))
             obj.recompute_triggered()
         
         elif attribute == "rotation":
-            obj.real_rotation = position
+            rotation = position
+            rotation %= 360
+            if rotation < 0:
+                rotation += 360
+            
+            obj.real_rotation = rotation
             obj.recompute_triggered()
 
         elif attribute in ("color", "outline"):
@@ -404,7 +409,7 @@ def update_transitions(game):
             apply_edit(game, obj, f"real_{attribute}", round(position))
 
         if position == end:
-            game.active_transitions.remove(transition)
+            game.active_transitions.remove([obj, attribute, value, end, per_tick])
 
         if attribute in ("rotation", "x", "y", "width", "height"):
             game.rebuild_buckets()

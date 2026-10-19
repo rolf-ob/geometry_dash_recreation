@@ -353,9 +353,6 @@ def apply_edit(game, obj, real_field_name, text):
                         elif obj.modifier["attribute"] == "rotation":
                             text = check_illegal(text)
                             rotation = float(text)
-                            rotation %= 360
-                            if rotation < 0:
-                                rotation += 360
                             obj.modifier["value"] = round(rotation, 1)
 
                         elif obj.modifier["attribute"] == "modifier":

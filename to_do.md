@@ -1,8 +1,4 @@
-remove(transition)
-
 Update v1.1.0
-- Unpausing resets camera
-- Rotation trigger negative value
 - Main levels
 - Pyinstaller exe file
 
