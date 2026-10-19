@@ -1,5 +1,5 @@
 import pygame as py
-import time
+import time, math
 
 from core.attribute_editing import apply_edit
 from entities.spatial import collide, get_buckets, get_nearby_objects
@@ -262,17 +262,10 @@ def check_collision(game):
         game.buckets["hitboxes"][bucket].append(hitbox)
 
 def apply_trigger(game, trigger):
-    try:
-        if trigger.modifier["transition"] > 0 and int(trigger.modifier["value"]):
-            transition = True
-        else:
-            transition = False
-    
-    except ValueError:
-        if len(trigger.modifier["value"].split(" ")) == 3:
-            transition = True
-        else:
-            transition = False
+    if trigger.modifier["transition"] > 0 and trigger.modifier["attribute"] in ("color", "outline", "rotation", "x", "y", "width", "height"):
+        transition = True
+    else:
+        transition = False
     
     if trigger.triggers and trigger.real_modifier["attribute"] in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "modifier"):
         for obj in game.trigger_ids[trigger.triggers]:
@@ -282,24 +275,42 @@ def apply_trigger(game, trigger):
                         obj.real_x += int(trigger.modifier["value"])
                         obj.recompute_triggered()
                     except ValueError:
-                        print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
+                        print(
+                            "Invalid trigger value" +"\n"+
+                            f"Field: {trigger.modifier["attribute"]}" +"\n"+
+                            f"Value: {trigger.modifier["value"]}"
+                        )
                 
                 elif trigger.modifier["attribute"] == "y":
                     try:
                         obj.real_y += int(trigger.modifier["value"])
                         obj.recompute_triggered()
                     except ValueError:
-                        print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
+                        print(
+                            "Invalid trigger value" +"\n"+
+                            f"Field: {trigger.modifier["attribute"]}" +"\n"+
+                            f"Value: {trigger.modifier["value"]}"
+                        )
                 
                 elif trigger.modifier["attribute"] == "rotation":
                     try:
                         obj.real_rotation += round(float(trigger.modifier["value"]), 1)
                         obj.recompute_triggered()
                     except ValueError:
-                        print("Invalid trigger value", f"Field: {trigger.modifier["attribute"]} Value: {trigger.modifier["value"]}")
-                
+                        print(
+                            "Invalid trigger value" +"\n"+
+                            f"Field: {trigger.modifier["attribute"]}" +"\n"+
+                            f"Value: {trigger.modifier["value"]}"
+                        )
                 else:
-                    apply_edit(game, obj, f"real_{trigger.modifier["attribute"]}", trigger.modifier["value"])
+                    if trigger.modifier["attribute"] in ("color", "outline"):
+                        value = ""
+                        for val in trigger.modifier["value"]:
+                            value += str(val)
+                    else:
+                        value = trigger.modifier["value"]
+
+                    apply_edit(game, obj, f"real_{trigger.modifier["attribute"]}", value)
             
             else:
                 if trigger.modifier["attribute"] in ("x", "y", "rotation"):
@@ -308,8 +319,11 @@ def apply_trigger(game, trigger):
                     per_tick = trigger.modifier["value"] / trigger.modifier["transition"] * FIXED_STEP
                 
                 elif trigger.modifier["attribute"] in ("color", "outline"):
+                    if getattr(obj, f"real_{trigger.modifier["attribute"]}") == (0, 0):
+                        setattr(obj, f"real_{trigger.modifier["attribute"]}", (0, 0, 0))
+                    
                     start = list(getattr(obj, f"real_{trigger.modifier["attribute"]}"))
-                    end = [int(value) for value in trigger.modifier["value"].split(" ")]
+                    end = [int(value) for value in trigger.modifier["value"]]
                     per_tick = [(v2 - v1) / trigger.modifier["transition"] * FIXED_STEP for v1, v2 in zip(start, end)]
                 
                 else:
@@ -328,80 +342,69 @@ def apply_trigger(game, trigger):
         if trigger.real_modifier["attribute"] in ("rotation", "x", "y", "width", "height"):
             game.rebuild_buckets()
 
-    elif trigger.real_modifier["attribute"] in ("length", "roof", "floor", "roof color", "floor color", "background"):
-        attribute = trigger.modifier["attribute"]
-        if trigger.modifier["attribute"] == "roof color": attribute = "roof_color"
-        elif trigger.modifier["attribute"] == "floor color": attribute = "floor_color"
-        elif trigger.modifier["attribute"] == "background": attribute = "background_color"
-
+    elif trigger.real_modifier["attribute"] in ("length", "roof", "floor", "roof_color", "floor_color", "background_color"):
         if not transition:
-            if trigger.modifier["attribute"] in ("roof color", "floor color", "background"):
-                value = [int(value) for value in trigger.modifier["value"].split(" ")]
-                setattr(game, attribute, value)
+            if trigger.modifier["attribute"] in ("roof_color", "floor_color", "background_color"):
+                value = [int(value) for value in trigger.modifier["value"]]
+                setattr(game, trigger.modifier["attribute"], value)
             else:
-                setattr(game, attribute, trigger.modifier["value"])
+                setattr(game, trigger.modifier["attribute"], trigger.modifier["value"])
 
         else:
-            if trigger.modifier["attribute"] in ("roof color", "floor color", "background"):
-                start = list(getattr(game, attribute))
-                end = [int(value) for value in trigger.modifier["value"].split(" ")]
+            if trigger.modifier["attribute"] in ("roof_color", "floor_color", "background_color"):
+                start = list(getattr(game, trigger.modifier["attribute"]))
+                end = [int(value) for value in trigger.modifier["value"]]
                 per_tick = [(v2 - v1) / trigger.modifier["transition"] * FIXED_STEP for v1, v2 in zip(start, end)]
             
             else:
-                start = getattr(game, attribute)
+                start = getattr(game, trigger.modifier["attribute"])
                 end = trigger.modifier["value"]
                 per_tick = (end - start) / trigger.modifier["transition"] * FIXED_STEP
             
             game.active_transitions.append([
                 None,
-                attribute,
+                trigger.modifier["attribute"],
                 start,
                 end,
                 per_tick
             ])
 
 def update_transitions(game):
-    for i, transition in enumerate(game.active_transitions.copy()):
-        if transition[1] in ("color", "outline", "roof_color", "floor_color", "background_color"):
-            transition[2] = [value + per_tick for value, per_tick in zip(transition[2], transition[4])]
-            position = [round(value) for value in transition[2]]
-        else:
-            transition[2] += transition[4]
-            position = round(transition[2] * 10) / 10
-        
+    for transition in game.active_transitions.copy():
         obj, attribute, value, end, per_tick = transition
+
+        if attribute in ("color", "outline", "roof_color", "floor_color", "background_color"):
+            transition[2] = [val + per_tick for val, per_tick in zip(value, per_tick)]
+            value = transition[2]
+            position = [round(val) for val in value]
+        else:
+            transition[2] += per_tick
+            value = transition[2]
+            position = math.floor(value * 10) / 10
         
-        if attribute == "x":
-            obj.real_x = int(value)
-            obj.recompute_triggered()
-        
-        elif attribute == "y":
-            obj.real_y = int(value)
+        if attribute in ("x", "y"):
+            setattr(obj, f"real_{attribute}", math.floor(position))
             obj.recompute_triggered()
         
         elif attribute == "rotation":
-            obj.real_rotation = round(float(value), 1)
+            obj.real_rotation = position
             obj.recompute_triggered()
 
-        elif attribute == "color":
-            obj.real_color = value
-            obj.recompute_triggered()
-
-        elif attribute == "outline":
-            obj.real_outline = value
+        elif attribute in ("color", "outline"):
+            setattr(obj, f"real_{attribute}", position)
             obj.recompute_triggered()
 
         elif attribute in ("length", "roof", "floor"):
-            setattr(game, attribute, int(value))
+            setattr(game, attribute, math.floor(position))
 
         elif attribute in ("roof_color", "floor_color", "background_color"):
-            setattr(game, attribute, value)
+            setattr(game, attribute, position)
         
         else:
-            apply_edit(game, obj, f"real_{attribute}", round(value))
+            apply_edit(game, obj, f"real_{attribute}", round(position))
 
         if position == end:
-            game.active_transitions.pop(i)
+            game.active_transitions.remove(transition)
 
         if attribute in ("rotation", "x", "y", "width", "height"):
             game.rebuild_buckets()

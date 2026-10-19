@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "length": 100,
+    "roof": 0,
+    "floor": 720,
+    "roof_color": [
+      255,
+      255,
+      255
+    ],
+    "floor_color": [
+      255,
+      255,
+      255
+    ],
+    "background_color": [
+      255,
+      255,
+      255
+    ],
+    "title": "Unnamed level",
+    "points": 0,
+    "level number": 6,
+    "song": "",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [
+    {
+      "x": 480,
+      "y": 600,
+      "width": 20,
+      "height": 120,
+      "rotation": 0,
+      "shape": "teleport",
+      "color": [
+        255,
+        128,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": 200,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 440,
+      "y": 280,
+      "width": 200,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 520,
+      "y": 240,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "attribute": "floor",
+        "value": 400,
+        "transition": 0
+      },
+      "group_id": 0,
+      "triggers": 0
+    }
+  ],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "victors": {
+    "rolf": [
+      5,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

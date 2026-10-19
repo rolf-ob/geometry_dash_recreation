@@ -3,17 +3,17 @@
     "length": 25680,
     "roof": 0,
     "floor": 720,
-    "roof color": [
+    "roof_color": [
       20,
       20,
       80
     ],
-    "floor color": [
+    "floor_color": [
       20,
       20,
       80
     ],
-    "background color": [
+    "background_color": [
       0,
       0,
       0

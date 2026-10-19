@@ -3,17 +3,17 @@
     "length": 100,
     "roof": 0,
     "floor": 720,
-    "roof color": [
+    "roof_color": [
       255,
       255,
       255
     ],
-    "floor color": [
+    "floor_color": [
       255,
       255,
       255
     ],
-    "background color": [
+    "background_color": [
       255,
       255,
       255
@@ -119,8 +119,12 @@
         0
       ],
       "modifier": {
-        "attribute": "roof color",
-        "value": "255 0 0",
+        "attribute": "roof_color",
+        "value": [
+          255,
+          0,
+          0
+        ],
         "transition": 0.5
       },
       "group_id": 0,
@@ -144,8 +148,12 @@
         0
       ],
       "modifier": {
-        "attribute": "floor color",
-        "value": "0 255 0",
+        "attribute": "floor_color",
+        "value": [
+          0,
+          255,
+          0
+        ],
         "transition": 0.5
       },
       "group_id": 0,
@@ -169,8 +177,12 @@
         0
       ],
       "modifier": {
-        "attribute": "background",
-        "value": "0 0 255",
+        "attribute": "background_color",
+        "value": [
+          0,
+          0,
+          255
+        ],
         "transition": 0.5
       },
       "group_id": 0,
@@ -262,7 +274,11 @@
       ],
       "modifier": {
         "attribute": "outline",
-        "value": "0 0 255",
+        "value": [
+          0,
+          0,
+          255
+        ],
         "transition": 0
       },
       "group_id": 0,
@@ -312,7 +328,7 @@
       ],
       "modifier": {
         "attribute": "width",
-        "value": 20,
+        "value": 10,
         "transition": 0
       },
       "group_id": 0,
@@ -337,7 +353,7 @@
       ],
       "modifier": {
         "attribute": "height",
-        "value": 20,
+        "value": 10,
         "transition": 0
       },
       "group_id": 0,
@@ -454,7 +470,7 @@
       ],
       "modifier": {
         "attribute": "roof",
-        "value": 100,
+        "value": 240,
         "transition": 0
       },
       "group_id": 0,
@@ -503,8 +519,12 @@
         0
       ],
       "modifier": {
-        "attribute": "roof color",
-        "value": "255 0 0",
+        "attribute": "roof_color",
+        "value": [
+          255,
+          0,
+          0
+        ],
         "transition": 0
       },
       "group_id": 0,
@@ -528,8 +548,12 @@
         0
       ],
       "modifier": {
-        "attribute": "floor color",
-        "value": "0 255 0",
+        "attribute": "floor_color",
+        "value": [
+          0,
+          255,
+          0
+        ],
         "transition": 0
       },
       "group_id": 0,
@@ -553,8 +577,12 @@
         0
       ],
       "modifier": {
-        "attribute": "background",
-        "value": "0 0 255",
+        "attribute": "background_color",
+        "value": [
+          0,
+          0,
+          255
+        ],
         "transition": 0
       },
       "group_id": 0,
@@ -604,7 +632,11 @@
       ],
       "modifier": {
         "attribute": "outline",
-        "value": "0 0 255",
+        "value": [
+          0,
+          0,
+          255
+        ],
         "transition": 1.0
       },
       "group_id": 0,
@@ -654,7 +686,7 @@
       ],
       "modifier": {
         "attribute": "width",
-        "value": -20,
+        "value": 10,
         "transition": 1.0
       },
       "group_id": 0,
@@ -679,7 +711,7 @@
       ],
       "modifier": {
         "attribute": "height",
-        "value": -20,
+        "value": 10,
         "transition": 1.0
       },
       "group_id": 0,
@@ -729,7 +761,11 @@
       ],
       "modifier": {
         "attribute": "color",
-        "value": "255 0 0",
+        "value": [
+          255,
+          0,
+          0
+        ],
         "transition": 1.0
       },
       "group_id": 0,
@@ -754,7 +790,11 @@
       ],
       "modifier": {
         "attribute": "color",
-        "value": "255 0 0",
+        "value": [
+          255,
+          0,
+          0
+        ],
         "transition": 0
       },
       "group_id": 0,
@@ -953,7 +993,7 @@
   ],
   "victors": {
     "rolf": [
-      197,
+      220,
       0,
       0,
       0,

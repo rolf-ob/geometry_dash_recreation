@@ -1,15 +1,7 @@
-low trigger transition speed crashes
-color triggers accept values outside 0-255
-color transition from (0, 0) breaks
-color transitions end at float due to floating point errors
-int truncates values, switch out for math.floor
-numeric modifier with transition crashes
-a b c accepted as color value
-color values in apply_edit need to be changed back to store tuple and not string
-check_illegal should use math.isinfinite
-speedhack and respawn time implement check_illegal
+remove(transition)
 
 Update v1.1.0
+- Unpausing resets camera
 - Rotation trigger negative value
 - Main levels
 - Pyinstaller exe file
@@ -20,9 +12,9 @@ Bugs:
 - Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
 
 Optimization/structuring
-- Object true_x and true_y for rotation accuracy
+- Object x and y value rework for rotation accuracy
 - Add more tests
-- Clean up apply_edit(), physics, "background" -> "background color"
+- Clean up apply_edit(), physics
 - Selected objects list
 - Object groups dict similar to trigger dict and rework all obj.selected checking
 - When recomputing object, only recompute rotation if it's changed, if not just add x and y to the existing points
@@ -32,6 +24,7 @@ Optimization/structuring
 - Undo redo history list memory optimization
 
 Features
+- Show dash orb pointing
 - Default music delay
 - Multi-select bounding box
 - Default level sizes

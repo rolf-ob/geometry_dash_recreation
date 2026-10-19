@@ -35,7 +35,7 @@ class Game:
         self.songs = Path("songs")
 
         self.operator = True
-        self.name = None
+        self.name = "rolf"
         self.running = True
 
         self.width = WIDTH
@@ -143,7 +143,7 @@ class Game:
         self.points = self.level["meta"]["points"]
         self.song = self.level["meta"]["song"] if self.level["meta"]["song"] else None
         self.song_start = self.level["meta"]["song start"]
-
+        
         self.background = self.level["background"]
         self.objects = self.level["objects"]
         self.decoration = self.level["decoration"]
@@ -185,6 +185,7 @@ class Game:
             self.record_attempt()
 
         for obj in (*self.background, *self.objects, *self.decoration):
+            obj.interacted = False
             obj.recompute()
         self.rebuild_buckets()
         self.active_transitions = []
@@ -192,9 +193,9 @@ class Game:
         self.length = self.level["meta"]["length"]
         self.roof = self.level["meta"]["roof"]
         self.floor = self.level["meta"]["floor"]
-        self.roof_color = tuple(self.level["meta"]["roof color"])
-        self.floor_color = tuple(self.level["meta"]["floor color"])
-        self.background_color = tuple(self.level["meta"]["background color"])
+        self.roof_color = tuple(self.level["meta"]["roof_color"])
+        self.floor_color = tuple(self.level["meta"]["floor_color"])
+        self.background_color = tuple(self.level["meta"]["background_color"])
 
         self.gamemode = self.checkpoints[self.checkpoint].modifier["gamemode"]
         self.speed = self.checkpoints[self.checkpoint].modifier["speed"]
@@ -239,8 +240,6 @@ class Game:
         self.dead = 0
         self.completed = False
         self.collected_coins = [0, 0]
-        for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
-            obj.interacted = False
 
         self.activated_triggers = {}
         self.current_hitbox = 0
