@@ -36,7 +36,7 @@ def switch_attribute(game, way):
                 game.active_textbox.deactivate()
                 game.active_textbox = None
 
-def apply_modifier(real_field_name, real, text, obj):
+def apply_object_modifier(real_field_name, real, text, obj):
     if obj.real_shape == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
         setattr(obj, real_field_name, text)
         if real == "" and text in GAMEMODE_COLORS:
@@ -131,7 +131,7 @@ def apply_level_setting(game, field_name, text):
         game.level["meta"]["points"] = int(text)
         game.points = int(text)
 
-    elif field_name == "level number":
+    elif field_name == "level_number":
         text = check_illegal(text)
         new_number = max(1, min(len(game.levels)-1, int(text)))
         game.levels.pop(game.current_level)
@@ -149,12 +149,12 @@ def apply_level_setting(game, field_name, text):
             game.level["meta"]["song"] = text + ".ogg"
             game.song = text + ".ogg"
     
-    elif field_name == "song start":
+    elif field_name == "song_start":
         text = check_illegal(text)
         game.level["meta"]["song start"] = float(text)
         game.song_start = float(text)
 
-    elif field_name == "reset stats" and text == "reset":
+    elif field_name == "reset_stats" and text == "reset":
         game.level["victors"] = {}
         game.victors = {}
 
@@ -175,7 +175,7 @@ def apply_setting(game, field_name, text):
         text = check_illegal(text)
         game.fps = max(48, int(text))
 
-    elif field_name == "respawn time":
+    elif field_name == "respawn_time":
         text = check_illegal(text)
         game.respawn_time = float(text)
 
@@ -184,12 +184,13 @@ def apply_setting(game, field_name, text):
         game.volume = max(0, min(100, int(text)))
         py.mixer.music.set_volume(max(0, min(100, int(text))) / 100)
 
-    elif field_name == "log out":
+    elif field_name == "log_out":
         game.open_login_page()
 
 def apply_edit(game, obj, real_field_name, text):
-    real = "real_" if len(real_field_name.split("_")) > 1 else ""
-    field_name = real_field_name.split("_")[-1]
+    real_field_name = real_field_name.replace(" ", "_")
+    real = "real_" if real_field_name.split("_")[0] == "real" else ""
+    field_name = real_field_name.split("_")[-1] if real == "real_" else real_field_name
 
     try:
         if game.building or real == "real_":
@@ -294,7 +295,7 @@ def apply_edit(game, obj, real_field_name, text):
                         obj.recompute()
 
                     elif field_name == "modifier":
-                        apply_modifier(real_field_name, real, text, obj)
+                        apply_object_modifier(real_field_name, real, text, obj)
 
                     elif field_name == "triggers":
                         triggers = [int(trigger) for trigger in text.split()]

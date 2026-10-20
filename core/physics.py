@@ -306,7 +306,7 @@ def apply_trigger(game, trigger):
                     if trigger.modifier["attribute"] in ("color", "outline"):
                         value = ""
                         for val in trigger.modifier["value"]:
-                            value += str(val)
+                            value += str(val) + " "
                     else:
                         value = trigger.modifier["value"]
 

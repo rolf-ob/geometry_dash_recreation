@@ -14,8 +14,8 @@
       255
     ],
     "background_color": [
-      255,
-      255,
+      0,
+      200,
       255
     ],
     "title": "Level Three",
@@ -952,9 +952,9 @@
     },
     {
       "x": 8080,
-      "y": 490,
+      "y": 470,
       "width": 40,
-      "height": 40,
+      "height": 80,
       "rotation": 0,
       "shape": "pad",
       "color": [
@@ -3411,7 +3411,7 @@
   ],
   "victors": {
     "rolf": [
-      248,
+      265,
       0,
       0,
       0,
