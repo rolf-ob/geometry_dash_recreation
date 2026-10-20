@@ -19,7 +19,7 @@
       255
     ],
     "title": "Level One",
-    "points": 0,
+    "points": 20,
     "level number": 1,
     "song": "climax.ogg",
     "song start": 0
@@ -4093,8 +4093,8 @@
   ],
   "victors": {
     "rolf": [
-      101,
-      4,
+      102,
+      5,
       3,
       20,
       1792483398.080949

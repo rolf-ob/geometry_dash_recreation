@@ -237,7 +237,7 @@ def draw_leaderboard(game, screen):
         text = game.text_cache.get_surface(f"Leaderboard:", game.primary_color, "world")
         margin = 5
         width, height = game.text_cache.get_size(f"Leaderboard:", game.primary_color, "world")
-        x, y = (world_to_screen(game, game.length + 40, 125))
+        x, y = (world_to_screen(game, game.length + 40, game.floor - 475))
         py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
         py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
         screen.blit(text, (x, y))
@@ -254,7 +254,7 @@ def draw_leaderboard(game, screen):
                 text = game.text_cache.get_surface(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
                 margin = 5
                 width, height = game.text_cache.get_size(f"{i+1}: {victor} | Completions: {stats[1]} | Coins: {stats[2]} | Attempts: {stats[0]} | Completion Time: {completion_date}", game.primary_color, "world")
-                x, y = (world_to_screen(game, game.length + 40, 160 + 36*i))
+                x, y = (world_to_screen(game, game.length + 40, game.floor - 440 + 36*i))
                 py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
                 py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
                 screen.blit(text, (x, y))
@@ -263,7 +263,7 @@ def draw_leaderboard(game, screen):
             text = game.text_cache.get_surface(f"No stats yet", game.primary_color, "world")
             margin = 5
             width, height = game.text_cache.get_size(f"No stats yet", game.primary_color, "world")
-            x, y = x, y = (world_to_screen(game, game.length + 40, 160))
+            x, y = x, y = (world_to_screen(game, game.length + 40, game.floor - 440))
             py.draw.rect(screen, game.secondary_color, (x - margin, y - margin, width + margin*2, height + margin*2))
             py.draw.rect(screen, game.primary_color, (x - margin, y - margin, width + margin*2, height + margin*2), 2)
             screen.blit(text, (x, y))
