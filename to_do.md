@@ -3,9 +3,11 @@ Update v1.1.0
 - Pyinstaller exe file
 
 Bugs:
+- Text zoom position displacement
 - When rotating 0.1 or 1 degrees, rouding makes position slighly inaccurate
 - Shift to multiselect objects, release mouse while hovering over selected object, object gets deselected
 - Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
+- Object menu resets if pressing enter in a field belonging to checkpoint or trigger
 
 Optimization/structuring
 - Object x and y value rework for rotation accuracy

@@ -302,11 +302,11 @@ def apply_trigger(game, trigger):
                             f"Field: {trigger.modifier["attribute"]}" +"\n"+
                             f"Value: {trigger.modifier["value"]}"
                         )
+                        
                 else:
                     if trigger.modifier["attribute"] in ("color", "outline"):
-                        value = ""
-                        for val in trigger.modifier["value"]:
-                            value += str(val) + " "
+                        val = trigger.modifier["value"]
+                        value = f"{val[0]}_{val[1]}_{val[2]}"
                     else:
                         value = trigger.modifier["value"]
 
@@ -322,9 +322,9 @@ def apply_trigger(game, trigger):
                     if getattr(obj, f"real_{trigger.modifier["attribute"]}") == (0, 0):
                         setattr(obj, f"real_{trigger.modifier["attribute"]}", (0, 0, 0))
                     
-                    start = list(getattr(obj, f"real_{trigger.modifier["attribute"]}"))
-                    end = [int(value) for value in trigger.modifier["value"]]
-                    per_tick = [(v2 - v1) / trigger.modifier["transition"] * FIXED_STEP for v1, v2 in zip(start, end)]
+                    start = tuple(getattr(obj, f"real_{trigger.modifier["attribute"]}"))
+                    end = tuple([int(value) for value in trigger.modifier["value"]])
+                    per_tick = tuple([(v2 - v1) / trigger.modifier["transition"] * FIXED_STEP for v1, v2 in zip(start, end)])
                 
                 else:
                     start = getattr(obj, f"real_{trigger.modifier["attribute"]}")
@@ -345,15 +345,15 @@ def apply_trigger(game, trigger):
     elif trigger.real_modifier["attribute"] in ("length", "roof", "floor", "roof_color", "floor_color", "background_color"):
         if not transition:
             if trigger.modifier["attribute"] in ("roof_color", "floor_color", "background_color"):
-                value = [int(value) for value in trigger.modifier["value"]]
+                value = tuple([int(value) for value in trigger.modifier["value"]])
                 setattr(game, trigger.modifier["attribute"], value)
             else:
                 setattr(game, trigger.modifier["attribute"], trigger.modifier["value"])
 
         else:
             if trigger.modifier["attribute"] in ("roof_color", "floor_color", "background_color"):
-                start = list(getattr(game, trigger.modifier["attribute"]))
-                end = [int(value) for value in trigger.modifier["value"]]
+                start = tuple(getattr(game, trigger.modifier["attribute"]))
+                end = tuple([int(value) for value in trigger.modifier["value"]])
                 per_tick = [(v2 - v1) / trigger.modifier["transition"] * FIXED_STEP for v1, v2 in zip(start, end)]
             
             else:
@@ -374,9 +374,9 @@ def update_transitions(game):
         obj, attribute, value, end, per_tick = transition
 
         if attribute in ("color", "outline", "roof_color", "floor_color", "background_color"):
-            transition[2] = [val + per_tick for val, per_tick in zip(value, per_tick)]
+            transition[2] = tuple([val + per_tick for val, per_tick in zip(value, per_tick)])
             value = transition[2]
-            position = [round(val) for val in value]
+            position = tuple([round(val) for val in value])
         else:
             transition[2] += per_tick
             value = transition[2]

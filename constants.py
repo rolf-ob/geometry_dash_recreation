@@ -157,7 +157,7 @@ BUILDING_TUTORIAL = [
     "4. Applies the effect to all objects with a matching trigger number, leave empty for level attribute",
     "Changable attributes:",
     "Object: shape, color, outline, rotation, x, y, width, height (rotation, x and y gets the value added, not set)",
-    "Level: length, roof, floor, roof Color, floor Color, background",
+    "Level: length, roof, floor, roof color, floor color, background color",
     "",
     "SHAPE MODIFIERS",
     "Gamemode - Cube, ship, ball, wave, ufo, robot, spider",

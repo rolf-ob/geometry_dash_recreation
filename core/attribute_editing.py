@@ -169,7 +169,7 @@ def apply_level_setting(game, field_name, text):
 def apply_setting(game, field_name, text):
     if field_name == "speedhack":
         text = check_illegal(text)
-        game.speedhack_multiplier = max(0.01, float(text))
+        game.speedhack_multiplier = max(min(10, 0.01, float(text)))
 
     elif field_name == "fps":
         text = check_illegal(text)
@@ -189,6 +189,7 @@ def apply_setting(game, field_name, text):
 
 def apply_edit(game, obj, real_field_name, text):
     real_field_name = real_field_name.replace(" ", "_")
+    text = text.replace(" ", "_")
     real = "real_" if real_field_name.split("_")[0] == "real" else ""
     field_name = real_field_name.split("_")[-1] if real == "real_" else real_field_name
 
@@ -211,7 +212,7 @@ def apply_edit(game, obj, real_field_name, text):
                         setattr(obj, real_field_name, round(rotation, 1))
                     
                     elif field_name in ("color", "outline"):
-                        rgb = text.split()
+                        rgb = text.split("_")
                         if len(rgb) == 3:
                             r, g, b = (max(0, min(255, int(value))) for value in rgb)
                             setattr(obj, real_field_name, (r, g, b))
@@ -269,6 +270,9 @@ def apply_edit(game, obj, real_field_name, text):
                                 obj.height = 40
                                 obj.color = COIN_COLOR
 
+                            elif text == "text":
+                                obj.color = (0, 0, 0)
+
                     elif field_name == "shape" and text == "slope":
                         setattr(obj, real_field_name, "right slope")
 
@@ -322,7 +326,7 @@ def apply_edit(game, obj, real_field_name, text):
 
                 elif obj.shape == "trigger":
                     if field_name in ("color", "outline"):
-                        rgb = text.split()
+                        rgb = text.split("_")
                         if len(rgb) == 3:
                             r, g, b = (max(0, min(255, int(value))) for value in rgb)
                             setattr(obj, real_field_name, (r, g, b))
@@ -341,7 +345,7 @@ def apply_edit(game, obj, real_field_name, text):
                                 obj.modifier["value"] = "right slope"
                         
                         elif obj.modifier["attribute"] in ("color", "outline"):
-                            rgb = text.split()
+                            rgb = text.split("_")
                             if len(rgb) == 3:
                                 r, g, b = (max(0, min(255, int(value))) for value in rgb)
                                 obj.modifier["value"] = (r, g, b)
@@ -372,7 +376,7 @@ def apply_edit(game, obj, real_field_name, text):
                             obj.modifier["value"] = int(text)
 
                         elif obj.modifier["attribute"] in ("roof_color", "floor_color", "background_color"):
-                            rgb = text.split()
+                            rgb = text.split("_")
                             if len(rgb) == 3:
                                 r, g, b = (max(0, min(255, int(value))) for value in rgb)
                                 obj.modifier["value"] = (r, g, b)
