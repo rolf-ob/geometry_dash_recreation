@@ -57,8 +57,8 @@ def select_object(game, shift, ctrl):
         mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
         mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
         name = ("background", "objects", "decoration")[game.layer]
-        layer = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width, game.z_order)
-        checkpoints  = get_nearby_objects(game.buckets["checkpoints"], game.building_camera_x, game.building_camera_x + game.view_width)
+        layer = get_nearby_objects(game.buckets[name], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
+        checkpoints  = get_nearby_objects(game.buckets["checkpoints"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
         
         cp_selected = False
         trigger_selected = False
@@ -321,8 +321,8 @@ def duplicate_objects(game):
 
         for layer in (game.background, game.objects, game.decoration, game.checkpoints):
             for obj in layer.copy():
-                if obj.selected and obj.shape != "trigger":
-                    modifier = obj.modifier if obj.shape != "checkpoint" else obj.modifier.copy()
+                if obj.selected:
+                    modifier = obj.modifier if obj.shape not in ("checkpoint", "trigger") else obj.modifier.copy()
                     
                     new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
                     layer.append(new_obj)

@@ -229,7 +229,7 @@ def check_collision(game):
                             game.y_vel *= 0.7
 
         elif obj.real_shape == "trigger":
-            if obj.real_modifier["value"] and collide(game.player, obj, game.hitboxes[-1]):
+            if collide(game.player, obj, game.hitboxes[-1]):
                 apply_trigger(game, obj)
 
         elif obj.real_shape == "coin":

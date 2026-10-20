@@ -96,17 +96,17 @@ def apply_level_setting(game, field_name, text):
         game.floor = max(game.level["meta"]["roof"] + 400, int(text))
 
     elif field_name == "roof_color":
-        r, g, b = (max(0, min(255, int(value))) for value in text.split())
+        r, g, b = (max(0, min(255, int(value))) for value in text.split("_"))
         game.level["meta"]["roof_color"] = (r, g, b)
         game.roof_color = tuple(game.level["meta"]["roof_color"])
 
     elif field_name == "floor_color":
-        r, g, b = (max(0, min(255, int(value))) for value in text.split())
+        r, g, b = (max(0, min(255, int(value))) for value in text.split("_"))
         game.level["meta"]["floor_color"] = (r, g, b)
         game.floor_color = tuple(game.level["meta"]["floor_color"])
 
     elif field_name == "background_color":
-        r, g, b = (max(0, min(255, int(value))) for value in text.split())
+        r, g, b = (max(0, min(255, int(value))) for value in text.split("_"))
         game.level["meta"]["background_color"] = (r, g, b)
         game.background_color = tuple(game.level["meta"]["background_color"])
 

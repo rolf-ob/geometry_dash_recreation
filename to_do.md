@@ -22,6 +22,8 @@ Optimization/structuring
 - Undo redo history list memory optimization
 
 Features
+- Checkpoints store level settings
+- Shift+alt+scroll to change hitboxes faster
 - Show dash orb pointing
 - Level music delay
 - Level music volume
