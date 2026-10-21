@@ -212,7 +212,7 @@ def handle_input(game):
 
                     else:
                         if game.active_textbox.field_name.lower() == "create user":
-                            username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
+                            username = re.sub('[<>:"/\\|?*& .]', "_", game.textboxes[0].text).lower()
 
                             if username and f"users\\{username}" not in game.users:
                                 if game.textboxes[1].text:
@@ -223,7 +223,7 @@ def handle_input(game):
                                 game.title = ["Username taken", time.perf_counter() + 2]
 
                         elif game.active_textbox.field_name.lower() == "log in":
-                            username = re.sub('[<>:"/\\|?*& .]', '_', game.textboxes[0].text).lower()
+                            username = re.sub('[<>:"/\\|?*& .]', "_", game.textboxes[0].text).lower()
 
                             if f"users\\{username}" in game.users:
                                 with open(f"users/{username}/accessibility.json", "r", encoding="utf-8") as f:

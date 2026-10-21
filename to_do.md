@@ -1,9 +1,11 @@
 Update v1.1.0
-- First 4 main levels gameplay and decoration
-- Level names
+- Main level decoration and naming
+- Double check music offset
 - Pyinstaller exe file
 
 Bugs:
+- Floor fill doesn't work correctly with zoom
+- Text objects get rendered based on original square width and aren't centered
 - Frame stepping desyncs music
 - Text zoom position displacement
 - When rotating 0.1 or 1 degrees, rouding makes position slighly inaccurate
@@ -24,6 +26,7 @@ Optimization/structuring
 - Undo redo history list memory optimization
 
 Features
+- All objects show their attributes if all selected have the same
 - Triggers display trigger id while in build mode
 - Checkpoints store level settings
 - Shift+alt+scroll to change hitboxes faster
@@ -33,6 +36,7 @@ Features
 - Multi-select bounding box
 - Default level sizes
 - Multi-point shape
+- Grouping shapes into a single multi-point shape
 - Music affected by speedhack
 - CBF
 

@@ -7,7 +7,7 @@ from entities.spatial import collide, get_nearby_objects
 from rendering.rendering import screen_to_world
 from core.textbox import TextBox
 from entities.object import Object
-from constants import PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
+from constants import GRID_SIZE, PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 
 def toggle_building(game):
     game.building = not game.building
@@ -39,8 +39,8 @@ def toggle_building(game):
 def place_object(game):
     mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
     mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
-    mouse_x -= mouse_x % 40
-    mouse_y -= mouse_y % 40
+    mouse_x -= mouse_x % GRID_SIZE
+    mouse_y -= mouse_y % GRID_SIZE
     layer = (game.background, game.objects, game.decoration)[game.layer]
     name = ("background", "objects", "decoration")[game.layer]
     objects = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width)
@@ -48,7 +48,7 @@ def place_object(game):
     if not any(collide(mouse, obj) for obj in objects):
         game.capture_state("do")
 
-        new_obj = Object(mouse_x, mouse_y, 40, 40, 0, "square", (255,)*3, (0,)*3)
+        new_obj = Object(mouse_x, mouse_y, GRID_SIZE, GRID_SIZE, 0, "square", (255,)*3, (0,)*3)
         layer.append(new_obj)
         game.rebuild_buckets()
 
@@ -151,11 +151,11 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
         if shift:
             distance = 1
         elif ctrl:
-            distance = 200
+            distance = GRID_SIZE * 5
         elif alt:
-            distance = 20
+            distance = GRID_SIZE / 2
         else:
-            distance = 40
+            distance = GRID_SIZE
         
         add_x = 0
         add_y = 0
@@ -366,15 +366,15 @@ def snap_grid_objects(game):
         game.capture_state("do")
 
         for obj in selected:
-            if obj.x % 40 > 20:
-                obj.x += 40 - obj.x % 40
+            if obj.x % GRID_SIZE > GRID_SIZE / 2:
+                obj.x += GRID_SIZE - obj.x % GRID_SIZE
             else:
-                obj.x -= obj.x % 40
-            
-            if obj.y % 40 > 20:
-                obj.y += 40 - obj.y % 40
+                obj.x -= obj.x % GRID_SIZE
+
+            if obj.y % GRID_SIZE > GRID_SIZE / 2:
+                obj.y += GRID_SIZE - obj.y % GRID_SIZE
             else:
-                obj.y -= obj.y % 40
+                obj.y -= obj.y % GRID_SIZE
 
             if obj.rotation % 90 > 45:
                 obj.rotation = round(obj.rotation + 90 - obj.rotation % 90, 1)
@@ -511,7 +511,7 @@ def create_level(game):
         "decoration": [],
         "checkpoints": [
             Object(
-                PLAYER_X, 680, 40, 40, 0, "checkpoint",
+                PLAYER_X, 680, GRID_SIZE, GRID_SIZE, 0, "checkpoint",
                 (0, 255, 0), (0,)*3,
                 {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
             )

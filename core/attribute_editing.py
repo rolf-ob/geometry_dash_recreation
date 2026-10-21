@@ -111,11 +111,11 @@ def apply_level_setting(game, field_name, text):
         game.background_color = tuple(game.level["meta"]["background_color"])
 
     elif field_name == "title":
-        if text != game.level['meta']['title']:
-            file = Path("levels") / f"{game.level['meta']['title']}.json"
+        if text != game.level["meta"]["title"]:
+            file = Path("levels") / f"{game.level["meta"]["title"]}.json"
 
             base_name = text
-            base_name = re.sub('[<>:"/\\|?*&.]', '_', base_name)
+            base_name = re.sub('[<>:"/\\|?*&.]', "_", base_name)
             name = base_name
             number = 1
         
@@ -159,7 +159,7 @@ def apply_level_setting(game, field_name, text):
         game.victors = {}
 
     elif field_name == "delete" and text == "delete":
-        file = Path("levels") / f"{game.level['meta']['title']}.json"
+        file = Path("levels") / f"{game.level["meta"]["title"]}.json"
 
         game.current_level -= 1
         game.levels.pop(game.current_level+1)
@@ -189,7 +189,8 @@ def apply_setting(game, field_name, text):
 
 def apply_edit(game, obj, real_field_name, text):
     real_field_name = real_field_name.replace(" ", "_")
-    text = text.replace(" ", "_")
+    if real_field_name not in ("title", "modifier"):
+        text = text.replace(" ", "_")
     real = "real_" if real_field_name.split("_")[0] == "real" else ""
     field_name = real_field_name.split("_")[-1] if real == "real_" else real_field_name
 

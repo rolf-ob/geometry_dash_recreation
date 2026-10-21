@@ -20,7 +20,7 @@
     ],
     "title": "Level Two",
     "points": 40,
-    "level number": 2,
+    "level number": 3,
     "song": "glorious morning 2.ogg",
     "song start": 0
   },
@@ -5845,7 +5845,7 @@
       "triggers": []
     },
     {
-      "x": 19100,
+      "x": 19120.0,
       "y": 620,
       "width": 40,
       "height": 40,
@@ -5866,7 +5866,7 @@
       "triggers": []
     },
     {
-      "x": 19320,
+      "x": 19340.0,
       "y": 360,
       "width": 40,
       "height": 40,
@@ -5887,7 +5887,7 @@
       "triggers": []
     },
     {
-      "x": 19000,
+      "x": 18960,
       "y": 680,
       "width": 40,
       "height": 40,
@@ -6097,7 +6097,7 @@
       "triggers": []
     },
     {
-      "x": 19620,
+      "x": 19640.0,
       "y": 320,
       "width": 40,
       "height": 40,
@@ -6118,7 +6118,7 @@
       "triggers": []
     },
     {
-      "x": 19540,
+      "x": 19560.0,
       "y": 320,
       "width": 40,
       "height": 40,
@@ -6139,7 +6139,7 @@
       "triggers": []
     },
     {
-      "x": 19580,
+      "x": 19600.0,
       "y": 320,
       "width": 40,
       "height": 40,
@@ -6240,6 +6240,174 @@
         0
       ],
       "modifier": "big",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18320,
+      "y": 680,
+      "width": 120,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18280,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18320,
+      "y": 640,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18440,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18480,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18920,
+      "y": 620.0,
+      "width": 40,
+      "height": 100.0,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 19000,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
       "group_id": 0,
       "triggers": []
     }
@@ -7343,7 +7511,7 @@
       "triggers": []
     },
     {
-      "x": 18360,
+      "x": 17920,
       "y": 680,
       "width": 40,
       "height": 40,
@@ -7371,8 +7539,8 @@
   ],
   "victors": {
     "rolf": [
-      546,
-      1,
+      590,
+      2,
       3,
       35,
       1792490850.5391443

@@ -1,0 +1,428 @@
+{
+  "meta": {
+    "length": 6000,
+    "roof": 0,
+    "floor": 720,
+    "roof_color": [
+      255,
+      255,
+      255
+    ],
+    "floor_color": [
+      255,
+      255,
+      255
+    ],
+    "background_color": [
+      255,
+      255,
+      255
+    ],
+    "title": "The Basics",
+    "points": 5,
+    "level number": 1,
+    "song": "",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [
+    {
+      "x": 1180.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1880,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2080,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1140.0,
+      "y": 480,
+      "width": 120,
+      "height": 40,
+      "rotation": 0,
+      "shape": "text",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": "Click to jump",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3020.0,
+      "y": 500.0,
+      "width": 440,
+      "height": 40,
+      "rotation": 0,
+      "shape": "text",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": "That way you can practice further into the level",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1900.0,
+      "y": 480,
+      "width": 200,
+      "height": 40,
+      "rotation": 0,
+      "shape": "text",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": "Hold to chain jumps",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2700.0,
+      "y": 480,
+      "width": 200,
+      "height": 40,
+      "rotation": 0,
+      "shape": "text",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": "Press Esc to pause",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4980.0,
+      "y": 480.0,
+      "width": 320,
+      "height": 40,
+      "rotation": 0,
+      "shape": "text",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": "Press E to go to the first level",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3674,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3788,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3712,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3750,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3020.0,
+      "y": 460.0,
+      "width": 440,
+      "height": 40,
+      "rotation": 0,
+      "shape": "text",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": "Use A and D to switch between checkpoints",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4500.0,
+      "y": 480.0,
+      "width": 360,
+      "height": 40,
+      "rotation": 0,
+      "shape": "text",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": "Congrats on completing the tutorial!",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6000,
+      "y": 0,
+      "width": 1,
+      "height": 720,
+      "rotation": 0,
+      "shape": "end",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        255,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2800,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4000,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "victors": {
+    "rolf": [
+      64,
+      1,
+      0,
+      0,
+      1792581157.2900186
+    ]
+  }
+}

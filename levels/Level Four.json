@@ -1,6 +1,6 @@
 {
   "meta": {
-    "length": 18520,
+    "length": 22120,
     "roof": 0,
     "floor": 720,
     "roof_color": [
@@ -19,12 +19,76 @@
       0
     ],
     "title": "Level Four",
-    "points": 0,
-    "level number": 4,
+    "points": 80,
+    "level number": 5,
     "song": "cant sleep.ogg",
     "song start": 0
   },
-  "background": [],
+  "background": [
+    {
+      "x": 21760,
+      "y": 440,
+      "width": 40,
+      "height": 40,
+      "rotation": 52.1,
+      "shape": "square",
+      "color": [
+        100,
+        100,
+        100
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 21785,
+      "y": 481,
+      "width": 40,
+      "height": 20,
+      "rotation": 232.1,
+      "shape": "square",
+      "color": [
+        100,
+        100,
+        100
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 21736,
+      "y": 418,
+      "width": 40,
+      "height": 20,
+      "rotation": 52.1,
+      "shape": "square",
+      "color": [
+        100,
+        100,
+        100
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
   "objects": [
     {
       "x": 21367,
@@ -69,28 +133,7 @@
       "triggers": []
     },
     {
-      "x": 20120,
-      "y": 440,
-      "width": 120,
-      "height": 280,
-      "rotation": 0,
-      "shape": "left slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 12,
-      "triggers": []
-    },
-    {
-      "x": 20240,
+      "x": 20240.0,
       "y": 440,
       "width": 520,
       "height": 40,
@@ -132,11 +175,11 @@
       "triggers": []
     },
     {
-      "x": 16920,
-      "y": 0,
+      "x": 15280,
+      "y": 700.0,
       "width": 40,
       "height": 20,
-      "rotation": 180,
+      "rotation": 0,
       "shape": "spike",
       "color": [
         20,
@@ -149,11 +192,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17080,
+      "x": 15480,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -170,11 +213,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17040,
+      "x": 15440,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -191,11 +234,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17000,
+      "x": 15400,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -212,11 +255,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 16960,
+      "x": 15360,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -233,11 +276,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17520,
+      "x": 15920,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -254,11 +297,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17680,
+      "x": 16080,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -275,11 +318,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17640,
+      "x": 16040,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -296,11 +339,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17600,
+      "x": 16000,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -317,11 +360,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17560,
+      "x": 15960,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -338,11 +381,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17320,
+      "x": 15720,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -359,11 +402,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17480,
+      "x": 15880,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -380,11 +423,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17440,
+      "x": 15840,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -401,11 +444,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17400,
+      "x": 15800,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -422,11 +465,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17360,
+      "x": 15760,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -443,11 +486,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17120,
+      "x": 15520,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -464,11 +507,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17280,
+      "x": 15680,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -485,11 +528,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17240,
+      "x": 15640,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -506,11 +549,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17200,
+      "x": 15600,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -527,11 +570,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
-      "x": 17160,
+      "x": 15560,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -548,7 +591,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 1,
+      "group_id": 0,
       "triggers": []
     },
     {
@@ -1392,7 +1435,7 @@
       "triggers": []
     },
     {
-      "x": 17720,
+      "x": 16120,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1413,7 +1456,7 @@
       "triggers": []
     },
     {
-      "x": 17880,
+      "x": 16280,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1434,7 +1477,7 @@
       "triggers": []
     },
     {
-      "x": 17840,
+      "x": 16240,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1455,7 +1498,7 @@
       "triggers": []
     },
     {
-      "x": 17800,
+      "x": 16200,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1476,7 +1519,7 @@
       "triggers": []
     },
     {
-      "x": 17760,
+      "x": 16160,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1497,7 +1540,7 @@
       "triggers": []
     },
     {
-      "x": 18320,
+      "x": 16720,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1518,7 +1561,7 @@
       "triggers": []
     },
     {
-      "x": 18480,
+      "x": 16880,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1539,7 +1582,7 @@
       "triggers": []
     },
     {
-      "x": 18440,
+      "x": 16840,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1560,7 +1603,7 @@
       "triggers": []
     },
     {
-      "x": 18400,
+      "x": 16800,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1581,7 +1624,7 @@
       "triggers": []
     },
     {
-      "x": 18360,
+      "x": 16760,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1602,7 +1645,7 @@
       "triggers": []
     },
     {
-      "x": 18120,
+      "x": 16520,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1623,7 +1666,7 @@
       "triggers": []
     },
     {
-      "x": 18280,
+      "x": 16680,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1644,7 +1687,7 @@
       "triggers": []
     },
     {
-      "x": 18240,
+      "x": 16640,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1665,7 +1708,7 @@
       "triggers": []
     },
     {
-      "x": 18200,
+      "x": 16600,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1686,7 +1729,7 @@
       "triggers": []
     },
     {
-      "x": 18160,
+      "x": 16560,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1707,7 +1750,7 @@
       "triggers": []
     },
     {
-      "x": 17920,
+      "x": 16320,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1728,7 +1771,7 @@
       "triggers": []
     },
     {
-      "x": 18080,
+      "x": 16480,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1749,7 +1792,7 @@
       "triggers": []
     },
     {
-      "x": 18040,
+      "x": 16440,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1770,7 +1813,7 @@
       "triggers": []
     },
     {
-      "x": 18000,
+      "x": 16400,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1791,7 +1834,7 @@
       "triggers": []
     },
     {
-      "x": 17960,
+      "x": 16360,
       "y": 0,
       "width": 40,
       "height": 20,
@@ -1809,27 +1852,6 @@
       ],
       "modifier": null,
       "group_id": 4,
-      "triggers": []
-    },
-    {
-      "x": 20080,
-      "y": 700,
-      "width": 40,
-      "height": 20,
-      "rotation": 0,
-      "shape": "spike",
-      "color": [
-        20,
-        20,
-        40
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 5,
       "triggers": []
     },
     {
@@ -1850,7 +1872,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -1871,7 +1893,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -1892,7 +1914,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -1913,7 +1935,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -1934,7 +1956,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -1955,7 +1977,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -1976,7 +1998,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -1997,7 +2019,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2018,7 +2040,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2039,7 +2061,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2060,7 +2082,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2081,7 +2103,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2102,7 +2124,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2123,7 +2145,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2144,7 +2166,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2165,7 +2187,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2186,7 +2208,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2207,7 +2229,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
@@ -2228,11 +2250,11 @@
         0
       ],
       "modifier": null,
-      "group_id": 5,
+      "group_id": 22,
       "triggers": []
     },
     {
-      "x": 17680,
+      "x": 16080,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2253,7 +2275,7 @@
       "triggers": []
     },
     {
-      "x": 17520,
+      "x": 15920,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2274,7 +2296,7 @@
       "triggers": []
     },
     {
-      "x": 17560,
+      "x": 15960,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2295,7 +2317,7 @@
       "triggers": []
     },
     {
-      "x": 17600,
+      "x": 16000,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2316,7 +2338,7 @@
       "triggers": []
     },
     {
-      "x": 17640,
+      "x": 16040,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2337,7 +2359,7 @@
       "triggers": []
     },
     {
-      "x": 17080,
+      "x": 15480,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2358,7 +2380,7 @@
       "triggers": []
     },
     {
-      "x": 16920,
+      "x": 15320,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2379,7 +2401,7 @@
       "triggers": []
     },
     {
-      "x": 16960,
+      "x": 15360,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2400,7 +2422,7 @@
       "triggers": []
     },
     {
-      "x": 17000,
+      "x": 15400,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2421,7 +2443,7 @@
       "triggers": []
     },
     {
-      "x": 17040,
+      "x": 15440,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2442,7 +2464,7 @@
       "triggers": []
     },
     {
-      "x": 17280,
+      "x": 15680,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2463,7 +2485,7 @@
       "triggers": []
     },
     {
-      "x": 17120,
+      "x": 15520,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2484,7 +2506,7 @@
       "triggers": []
     },
     {
-      "x": 17160,
+      "x": 15560,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2505,7 +2527,7 @@
       "triggers": []
     },
     {
-      "x": 17200,
+      "x": 15600,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2526,7 +2548,7 @@
       "triggers": []
     },
     {
-      "x": 17240,
+      "x": 15640,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2547,7 +2569,7 @@
       "triggers": []
     },
     {
-      "x": 17480,
+      "x": 15880,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2568,7 +2590,7 @@
       "triggers": []
     },
     {
-      "x": 17320,
+      "x": 15720,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2589,7 +2611,7 @@
       "triggers": []
     },
     {
-      "x": 17360,
+      "x": 15760,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2610,7 +2632,7 @@
       "triggers": []
     },
     {
-      "x": 17400,
+      "x": 15800,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2631,7 +2653,7 @@
       "triggers": []
     },
     {
-      "x": 17440,
+      "x": 15840,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2652,7 +2674,7 @@
       "triggers": []
     },
     {
-      "x": 18480,
+      "x": 16880,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2673,7 +2695,7 @@
       "triggers": []
     },
     {
-      "x": 18320,
+      "x": 16720,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2694,7 +2716,7 @@
       "triggers": []
     },
     {
-      "x": 18360,
+      "x": 16760,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2715,7 +2737,7 @@
       "triggers": []
     },
     {
-      "x": 18400,
+      "x": 16800,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2736,7 +2758,7 @@
       "triggers": []
     },
     {
-      "x": 18440,
+      "x": 16840,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2757,7 +2779,7 @@
       "triggers": []
     },
     {
-      "x": 17880,
+      "x": 16280,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2778,7 +2800,7 @@
       "triggers": []
     },
     {
-      "x": 17720,
+      "x": 16120,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2799,7 +2821,7 @@
       "triggers": []
     },
     {
-      "x": 17760,
+      "x": 16160,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2820,7 +2842,7 @@
       "triggers": []
     },
     {
-      "x": 17800,
+      "x": 16200,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2841,7 +2863,7 @@
       "triggers": []
     },
     {
-      "x": 17840,
+      "x": 16240,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2862,7 +2884,7 @@
       "triggers": []
     },
     {
-      "x": 18080,
+      "x": 16480,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2883,7 +2905,7 @@
       "triggers": []
     },
     {
-      "x": 17920,
+      "x": 16320,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2904,7 +2926,7 @@
       "triggers": []
     },
     {
-      "x": 17960,
+      "x": 16360,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2925,7 +2947,7 @@
       "triggers": []
     },
     {
-      "x": 18000,
+      "x": 16400,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2946,7 +2968,7 @@
       "triggers": []
     },
     {
-      "x": 18040,
+      "x": 16440,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2967,7 +2989,7 @@
       "triggers": []
     },
     {
-      "x": 18280,
+      "x": 16680,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -2988,7 +3010,7 @@
       "triggers": []
     },
     {
-      "x": 18120,
+      "x": 16520,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -3009,7 +3031,7 @@
       "triggers": []
     },
     {
-      "x": 18160,
+      "x": 16560,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -3030,7 +3052,7 @@
       "triggers": []
     },
     {
-      "x": 18200,
+      "x": 16600,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -3051,7 +3073,7 @@
       "triggers": []
     },
     {
-      "x": 18240,
+      "x": 16640,
       "y": 700,
       "width": 40,
       "height": 20,
@@ -3492,8 +3514,8 @@
       "triggers": []
     },
     {
-      "x": 17680,
-      "y": 40,
+      "x": 17640.0,
+      "y": 120.0,
       "width": 320,
       "height": 320,
       "rotation": 0,
@@ -3577,7 +3599,7 @@
     },
     {
       "x": 17360,
-      "y": 520,
+      "y": 540.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3660,11 +3682,11 @@
       "triggers": []
     },
     {
-      "x": 17920,
-      "y": 400,
+      "x": 16880,
+      "y": 280,
       "width": 40,
       "height": 40,
-      "rotation": 0,
+      "rotation": 180,
       "shape": "circle",
       "color": [
         255,
@@ -3681,179 +3703,11 @@
       "triggers": []
     },
     {
-      "x": 18160,
-      "y": 520,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18160,
-      "y": 240,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18040,
-      "y": 80,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18480,
-      "y": 120,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18400,
-      "y": 400,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18560,
-      "y": 600,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18760,
-      "y": 440,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18640,
-      "y": 240,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "circle",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 18880,
+      "x": 16640,
       "y": 160,
       "width": 40,
       "height": 40,
-      "rotation": 0,
+      "rotation": 180,
       "shape": "circle",
       "color": [
         255,
@@ -3870,11 +3724,53 @@
       "triggers": []
     },
     {
-      "x": 19000,
+      "x": 16620.0,
+      "y": 460.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 16720,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 16320,
       "y": 560,
       "width": 40,
       "height": 40,
-      "rotation": 0,
+      "rotation": 180,
       "shape": "circle",
       "color": [
         255,
@@ -3891,11 +3787,137 @@
       "triggers": []
     },
     {
-      "x": 19080,
-      "y": 200,
+      "x": 16400,
+      "y": 280,
       "width": 40,
       "height": 40,
-      "rotation": 0,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 16240,
+      "y": 80,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 16040,
+      "y": 240,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 16160,
+      "y": 460.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15760,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15800,
+      "y": 160,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15820.0,
+      "y": 380.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
       "shape": "circle",
       "color": [
         255,
@@ -4122,8 +4144,8 @@
       "triggers": []
     },
     {
-      "x": 19720,
-      "y": 600,
+      "x": 17960,
+      "y": 80,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -4138,14 +4160,14 @@
         0,
         0
       ],
-      "modifier": 20,
+      "modifier": 30,
       "group_id": 0,
       "triggers": []
     },
     {
-      "x": 20240,
+      "x": 20240.0,
       "y": 320,
-      "width": 640,
+      "width": 640.0,
       "height": 40,
       "rotation": 0,
       "shape": "square",
@@ -4164,7 +4186,7 @@
       "triggers": []
     },
     {
-      "x": 21300,
+      "x": 21280.0,
       "y": 480,
       "width": 40,
       "height": 40,
@@ -4185,9 +4207,9 @@
       "triggers": []
     },
     {
-      "x": 20560,
+      "x": 20580.0,
       "y": 360,
-      "width": 40,
+      "width": 40.0,
       "height": 20,
       "rotation": 180,
       "shape": "spike",
@@ -4206,9 +4228,9 @@
       "triggers": []
     },
     {
-      "x": 20600,
+      "x": 20620.0,
       "y": 360,
-      "width": 40,
+      "width": 40.0,
       "height": 20,
       "rotation": 180,
       "shape": "spike",
@@ -4248,7 +4270,7 @@
       "triggers": []
     },
     {
-      "x": 20440,
+      "x": 20480.0,
       "y": 420,
       "width": 40,
       "height": 20,
@@ -4269,7 +4291,7 @@
       "triggers": []
     },
     {
-      "x": 20400,
+      "x": 20440.0,
       "y": 420,
       "width": 40,
       "height": 20,
@@ -4287,27 +4309,6 @@
       ],
       "modifier": null,
       "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 20080,
-      "y": 0,
-      "width": 160,
-      "height": 360,
-      "rotation": 180,
-      "shape": "right slope",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 11,
       "triggers": []
     },
     {
@@ -5488,7 +5489,7 @@
     },
     {
       "x": 20960,
-      "y": 560,
+      "y": 540.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -5939,10 +5940,10 @@
     },
     {
       "x": 14920,
-      "y": 600,
+      "y": 360,
       "width": 40,
       "height": 120,
-      "rotation": 0,
+      "rotation": 45,
       "shape": "gamemode",
       "color": [
         255,
@@ -6081,7 +6082,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 16,
+      "group_id": 0,
       "triggers": []
     },
     {
@@ -6102,28 +6103,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 16,
-      "triggers": []
-    },
-    {
-      "x": 21760,
-      "y": 440,
-      "width": 40,
-      "height": 40,
-      "rotation": 52.1,
-      "shape": "square",
-      "color": [
-        100,
-        100,
-        100
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 16,
+      "group_id": 0,
       "triggers": []
     },
     {
@@ -6144,49 +6124,7 @@
         0
       ],
       "modifier": null,
-      "group_id": 16,
-      "triggers": []
-    },
-    {
-      "x": 21785,
-      "y": 481,
-      "width": 40,
-      "height": 20,
-      "rotation": 232.1,
-      "shape": "square",
-      "color": [
-        100,
-        100,
-        100
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 16,
-      "triggers": []
-    },
-    {
-      "x": 21736,
-      "y": 418,
-      "width": 40,
-      "height": 20,
-      "rotation": 52.1,
-      "shape": "square",
-      "color": [
-        100,
-        100,
-        100
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 16,
+      "group_id": 0,
       "triggers": []
     },
     {
@@ -6207,91 +6145,7235 @@
         0
       ],
       "modifier": null,
-      "group_id": 16,
+      "group_id": 0,
       "triggers": []
-    }
-  ],
-  "decoration": [
+    },
     {
-      "x": 20165,
-      "y": -57,
-      "width": 160,
-      "height": 360,
-      "rotation": 337.5,
+      "x": 3840,
+      "y": 560,
+      "width": 280,
+      "height": 160,
+      "rotation": 0,
       "shape": "square",
       "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
         0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2440,
+      "y": 640,
+      "width": 40,
+      "height": 80,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2600,
+      "y": 560,
+      "width": 40,
+      "height": 160,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 2800,
+      "y": 560,
+      "width": 240,
+      "height": 160,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3200,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3280,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3120,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3080,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3040,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3160,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3240,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3120,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3320,
+      "y": 560,
+      "width": 160,
+      "height": 160,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3480,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3560,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3600,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3640,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3680,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3800,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3720,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3760,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 3600,
+      "y": 480,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4120,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4160,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4200,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4240,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4280,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4680.0,
+      "y": 710.0,
+      "width": 40,
+      "height": 10,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
         0,
         0
       ],
       "outline": [
         0,
+        0,
+        0
+      ],
+      "modifier": "big",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4080,
+      "y": 520,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4880,
+      "y": 480,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5120,
+      "y": 480,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5520,
+      "y": 280,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5760,
+      "y": 600,
+      "width": 320,
+      "height": 1.0,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
         0
       ],
       "modifier": null,
-      "group_id": 11,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4800,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4840,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4880,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4920,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4960,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5000,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5040,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5080,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5120,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5160,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5200,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5240,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5280,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5320,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5480,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5520,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5600,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5360,
+      "y": 480,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5640,
+      "y": 240,
+      "width": 40,
+      "height": 360,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5640,
+      "y": 200,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5440,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5560,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4800,
+      "y": 600,
+      "width": 1.0,
+      "height": 120,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6080,
+      "y": 520.0,
+      "width": 40,
+      "height": 200,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6460.0,
+      "y": 640,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6464.0,
+      "y": 644,
+      "width": 32,
+      "height": 32,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6220.0,
+      "y": 640,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6224.0,
+      "y": 644,
+      "width": 32,
+      "height": 32,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6580.0,
+      "y": 380.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6340.0,
+      "y": 380.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6120,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6160,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6200,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6240,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6280,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6320,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6400,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6440,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6480,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6560,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6600,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6640,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6580.0,
+      "y": 340.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6340.0,
+      "y": 340.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7062.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7138.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7302.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7378.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 8340.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7100.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7300.0,
+      "y": 360.0,
+      "width": 200,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 29,
+      "triggers": []
+    },
+    {
+      "x": 7460.0,
+      "y": 400.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 29,
+      "triggers": []
+    },
+    {
+      "x": 7420.0,
+      "y": 400.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 29,
+      "triggers": []
+    },
+    {
+      "x": 7380.0,
+      "y": 400.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 29,
+      "triggers": []
+    },
+    {
+      "x": 7340.0,
+      "y": 400.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 29,
+      "triggers": []
+    },
+    {
+      "x": 7300.0,
+      "y": 400.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 29,
+      "triggers": []
+    },
+    {
+      "x": 7100.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7340.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9040,
+      "y": 580.0,
+      "width": 20.0,
+      "height": 20.0,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8720,
+      "y": 480,
+      "width": 160,
+      "height": 160,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 9080.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8980.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8980.0,
+      "y": 600,
+      "width": 140.0,
+      "height": 120,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8940.0,
+      "y": 680,
+      "width": 40.0,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8900.0,
+      "y": 680,
+      "width": 40.0,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8860.0,
+      "y": 680,
+      "width": 40.0,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8820.0,
+      "y": 680,
+      "width": 40.0,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 19,
+      "triggers": []
+    },
+    {
+      "x": 8280,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 8320,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 8360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 8400,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7840,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7880,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7920,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7960,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7340.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7900.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 8260.0,
+      "y": 400,
+      "width": 200,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7820.0,
+      "y": 400,
+      "width": 200,
+      "height": 40,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14520,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14720,
+      "y": 520,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14920,
+      "y": 520,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14960,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15000,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15040,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15120,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15160,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15200,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15240,
+      "y": 520,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15080,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15240,
+      "y": 0,
+      "width": 40,
+      "height": 240,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14920,
+      "y": 0,
+      "width": 40,
+      "height": 240,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14960,
+      "y": 0,
+      "width": 40,
+      "height": 280,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15200,
+      "y": 0,
+      "width": 40,
+      "height": 280,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15000,
+      "y": 640,
+      "width": 200,
+      "height": 80,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15240,
+      "y": 560,
+      "width": 40,
+      "height": 160,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14920,
+      "y": 560,
+      "width": 40,
+      "height": 160,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14960,
+      "y": 600,
+      "width": 40,
+      "height": 120,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15200,
+      "y": 600,
+      "width": 40,
+      "height": 120,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15000,
+      "y": 0,
+      "width": 200,
+      "height": 320,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14920,
+      "y": 240,
+      "width": 40,
+      "height": 40,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14960,
+      "y": 280,
+      "width": 40,
+      "height": 40,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15000,
+      "y": 320,
+      "width": 40,
+      "height": 40,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15040,
+      "y": 320,
+      "width": 40,
+      "height": 80,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15080,
+      "y": 320,
+      "width": 40,
+      "height": 120,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15120,
+      "y": 320,
+      "width": 40,
+      "height": 80,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15160,
+      "y": 320,
+      "width": 40,
+      "height": 40,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15200,
+      "y": 280,
+      "width": 40,
+      "height": 40,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15240,
+      "y": 240,
+      "width": 40,
+      "height": 40,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14300.0,
+      "y": 620.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14800,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14840,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14880,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14600,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14480,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14560,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14760,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14640,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14680,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14720,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14380.0,
+      "y": 620.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14340.0,
+      "y": 620.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15020.0,
+      "y": 160,
+      "width": 40,
+      "height": 80,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15140.0,
+      "y": 160,
+      "width": 40,
+      "height": 80,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
       "triggers": []
     },
     {
       "x": 20080,
-      "y": -80,
-      "width": 240,
-      "height": 80,
+      "y": 420.0,
+      "width": 160.0,
+      "height": 380.0,
       "rotation": 0,
-      "shape": "square",
+      "shape": "left slope",
       "color": [
-        20,
-        20,
-        80
+        255,
+        255,
+        255
       ],
       "outline": [
+        0,
         0,
         0
       ],
       "modifier": null,
-      "group_id": 11,
+      "group_id": 24,
       "triggers": []
     },
     {
-      "x": 20182,
-      "y": 493,
+      "x": 20080,
+      "y": 0.0,
+      "width": 160.0,
+      "height": 380.0,
+      "rotation": 180,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 23,
+      "triggers": []
+    },
+    {
+      "x": 20240,
+      "y": 360.0,
+      "width": 80,
+      "height": 20.0,
+      "rotation": 180,
+      "shape": "left slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 20240,
+      "y": 420,
+      "width": 80,
+      "height": 20.0,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 21764,
+      "y": 444,
+      "width": 32,
+      "height": 32,
+      "rotation": 0,
+      "shape": "coin",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": 10,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14300.0,
+      "y": 580.0,
       "width": 120,
-      "height": 280,
-      "rotation": 22.5,
-      "shape": "square",
-      "color": [
-        0,
-        0,
-        0
-      ],
-      "outline": [
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 12,
-      "triggers": []
-    },
-    {
-      "x": 20120,
-      "y": 720,
-      "width": 160,
-      "height": 80,
+      "height": 40,
       "rotation": 0,
       "shape": "square",
       "color": [
-        20,
-        20,
-        80
+        255,
+        255,
+        255
       ],
       "outline": [
+        0,
         0,
         0
       ],
       "modifier": null,
-      "group_id": 12,
+      "group_id": 0,
       "triggers": []
     },
+    {
+      "x": 17920,
+      "y": 400,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18160,
+      "y": 520,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18160,
+      "y": 240,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18080.0,
+      "y": 80,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18480,
+      "y": 120,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18400,
+      "y": 400,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18560,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18760,
+      "y": 440,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18640,
+      "y": 240,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 18880,
+      "y": 160,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 19000,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 19080,
+      "y": 200,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 16920,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17080,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17040,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17000,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 16960,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17520,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17680,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17640,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17600,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17560,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17320,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17480,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17440,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17400,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17360,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17120,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17280,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17240,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17200,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17160,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 25,
+      "triggers": []
+    },
+    {
+      "x": 17720,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 17880,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 17840,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 17800,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 17760,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18320,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18480,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18440,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18400,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18360,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18120,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18280,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18240,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18200,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18160,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 17920,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18080,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18040,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 18000,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 17960,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 26,
+      "triggers": []
+    },
+    {
+      "x": 17680,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17520,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17560,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17600,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17640,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17080,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 16920,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 16960,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17000,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17040,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17280,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17120,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17160,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17200,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17240,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17480,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17320,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17360,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17400,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 17440,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 27,
+      "triggers": []
+    },
+    {
+      "x": 18480,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18320,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18360,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18400,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18440,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 17880,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 17720,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 17760,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 17800,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 17840,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18080,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 17920,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 17960,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18000,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18040,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18280,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18120,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18160,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18200,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 18240,
+      "y": 700,
+      "width": 40,
+      "height": 20,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 28,
+      "triggers": []
+    },
+    {
+      "x": 15980.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 180,
+      "shape": "circle",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15320,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 15280,
+      "y": 0,
+      "width": 40,
+      "height": 20,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        20,
+        20,
+        40
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5700.0,
+      "y": 630.0,
+      "width": 40.0,
+      "height": 90.0,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5700.0,
+      "y": 540.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "coin",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": 10,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9760,
+      "y": 710.0,
+      "width": 80,
+      "height": 10,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9980.0,
+      "y": 600,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10000,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10040,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10080,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9840,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9880,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9920,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9960,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10280,
+      "y": 710.0,
+      "width": 40,
+      "height": 10,
+      "rotation": 0,
+      "shape": "pad",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10680,
+      "y": 580.0,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10440,
+      "y": 580.0,
+      "width": 80,
+      "height": 80,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10800,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10560,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10320,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10400,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10440,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10480,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10560,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10600,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10640,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10680,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10720,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10760,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10520,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10480,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10600,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10640,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10680,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10720,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10760,
+      "y": 360.0,
+      "width": 40,
+      "height": 40.0,
+      "rotation": 180.0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10480,
+      "y": 320.0,
+      "width": 360,
+      "height": 40.0,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12060.0,
+      "y": 320,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12240,
+      "y": 360,
+      "width": 280,
+      "height": 80,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11820.0,
+      "y": 480,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11800,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11840,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12560,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12600,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12640,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12680,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12720,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12760,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12920,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11440,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11480,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11560,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11600,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11640,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11680,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11720,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11760,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12720,
+      "y": 480,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11940.0,
+      "y": 480,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11900.0,
+      "y": 260.0,
+      "width": 40,
+      "height": 120,
+      "rotation": 180,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11500.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11620.0,
+      "y": 560,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "orb",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": "normal",
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11580.0,
+      "y": 340.0,
+      "width": 40,
+      "height": 120,
+      "rotation": 180,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 13242.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 13280.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 13318.0,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12240,
+      "y": 440,
+      "width": 280,
+      "height": 280,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12800,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11880,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11920,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11960,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12000,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12040,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12080,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12120,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12200,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12160,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12840,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 12880,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11580.0,
+      "y": 0.0,
+      "width": 40,
+      "height": 340.0,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 11900.0,
+      "y": 0.0,
+      "width": 40,
+      "height": 260.0,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "decoration": [
     {
       "x": 361,
       "y": 680,
@@ -6337,16 +13419,96 @@
       "triggers": []
     },
     {
-      "x": 21764,
-      "y": 444,
-      "width": 32,
-      "height": 32,
-      "rotation": 7.1,
-      "shape": "circle",
+      "x": 20166,
+      "y": 496.0,
+      "width": 153,
+      "height": 354,
+      "rotation": 22.5,
+      "shape": "square",
       "color": [
         0,
-        100,
-        200
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 24,
+      "triggers": []
+    },
+    {
+      "x": 20080,
+      "y": 720.0,
+      "width": 240,
+      "height": 160,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        20,
+        20,
+        80
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 24,
+      "triggers": []
+    },
+    {
+      "x": 20166,
+      "y": -50,
+      "width": 153,
+      "height": 354,
+      "rotation": 337.5,
+      "shape": "square",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 23,
+      "triggers": []
+    },
+    {
+      "x": 20080,
+      "y": -80,
+      "width": 240,
+      "height": 80,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        20,
+        20,
+        80
+      ],
+      "outline": [
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 23,
+      "triggers": []
+    },
+    {
+      "x": 5360,
+      "y": 570,
+      "width": 40,
+      "height": 30.0,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        220
       ],
       "outline": [
         0,
@@ -6354,7 +13516,49 @@
         0
       ],
       "modifier": null,
-      "group_id": 16,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 5400,
+      "y": 570,
+      "width": 40,
+      "height": 30.0,
+      "rotation": 0,
+      "shape": "spike",
+      "color": [
+        255,
+        255,
+        220
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4801,
+      "y": 600,
+      "width": 1279,
+      "height": 120,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": null,
+      "group_id": 0,
       "triggers": []
     }
   ],
@@ -6386,7 +13590,163 @@
       "triggers": []
     },
     {
-      "x": 14320,
+      "x": 2800,
+      "y": 519,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 4400,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 6720,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 7520,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 9200,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 10920,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 14120,
       "y": 680,
       "width": 40,
       "height": 40,
@@ -6440,10 +13800,10 @@
   ],
   "victors": {
     "rolf": [
-      456,
-      1,
-      0,
-      0,
+      1049,
+      2,
+      3,
+      50,
       1792500842.5192297
     ]
   }
