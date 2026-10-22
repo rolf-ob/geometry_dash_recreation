@@ -4,6 +4,7 @@ Update v1.1.0
 - Pyinstaller exe file
 
 Bugs:
+- Checkpoints touching sliding objects kill you
 - Floor fill doesn't work correctly with zoom
 - Text objects get rendered based on original square width and aren't centered
 - Frame stepping desyncs music
