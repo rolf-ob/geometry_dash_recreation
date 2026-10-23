@@ -1,9 +1,10 @@
 Update v1.1.0
-- Main level decoration and naming
 - Double check music offset
 - Pyinstaller exe file
 
 Bugs:
+- You can select checkpoints while in layer mode
+- Checkpoints get selected over decoration
 - Checkpoints touching sliding objects kill you
 - Floor fill doesn't work correctly with zoom
 - Text objects get rendered based on original square width and aren't centered
@@ -15,6 +16,7 @@ Bugs:
 - Object menu resets if pressing enter in a field belonging to checkpoint or trigger
 
 Optimization/structuring
+- Password SHA-256 hashing
 - Object x and y value rework for rotation accuracy
 - Add more tests
 - Clean up apply_edit(), physics
@@ -30,7 +32,7 @@ Features
 - All objects show their attributes if all selected have the same
 - Triggers display trigger id while in build mode
 - Checkpoints store level settings
-- Shift+alt+scroll to change hitboxes faster
+- Ctrl+alt+scroll to change hitboxes faster
 - Show dash orb pointing
 - Level music delay
 - Level music volume

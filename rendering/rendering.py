@@ -81,9 +81,9 @@ def draw_objects(game, screen):
 
                 if color == (0, 0):
                     if game.building:
-                        screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "world")[0] / 2, obj.y + 5))
+                        screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "world")[0] / 2, obj.real_y + 5))
                 else:
-                    screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, obj.real_x + obj.width / 2 - game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "world")[0] / 2, obj.y + 5))
+                    screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, obj.real_x + obj.width / 2 - game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "world")[0] / 2, obj.real_y + 5))
 
         elif obj.real_shape == "text":
             color = (200, 255, 200) if obj.selected else obj.real_color
