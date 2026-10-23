@@ -326,7 +326,7 @@ def duplicate_objects(game):
                     
                     new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
                     layer.append(new_obj)
-                    new_obj.selected = False
+                    obj.selected = False
 
                     if obj.group_id != 0:
                         if obj.group_id in object_groups:

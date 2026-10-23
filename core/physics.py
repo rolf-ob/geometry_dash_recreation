@@ -17,14 +17,15 @@ def check_collision(game):
     game.slid = game.sliding
     game.sliding = 0
     objects = get_nearby_objects(game.buckets["objects"], game.player.aabb["left"], game.player.aabb["right"])
+    prev_player = game.hitboxes[-1].aabb
+    player = game.player.aabb
+    begun_sliding = False
 
     for obj in objects:
         if obj.real_shape in ("square", "spike", "right slope", "left slope", "circle"):
             if collide(game.player, obj):
                 prev_this_sliding = collide(game.hitboxes[-1], obj)
                 this_sliding = False
-                prev_player = game.hitboxes[-1].aabb
-                player = game.player.aabb
                 on_right_edge = player["left"] == obj.aabb["right"]
                 on_left_edge = prev_player["left"] <= obj.aabb["left"] <= player["left"] + min(game.speed, game.player.width) and prev_player["bottom"] != player["bottom"]
 
@@ -92,7 +93,10 @@ def check_collision(game):
                         game.sliding = -1
                         this_sliding = True
 
-                if not this_sliding and not on_right_edge:
+                if this_sliding and not prev_this_sliding:
+                    begun_sliding = True
+                
+                if not this_sliding and not on_right_edge and not begun_sliding:
                     if not game.noclip:
                         game.dead = FIXED_STEP
                         py.mixer.music.pause()
@@ -243,13 +247,13 @@ def check_collision(game):
         game.dashing = None
         game.y_vel = 0
 
-    if game.player.y == game.max_height:
+    if game.player.y == game.max_height and game.sliding == 0:
         if game.gravity > 0:
             game.on_ground = True
             game.y_vel = max(0, game.y_vel)
         else:
             game.y_vel = min(0, game.y_vel)
-    elif game.player.y == game.min_height:
+    elif game.player.y == game.min_height and game.sliding == 0:
         if game.gravity < 0:
             game.on_ground = True
             game.y_vel = max(0, game.y_vel)
