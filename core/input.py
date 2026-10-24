@@ -194,12 +194,11 @@ def handle_input(game):
                         obj_selected = False
 
                         game.capture_state("do")
-                        for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-                            if obj.selected:
-                                apply_edit(game, obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                                if obj.shape == "checkpoint": cp_selected = True
-                                elif obj.shape == "trigger": trigger_selected = True
-                                else: obj_selected = True
+                        for obj in game.selected_objects:
+                            apply_edit(game, obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
+                            if obj.shape == "checkpoint": cp_selected = True
+                            elif obj.shape == "trigger": trigger_selected = True
+                            else: obj_selected = True
 
                         if not obj_selected and cp_selected:
                             open_menu(game, "checkpoint attributes")

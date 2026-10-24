@@ -1,5 +1,4 @@
 Bugs:
-- Spawning inside an object doesn't activate it
 - Text objects get rendered based on original square width
 - Frame stepping desyncs music
 - Shift to multiselect objects, release mouse while hovering over selected object, object gets deselected
@@ -7,7 +6,6 @@ Bugs:
 - Object menu resets if pressing enter in a field belonging to checkpoint or trigger
 
 Optimization/structuring
-- Selected objects list, rework all obj.selected checking
 - When recomputing object, only recompute rotation if it's changed, if not just add x and y to the existing points
 - Rebuild buckets for individual objects while keeping z-order
 - Undo redo history list memory optimization
@@ -24,10 +22,12 @@ Features
 - Show dash orb pointing
 - Multi-select bounding box
 - Default level sizes
-- Multi-point shape
-- Combining shapes and transparent shapes into a single multi-point shape
+- Rotation trigger rotates around collective objects center
+- Camera x, y and zoom trigger
 - Checkpoints store level settings
 - Music affected by speedhack
+- Multi-point shape
+- Combining shapes and transparent shapes into a single multi-point shape
 - CBF
 
 User

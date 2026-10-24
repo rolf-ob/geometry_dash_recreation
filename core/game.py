@@ -59,6 +59,7 @@ class Game:
         self.frame_steps = 0
         self.primary_color = (0,)*3
         self.secondary_color = (255,)*3
+        self.clicking = 0
 
         self.last_frame_time = time.perf_counter()
         self.last_save_time = time.perf_counter()
@@ -147,6 +148,9 @@ class Game:
         self.background = self.level["background"]
         self.objects = self.level["objects"]
         self.decoration = self.level["decoration"]
+        self.victors = self.level["victors"]
+        self.group_ids = defaultdict(list)
+        self.trigger_ids = defaultdict(list)
 
         rest = sorted(
             self.level["checkpoints"][1:],
@@ -159,11 +163,7 @@ class Game:
         elif self.checkpoint > len(self.checkpoints)-1:
             self.checkpoint = len(self.checkpoints)-1
 
-        self.victors = self.level["victors"]
-        self.group_ids = defaultdict(list)
         self.current_group_id = 0
-        self.trigger_ids = defaultdict(list)
-
         for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
             if obj.group_id != 0:
                 self.group_ids[obj.group_id].append(obj)
@@ -219,7 +219,6 @@ class Game:
         self.sliding = 0
         self.slid = 0
         self.on_ground = False
-        self.clicking = 0
         self.clicked = False
         self.robot_fuel = 0
         self.dashing = None
@@ -249,7 +248,8 @@ class Game:
 
         self.activated_triggers = {}
         self.current_hitbox = 0
-        self.hitboxes = [self.player]
+        self.checkpoints[self.checkpoint].x
+        self.hitboxes = [Object(-10000, self.checkpoints[self.checkpoint].y, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)]
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
         self.buckets["hitboxes"] = defaultdict(list)
         self.buckets["wave trail"] = defaultdict(list)
