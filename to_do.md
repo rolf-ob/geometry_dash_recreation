@@ -3,13 +3,10 @@ Update v1.1.0
 - Pyinstaller exe file
 
 Bugs:
-- You can select checkpoints while in layer mode
-- Checkpoints get selected over decoration
-- Checkpoints touching sliding objects kill you
-- Floor fill doesn't work correctly with zoom
+- Spawning inside an object doesn't activate it
 - Text objects get rendered based on original square width and aren't centered
-- Frame stepping desyncs music
 - Text zoom position displacement
+- Frame stepping desyncs music
 - When rotating 0.1 or 1 degrees, rouding makes position slighly inaccurate
 - Shift to multiselect objects, release mouse while hovering over selected object, object gets deselected
 - Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
@@ -19,7 +16,6 @@ Optimization/structuring
 - Password SHA-256 hashing
 - Object x and y value rework for rotation accuracy
 - Add more tests
-- Clean up apply_edit(), physics
 - Selected objects list
 - Object groups dict similar to trigger dict and rework all obj.selected checking
 - When recomputing object, only recompute rotation if it's changed, if not just add x and y to the existing points
@@ -31,7 +27,6 @@ Optimization/structuring
 Features
 - All objects show their attributes if all selected have the same
 - Triggers display trigger id while in build mode
-- Checkpoints store level settings
 - Ctrl+alt+scroll to change hitboxes faster
 - Show dash orb pointing
 - Level music delay
@@ -40,6 +35,7 @@ Features
 - Default level sizes
 - Multi-point shape
 - Grouping shapes into a single multi-point shape
+- Checkpoints store level settings
 - Music affected by speedhack
 - CBF
 

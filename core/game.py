@@ -209,6 +209,7 @@ class Game:
 
         self.player.x = self.checkpoints[self.checkpoint].x
         self.player.y = self.checkpoints[self.checkpoint].y
+        self.player.recompute()
         self.y_vel = 0
         self.sliding = 0
         self.slid = 0

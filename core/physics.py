@@ -95,7 +95,9 @@ def check_collision(game):
 
                 if this_sliding and not prev_this_sliding:
                     begun_sliding = True
-                
+                    if game.gamemode == "wave":
+                        game.add_wave_part()
+
                 if not this_sliding and not on_right_edge and not begun_sliding:
                     if not game.noclip:
                         game.dead = FIXED_STEP
@@ -108,9 +110,6 @@ def check_collision(game):
                             game.noclip_deaths += 1
                         hitbox_color = (255, 0, 0) if game.clicking == 0 else (255, 0, 255)
                         break
-
-                elif not prev_this_sliding and this_sliding and game.gamemode == "wave":
-                    game.add_wave_part()
 
         elif obj.real_shape == "end":
             if collide(game.player, obj):

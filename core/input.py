@@ -347,8 +347,10 @@ def handle_input(game):
         
         elif event.type == py.MOUSEBUTTONDOWN and game.name:
             click(game, "click", event.button, shift, ctrl)
+            print(event.__dict__.get("timestamp", 0))
         elif event.type == py.MOUSEBUTTONUP and game.name:
             click(game, "release", event.button, shift, ctrl)
+            print(event.__dict__.get('timestamp', 0))
         
         elif event.type == py.MOUSEWHEEL and game.name:
             if ctrl:

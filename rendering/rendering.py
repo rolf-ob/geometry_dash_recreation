@@ -43,11 +43,11 @@ def draw_object(game, screen, obj, hitbox=False):
     else:
         draw_polygon(game, screen, obj.points, outline_color, outline_thickness)
 
-def draw_floor_roof(game, screen):
+def draw_roof_floor(game, screen):
     roof = world_to_screen(game, 0, game.roof)[1]
     floor = world_to_screen(game, 0, game.floor)[1]
     py.draw.rect(screen, game.roof_color, (0, 0, game.width, roof))
-    py.draw.rect(screen, game.floor_color, (0, floor, game.width, game.height))
+    py.draw.rect(screen, game.floor_color, (0, max(0, floor), game.width, game.height))
     py.draw.line(screen, game.primary_color, (0, roof), (game.width, roof), int(max(1, 1*game.camera_zoom)))
     py.draw.line(screen, game.primary_color, (0, floor), (game.width, floor), int(max(1, 1*game.camera_zoom)))
 
@@ -81,7 +81,8 @@ def draw_objects(game, screen):
 
                 if color == (0, 0):
                     if game.building:
-                        screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "world")[0] / 2, obj.real_y + 5))
+                        screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "screen")[0] / 2, obj.real_y + 5))
+                        obj.real_x + 5
                 else:
                     screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, obj.real_x + obj.width / 2 - game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "world")[0] / 2, obj.real_y + 5))
 
@@ -353,7 +354,7 @@ def draw(game):
         if all_viewable or game.building and game.layer_view and game.layer == 0:
             draw_background(game, screen)
         if game.current_level != 0:
-            draw_floor_roof(game, screen)
+            draw_roof_floor(game, screen)
         if all_viewable or game.building and game.layer_view and game.layer == 1:
             draw_objects(game, screen)
         if game.show_player and game.current_level != 0:

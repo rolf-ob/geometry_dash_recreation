@@ -58,13 +58,14 @@ def select_object(game, shift, ctrl):
         mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
         name = ("background", "objects", "decoration")[game.layer]
         layer = get_nearby_objects(game.buckets[name], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
-        checkpoints  = get_nearby_objects(game.buckets["checkpoints"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
+        checkpoints = get_nearby_objects(game.buckets["checkpoints"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0]) if not game.layer_view else []
+        objects = (*layer, *checkpoints) if name != "decoration" else (*checkpoints, *layer)
         
         cp_selected = False
         trigger_selected = False
         obj_selected = False
         if ctrl:
-            for obj in (*layer, *checkpoints):
+            for obj in objects:
                 if collide(mouse, obj):
                     obj.selected = True
                     if obj.shape == "checkpoint": cp_selected = True
@@ -81,7 +82,7 @@ def select_object(game, shift, ctrl):
 
         elif shift:
             top_obj = None
-            for obj in (*layer, *checkpoints):
+            for obj in objects:
                 if collide(mouse, obj):
                     top_obj = obj
                     
@@ -102,7 +103,7 @@ def select_object(game, shift, ctrl):
         
         else:
             top_obj = None
-            for obj in (*layer, *checkpoints):
+            for obj in objects:
                 if collide(mouse, obj):
                     top_obj = obj
 
