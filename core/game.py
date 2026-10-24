@@ -77,7 +77,7 @@ class Game:
 
     def open_login_page(self):
         self.name = None
-        self.title = ["WARNING! YOUR PASSWORD CAN BE READ BY ANYONE WITH ACCESS TO THE GAME FILES!", -1]
+        self.title = ["Log in or create an account", -1]
 
         self.controls = {
             "previous attribute": [py.key.key_code("up")],
@@ -147,13 +147,6 @@ class Game:
         self.background = self.level["background"]
         self.objects = self.level["objects"]
         self.decoration = self.level["decoration"]
-        self.victors = self.level["victors"]
-        self.trigger_ids = defaultdict(list)
-
-        for obj in (*self.background, *self.objects, *self.decoration):
-            if obj.shape != "trigger" and obj.triggers:
-                for id in obj.triggers:
-                    self.trigger_ids[id].append(obj)
 
         rest = sorted(
             self.level["checkpoints"][1:],
@@ -166,15 +159,27 @@ class Game:
         elif self.checkpoint > len(self.checkpoints)-1:
             self.checkpoint = len(self.checkpoints)-1
 
+        self.victors = self.level["victors"]
+        self.group_ids = defaultdict(list)
+        self.current_group_id = 0
+        self.trigger_ids = defaultdict(list)
+
+        for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
+            if obj.group_id != 0:
+                self.group_ids[obj.group_id].append(obj)
+
+                if obj.group_id >= self.current_group_id:
+                    self.current_group_id = obj.group_id + 1
+        
+        for obj in (*self.background, *self.objects, *self.decoration):
+            if obj.shape != "trigger" and obj.triggers:
+                for id in obj.triggers:
+                    self.trigger_ids[id].append(obj)
+
         if self.song:
             py.mixer.music.load(self.songs / self.song)
         else:
             py.mixer.music.unload()
-
-        self.current_group_id = 0
-        for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
-            if obj.group_id >= self.current_group_id:
-                self.current_group_id = obj.group_id + 1
 
         if restart:
             self.title = [self.level["meta"]["title"], -1] if self.current_level == 0 else [f"{self.level["meta"]["title"]} | Points: {str(self.points)}", -1]
@@ -268,8 +273,16 @@ class Game:
             else:
                 steps_into_level = (self.checkpoints[self.checkpoint].x - self.checkpoints[0].x) / self.checkpoints[0].modifier["speed"]
             
-            seconds_into_song = steps_into_level * FIXED_STEP + self.song_start
-            py.mixer.music.play(-1, seconds_into_song)
+            self.seconds_into_song = steps_into_level * FIXED_STEP + self.song_start
+            self.elapsed_music_time = 0
+
+            if self.seconds_into_song >= 0:
+                try:
+                    py.mixer.music.play(1, self.seconds_into_song)
+                except py.error:
+                    print(f"Song isn't long enough to start at {self.seconds_into_song} seconds")
+            else:
+                py.mixer.music.stop()
             
             if self.paused:
                 py.mixer.music.pause()

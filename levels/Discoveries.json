@@ -22,7 +22,7 @@
     "points": 40,
     "level number": 3,
     "song": "glorious morning 2.ogg",
-    "song start": 1.0
+    "song start": 0.7
   },
   "background": [
     {
@@ -7788,7 +7788,7 @@
   ],
   "victors": {
     "rolf": [
-      759,
+      775,
       3,
       3,
       35,

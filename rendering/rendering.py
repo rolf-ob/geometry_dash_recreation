@@ -84,7 +84,7 @@ def draw_objects(game, screen):
                         screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "screen")[0] / 2, obj.real_y + 5))
                         obj.real_x + 5
                 else:
-                    screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, obj.real_x + obj.width / 2 - game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "world")[0] / 2, obj.real_y + 5))
+                    screen.blit(game.text_cache.get_surface(str(obj.real_modifier), (0,)*3, "world"), world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(str(obj.real_modifier), (0,)*3, "screen")[0] / 2, obj.real_y + 5))
 
         elif obj.real_shape == "text":
             color = (200, 255, 200) if obj.selected else obj.real_color
@@ -93,9 +93,9 @@ def draw_objects(game, screen):
 
             if color == (0, 0):
                 if game.building:
-                    screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), world_to_screen(game, obj.real_x + obj.width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "world")[0] / 2, obj.y + 5))
+                    screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "screen")[0] / 2, obj.real_y + 5))
             else:
-                screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), world_to_screen(game, obj.real_x + obj.width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "world")[0] / 2, obj.y + 5))
+                screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "screen")[0] / 2, obj.real_y + 5))
             
             if outline_color == (0, 0):
                 if game.show_hitboxes:
@@ -118,7 +118,7 @@ def draw_checkpoints(game, screen):
         color = (200, 255, 200) if obj.selected else obj.real_color
         draw_polygon(game, screen, obj.points, color, 0)
         draw_polygon(game, screen, obj.points, obj.real_outline, int(max(1, 1*game.camera_zoom)))
-        screen.blit(game.text_cache.get_surface(text, (0,)*3, "world"), world_to_screen(game, obj.real_x + 5, obj.y + 5))
+        screen.blit(game.text_cache.get_surface(text, (0,)*3, "world"), world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(text, (0,)*3, "screen")[0] / 2, obj.real_y + 5))
 
 def draw_hitboxes(game, screen):
     objects = get_nearby_objects(game.buckets["hitboxes"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
@@ -382,7 +382,7 @@ def draw(game):
                     if game.name:
                         game.title = [game.level["meta"]["title"], -1] if game.current_level == 0 else [f"{game.level["meta"]["title"]} | Points: {str(game.points)}", -1]
                     else:
-                        game.title = ["WARNING! YOUR PASSWORD CAN BE READ BY ANYONE WITH ACCESS TO THE GAME FILES!", -1]
+                        game.title = ["Log in or create an account", -1]
                 else:
                     game.title = [("Background", "Objects", "Decoration")[game.layer], -1]
             else:

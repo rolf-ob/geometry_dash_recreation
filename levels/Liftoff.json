@@ -22,7 +22,7 @@
     "points": 80,
     "level number": 5,
     "song": "cant sleep.ogg",
-    "song start": 0
+    "song start": -0.3
   },
   "background": [
     {
@@ -14620,27 +14620,6 @@
       },
       "group_id": 0,
       "triggers": []
-    },
-    {
-      "x": 22080,
-      "y": 480,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "square",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
     }
   ],
   "decoration": [
@@ -15117,7 +15096,7 @@
   ],
   "victors": {
     "rolf": [
-      1345,
+      1385,
       2,
       3,
       50,

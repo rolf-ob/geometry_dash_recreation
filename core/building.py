@@ -73,12 +73,11 @@ def select_object(game, shift, ctrl):
                     else: obj_selected = True
 
                     if obj.group_id != 0:
-                        for other_obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-                            if other_obj.group_id == obj.group_id:
-                                other_obj.selected = True
-                                if other_obj.shape == "checkpoint": cp_selected = True
-                                elif other_obj.shape == "trigger": trigger_selected = True
-                                else: obj_selected = True
+                        for other_obj in game.group_ids[obj.group_id]:
+                            other_obj.selected = True
+                            if other_obj.shape == "checkpoint": cp_selected = True
+                            elif other_obj.shape == "trigger": trigger_selected = True
+                            else: obj_selected = True
 
         elif shift:
             top_obj = None
@@ -93,13 +92,12 @@ def select_object(game, shift, ctrl):
                 else: obj_selected = True
                 
                 if top_obj.group_id != 0:
-                    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
+                    for obj in game.group_ids[top_obj.group_id]:
                         if id(obj) != id(top_obj):
-                            if obj.group_id == top_obj.group_id:
-                                obj.selected = True
-                                if obj.shape == "checkpoint": cp_selected = True
-                                elif obj.shape == "trigger": trigger_selected = True
-                                else: obj_selected = True
+                            obj.selected = True
+                            if obj.shape == "checkpoint": cp_selected = True
+                            elif obj.shape == "trigger": trigger_selected = True
+                            else: obj_selected = True
         
         else:
             top_obj = None
@@ -125,9 +123,9 @@ def select_object(game, shift, ctrl):
                     else: obj_selected = True
 
                 else:
-                    for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
-                        if id(obj) != id(top_obj):
-                            if top_obj.group_id != 0 and obj.group_id == top_obj.group_id:
+                    if top_obj.group_id != 0:
+                        for obj in game.group_ids[top_obj.group_id]:
+                            if id(obj) != id(top_obj):
                                 obj.selected = False
                     
                     if not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints)):
@@ -230,8 +228,8 @@ def rotate_objects(game, way, shift, ctrl, alt):
                 rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
 
                 obj.rotation = round((obj.rotation + rotation) % 360, 1)
-                obj.x = round(rotated_x - obj.width / 2)
-                obj.y = round(rotated_y - obj.height / 2)
+                obj.x = rotated_x - obj.width / 2
+                obj.y = rotated_y - obj.height / 2
                 obj.recompute()
         
         game.rebuild_buckets()
@@ -260,7 +258,7 @@ def flip_objects(game, way):
                 if way == "horizontally":
                     center = obj.x + obj.width / 2
                     flipped_center = center_pos - (center - center_pos)
-                    obj.x = int(flipped_center - obj.width / 2)
+                    obj.x = flipped_center - obj.width / 2
 
                     if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport", "text"):
                         obj.rotation = -obj.rotation
@@ -283,7 +281,7 @@ def flip_objects(game, way):
                 elif way == "vertically":
                     center = obj.y + obj.height / 2
                     flipped_center = center_pos - (center - center_pos)
-                    obj.y = int(flipped_center - obj.height / 2)
+                    obj.y = flipped_center - obj.height / 2
 
                     if obj.shape in ("square", "end", "pad", "gamemode", "speed", "gravity", "size", "teleport", "text"):
                         obj.rotation = -obj.rotation
@@ -335,9 +333,10 @@ def duplicate_objects(game):
                         else:
                             object_groups[obj.group_id] = [new_obj]
 
-        for id in object_groups.keys():
-            for object in object_groups[id]:
-                object.group_id = game.current_group_id
+        for group in object_groups.values():
+            for obj in group:
+                obj.group_id = game.current_group_id
+                game.group_ids[game.current_group_id].append(obj)
             game.current_group_id += 1
         
         game.rebuild_buckets()
@@ -401,10 +400,12 @@ def group_objects(game, group):
         if group == "group":
             for obj in selected:
                 obj.group_id = game.current_group_id
+                game.group_ids[game.current_group_id].append(obj)
             game.current_group_id += 1
 
         elif group == "ungroup":
             for obj in selected:
+                game.group_ids[obj.group_id] = []
                 obj.group_id = 0
 
 def layer_objects(game, way):

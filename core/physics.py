@@ -232,7 +232,7 @@ def check_collision(game):
                             game.y_vel *= 0.7
 
         elif obj.real_shape == "trigger":
-            if obj.modifier["value"] and collide(game.player, obj, game.hitboxes[-1]):
+            if obj.modifier["value"] != "" and collide(game.player, obj, game.hitboxes[-1]):
                 apply_trigger(game, obj)
 
         elif obj.real_shape == "coin":
@@ -501,9 +501,17 @@ def update_death_timer(game):
         else:
             game.dead += FIXED_STEP
 
-def update(game):
-    if not game.completed and game.dead == 0:
+def update_music_tracker(game):    
+    game.elapsed_music_time += FIXED_STEP
+    
+    if not py.mixer.music.get_busy() and game.seconds_into_song < 0 and round(game.elapsed_music_time + game.song_start, 12) == 0:
+        py.mixer.music.play(1)
 
+def update(game):
+    if game.song:
+        update_music_tracker(game)
+
+    if not game.completed and game.dead == 0:
         check_collision(game)
         update_transitions(game)
         if not game.completed and game.dead == 0:

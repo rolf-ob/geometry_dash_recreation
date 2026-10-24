@@ -1,5 +1,6 @@
 import pygame as py
 import time, json, os, re
+from hashlib import sha256
 
 from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
 from core.attribute_editing import switch_attribute, apply_edit
@@ -9,7 +10,8 @@ from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
 def create_user(game, username):
     with open(f"users/default/accessibility.json", "r", encoding="utf-8") as f:
         default_accessibility = json.load(f)
-    default_accessibility["password"] = game.textboxes[1].text
+    password = game.textboxes[1].text
+    default_accessibility["password"] = sha256(password.encode('utf-8')).hexdigest()
 
     with open(f"users/default/controls.json", "r", encoding="utf-8") as f:
         default_controls = json.load(f)
@@ -230,7 +232,7 @@ def handle_input(game):
                                     settings = json.load(f)
                                     password = settings["password"]
                                 
-                                if game.textboxes[1].text == password:
+                                if sha256(game.textboxes[1].text.encode('utf-8')).hexdigest() == password:
                                     game.load_user(username)
                                 else:
                                     game.title = ["Invalid password", time.perf_counter() + 2]
@@ -347,10 +349,8 @@ def handle_input(game):
         
         elif event.type == py.MOUSEBUTTONDOWN and game.name:
             click(game, "click", event.button, shift, ctrl)
-            print(event.__dict__.get("timestamp", 0))
         elif event.type == py.MOUSEBUTTONUP and game.name:
             click(game, "release", event.button, shift, ctrl)
-            print(event.__dict__.get('timestamp', 0))
         
         elif event.type == py.MOUSEWHEEL and game.name:
             if ctrl:

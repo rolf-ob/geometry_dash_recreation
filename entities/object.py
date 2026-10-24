@@ -107,8 +107,8 @@ class Object:
         self.aabb["right"] = max(x_values)
 
     def recompute(self):
-        self.real_x = self.x
-        self.real_y = self.y
+        self.real_x = round(self.x)
+        self.real_y = round(self.y)
         self.real_width = self.width
         self.real_height = self.height
         self.real_rotation = self.rotation
