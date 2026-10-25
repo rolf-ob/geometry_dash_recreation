@@ -2734,8 +2734,8 @@
       "triggers": []
     },
     {
-      "x": 16763,
-      "y": -120.0,
+      "x": 16780.0,
+      "y": -40.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -2761,8 +2761,8 @@
       "triggers": 0
     },
     {
-      "x": 16763,
-      "y": -160.0,
+      "x": 16780.0,
+      "y": -40.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3112,8 +3112,8 @@
       "triggers": []
     },
     {
-      "x": 6202,
-      "y": -180,
+      "x": 6160,
+      "y": -200.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3139,8 +3139,8 @@
       "triggers": []
     },
     {
-      "x": 6202,
-      "y": -220,
+      "x": 6160,
+      "y": -200.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3162,8 +3162,8 @@
       "triggers": []
     },
     {
-      "x": 8362,
-      "y": -460,
+      "x": 8320,
+      "y": -480.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3189,8 +3189,8 @@
       "triggers": []
     },
     {
-      "x": 8362,
-      "y": -500,
+      "x": 8320,
+      "y": -480.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3212,8 +3212,8 @@
       "triggers": []
     },
     {
-      "x": 17702,
-      "y": -260,
+      "x": 17660,
+      "y": -280.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3239,8 +3239,8 @@
       "triggers": []
     },
     {
-      "x": 17702,
-      "y": -300,
+      "x": 17660,
+      "y": -280.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3522,8 +3522,8 @@
       "triggers": []
     },
     {
-      "x": 14942,
-      "y": -260,
+      "x": 15140,
+      "y": -280.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3549,8 +3549,8 @@
       "triggers": []
     },
     {
-      "x": 14942,
-      "y": -300,
+      "x": 15140,
+      "y": -280.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -3593,7 +3593,7 @@
       "triggers": []
     },
     {
-      "x": 11482,
+      "x": 11440,
       "y": -280,
       "width": 40,
       "height": 40,
@@ -3620,8 +3620,8 @@
       "triggers": []
     },
     {
-      "x": 11482,
-      "y": -320,
+      "x": 11440,
+      "y": -280,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -12078,32 +12078,6 @@
     },
     {
       "x": 11440,
-      "y": -281,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "checkpoint",
-      "color": [
-        255,
-        0,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "modifier": {
-        "gamemode": "ship",
-        "speed": 2,
-        "gravity": 1,
-        "size": 1
-      },
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 14900,
       "y": -280,
       "width": 40,
       "height": 40,
@@ -12129,8 +12103,34 @@
       "triggers": []
     },
     {
-      "x": 16720,
-      "y": -140.0,
+      "x": 15140,
+      "y": -280,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        255,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "modifier": {
+        "gamemode": "ship",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 16780.0,
+      "y": -40.0,
       "width": 40,
       "height": 40,
       "rotation": 0,
@@ -12183,7 +12183,7 @@
   ],
   "victors": {
     "rolf": [
-      1214,
+      1219,
       7,
       3,
       110,

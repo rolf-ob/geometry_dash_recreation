@@ -1,9 +1,11 @@
+recomputing width and height has to redo rotation computing
+moving same object's x and y at the same time lags
+
 Bugs:
 - Text objects get rendered based on original square width
 - Frame stepping desyncs music
 
 Optimization/structuring
-- When recomputing object, only recompute rotation if it's changed, if not just add x and y to the existing points
 - Rebuild buckets for individual objects while keeping z-order
 - Undo redo history list memory optimization
 - Add more tests
@@ -13,9 +15,10 @@ Optimization/structuring
 Features
 - User music delay
 - Level music volume
-- Triggers display trigger id while in build mode
-- All objects show their attributes if all selected have the same
 - Ctrl+alt+scroll to change hitboxes faster
+- Triggers display trigger id while in build mode
+- Display next unused trigger id
+- All objects show their attributes if all selected have the same
 - Show dash orb pointing
 - Multi-select bounding box
 - Default level sizes

@@ -152,7 +152,8 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
             for obj in game.selected_objects:
                 obj.x += add_x
                 obj.y += add_y
-                obj.recompute()
+                obj.recompute_position("x", add_x)
+                obj.recompute_position("y", add_y)
         else:
             for obj in game.selected_objects:
                 if obj.shape != "checkpoint":
@@ -160,7 +161,7 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
                         obj.width += add_x
                     if add_y > 0 or obj.height > distance:
                         obj.height += add_y
-                    obj.recompute()
+                    obj.recompute() #!
         
         game.rebuild_buckets()
 
@@ -303,6 +304,7 @@ def duplicate_objects(game):
                     layer.append(new_obj)
                     obj.selected = False
                     game.selected_objects.remove(obj)
+                    game.selected_objects.append(new_obj)
 
                     if obj.group_id != 0:
                         if obj.group_id in object_groups:

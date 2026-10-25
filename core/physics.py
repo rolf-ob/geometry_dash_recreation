@@ -134,7 +134,7 @@ def check_collision(game):
                     game.gamemode = obj.real_modifier
                     game.player.color = GAMEMODE_COLORS[game.gamemode]
                     game.player_render.color = GAMEMODE_COLORS[game.gamemode]
-                    game.player.recompute()
+                    game.player.recompute_design()
 
                     if game.gamemode == "wave":
                         game.wave_trail = [(game.player.x + game.player.width/2, game.player.y)]
@@ -236,7 +236,7 @@ def check_collision(game):
                 apply_trigger(game, obj)
 
         elif obj.real_shape == "coin":
-            if not obj.interacted and not game.cheated and collide(game.player, obj):
+            if not obj.interacted and obj.modifier and not game.cheated and collide(game.player, obj):
                 obj.interacted = True
                 game.collected_coins[0] += 1
                 game.collected_coins[1] += obj.real_modifier
@@ -276,35 +276,32 @@ def apply_trigger(game, trigger):
                 if trigger.modifier["attribute"] == "x":
                     try:
                         obj.real_x += int(trigger.modifier["value"])
-                        obj.recompute_triggered()
+                        obj.recompute_position("x", int(trigger.modifier["value"]), True)
                     except ValueError:
-                        print(
-                            "Invalid trigger value" +"\n"+
-                            f"Field: {trigger.modifier["attribute"]}" +"\n"+
-                            f"Value: {trigger.modifier["value"]}"
-                        )
+                        game.title = [
+                            f"Invalid trigger value for {trigger.modifier["attribute"]}; {trigger.modifier["value"]}",
+                            time.perf_counter() + 2
+                        ]
                 
                 elif trigger.modifier["attribute"] == "y":
                     try:
                         obj.real_y += int(trigger.modifier["value"])
-                        obj.recompute_triggered()
+                        obj.recompute_position("y", int(trigger.modifier["value"]), True)
                     except ValueError:
-                        print(
-                            "Invalid trigger value" +"\n"+
-                            f"Field: {trigger.modifier["attribute"]}" +"\n"+
-                            f"Value: {trigger.modifier["value"]}"
-                        )
+                        game.title = [
+                            f"Invalid trigger value for {trigger.modifier["attribute"]}; {trigger.modifier["value"]}",
+                            time.perf_counter() + 2
+                        ]
                 
                 elif trigger.modifier["attribute"] == "rotation":
                     try:
                         obj.real_rotation += round(float(trigger.modifier["value"]), 1)
-                        obj.recompute_triggered()
+                        obj.recompute(True)
                     except ValueError:
-                        print(
-                            "Invalid trigger value" +"\n"+
-                            f"Field: {trigger.modifier["attribute"]}" +"\n"+
-                            f"Value: {trigger.modifier["value"]}"
-                        )
+                        game.title = [
+                            f"Invalid trigger value for {trigger.modifier["attribute"]}; {trigger.modifier["value"]}",
+                            time.perf_counter() + 2
+                        ]
                         
                 else:
                     if trigger.modifier["attribute"] in ("color", "outline"):
@@ -387,7 +384,7 @@ def update_transitions(game):
         
         if attribute in ("x", "y"):
             setattr(obj, f"real_{attribute}", math.floor(position))
-            obj.recompute_triggered()
+            obj.recompute_position(attribute, per_tick, True)
         
         elif attribute == "rotation":
             rotation = position
@@ -396,11 +393,10 @@ def update_transitions(game):
                 rotation += 360
             
             obj.real_rotation = rotation
-            obj.recompute_triggered()
+            obj.recompute(True)
 
         elif attribute in ("color", "outline"):
             setattr(obj, f"real_{attribute}", position)
-            obj.recompute_triggered()
 
         elif attribute in ("length", "roof", "floor"):
             setattr(game, attribute, math.floor(position))

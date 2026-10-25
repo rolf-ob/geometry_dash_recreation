@@ -209,7 +209,6 @@ class Game:
         size = self.checkpoints[self.checkpoint].modifier["size"]*40
         self.player = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)
         self.player_render = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)
-        self.player.recompute()
         self.player_render.recompute()
 
         self.player.x = self.checkpoints[self.checkpoint].x
@@ -280,7 +279,7 @@ class Game:
                 try:
                     py.mixer.music.play(1, self.seconds_into_song)
                 except py.error:
-                    print(f"Song isn't long enough to start at {self.seconds_into_song} seconds")
+                    self.title = [f"Song isn't long enough to start at {self.seconds_into_song} seconds", time.perf_counter() + 2]
             else:
                 py.mixer.music.stop()
             

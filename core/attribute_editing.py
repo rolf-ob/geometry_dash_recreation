@@ -1,5 +1,5 @@
 import pygame as py
-import re, math
+import re, math, time
 from pathlib import Path
 
 from entities.spatial import get_buckets
@@ -297,13 +297,12 @@ def apply_edit(game, obj, real_field_name, text):
                         obj.color = (0, 255, 0)
                         obj.outline = (0,)*3
                         obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
-                        obj.recompute()
 
                     elif field_name == "modifier":
                         apply_object_modifier(real_field_name, real, text, obj)
 
                     elif field_name == "triggers":
-                        triggers = [int(trigger) for trigger in text.split()]
+                        triggers = [int(trigger) for trigger in text.split("_")]
                         setattr(obj, real_field_name, triggers)
 
                 elif obj.shape == "checkpoint":
@@ -392,10 +391,13 @@ def apply_edit(game, obj, real_field_name, text):
                         text = check_illegal(text)
                         obj.triggers = int(text)
 
-                if real == "":
-                    obj.recompute()
-                elif real == "real_":
-                    obj.recompute_triggered()
+                if field_name in ("shape", "rotation"):
+                    obj.recompute(real == "real_")
+                elif field_name in ("color", "outline", "modifier"):
+                    obj.recompute_design()
+                elif field_name in ("width", "height"):
+                    obj.recompute(real == "real_") #!
+
                 game.rebuild_buckets()
 
             else:
@@ -404,9 +406,4 @@ def apply_edit(game, obj, real_field_name, text):
             apply_setting(game, field_name, text)
 
     except ValueError:
-        print(
-            "Invalid value" +"\n"+
-            f"Object: {obj}" +"\n"+
-            f"Field: {real_field_name}" +"\n"+
-            f"Value: {text}"
-        )
+        game.title = [f"Invalid value for {real_field_name}; {text}", time.perf_counter() + 2]

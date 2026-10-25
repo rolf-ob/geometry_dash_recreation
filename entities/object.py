@@ -59,9 +59,6 @@ class Object:
                     self.real_y + self.real_height / 2 * math.sin(angle) + self.real_height / 2
                 ))
 
-        else:
-            print(f"Invalid object shape: {self.real_shape}")
-
         if self.real_rotation == 0:
             self.points = corners
         else:
@@ -106,28 +103,51 @@ class Object:
         self.aabb["left"] = min(x_values)
         self.aabb["right"] = max(x_values)
 
-    def recompute(self):
-        self.real_x = round(self.x)
-        self.real_y = round(self.y)
-        self.real_width = self.width
-        self.real_height = self.height
-        self.real_rotation = self.rotation
-        self.real_shape = self.shape
+    def recompute_position(self, attribute, value, triggered=False):
+        if attribute == "x":
+            if not triggered:
+                self.real_x = round(self.x)
+            
+            self.points = [
+                (point[0] + value, point[1])
+                for point in self.points
+            ]
+
+            self.aabb["left"] += value
+            self.aabb["right"] += value
+
+        elif attribute == "y":
+            if not triggered:
+                self.real_y = round(self.y)
+
+            self.points = [
+                (point[0], point[1] + value)
+                for point in self.points
+            ]
+
+            self.aabb["top"] += value
+            self.aabb["bottom"] += value
+
+    def recompute_design(self):
         self.real_color = self.color
         self.real_outline = self.outline
         self.real_modifier = self.modifier
 
+    def recompute(self, triggered=False):
+        if not triggered:
+            self.real_x = round(self.x)
+            self.real_y = round(self.y)
+            self.real_width = self.width
+            self.real_height = self.height
+            self.real_rotation = self.rotation
+            self.real_shape = self.shape
+            self.real_color = self.color
+            self.real_outline = self.outline
+            self.real_modifier = self.modifier
+
         self.recompute_points()
         self.recompute_axes()
         self.recompute_aabb()
-
-    def recompute_triggered(self):
-        self.recompute_points()
-        self.recompute_axes()
-        self.recompute_aabb()
-
-    def recompute_specific(self, attribute):
-        pass #!
 
     def to_dict(self):
         d = asdict(self)
