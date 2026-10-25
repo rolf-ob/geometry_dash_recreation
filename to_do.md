@@ -1,9 +1,6 @@
 Bugs:
 - Text objects get rendered based on original square width
 - Frame stepping desyncs music
-- Shift to multiselect objects, release mouse while hovering over selected object, object gets deselected
-- Object menu doesn't work correctly with multi select, check also when deleting objects while start pos is selected
-- Object menu resets if pressing enter in a field belonging to checkpoint or trigger
 
 Optimization/structuring
 - When recomputing object, only recompute rotation if it's changed, if not just add x and y to the existing points

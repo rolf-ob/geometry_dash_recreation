@@ -10,6 +10,7 @@ from entities.object import Object
 from constants import GRID_SIZE, PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 
 def toggle_building(game):
+    close_menu(game)
     game.building = not game.building
     if game.building:
         game.load_level(False)
@@ -19,20 +20,15 @@ def toggle_building(game):
         game.clicked = False
         game.layer = 1
         game.title = ["Objects", -1]
-        close_menu(game)
 
     else:
         for obj in game.selected_objects:
             obj.selected = False
         game.selected_objects = []
 
-        game.done_states = []
-        game.undone_states = []
-
         game.editing_level = False
-        close_menu(game)
         if game.paused:
-            open_menu(game, "settings")
+            open_user_settings_menu(game)
         else:
             py.mouse.set_visible(False)
         game.load_level()
@@ -62,25 +58,18 @@ def select_object(game, shift, ctrl):
         checkpoints = get_nearby_objects(game.buckets["checkpoints"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0]) if not game.layer_view else []
         objects = (*layer, *checkpoints) if name != "decoration" else (*checkpoints, *layer)
         
-        cp_selected = False
-        trigger_selected = False
-        obj_selected = False
         if ctrl:
             for obj in objects:
                 if collide(mouse, obj):
-                    obj.selected = True
-                    game.selected_objects.append(obj)
-                    if obj.shape == "checkpoint": cp_selected = True
-                    elif obj.shape == "trigger": trigger_selected = True
-                    else: obj_selected = True
+                    if not obj.selected:
+                        obj.selected = True
+                        game.selected_objects.append(obj)
 
                     if obj.group_id != 0:
                         for other_obj in game.group_ids[obj.group_id]:
-                            other_obj.selected = True
-                            game.selected_objects.append(other_obj)
-                            if other_obj.shape == "checkpoint": cp_selected = True
-                            elif other_obj.shape == "trigger": trigger_selected = True
-                            else: obj_selected = True
+                            if not obj.selected:
+                                other_obj.selected = True
+                                game.selected_objects.append(other_obj)
 
         elif shift:
             top_obj = None
@@ -89,20 +78,15 @@ def select_object(game, shift, ctrl):
                     top_obj = obj
                     
             if top_obj:
-                top_obj.selected = True   
-                game.selected_objects.append(top_obj)
-                if top_obj.shape == "checkpoint": cp_selected = True
-                elif top_obj.shape == "trigger": trigger_selected = True
-                else: obj_selected = True
+                if not top_obj.selected:
+                    top_obj.selected = True   
+                    game.selected_objects.append(top_obj)
                 
                 if top_obj.group_id != 0:
                     for obj in game.group_ids[top_obj.group_id]:
-                        if id(obj) != id(top_obj):
-                            obj.selected = True
-                            game.selected_objects.append(obj)
-                            if obj.shape == "checkpoint": cp_selected = True
-                            elif obj.shape == "trigger": trigger_selected = True
-                            else: obj_selected = True
+                        if id(obj) != id(top_obj) and not obj.selected:
+                                obj.selected = True
+                                game.selected_objects.append(obj)
         
         else:
             top_obj = None
@@ -118,37 +102,27 @@ def select_object(game, shift, ctrl):
                     for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints):
                         if id(obj) != id(top_obj):
                             if top_obj.group_id != 0 and obj.group_id == top_obj.group_id:
-                                obj.selected = True
-                                game.selected_objects.append(obj)
-                                if obj.shape == "checkpoint": cp_selected = True
-                                elif obj.shape == "trigger": trigger_selected = True
-                                else: obj_selected = True
-                            else:
+                                if not obj.selected:
+                                    obj.selected = True
+                                    game.selected_objects.append(obj)
+
+                            elif obj.selected:
                                 obj.selected = False
                                 game.selected_objects.remove(obj)
-                    
-                    if top_obj.shape == "checkpoint": cp_selected = True
-                    elif top_obj.shape == "trigger": trigger_selected = True
-                    else: obj_selected = True
 
                 else:
-                    game.selected_objects.remove(top_obj)
-
                     if top_obj.group_id != 0:
                         for obj in game.group_ids[top_obj.group_id]:
-                            if id(obj) != id(top_obj):
-                                obj.selected = False
-                                game.selected_objects.remove(obj)
-                    
-                    if not any(obj.selected for obj in (*game.background, *game.objects, *game.decoration, *game.checkpoints)):
+                            obj.selected = False
+                            game.selected_objects.remove(obj)
+                    else:
+                        game.selected_objects.remove(top_obj)
+
+                    if not game.selected_objects:
                         close_menu(game)
-        
-        if obj_selected:
-            open_menu(game, "object attributes")
-        elif cp_selected:
-            open_menu(game, "checkpoint attributes")
-        elif trigger_selected:
-            open_menu(game, "trigger attributes")
+
+        if game.selected_objects:
+            open_objects_menu(game)
 
 def move_scale_objects(game, direction, shift, ctrl, alt):
     if game.selected_objects:
@@ -232,7 +206,8 @@ def rotate_objects(game, way, shift, ctrl, alt):
             rotated_x = delta_x * cos_a - delta_y * sin_a + center_x
             rotated_y = delta_x * sin_a + delta_y * cos_a + center_y
 
-            obj.rotation = round((obj.rotation + rotation) % 360, 1)
+            if obj.shape != "checkpoint":
+                obj.rotation = round((obj.rotation + rotation) % 360, 1)
             obj.x = rotated_x - obj.width / 2
             obj.y = rotated_y - obj.height / 2
             obj.recompute()
@@ -308,10 +283,9 @@ def flip_objects(game, way):
 
 def deselect_objects(game):
     if not game.editing_level:
-        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-            for obj in layer:
-                obj.selected = False
-                game.selected_objects.remove(obj)
+        for obj in game.selected_objects:
+            obj.selected = False
+        game.selected_objects = []
         close_menu(game)
 
 def duplicate_objects(game):
@@ -345,18 +319,20 @@ def duplicate_objects(game):
         game.rebuild_buckets()
 
 def delete_objects(game):
-
     if game.selected_objects:
         game.capture_state("do")
 
         for layer in (game.background, game.objects, game.decoration, game.checkpoints):
             for obj in layer.copy():
                 if obj.selected and obj != game.checkpoints[0]:
+                    game.selected_objects.remove(obj)
                     layer.remove(obj)
     
     game.rebuild_buckets()
     if not game.checkpoints[0].selected:
         close_menu(game)
+    else:
+        open_objects_menu(game)
 
 def snap_grid_objects(game):
     if game.selected_objects:
@@ -521,12 +497,13 @@ def create_level(game):
 def edit_level(game):
     if game.current_level != 0:
         game.editing_level = not game.editing_level
+
         if game.editing_level:
-            for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-                for obj in layer:
-                    obj.selected = False
-                    game.selected_objects.remove(obj)
-            open_menu(game, "level settings")
+            for obj in game.selected_objects:
+                obj.selected = False
+            game.selected_objects = []
+            open_level_settings_menu(game)
+        
         else:
             close_menu(game)
 
@@ -536,82 +513,96 @@ def close_menu(game):
         game.active_textbox.deactivate()
         game.active_textbox = None
 
-def open_menu(game, menu):
-    if menu == "settings":
-        game.textboxes = [
-            TextBox("Speedhack", game.speedhack_multiplier),
-            TextBox("FPS", game.fps),
-            TextBox("Respawn Time", game.respawn_time),
-            TextBox("Volume", game.volume),
-            TextBox("Log Out", "")
-        ]
-    
-    elif menu == "level settings":
-        r1, g1, b1 = game.roof_color
-        r2, g2, b2 = game.floor_color
-        r3, g3, b3 = game.background_color
-        game.textboxes = [
-            TextBox("Length", game.length),
-            TextBox("Roof", game.roof),
-            TextBox("Floor", game.floor),
-            TextBox("Roof Color", f"{str(r1)} {str(g1)} {str(b1)}"),
-            TextBox("Floor Color", f"{str(r2)} {str(g2)} {str(b2)}"),
-            TextBox("Background Color", f"{str(r3)} {str(g3)} {str(b3)}"),
-            TextBox("Title", game.level["meta"]["title"]),
-            TextBox("Points", game.points),
-            TextBox("Level Number", game.level["meta"]["level number"]),
-            TextBox("Song", game.song),
-            TextBox("Song Start", game.song_start),
-            TextBox("Reset stats", ""),
-            TextBox("Delete", "")
-        ]
-
-    elif menu == "object attributes":
-        common_triggers = None
-        for obj in game.selected_objects:
-            if not common_triggers and obj.triggers:
-                common_triggers = obj.triggers
-            
-            elif obj.triggers != common_triggers:
-                common_triggers = "-"
-                break
-        
-        if not common_triggers: 
-            shown_triggers = "-"
-        else:
-            shown_triggers = ""
-            for trigger in [str(trigger) for trigger in common_triggers]:
-                shown_triggers += trigger + " "
-
-        game.textboxes = [
-            TextBox("Shape", ""),
-            TextBox("Color", ""),
-            TextBox("Outline", ""),
-            TextBox("Rotation", ""),
-            TextBox("Width", ""),
-            TextBox("Height", ""),
-            TextBox("Modifier", ""),
-            TextBox("Triggers", shown_triggers)
-        ]
-
-    elif menu == "checkpoint attributes":
-        game.textboxes = [
-            TextBox("Gamemode", ""),
-            TextBox("Speed", ""),
-            TextBox("Gravity", ""),
-            TextBox("Size", "")
-        ]
-
-    elif menu == "trigger attributes":
-        game.textboxes = [
-            TextBox("Color", ""),
-            TextBox("Outline", ""),
-            TextBox("Attribute", ""),
-            TextBox("Value", ""),
-            TextBox("Transition", ""),
-            TextBox("Triggers", "")
-        ]
-
+def open_user_settings_menu(game):
+    game.textboxes = [
+        TextBox("Speedhack", game.speedhack_multiplier),
+        TextBox("FPS", game.fps),
+        TextBox("Respawn Time", game.respawn_time),
+        TextBox("Volume", game.volume),
+        TextBox("Log Out", "")
+    ]
     if game.active_textbox:     
         game.active_textbox.deactivate()
         game.active_textbox = None
+
+def open_level_settings_menu(game):
+    r1, g1, b1 = game.roof_color
+    r2, g2, b2 = game.floor_color
+    r3, g3, b3 = game.background_color
+    game.textboxes = [
+        TextBox("Length", game.length),
+        TextBox("Roof", game.roof),
+        TextBox("Floor", game.floor),
+        TextBox("Roof Color", f"{str(r1)} {str(g1)} {str(b1)}"),
+        TextBox("Floor Color", f"{str(r2)} {str(g2)} {str(b2)}"),
+        TextBox("Background Color", f"{str(r3)} {str(g3)} {str(b3)}"),
+        TextBox("Title", game.level["meta"]["title"]),
+        TextBox("Points", game.points),
+        TextBox("Level Number", game.level["meta"]["level number"]),
+        TextBox("Song", game.song),
+        TextBox("Song Start", game.song_start),
+        TextBox("Reset stats", ""),
+        TextBox("Delete", "")
+    ]
+    if game.active_textbox:     
+        game.active_textbox.deactivate()
+        game.active_textbox = None
+
+def open_objects_menu(game):
+    if any(obj.shape not in ("checkpoint", "trigger") for obj in game.selected_objects):
+        if not game.textboxes or game.textboxes[0].field_name != "Shape":
+            common_triggers = None
+            for obj in game.selected_objects:
+                if not common_triggers and obj.triggers:
+                    common_triggers = obj.triggers
+                
+                elif obj.triggers != common_triggers:
+                    common_triggers = "-"
+                    break
+            
+            if not common_triggers: 
+                shown_triggers = "-"
+            else:
+                shown_triggers = ""
+                for trigger in [str(trigger) for trigger in common_triggers]:
+                    shown_triggers += trigger + " "
+    
+            game.textboxes = [
+                TextBox("Shape", ""),
+                TextBox("Color", ""),
+                TextBox("Outline", ""),
+                TextBox("Rotation", ""),
+                TextBox("Width", ""),
+                TextBox("Height", ""),
+                TextBox("Modifier", ""),
+                TextBox("Triggers", shown_triggers)
+            ]
+            if game.active_textbox:     
+                game.active_textbox.deactivate()
+                game.active_textbox = None
+
+    elif any(obj.shape == "checkpoint" for obj in game.selected_objects):
+        if not game.textboxes or game.textboxes[0].field_name != "Gamemode":
+            game.textboxes = [
+                TextBox("Gamemode", ""),
+                TextBox("Speed", ""),
+                TextBox("Gravity", ""),
+                TextBox("Size", "")
+            ]
+            if game.active_textbox:     
+                game.active_textbox.deactivate()
+                game.active_textbox = None
+    
+    elif any(obj.shape == "trigger" for obj in game.selected_objects):
+        if not game.textboxes or game.textboxes[0].field_name != "Color":
+            game.textboxes = [
+                TextBox("Color", ""),
+                TextBox("Outline", ""),
+                TextBox("Attribute", ""),
+                TextBox("Value", ""),
+                TextBox("Transition", ""),
+                TextBox("Triggers", "")
+            ]
+            if game.active_textbox:     
+                game.active_textbox.deactivate()
+                game.active_textbox = None

@@ -2,7 +2,7 @@ import pygame as py
 import time, json, os, re
 from hashlib import sha256
 
-from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_menu
+from core.building import toggle_building, place_object, select_object, move_scale_objects, rotate_objects, flip_objects, deselect_objects, duplicate_objects, delete_objects, snap_grid_objects, group_objects, layer_objects, move_objects_to_layer, switch_layer, reset_camera, undo_edit, create_level, edit_level, close_menu, open_user_settings_menu, open_level_settings_menu, open_objects_menu
 from core.attribute_editing import switch_attribute, apply_edit
 from entities.serialization import save_json
 from constants import HEIGHT, PLAYER_X, FONT_SIZE, CAMERA_MARGIN
@@ -50,7 +50,7 @@ def toggle_pause(game):
     if game.paused:
         py.mouse.set_visible(True)
         py.mixer.music.pause()
-        open_menu(game, "settings")
+        open_user_settings_menu(game)
         if not game.completed:
             game.cheated = True
     else:
@@ -86,15 +86,17 @@ def switch_checkpoint(game, way):
     game.title = [f"Checkpoint {game.checkpoint}/{len(game.checkpoints) - 1}", time.perf_counter() + 0.5]
 
 def switch_level(game, way):
-    game.checkpoint = 0
     if way == "previous":
         game.current_level = (game.current_level-1) % len(game.levels)
     elif way == "next":
         game.current_level = (game.current_level+1) % len(game.levels)
     
+    game.checkpoint = 0
     game.load_level()
     game.building_camera_x = 0
     game.building_camera_y = game.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+    game.done_states = []
+    game.undone_states = []
 
 def toggle_speedhack(game):
     if len(game.hitboxes) > 1 and not game.completed:
@@ -189,22 +191,12 @@ def handle_input(game):
             if game.active_textbox:
                 if event.key == py.K_RETURN:
                     if game.building and not game.editing_level:
-                        cp_selected = False
-                        trigger_selected = False
-                        obj_selected = False
-
                         game.capture_state("do")
                         for obj in game.selected_objects:
                             apply_edit(game, obj, game.active_textbox.field_name.lower(), game.active_textbox.text)
-                            if obj.shape == "checkpoint": cp_selected = True
-                            elif obj.shape == "trigger": trigger_selected = True
-                            else: obj_selected = True
 
-                        if not obj_selected and cp_selected:
-                            open_menu(game, "checkpoint attributes")
-                        elif not obj_selected and trigger_selected:
-                            open_menu(game, "trigger attributes")
-                        else:
+                        open_objects_menu(game)
+                        if game.active_textbox:
                             game.active_textbox.text = ""
                     
                     elif game.name:
