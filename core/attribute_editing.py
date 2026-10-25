@@ -169,7 +169,7 @@ def apply_level_setting(game, field_name, text):
 def apply_setting(game, field_name, text):
     if field_name == "speedhack":
         text = check_illegal(text)
-        game.speedhack_multiplier = max(min(10, 0.01, float(text)))
+        game.speedhack_multiplier = max(0.01, min(10, float(text)))
 
     elif field_name == "fps":
         text = check_illegal(text)
@@ -197,6 +197,9 @@ def apply_edit(game, obj, real_field_name, text):
     try:
         if game.building or real == "real_":
             if not game.editing_level:
+                if field_name in ("shape", "rotation", "width", "height"):
+                    old_buckets = get_buckets(obj)
+                
                 if obj.real_shape not in ("checkpoint", "trigger"):
                     if field_name == "width":
                         text = check_illegal(text)
@@ -279,17 +282,14 @@ def apply_edit(game, obj, real_field_name, text):
 
                     elif field_name == "shape" and text == "checkpoint":
                         setattr(obj, real_field_name, text)
-                        for layer, name in zip((game.background, game.objects, game.decoration), ("background", "objects", "decoration")):
-                            if obj in layer:
-                                layer.remove(obj)
-                                game.checkpoints.append(obj)
 
-                                for bucket in get_buckets(obj):
-                                    game.buckets[name][bucket].remove(obj)
-                                for bucket in get_buckets(obj):
-                                    game.buckets["checkpoints"][bucket].append(obj)
+                        getattr(game, obj.layer).remove(obj)
+                        game.checkpoints.append(obj)
 
-                                break
+                        for bucket in get_buckets(obj):
+                            game.buckets[obj.layer][bucket].remove(obj)
+                        for bucket in get_buckets(obj):
+                            game.buckets["checkpoints"][bucket].append(obj)
                         
                         obj.width = 40
                         obj.height = 40
@@ -339,10 +339,7 @@ def apply_edit(game, obj, real_field_name, text):
 
                     elif field_name == "value":
                         if obj.modifier["attribute"] == "shape" and text in ("square", "spike", "slope", "circle", "end", "gamemode", "speed", "gravity", "size", "teleport", "orb", "pad", "coin", "text"):
-                            if text != "slope":
-                                obj.modifier["value"] = text
-                            else:
-                                obj.modifier["value"] = "right slope"
+                            obj.modifier["value"] = text
                         
                         elif obj.modifier["attribute"] in ("color", "outline"):
                             rgb = text.split("_")
@@ -391,14 +388,12 @@ def apply_edit(game, obj, real_field_name, text):
                         text = check_illegal(text)
                         obj.triggers = int(text)
 
-                if field_name in ("shape", "rotation"):
+                if field_name in ("shape", "rotation", "width", "height"):
                     obj.recompute(real == "real_")
+                    game.rebuild_buckets(obj, old_buckets)
                 elif field_name in ("color", "outline", "modifier"):
-                    obj.recompute_design()
-                elif field_name in ("width", "height"):
-                    obj.recompute(real == "real_") #!
-
-                game.rebuild_buckets()
+                    if real == "":
+                        obj.recompute_design()
 
             else:
                 apply_level_setting(game, field_name, text)

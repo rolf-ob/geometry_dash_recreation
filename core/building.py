@@ -3,7 +3,7 @@ import math, time
 from pathlib import Path
 
 from entities.serialization import save_json, level_to_dict
-from entities.spatial import collide, get_nearby_objects
+from entities.spatial import collide, get_nearby_objects, get_buckets
 from rendering.rendering import screen_to_world
 from core.textbox import TextBox
 from entities.object import Object
@@ -35,24 +35,23 @@ def toggle_building(game):
 
 def place_object(game):
     mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
-    mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
+    mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None, None)
     mouse_x -= mouse_x % GRID_SIZE
     mouse_y -= mouse_y % GRID_SIZE
-    layer = (game.background, game.objects, game.decoration)[game.layer]
-    name = ("background", "objects", "decoration")[game.layer]
-    objects = get_nearby_objects(game.buckets[name], game.building_camera_x, game.building_camera_x + game.view_width)
+    layer = ("background", "objects", "decoration")[game.layer]
+    objects = get_nearby_objects(game.buckets[layer], game.building_camera_x, game.building_camera_x + game.view_width)
 
     if not any(collide(mouse, obj) for obj in objects):
         game.capture_state("do")
 
-        new_obj = Object(mouse_x, mouse_y, GRID_SIZE, GRID_SIZE, 0, "square", (255,)*3, (0,)*3)
-        layer.append(new_obj)
-        game.rebuild_buckets()
+        new_obj = Object(mouse_x, mouse_y, GRID_SIZE, GRID_SIZE, 0, "square", (255,)*3, (0,)*3, layer)
+        getattr(game, layer).append(new_obj)
+        game.rebuild_buckets(new_obj)
 
 def select_object(game, shift, ctrl):
     if not game.editing_level:
         mouse_x, mouse_y = screen_to_world(game, *py.mouse.get_pos())
-        mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None)
+        mouse = Object(mouse_x, mouse_y, 1, 1, 0, "square", None, None, None)
         name = ("background", "objects", "decoration")[game.layer]
         layer = get_nearby_objects(game.buckets[name], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0])
         checkpoints = get_nearby_objects(game.buckets["checkpoints"], screen_to_world(game, 0, 0)[0], screen_to_world(game, game.width, 0)[0]) if not game.layer_view else []
@@ -150,20 +149,26 @@ def move_scale_objects(game, direction, shift, ctrl, alt):
 
         if not game.scale_mode:
             for obj in game.selected_objects:
+                old_buckets = get_buckets(obj)
+
                 obj.x += add_x
                 obj.y += add_y
+                
                 obj.recompute_position("x", add_x)
                 obj.recompute_position("y", add_y)
+                game.rebuild_buckets(obj, old_buckets)
         else:
             for obj in game.selected_objects:
                 if obj.shape != "checkpoint":
+                    old_buckets = get_buckets(obj)
+
                     if add_x > 0 or obj.width > distance:
                         obj.width += add_x
                     if add_y > 0 or obj.height > distance:
                         obj.height += add_y
-                    obj.recompute() #!
-        
-        game.rebuild_buckets()
+                    
+                    obj.recompute()
+                    game.rebuild_buckets(obj, old_buckets)
 
 def rotate_objects(game, way, shift, ctrl, alt):
     if shift:
@@ -198,6 +203,8 @@ def rotate_objects(game, way, shift, ctrl, alt):
         center_y = min_y + (max_y - min_y) / 2
 
         for obj in game.selected_objects:
+            old_buckets = get_buckets(obj)
+
             angle = math.radians(rotation)
             cos_a, sin_a = math.cos(angle), math.sin(angle)
 
@@ -211,9 +218,9 @@ def rotate_objects(game, way, shift, ctrl, alt):
                 obj.rotation = round((obj.rotation + rotation) % 360, 1)
             obj.x = rotated_x - obj.width / 2
             obj.y = rotated_y - obj.height / 2
+
             obj.recompute()
-        
-        game.rebuild_buckets()
+            game.rebuild_buckets(obj, old_buckets)
 
 def flip_objects(game, way):
     if way == "horizontally":
@@ -234,6 +241,8 @@ def flip_objects(game, way):
         center_pos = min_pos + (max_pos - min_pos) / 2
 
         for obj in game.selected_objects:
+            old_buckets = get_buckets(obj)
+
             if way == "horizontally":
                 center = obj.x + obj.width / 2
                 flipped_center = center_pos - (center - center_pos)
@@ -255,7 +264,9 @@ def flip_objects(game, way):
                 obj.rotation = round(obj.rotation % 360, 1)
                 if obj.rotation < 0:
                     obj.rotation = round(obj.rotation + 360, 1)
+                
                 obj.recompute()
+                game.rebuild_buckets(obj, old_buckets)
             
             elif way == "vertically":
                 center = obj.y + obj.height / 2
@@ -278,9 +289,9 @@ def flip_objects(game, way):
                 obj.rotation = round(obj.rotation % 360, 1)
                 if obj.rotation < 0:
                     obj.rotation = round(obj.rotation + 360, 1)
+                
                 obj.recompute()
-    
-    game.rebuild_buckets()
+                game.rebuild_buckets(obj, old_buckets)
 
 def deselect_objects(game):
     if not game.editing_level:
@@ -295,52 +306,52 @@ def duplicate_objects(game):
 
         object_groups = {}
 
-        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-            for obj in layer.copy():
-                if obj.selected:
-                    modifier = obj.modifier if obj.shape not in ("checkpoint", "trigger") else obj.modifier.copy()
-                    
-                    new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, modifier, True)
-                    layer.append(new_obj)
-                    obj.selected = False
-                    game.selected_objects.remove(obj)
-                    game.selected_objects.append(new_obj)
+        for obj in game.selected_objects.copy():
+            modifier = obj.modifier if obj.shape not in ("checkpoint", "trigger") else obj.modifier.copy()
+            
+            new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, obj.layer, modifier, triggers=obj.triggers.copy())
+            getattr(game, obj.layer).append(new_obj)
+            obj.selected = False
+            game.selected_objects.remove(obj)
+            game.selected_objects.append(new_obj)
+            game.rebuild_buckets(new_obj)
 
-                    if obj.group_id != 0:
-                        if obj.group_id in object_groups:
-                            object_groups[obj.group_id].append(new_obj)
-                        else:
-                            object_groups[obj.group_id] = [new_obj]
+            if obj.group_id != 0:
+                if obj.group_id in object_groups:
+                    object_groups[obj.group_id].append(new_obj)
+                else:
+                    object_groups[obj.group_id] = [new_obj]
 
         for group in object_groups.values():
             for obj in group:
                 obj.group_id = game.current_group_id
                 game.group_ids[game.current_group_id].append(obj)
             game.current_group_id += 1
-        
-        game.rebuild_buckets()
 
 def delete_objects(game):
     if game.selected_objects:
         game.capture_state("do")
 
-        for layer in (game.background, game.objects, game.decoration, game.checkpoints):
-            for obj in layer.copy():
-                if obj.selected and obj != game.checkpoints[0]:
-                    game.selected_objects.remove(obj)
-                    layer.remove(obj)
+        for obj in game.selected_objects.copy():
+            if obj != game.checkpoints[0]:
+                for bucket in get_buckets(obj):
+                    game.buckets[obj.layer][bucket].remove(obj)
+                    
+                game.selected_objects.remove(obj)
+                getattr(game, obj.layer).remove(obj)
     
-    game.rebuild_buckets()
-    if not game.checkpoints[0].selected:
-        close_menu(game)
-    else:
+    if game.checkpoints[0].selected:
         open_objects_menu(game)
+    else:
+        close_menu(game)
 
 def snap_grid_objects(game):
     if game.selected_objects:
         game.capture_state("do")
 
         for obj in game.selected_objects:
+            old_buckets = get_buckets(obj)
+
             if obj.x % GRID_SIZE > GRID_SIZE / 2:
                 obj.x += GRID_SIZE - obj.x % GRID_SIZE
             else:
@@ -359,9 +370,9 @@ def snap_grid_objects(game):
             obj.rotation = round(obj.rotation % 360, 1)
             if obj.rotation < 0:
                 obj.rotation = round(obj.rotation + 360, 1)
+            
             obj.recompute()
-        
-        game.rebuild_buckets()
+            game.rebuild_buckets(obj, old_buckets)
 
 def group_objects(game, group):
     if game.selected_objects:
@@ -412,23 +423,20 @@ def layer_objects(game, way):
 
         game.rebuild_buckets()
 
-def move_objects_to_layer(game, layer_name):
+def move_objects_to_layer(game, target_layer):
     if game.selected_objects:
         game.capture_state("do")
 
-        target_layer = {
-            "background": game.background,
-            "objects": game.objects,
-            "decoration": game.decoration
-        }[layer_name]
+        for obj in game.selected_objects:
+            for bucket in get_buckets(obj):
+                game.buckets[obj.layer][bucket].remove(obj)
+            for bucket in get_buckets(obj):
+                game.buckets[target_layer][bucket].append(obj)
+            
+            getattr(game, obj.layer).remove(obj)
+            getattr(game, target_layer).append(obj)
 
-        for layer in (game.background, game.objects, game.decoration):
-            for obj in layer.copy():
-                if obj.selected:
-                    layer.remove(obj)
-                    target_layer.append(obj)
-
-        game.rebuild_buckets()
+            obj.layer = target_layer
 
 def switch_layer(game, shift):
     if shift:
@@ -479,8 +487,8 @@ def create_level(game):
         "decoration": [],
         "checkpoints": [
             Object(
-                PLAYER_X, 680, GRID_SIZE, GRID_SIZE, 0, "checkpoint",
-                (0, 255, 0), (0,)*3,
+                PLAYER_X, 680, 40, 40, 0, "checkpoint",
+                (0, 255, 0), (0,)*3, "checkpoints",
                 {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
             )
         ],

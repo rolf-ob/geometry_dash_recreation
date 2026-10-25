@@ -10,22 +10,9 @@ def make_shape(x, y, shape):
         0,
         shape,
         (255, 255, 255),
-        (0, 0, 0)
+        (0, 0, 0),
+        None
     )
-
-"""
-Rotated polygons, touching corners, zero-sized shapes
-Slope collisions with normal and reversed gravity
-Clicking, releasing, and adding trail points
-One ID, multiple IDs, missing IDs, repeated activation
-Several edits, undo all, redo all, then save
-Save/load round-trip preserves object properties
-New account, login, invalid password, invalid username
-Empty directory, missing checkpoint, malformed JSON
-Pause, resume, frame step, low FPS, temporary lag
-First completion, repeat completion, cheated completion
-For collision detection, use property-based testing with random shapes and rotations. 
-""" #!
 
 @pytest.mark.parametrize("shape", ["square", "right slope"])
 def test_touching_shapes_collide(shape):

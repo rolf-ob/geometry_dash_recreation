@@ -20,7 +20,7 @@
     ],
     "title": "The Basics",
     "points": 5,
-    "level number": 2,
+    "level number": 4,
     "song": "",
     "song start": 0
   },
@@ -43,6 +43,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -64,6 +65,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -85,6 +87,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -105,6 +108,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": "Click to jump",
       "group_id": 0,
       "triggers": []
@@ -125,6 +129,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": "That way you can practice further into the level",
       "group_id": 0,
       "triggers": []
@@ -145,6 +150,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": "Hold to chain jumps",
       "group_id": 0,
       "triggers": []
@@ -165,6 +171,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": "Press Esc to pause",
       "group_id": 0,
       "triggers": []
@@ -185,6 +192,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": "Press E to go to the first level",
       "group_id": 0,
       "triggers": []
@@ -206,6 +214,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -227,6 +236,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -248,6 +258,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -269,6 +280,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -289,6 +301,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": "Use A and D to switch between checkpoints",
       "group_id": 0,
       "triggers": []
@@ -309,6 +322,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": "Congrats on completing the tutorial!",
       "group_id": 0,
       "triggers": []
@@ -330,6 +344,7 @@
         0,
         0
       ],
+      "layer": "objects",
       "modifier": null,
       "group_id": 0,
       "triggers": []
@@ -354,6 +369,7 @@
         0,
         0
       ],
+      "layer": "checkpoints",
       "modifier": {
         "gamemode": "cube",
         "speed": 2,
@@ -380,6 +396,7 @@
         0,
         0
       ],
+      "layer": "checkpoints",
       "modifier": {
         "gamemode": "cube",
         "speed": 2,
@@ -406,6 +423,7 @@
         0,
         0
       ],
+      "layer": "checkpoints",
       "modifier": {
         "gamemode": "cube",
         "speed": 2,
@@ -418,7 +436,7 @@
   ],
   "victors": {
     "rolf": [
-      138,
+      140,
       1,
       0,
       0,

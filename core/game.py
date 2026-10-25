@@ -35,7 +35,7 @@ class Game:
         self.songs = Path("songs")
 
         self.operator = True
-        self.name = "rolf"
+        self.name = None
         self.running = True
 
         self.width = WIDTH
@@ -207,8 +207,8 @@ class Game:
         self.gravity = self.checkpoints[self.checkpoint].modifier["gravity"]
         
         size = self.checkpoints[self.checkpoint].modifier["size"]*40
-        self.player = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)
-        self.player_render = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)
+        self.player = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3, None)
+        self.player_render = Object(0, 0, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3, None)
         self.player_render.recompute()
 
         self.player.x = self.checkpoints[self.checkpoint].x
@@ -248,7 +248,7 @@ class Game:
         self.activated_triggers = {}
         self.current_hitbox = 0
         self.checkpoints[self.checkpoint].x
-        self.hitboxes = [Object(-10000, self.checkpoints[self.checkpoint].y, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3)]
+        self.hitboxes = [Object(-10000, self.checkpoints[self.checkpoint].y, size, size, 0, "square", GAMEMODE_COLORS[self.gamemode], (0,)*3, None)]
         self.wave_trail = [(self.player.x + self.player.width/2, self.player.y)] if self.gamemode == "wave" else []
         self.buckets["hitboxes"] = defaultdict(list)
         self.buckets["wave trail"] = defaultdict(list)
@@ -286,28 +286,35 @@ class Game:
             if self.paused:
                 py.mixer.music.pause()
 
-    def rebuild_buckets(self):
-        self.buckets = {
-            "background": defaultdict(list),
-            "objects": defaultdict(list),
-            "decoration": defaultdict(list),
-            "checkpoints": defaultdict(list),
-            "hitboxes": self.buckets["hitboxes"],
-            "wave trail": self.buckets["wave trail"]
-        }
-        self.z_order = {
-            id(obj): i for i, obj in enumerate((*self.background, *self.objects, *self.decoration))
-        }
+    def rebuild_buckets(self, target_obj=None, old_buckets=None):
+        if target_obj:
+            if old_buckets:
+                for bucket in old_buckets:
+                    self.buckets[target_obj.layer][bucket].append(target_obj)
+                for bucket in get_buckets(target_obj):
+                    self.buckets[target_obj.layer][bucket].append(target_obj)
+            
+            else:
+                self.z_order[id(target_obj)] = len(self.z_order)
+                for bucket in get_buckets(target_obj):
+                    self.buckets[target_obj.layer][bucket].append(target_obj)
 
-        for layer, name in (
-            (self.background, "background"),
-            (self.objects, "objects"),
-            (self.decoration, "decoration"),
-            (self.checkpoints, "checkpoints")
-        ):
-            for obj in layer:
+        else:
+            self.buckets = {
+                "background": defaultdict(list),
+                "objects": defaultdict(list),
+                "decoration": defaultdict(list),
+                "checkpoints": defaultdict(list),
+                "hitboxes": self.buckets["hitboxes"],
+                "wave trail": self.buckets["wave trail"]
+            }
+            self.z_order = {
+                id(obj): i for i, obj in enumerate((*self.background, *self.objects, *self.decoration))
+            }
+
+            for obj in (*self.background, *self.objects, *self.decoration, *self.checkpoints):
                 for bucket in get_buckets(obj):
-                    self.buckets[name][bucket].append(obj)
+                    self.buckets[obj.layer][bucket].append(obj)
 
     def record_attempt(self):
         if self.name not in self.victors:

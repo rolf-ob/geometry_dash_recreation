@@ -1,14 +1,14 @@
-recomputing width and height has to redo rotation computing
-moving same object's x and y at the same time lags
-
-Bugs:
+Update 1.1.1
+- Check if sliding down weird slope widths makes the player jitter
+- Trigger rounding level deaths
+- Multiple transitions targeting same attribute
 - Text objects get rendered based on original square width
 - Frame stepping desyncs music
+- New .exe file
 
 Optimization/structuring
-- Rebuild buckets for individual objects while keeping z-order
-- Undo redo history list memory optimization
 - Add more tests
+- Undo redo history list memory optimization
 - Linux/Mac file name compatability
 - Too much dependency on Game class, experiment with multiple classes
 

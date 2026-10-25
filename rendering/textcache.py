@@ -2,15 +2,18 @@ class TextCache:
     def __init__(self, font):
         self.font = {
             "screen": font,
-            "world": font
+            "world": font,
+            "fixed": font,
         }
         self._cache = {
             "screen": {},
-            "world": {}
+            "world": {},
+            "fixed": {}
         }
         self._sizes = {
             "screen": {},
-            "world": {}
+            "world": {},
+            "fixed": {}
         }
 
     def get_surface(self, text, color, layer):

@@ -259,7 +259,7 @@ def check_collision(game):
         else:
             game.y_vel = min(0, game.y_vel)
 
-    hitbox = Object(game.player.x, game.player.y, game.player.width, game.player.height, 0, "square", (0,)*3, hitbox_color)
+    hitbox = Object(game.player.x, game.player.y, game.player.width, game.player.height, 0, "square", (0,)*3, hitbox_color, None)
     game.hitboxes.append(hitbox)
     for bucket in get_buckets(hitbox):
         game.buckets["hitboxes"][bucket].append(hitbox)
@@ -272,6 +272,9 @@ def apply_trigger(game, trigger):
     
     if trigger.triggers and trigger.real_modifier["attribute"] in ("shape", "color", "outline", "rotation", "x", "y", "width", "height", "modifier"):
         for obj in game.trigger_ids[trigger.triggers]:
+            if trigger.real_modifier["attribute"] in ("rotation", "x", "y", "width", "height"):
+                old_buckets = get_buckets(obj)
+            
             if not transition:
                 if trigger.modifier["attribute"] == "x":
                     try:
@@ -310,7 +313,7 @@ def apply_trigger(game, trigger):
                     else:
                         value = trigger.modifier["value"]
 
-                    apply_edit(game, obj, f"real_{trigger.modifier["attribute"]}", value)
+                    apply_edit(game, obj, f"real_{trigger.modifier["attribute"]}", str(value))
             
             else:
                 if trigger.modifier["attribute"] in ("x", "y", "rotation"):
@@ -339,8 +342,8 @@ def apply_trigger(game, trigger):
                     per_tick
                 ])
 
-        if trigger.real_modifier["attribute"] in ("rotation", "x", "y", "width", "height"):
-            game.rebuild_buckets()
+            if trigger.real_modifier["attribute"] in ("rotation", "x", "y", "width", "height"):
+                game.rebuild_buckets(obj, old_buckets)
 
     elif trigger.real_modifier["attribute"] in ("length", "roof", "floor", "roof_color", "floor_color", "background_color"):
         if not transition:
@@ -372,6 +375,8 @@ def apply_trigger(game, trigger):
 def update_transitions(game):
     for transition in game.active_transitions.copy():
         obj, attribute, value, end, per_tick = transition
+        if attribute in ("rotation", "x", "y", "width", "height"):
+            old_buckets = get_buckets(obj)
 
         if attribute in ("color", "outline", "roof_color", "floor_color", "background_color"):
             transition[2] = tuple([val + per_tick for val, per_tick in zip(value, per_tick)])
@@ -405,13 +410,13 @@ def update_transitions(game):
             setattr(game, attribute, position)
         
         else:
-            apply_edit(game, obj, f"real_{attribute}", round(position))
+            apply_edit(game, obj, f"real_{attribute}", str(round(position)))
 
         if position == end:
             game.active_transitions.remove([obj, attribute, value, end, per_tick])
 
         if attribute in ("rotation", "x", "y", "width", "height"):
-            game.rebuild_buckets()
+            game.rebuild_buckets(obj, old_buckets)
 
 def update_position(game):
     fall_speed = game.player.height / (-game.speed * abs(game.gravity)) if game.gravity != 0 else 0

@@ -11,6 +11,7 @@ class Object:
     shape: str
     color: tuple[int, int, int]
     outline: tuple[int, int, int]
+    layer: str
 
     modifier: str = None
     selected: bool = False
@@ -113,8 +114,8 @@ class Object:
                 for point in self.points
             ]
 
-            self.aabb["left"] += value
-            self.aabb["right"] += value
+            self.aabb["left"] += math.floor(value)
+            self.aabb["right"] += math.floor(value)
 
         elif attribute == "y":
             if not triggered:
@@ -125,8 +126,8 @@ class Object:
                 for point in self.points
             ]
 
-            self.aabb["top"] += value
-            self.aabb["bottom"] += value
+            self.aabb["top"] += math.floor(value)
+            self.aabb["bottom"] += math.floor(value)
 
     def recompute_design(self):
         self.real_color = self.color
@@ -161,6 +162,6 @@ class Object:
     def from_dict(cls, d):
         return cls(
             x=d["x"], y=d["y"], width=d["width"], height=d["height"], rotation=d["rotation"],
-            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]),
+            shape=d["shape"], color=tuple(d["color"]), outline=tuple(d["outline"]), layer=d["layer"],
             modifier=d["modifier"], group_id=d["group_id"], triggers=d["triggers"]
         )
