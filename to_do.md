@@ -13,7 +13,7 @@ Update 1.1.2
 - Triggers display trigger id while in build mode
 - Display next unused trigger id
 - All objects show their attributes if all selected have the same
-- Level 5, 6
+- Level 5, 6, 7
 - New .exe file
 
 Update 1.1.3
@@ -23,6 +23,7 @@ Update 1.1.3
 - Music affected by speedhack
 - Checkpoints store level settings
 - Add more tests
+- Level 8, 9, 10
 - New .exe file
 
 Update 1.2.0
@@ -30,7 +31,7 @@ Update 1.2.0
 - Camera x, y and zoom trigger
 - Multi-point shape
 - Combining shapes and transparent shapes into a single multi-point shape
-- Level 7, 8, 9, 10
+- Level 11, 12, 13
 - New .exe file
 
 Update 1.2.1
@@ -43,7 +44,6 @@ Update 1.3.0
 - Images/sprites
 - Clickable UI for menus and build mode
 - CBF
-- Level 11, 12, 13
 - New .exe file
 
 Update 1.4.0
