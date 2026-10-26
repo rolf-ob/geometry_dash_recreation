@@ -4,6 +4,7 @@ from pathlib import Path
 
 from entities.spatial import get_buckets
 from core.building import toggle_building
+from utils import clamp
 from constants import GAMEMODE_COLORS, SPEED_COLOR, GRAVITY_COLORS, SIZE_COLORS, TELEPORT_COLOR, ORB_PAD_COLORS, COIN_COLOR
 
 def check_illegal(text):
@@ -44,7 +45,7 @@ def apply_object_modifier(real_field_name, real, text, obj):
 
     elif obj.real_shape == "speed":
         text = check_illegal(text)
-        setattr(obj, real_field_name, max(0.01, min(400, float(text))))
+        setattr(obj, real_field_name, clamp(float(text), 0.01, 400))
 
     elif obj.real_shape == "gravity":
         text = check_illegal(text)
@@ -54,7 +55,7 @@ def apply_object_modifier(real_field_name, real, text, obj):
 
     elif obj.real_shape == "size":
         text = check_illegal(text)
-        setattr(obj, real_field_name, max(0.5, min(10, float(text))))
+        setattr(obj, real_field_name, clamp(float(text), 0.5, 10))
         if real == "" and float(text) in SIZE_COLORS:
             obj.color = SIZE_COLORS[float(text)]
 
@@ -96,17 +97,17 @@ def apply_level_setting(game, field_name, text):
         game.floor = max(game.level["meta"]["roof"] + 400, int(text))
 
     elif field_name == "roof_color":
-        r, g, b = (max(0, min(255, int(value))) for value in text.split("_"))
+        r, g, b = (clamp(int(value), 0, 255) for value in text.split("_"))
         game.level["meta"]["roof_color"] = (r, g, b)
         game.roof_color = tuple(game.level["meta"]["roof_color"])
 
     elif field_name == "floor_color":
-        r, g, b = (max(0, min(255, int(value))) for value in text.split("_"))
+        r, g, b = (clamp(int(value), 0, 255) for value in text.split("_"))
         game.level["meta"]["floor_color"] = (r, g, b)
         game.floor_color = tuple(game.level["meta"]["floor_color"])
 
     elif field_name == "background_color":
-        r, g, b = (max(0, min(255, int(value))) for value in text.split("_"))
+        r, g, b = (clamp(int(value), 0, 255) for value in text.split("_"))
         game.level["meta"]["background_color"] = (r, g, b)
         game.background_color = tuple(game.level["meta"]["background_color"])
 
@@ -133,7 +134,7 @@ def apply_level_setting(game, field_name, text):
 
     elif field_name == "level_number":
         text = check_illegal(text)
-        new_number = max(1, min(len(game.levels)-1, int(text)))
+        new_number = clamp(int(text), 1, len(game.levels)-1)
         game.levels.pop(game.current_level)
         game.levels.insert(new_number, game.level)
         game.current_level = new_number
@@ -169,11 +170,11 @@ def apply_level_setting(game, field_name, text):
 def apply_setting(game, field_name, text):
     if field_name == "speedhack":
         text = check_illegal(text)
-        game.speedhack_multiplier = max(0.01, min(10, float(text)))
+        game.speedhack_multiplier = clamp(float(text), 0.01, 10)
 
     elif field_name == "fps":
         text = check_illegal(text)
-        game.fps = max(48, int(text))
+        game.fps = max(60, int(text))
 
     elif field_name == "respawn_time":
         text = check_illegal(text)
@@ -181,8 +182,8 @@ def apply_setting(game, field_name, text):
 
     elif field_name == "volume":
         text = check_illegal(text)
-        game.volume = max(0, min(100, int(text)))
-        py.mixer.music.set_volume(max(0, min(100, int(text))) / 100)
+        game.volume = clamp(int(text), 0, 100)
+        py.mixer.music.set_volume(game.volume / 100)
 
     elif field_name == "log_out":
         game.open_login_page()
@@ -218,7 +219,7 @@ def apply_edit(game, obj, real_field_name, text):
                     elif field_name in ("color", "outline"):
                         rgb = text.split("_")
                         if len(rgb) == 3:
-                            r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                            r, g, b = (clamp(int(value), 0, 255) for value in rgb)
                             setattr(obj, real_field_name, (r, g, b))
                         elif len(rgb) == 1 and rgb[0] == "0":
                             setattr(obj, real_field_name, (0, 0))
@@ -290,13 +291,14 @@ def apply_edit(game, obj, real_field_name, text):
                             game.buckets[obj.layer][bucket].remove(obj)
                         for bucket in get_buckets(obj):
                             game.buckets["checkpoints"][bucket].append(obj)
-                        
+
                         obj.width = 40
                         obj.height = 40
                         obj.rotation = 0
                         obj.color = (0, 255, 0)
                         obj.outline = (0,)*3
                         obj.modifier = {"gamemode": "cube", "speed": 2, "gravity": 1, "size": 1}
+                        obj.layer = "checkpoints"
 
                     elif field_name == "modifier":
                         apply_object_modifier(real_field_name, real, text, obj)
@@ -312,7 +314,7 @@ def apply_edit(game, obj, real_field_name, text):
 
                     elif field_name == "speed":
                         text = check_illegal(text)
-                        obj.modifier["speed"] = max(0.01, min(400, float(text)))
+                        obj.modifier["speed"] = clamp(float(text), 0.01, 400)
 
                     elif field_name == "gravity":
                         text = check_illegal(text)
@@ -320,15 +322,15 @@ def apply_edit(game, obj, real_field_name, text):
 
                     elif field_name == "size":
                         text = check_illegal(text)
-                        obj.modifier["size"] = max(0.5, min(10, float(text)))
-                        obj.width = max(0.5, min(10, float(text))) * 40
-                        obj.height = max(0.5, min(10, float(text))) * 40
+                        obj.modifier["size"] = clamp(float(text), 0.5, 10)
+                        obj.width = obj.modifier["size"] * 40
+                        obj.height = obj.modifier["size"] * 40
 
                 elif obj.shape == "trigger":
                     if field_name in ("color", "outline"):
                         rgb = text.split("_")
                         if len(rgb) == 3:
-                            r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                            r, g, b = (clamp(int(value), 0, 255) for value in rgb)
                             setattr(obj, real_field_name, (r, g, b))
                         elif len(rgb) == 1 and rgb[0] == "0":
                             setattr(obj, real_field_name, (0, 0))
@@ -344,7 +346,7 @@ def apply_edit(game, obj, real_field_name, text):
                         elif obj.modifier["attribute"] in ("color", "outline"):
                             rgb = text.split("_")
                             if len(rgb) == 3:
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                r, g, b = (clamp(int(value), 0, 255) for value in rgb)
                                 obj.modifier["value"] = (r, g, b)
                             elif len(rgb) == 1 and rgb[0] == "0":
                                 obj.modifier["value"] = (0, 0)
@@ -375,7 +377,7 @@ def apply_edit(game, obj, real_field_name, text):
                         elif obj.modifier["attribute"] in ("roof_color", "floor_color", "background_color"):
                             rgb = text.split("_")
                             if len(rgb) == 3:
-                                r, g, b = (max(0, min(255, int(value))) for value in rgb)
+                                r, g, b = (clamp(int(value), 0, 255) for value in rgb)
                                 obj.modifier["value"] = (r, g, b)
                             elif len(rgb) == 1 and rgb[0] == "0":
                                 obj.modifier["value"] = (0, 0)

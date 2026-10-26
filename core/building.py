@@ -308,13 +308,14 @@ def duplicate_objects(game):
 
         for obj in game.selected_objects.copy():
             modifier = obj.modifier if obj.shape not in ("checkpoint", "trigger") else obj.modifier.copy()
+            triggers = obj.triggers.copy() if obj.shape != "trigger" else obj.triggers
             
-            new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, obj.layer, modifier, triggers=obj.triggers.copy())
+            new_obj = Object(obj.x, obj.y, obj.width, obj.height, obj.rotation, obj.shape, obj.color, obj.outline, obj.layer, modifier, selected=True, triggers=triggers)
             getattr(game, obj.layer).append(new_obj)
-            obj.selected = False
-            game.selected_objects.remove(obj)
             game.selected_objects.append(new_obj)
             game.rebuild_buckets(new_obj)
+            game.selected_objects.remove(obj)
+            obj.selected = False
 
             if obj.group_id != 0:
                 if obj.group_id in object_groups:

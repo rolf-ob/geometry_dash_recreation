@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "length": 100,
+    "roof": 240,
+    "floor": 720,
+    "roof_color": [
+      255,
+      255,
+      255
+    ],
+    "floor_color": [
+      255,
+      255,
+      255
+    ],
+    "background_color": [
+      255,
+      255,
+      255
+    ],
+    "title": "Jitter down slope",
+    "points": 0,
+    "level number": 2,
+    "song": "",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [
+    {
+      "x": 860.0,
+      "y": 560,
+      "width": 240,
+      "height": 160,
+      "rotation": 0,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 500.0,
+      "y": 560,
+      "width": 240,
+      "height": 160,
+      "rotation": 0,
+      "shape": "left slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1580.0,
+      "y": 240.0,
+      "width": 240,
+      "height": 160,
+      "rotation": 180,
+      "shape": "left slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1220.0,
+      "y": 240.0,
+      "width": 240,
+      "height": 160,
+      "rotation": 180,
+      "shape": "right slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1160,
+      "y": 600,
+      "width": 20,
+      "height": 120,
+      "rotation": 0,
+      "shape": "teleport",
+      "color": [
+        255,
+        128,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": 240,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 1160.0,
+      "y": 240.0,
+      "width": 20,
+      "height": 120,
+      "rotation": 0,
+      "shape": "gravity",
+      "color": [
+        255,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": -1.0,
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        255,
+        0,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "checkpoints",
+      "modifier": {
+        "gamemode": "ship",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "victors": {
+    "rolf": [
+      78,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

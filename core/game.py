@@ -13,6 +13,7 @@ from entities.object import Object
 from rendering.textcache import TextCache
 from core.textbox import TextBox
 from core.fps_handler import FpsHandler
+from utils import clamp
 from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, BUCKET_WIDTH, GAMEMODE_COLORS
 
 class Game:
@@ -223,13 +224,11 @@ class Game:
         self.dashing = None
 
         self.camera_x = self.checkpoints[self.checkpoint].x - PLAYER_X
-        self.camera_y = max(
-            min(
-                self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN,
-                self.player.y - CAMERA_MARGIN * 2
-            ),
-            self.player.y + self.player.height - HEIGHT + CAMERA_MARGIN
-        )
+        self.camera_y = clamp(
+            self.player.y - CAMERA_MARGIN * 2,
+            self.player.y + self.player.height - HEIGHT + CAMERA_MARGIN,
+            self.level["meta"]["floor"] - HEIGHT + CAMERA_MARGIN
+        )      
         self.camera_zoom = 1
         self.text_cache.change_font(py.font.SysFont("Arial", int(FONT_SIZE * self.scale * self.camera_zoom)), "world")
 
@@ -290,7 +289,7 @@ class Game:
         if target_obj:
             if old_buckets:
                 for bucket in old_buckets:
-                    self.buckets[target_obj.layer][bucket].append(target_obj)
+                    self.buckets[target_obj.layer][bucket].remove(target_obj)
                 for bucket in get_buckets(target_obj):
                     self.buckets[target_obj.layer][bucket].append(target_obj)
             

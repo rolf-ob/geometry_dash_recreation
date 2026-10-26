@@ -1,41 +1,54 @@
 Update 1.1.1
-- Check if sliding down weird slope widths makes the player jitter
+- Sliding down weird slope widths makes the player jitter
 - Trigger rounding level deaths
 - Multiple transitions targeting same attribute
 - Text objects get rendered based on original square width
 - Frame stepping desyncs music
+- Ctrl+alt+scroll to change hitboxes faster
 - New .exe file
 
-Optimization/structuring
-- Add more tests
-- Undo redo history list memory optimization
-- Linux/Mac file name compatability
-- Too much dependency on Game class, experiment with multiple classes
-
-Features
+Update 1.1.2
 - User music delay
 - Level music volume
-- Ctrl+alt+scroll to change hitboxes faster
 - Triggers display trigger id while in build mode
 - Display next unused trigger id
 - All objects show their attributes if all selected have the same
+- Level 5, 6
+- New .exe file
+
+Update 1.1.3
 - Show dash orb pointing
 - Multi-select bounding box
 - Default level sizes
+- Music affected by speedhack
+- Checkpoints store level settings
+- Add more tests
+- New .exe file
+
+Update 1.2.0
 - Rotation trigger rotates around collective objects center
 - Camera x, y and zoom trigger
-- Checkpoints store level settings
-- Music affected by speedhack
 - Multi-point shape
 - Combining shapes and transparent shapes into a single multi-point shape
-- CBF
+- Level 7, 8, 9, 10
+- New .exe file
 
-User
+Update 1.2.1
+- Undo redo history list memory optimization
+- Linux/Mac file name compatability
+- Too much dependency on Game class, experiment with multiple classes
+- New .exe file
+
+Update 1.3.0
+- Images/sprites
+- Clickable UI for menus and build mode
+- CBF
+- Level 11, 12, 13
+- New .exe file
+
+Update 1.4.0
 - Making private levels
 - Public levels
 - Public level stats like unique visitors, likes, dislikes, comments etc
 - Changing controls and tutorial with it
-
-UI
-- Images/sprites
-- Clickable UI menu and build mode
+- New .exe file

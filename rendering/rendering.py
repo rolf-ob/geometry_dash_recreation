@@ -183,13 +183,14 @@ def draw_player(game, screen):
     draw_polygon(game, screen, game.player_render.points, game.primary_color, int(max(1, 1*game.camera_zoom)))
 
 def draw_buckets(game, screen):
-    camera_x = game.building_camera_x if game.building else game.camera_x 
+    camera_x = game.building_camera_x if game.building else game.camera_x
+    camera_y = game.building_camera_y if game.building else game.camera_y
     start_bucket = int(camera_x // BUCKET_WIDTH)
     end_bucket = int((camera_x + game.view_width) // BUCKET_WIDTH)
 
     for bucket in range(start_bucket, end_bucket+2):
-        top = world_to_screen(game, bucket * BUCKET_WIDTH, game.camera_y)
-        bottom = world_to_screen(game, bucket * BUCKET_WIDTH, game.camera_y + game.view_height)
+        top = world_to_screen(game, bucket * BUCKET_WIDTH, camera_y)
+        bottom = world_to_screen(game, bucket * BUCKET_WIDTH, camera_y + game.view_height)
         py.draw.line(screen, (0, 255, 0), top, bottom, 1)
 
 def draw_leaderboard(game, screen):

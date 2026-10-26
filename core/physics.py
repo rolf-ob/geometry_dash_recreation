@@ -5,6 +5,7 @@ from core.attribute_editing import apply_edit
 from entities.spatial import collide, get_buckets, get_nearby_objects
 from collections import defaultdict
 from entities.object import Object
+from utils import clamp
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, GAMEMODE_COLORS
 
 def check_collision(game):
@@ -16,6 +17,7 @@ def check_collision(game):
     game.on_ground = False
     game.slid = game.sliding
     game.sliding = 0
+    game.teleport = False
     objects = get_nearby_objects(game.buckets["objects"], game.player.aabb["left"], game.player.aabb["right"])
     prev_player = game.hitboxes[-1].aabb
     player = game.player.aabb
@@ -166,9 +168,7 @@ def check_collision(game):
             if collide(game.player, obj, game.hitboxes[-1]) and obj.real_modifier is not None:
                 if game.gamemode == "wave":
                     game.add_wave_part()
-                game.player.y = max(game.roof, min(game.floor - game.player.height, obj.real_modifier))
-                if game.gamemode == "wave":
-                    game.add_wave_part()
+                game.teleport = obj.real_modifier
         
         elif obj.real_shape == "orb":
             if round(game.y_vel) != fall_speed:
@@ -474,15 +474,20 @@ def update_position(game):
                 game.y_vel = max(fall_speed, game.y_vel - 0.05)
 
     if game.dashing:
-        y_movement = max(min(-max(-90, min(90, (game.dashing.rotation+90) % 360 - 90)) / 45 * game.speed, game.player.height), -game.player.height)
+        y_movement = clamp(clamp(-(game.dashing.rotation+90) % 360 + 90, -90, 90) / 45 * game.speed, -game.player.height, game.player.height)
     else:
-        y_movement = max(min(game.y_vel * game.speed * game.gravity, game.player.height), -game.player.height)
+        y_movement = clamp(game.y_vel * game.speed * game.gravity, -game.player.height, game.player.height)
+        
+        if game.teleport:
+            game.player.y = clamp(game.teleport, game.roof, game.floor - game.player.height)
+            if game.gamemode == "wave":
+                game.add_wave_part()
 
     game.player.x += min(game.speed, game.player.width)
-    game.player.y = max(game.min_height, min(game.max_height, game.player.y - y_movement))
+    game.player.y = clamp(game.player.y - y_movement, game.min_height, game.max_height)
     game.player.recompute()
     game.camera_x += min(game.speed, game.player.width)
-    game.camera_y = max(min(game.camera_y, game.player.y - CAMERA_MARGIN), game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN)
+    game.camera_y = clamp(game.camera_y, game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN, game.player.y - CAMERA_MARGIN)
 
     start_x = game.player.x - game.checkpoints[0].x
     checkpoint_x = game.checkpoints[game.checkpoint].x - game.checkpoints[0].x
