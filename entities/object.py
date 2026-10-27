@@ -114,8 +114,7 @@ class Object:
                 for point in self.points
             ]
 
-            self.aabb["left"] += math.floor(value)
-            self.aabb["right"] += math.floor(value)
+            self.recompute_aabb()
 
         elif attribute == "y":
             if not triggered:
@@ -126,8 +125,7 @@ class Object:
                 for point in self.points
             ]
 
-            self.aabb["top"] += math.floor(value)
-            self.aabb["bottom"] += math.floor(value)
+            self.recompute_aabb()
 
     def recompute_design(self):
         self.real_color = self.color

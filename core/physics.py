@@ -30,7 +30,7 @@ def check_collision(game):
                 this_sliding = False
                 on_right_edge = player["left"] == obj.aabb["right"]
                 on_left_edge = prev_player["left"] <= obj.aabb["left"] <= player["left"] + min(game.speed, game.player.width) and prev_player["bottom"] != player["bottom"]
-
+                
                 if obj.real_shape == "square" and obj.real_rotation == 0:
                     if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not on_right_edge:
                         game.min_height = max(game.min_height, obj.aabb["bottom"])
@@ -38,14 +38,14 @@ def check_collision(game):
                         game.sliding = -1
                         this_sliding = True
                     elif ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not on_right_edge:
-                        game.max_height = min(game.max_height, obj.real_y - game.player.height)
+                        game.max_height = min(game.max_height, obj.aabb["top"] - game.player.height)
                         game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
                         game.sliding = 1
                         this_sliding = True
 
                 elif obj.real_shape in ("right slope", "left slope") and obj.real_rotation == 0:
-                    prev_player_y = (prev_player["bottom"] - obj.real_y) / obj.real_height
-                    player_y = (player["bottom"] - obj.real_y) / obj.real_height
+                    prev_player_y = (prev_player["bottom"] - obj.aabb["top"]) / obj.real_height
+                    player_y = (player["bottom"] - obj.aabb["top"]) / obj.real_height
 
                     if obj.real_shape == "right slope":
                         prev_y = (prev_player["left"] - obj.real_x) / obj.real_width
@@ -59,19 +59,19 @@ def check_collision(game):
                         slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
                     
                     if ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not (on_right_edge or on_left_edge):
-                        game.max_height = min(game.max_height, obj.real_y - game.player.height)
+                        game.max_height = min(game.max_height, obj.aabb["top"] - game.player.height)
                         game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
                         game.sliding = 1
                         this_sliding = True
                     elif ((prev_player_y <= prev_y and y < player_y) or abs(y - player_y) < 1e-2) and not on_right_edge or on_left_edge:
-                        game.max_height = min(game.max_height, obj.real_y - game.player.height + next_y*obj.real_height)
+                        game.max_height = min(game.max_height, obj.aabb["top"] - game.player.height + next_y*obj.real_height)
                         game.y_vel = max(game.y_vel, slope_vel) if game.gravity > 0 else min(game.y_vel, slope_vel)
                         game.sliding = 1
                         this_sliding = True
 
                 elif obj.real_shape in ("right slope", "left slope") and obj.real_rotation == 180:
-                    prev_player_y = (prev_player["top"] - obj.real_y) / obj.real_height
-                    player_y = (player["top"] - obj.real_y) / obj.real_height
+                    prev_player_y = (prev_player["top"] - obj.aabb["top"]) / obj.real_height
+                    player_y = (player["top"] - obj.aabb["top"]) / obj.real_height
 
                     if obj.real_shape == "right slope":
                         prev_y = (prev_player["right"] - obj.real_x) / obj.real_width
@@ -288,7 +288,7 @@ def apply_trigger(game, trigger):
                 
                 elif trigger.modifier["attribute"] == "y":
                     try:
-                        obj.real_y += int(trigger.modifier["value"])
+                        obj.aabb["top"] += int(trigger.modifier["value"])
                         obj.recompute_position("y", int(trigger.modifier["value"]), True)
                     except ValueError:
                         game.title = [
@@ -485,6 +485,7 @@ def update_position(game):
 
     game.player.x += min(game.speed, game.player.width)
     game.player.y = clamp(game.player.y - y_movement, game.min_height, game.max_height)
+    game.player.y = math.floor(game.player.y) if game.gravity >= 0 else math.ceil(game.player.y)
     game.player.recompute()
     game.camera_x += min(game.speed, game.player.width)
     game.camera_y = clamp(game.camera_y, game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN, game.player.y - CAMERA_MARGIN)

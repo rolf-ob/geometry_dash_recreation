@@ -11,7 +11,7 @@ def create_user(game, username):
     with open(f"users/default/accessibility.json", "r", encoding="utf-8") as f:
         default_accessibility = json.load(f)
     password = game.textboxes[1].text
-    default_accessibility["password"] = sha256(password.encode('utf-8')).hexdigest()
+    default_accessibility["password"] = sha256(password.encode("utf-8")).hexdigest()
 
     with open(f"users/default/controls.json", "r", encoding="utf-8") as f:
         default_controls = json.load(f)
@@ -223,7 +223,7 @@ def handle_input(game):
                                     settings = json.load(f)
                                     password = settings["password"]
                                 
-                                if sha256(game.textboxes[1].text.encode('utf-8')).hexdigest() == password:
+                                if sha256(game.textboxes[1].text.encode("utf-8")).hexdigest() == password:
                                     game.load_user(username)
                                 else:
                                     game.title = ["Invalid password", time.perf_counter() + 2]

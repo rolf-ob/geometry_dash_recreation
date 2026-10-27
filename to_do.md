@@ -1,6 +1,5 @@
 Update 1.1.1
 - Sliding down weird slope widths makes the player jitter
-- Trigger rounding level deaths
 - Multiple transitions targeting same attribute
 - Text objects get rendered based on original square width
 - Frame stepping desyncs music
