@@ -17,7 +17,7 @@ def check_collision(game):
     game.on_ground = False
     game.slid = game.sliding
     game.sliding = 0
-    game.teleport = False
+    game.teleport = None
     objects = get_nearby_objects(game.buckets["objects"], game.player.aabb["left"], game.player.aabb["right"])
     prev_player = game.hitboxes[-1].aabb
     player = game.player.aabb
@@ -100,7 +100,6 @@ def check_collision(game):
                     if game.gamemode == "wave":
                         game.add_wave_part()
 
-                print(prev_player, player, game.player.aabb["bottom"], obj.aabb["top"], obj.aabb["top"] == player["bottom"])
                 if not this_sliding and not on_right_edge and not begun_sliding:
                     if not game.noclip:
                         game.dead = FIXED_STEP
@@ -479,7 +478,7 @@ def update_position(game):
     else:
         y_movement = clamp(game.y_vel * game.speed * game.gravity, -game.player.height, game.player.height)
         
-        if game.teleport:
+        if game.teleport != None:
             game.player.y = clamp(game.teleport, game.roof, game.floor - game.player.height)
             if game.gamemode == "wave":
                 game.add_wave_part()

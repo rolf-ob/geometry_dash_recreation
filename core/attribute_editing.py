@@ -281,8 +281,8 @@ def apply_edit(game, obj, real_field_name, text):
                     elif field_name == "shape" and text == "slope":
                         setattr(obj, real_field_name, "right slope")
 
-                    elif field_name == "shape" and text == "checkpoint":
-                        setattr(obj, real_field_name, text)
+                    elif field_name == "shape" and text in ("checkpoint", "cp"):
+                        setattr(obj, real_field_name, "checkpoint")
 
                         getattr(game, obj.layer).remove(obj)
                         game.checkpoints.append(obj)
