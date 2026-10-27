@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "length": 100,
+    "roof": 0,
+    "floor": 720,
+    "roof_color": [
+      255,
+      255,
+      255
+    ],
+    "floor_color": [
+      255,
+      255,
+      255
+    ],
+    "background_color": [
+      255,
+      255,
+      255
+    ],
+    "title": "Unnamed level",
+    "points": 0,
+    "level number": 1,
+    "song": "",
+    "song start": 0
+  },
+  "background": [],
+  "objects": [
+    {
+      "x": 520.0,
+      "y": 560,
+      "width": 160,
+      "height": 160,
+      "rotation": 0,
+      "shape": "left slope",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 720,
+      "y": 580.0,
+      "width": 80,
+      "height": 20.0,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": [
+        1
+      ]
+    },
+    {
+      "x": 780.0,
+      "y": 520,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": {
+        "attribute": "y",
+        "value": 10,
+        "transition": 2.0
+      },
+      "group_id": 0,
+      "triggers": 1
+    },
+    {
+      "x": 780.0,
+      "y": 503.0,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "trigger",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": {
+        "attribute": "x",
+        "value": 960,
+        "transition": 2.0
+      },
+      "group_id": 0,
+      "triggers": 1
+    }
+  ],
+  "decoration": [],
+  "checkpoints": [
+    {
+      "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        0
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "checkpoints",
+      "modifier": {
+        "gamemode": "cube",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    }
+  ],
+  "victors": {
+    "rolf": [
+      64,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

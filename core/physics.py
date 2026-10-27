@@ -100,6 +100,7 @@ def check_collision(game):
                     if game.gamemode == "wave":
                         game.add_wave_part()
 
+                print(prev_player, player, game.player.aabb["bottom"], obj.aabb["top"], obj.aabb["top"] == player["bottom"])
                 if not this_sliding and not on_right_edge and not begun_sliding:
                     if not game.noclip:
                         game.dead = FIXED_STEP
@@ -485,7 +486,6 @@ def update_position(game):
 
     game.player.x += min(game.speed, game.player.width)
     game.player.y = clamp(game.player.y - y_movement, game.min_height, game.max_height)
-    game.player.y = math.floor(game.player.y) if game.gravity >= 0 else math.ceil(game.player.y)
     game.player.recompute()
     game.camera_x += min(game.speed, game.player.width)
     game.camera_y = clamp(game.camera_y, game.player.y + game.player.height - HEIGHT + CAMERA_MARGIN, game.player.y - CAMERA_MARGIN)
