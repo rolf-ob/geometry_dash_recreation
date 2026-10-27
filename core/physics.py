@@ -479,7 +479,9 @@ def update_position(game):
         y_movement = clamp(game.y_vel * game.speed * game.gravity, -game.player.height, game.player.height)
         
         if game.teleport != None:
-            game.player.y = clamp(game.teleport, game.roof, game.floor - game.player.height)
+            game.min_height = game.roof
+            game.max_height = game.floor - game.player.height
+            game.player.y = game.teleport
             if game.gamemode == "wave":
                 game.add_wave_part()
 

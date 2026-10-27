@@ -1,6 +1,6 @@
 Update 1.1.1
 - Transition rounding still kills you
-- Sliding down weird slope widths makes the player jitter
+- Sliding on weird slope widths makes the player jitter
 - Multiple transitions targeting same attribute
 - Text objects get rendered based on original square width
 - Frame stepping desyncs music
