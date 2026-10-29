@@ -138,12 +138,14 @@ def pan(game, y):
     else:
         game.camera_x = camera_x
 
-def view_separate_hitboxes(game, y):
+def view_separate_hitboxes(game, ctrl, y):
     if game.paused:
+        amount = 10 if ctrl else 1
+
         if y > 0:
-            game.current_hitbox = min(len(game.hitboxes), game.current_hitbox+1)
+            game.current_hitbox = min(len(game.hitboxes)-1, game.current_hitbox + amount)
         elif y < 0:
-            game.current_hitbox = max(0, game.current_hitbox-1)
+            game.current_hitbox = max(0, game.current_hitbox - amount)
 
 def zoom(game, y):
     if y > 0 and (game.paused or game.completed or game.building):
@@ -344,11 +346,11 @@ def handle_input(game):
             click(game, "release", event.button, shift, ctrl)
         
         elif event.type == py.MOUSEWHEEL and game.name:
-            if ctrl:
+            if alt:
+                view_separate_hitboxes(game, ctrl, event.y)
+            elif ctrl:
                 scroll(game, event.y)
             elif shift:
                 pan(game, event.y)
-            elif alt:
-                view_separate_hitboxes(game, event.y)
             else:
                 zoom(game, event.y)

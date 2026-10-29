@@ -93,9 +93,11 @@ def draw_objects(game, screen):
 
             if color == (0, 0):
                 if game.building:
-                    screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "fixed")[0] / 2, obj.real_y + 5))
+                    x, y = world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "fixed")[0] / 2, obj.real_y + 5)
+                    screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), (x, y))
             else:
-                screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "fixed")[0] / 2, obj.real_y + 5))
+                x, y = world_to_screen(game, obj.real_x + obj.real_width / 2 - game.text_cache.get_size(obj.real_modifier, (0,)*3, "fixed")[0] / 2, obj.real_y + 5)
+                screen.blit(game.text_cache.get_surface(obj.real_modifier, color, "world"), (x, y))
             
             if outline_color == (0, 0):
                 if game.show_hitboxes:

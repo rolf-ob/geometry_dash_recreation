@@ -2,9 +2,7 @@ Update 1.1.1
 - Transition rounding still kills you
 - Sliding on weird slope widths makes the player jitter
 - Multiple transitions targeting same attribute
-- Text objects get rendered based on original square width
 - Frame stepping desyncs music
-- Ctrl+alt+scroll to change hitboxes faster
 - New .exe file
 
 Update 1.1.2
@@ -19,9 +17,7 @@ Update 1.1.2
 Update 1.1.3
 - Show dash orb pointing
 - Multi-select bounding box
-- Default level sizes
-- Music affected by speedhack
-- Checkpoints store level settings
+- Change level grid size and display grid
 - Add more tests
 - Level 8, 9, 10
 - New .exe file
@@ -35,7 +31,12 @@ Update 1.2.0
 - New .exe file
 
 Update 1.2.1
+- Music affected by speedhack
+- Checkpoints store level settings
 - Undo redo history list memory optimization
+- New .exe file
+
+Update 1.2.2
 - Linux/Mac file name compatability
 - Too much dependency on Game class, experiment with multiple classes
 - New .exe file

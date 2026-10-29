@@ -5,7 +5,7 @@ from pathlib import Path
 from entities.spatial import get_buckets
 from core.building import toggle_building
 from utils import clamp
-from constants import GAMEMODE_COLORS, SPEED_COLOR, GRAVITY_COLORS, SIZE_COLORS, TELEPORT_COLOR, ORB_PAD_COLORS, COIN_COLOR
+from constants import FONT_SIZE, GAMEMODE_COLORS, SPEED_COLOR, GRAVITY_COLORS, SIZE_COLORS, TELEPORT_COLOR, ORB_PAD_COLORS, COIN_COLOR
 
 def check_illegal(text):
     if not math.isfinite(float(text)):
@@ -37,7 +37,7 @@ def switch_attribute(game, way):
                 game.active_textbox.deactivate()
                 game.active_textbox = None
 
-def apply_object_modifier(real_field_name, real, text, obj):
+def apply_object_modifier(game, real_field_name, real, text, obj):
     if obj.real_shape == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
         setattr(obj, real_field_name, text)
         if real == "" and text in GAMEMODE_COLORS:
@@ -79,6 +79,15 @@ def apply_object_modifier(real_field_name, real, text, obj):
 
     elif obj.real_shape == "text":
         setattr(obj, real_field_name, text)
+        obj.recompute_design()
+
+        old_buckets = get_buckets(obj)
+
+        textwidth = game.text_cache.get_size(obj.real_modifier, (0,)*3, "fixed")[0]
+        obj.aabb["left"] = obj.real_x + obj.real_width / 2 - textwidth / 2
+        obj.aabb["right"] = obj.real_x + obj.real_width / 2 + textwidth / 2
+
+        game.rebuild_buckets(obj, old_buckets)
 
 def apply_level_setting(game, field_name, text):
     if field_name == "length":
@@ -301,7 +310,7 @@ def apply_edit(game, obj, real_field_name, text):
                         obj.layer = "checkpoints"
 
                     elif field_name == "modifier":
-                        apply_object_modifier(real_field_name, real, text, obj)
+                        apply_object_modifier(game, real_field_name, real, text, obj)
 
                     elif field_name == "triggers":
                         triggers = [int(trigger) for trigger in text.split("_")]

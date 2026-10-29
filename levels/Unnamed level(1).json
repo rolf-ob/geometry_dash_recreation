@@ -1271,35 +1271,13 @@
       "modifier": null,
       "group_id": 0,
       "triggers": []
-    },
-    {
-      "x": 360,
-      "y": 600,
-      "width": 680,
-      "height": 40,
-      "rotation": 0,
-      "shape": "square",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
     }
   ],
   "decoration": [],
   "checkpoints": [
     {
       "x": 360,
-      "y": 520,
+      "y": 700.0,
       "width": 20.0,
       "height": 20.0,
       "rotation": 0,
@@ -1327,8 +1305,8 @@
   ],
   "victors": {
     "rolf": [
-      374,
-      5,
+      413,
+      6,
       0,
       0,
       1793109956.829142
