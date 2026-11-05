@@ -11,8 +11,8 @@ from rendering.rendering import draw
 from entities.serialization import level_to_dict, dict_to_level, save_json
 from entities.object import Object
 from rendering.textcache import TextCache
-from core.textbox import TextBox
-from core.fps_handler import FpsHandler
+from entities.textbox import TextBox
+from entities.fps_handler import FpsHandler
 from utils import clamp
 from constants import WIDTH, HEIGHT, PLAYER_X, FONT_SIZE, FIXED_STEP, AUTOSAVE_INTERVAL, CAMERA_MARGIN, MAX_EDIT_HISTORY, BUCKET_WIDTH, GAMEMODE_COLORS
 
@@ -36,7 +36,7 @@ class Game:
         self.songs = Path("songs")
 
         self.operator = True
-        self.name = None
+        self.name = "rolf"
         self.running = True
 
         self.width = WIDTH

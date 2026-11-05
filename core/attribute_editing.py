@@ -320,6 +320,7 @@ def apply_edit(game, obj, real_field_name, text):
                     if field_name == "gamemode" and text in ("cube", "ship", "ball", "wave", "ufo", "robot", "spider"):
                         obj.modifier["gamemode"] = text
                         obj.color = GAMEMODE_COLORS[text]
+                        obj.recompute_design()
 
                     elif field_name == "speed":
                         text = check_illegal(text)

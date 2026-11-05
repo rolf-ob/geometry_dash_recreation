@@ -5,7 +5,7 @@ from pathlib import Path
 from entities.serialization import save_json, level_to_dict
 from entities.spatial import collide, get_nearby_objects, get_buckets
 from rendering.rendering import screen_to_world
-from core.textbox import TextBox
+from entities.textbox import TextBox
 from entities.object import Object
 from constants import GRID_SIZE, PLAYER_X, FONT_SIZE, HEIGHT, CAMERA_MARGIN
 

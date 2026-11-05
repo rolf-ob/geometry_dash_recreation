@@ -8,6 +8,51 @@ from entities.object import Object
 from utils import clamp
 from constants import HEIGHT, FIXED_STEP, CAMERA_MARGIN, GAMEMODE_COLORS
 
+def check_square_slide(game, obj, player, prev_player, on_right):
+    entered_top = prev_player["bottom"] < obj.aabb["top"] < player["bottom"]
+    on_top = prev_player["bottom"] == obj.aabb["top"] or player["bottom"] == obj.aabb["top"]
+
+    if (entered_top or on_top) and not on_right:
+        game.max_height = obj.aabb["top"] - game.player.height
+        game.y_vel = 0
+        game.sliding = 1
+        return True
+    
+    entered_bottom = prev_player["top"] > obj.aabb["bottom"] > player["top"]
+    on_bottom = prev_player["top"] == obj.aabb["bottom"] or player["top"] == obj.aabb["bottom"]
+    
+    if (entered_bottom or on_bottom) and not on_right:
+        game.min_height = obj.aabb["bottom"]
+        game.y_vel = 0
+        game.sliding = -1
+        return True
+
+    return False
+
+def check_up_slope_slide(game, obj, player, prev_player, on_right):
+    if obj.shape == "left slope":
+        if player["bottom"] > obj.aabb["bottom"]:
+            return False
+
+        print(player["bottom"] != obj.aabb["top"])
+        if player["bottom"] != obj.aabb["top"]:
+            intersect = (player["right"] + min(game.speed, game.player.width) - obj.aabb["left"]) / obj.width * obj.height
+            game.max_height = obj.aabb["bottom"] - intersect - game.player.height
+            game.y_vel = max(game.y_vel, (player["bottom"] - obj.aabb["bottom"] + intersect) / game.speed)
+
+    elif obj.shape == "right slope":
+        if player["left"] < obj.aabb["left"]:
+            return False
+
+    return True
+
+def check_down_slope_slide(game, obj, player, prev_player, on_right):
+    if obj.shape == "left slope":
+        pass
+
+    elif obj.shape == "right slope":
+        pass
+
 def check_collision(game):
     fall_speed = game.player.height / (-game.speed * abs(game.gravity)) if game.gravity != 0 else 0
     hitbox_color = (0, 255, 0) if game.clicking == 0 else (0, 255, 255)
@@ -28,79 +73,23 @@ def check_collision(game):
             if collide(game.player, obj):
                 prev_this_sliding = collide(game.hitboxes[-1], obj)
                 this_sliding = False
-                on_right_edge = player["left"] == obj.aabb["right"]
-                on_left_edge = prev_player["left"] <= obj.aabb["left"] <= player["left"] + min(game.speed, game.player.width) and prev_player["bottom"] != player["bottom"]
+                on_right = prev_player["left"] <= obj.aabb["right"] <= player["left"]
                 
                 if obj.real_shape == "square" and obj.real_rotation == 0:
-                    if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not on_right_edge:
-                        game.min_height = max(game.min_height, obj.aabb["bottom"])
-                        game.y_vel = min(game.y_vel, 0) if game.gravity > 0 else max(game.y_vel, 0)
-                        game.sliding = -1
-                        this_sliding = True
-                    elif ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not on_right_edge:
-                        game.max_height = min(game.max_height, obj.aabb["top"] - game.player.height)
-                        game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
-                        game.sliding = 1
-                        this_sliding = True
+                    this_sliding = check_square_slide(game, obj, player, prev_player, on_right)
 
                 elif obj.real_shape in ("right slope", "left slope") and obj.real_rotation == 0:
-                    prev_player_y = (prev_player["bottom"] - obj.aabb["top"]) / obj.real_height
-                    player_y = (player["bottom"] - obj.aabb["top"]) / obj.real_height
-
-                    if obj.real_shape == "right slope":
-                        prev_y = (prev_player["left"] - obj.real_x) / obj.real_width
-                        y = (player["left"] - obj.real_x) / obj.real_width
-                        next_y = (player["left"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
-                    else:
-                        prev_y = 1-(prev_player["right"] - obj.real_x) / obj.real_width
-                        y = 1-(player["right"] - obj.real_x) / obj.real_width
-                        next_y = 1-(player["right"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
-                    
-                    if ((prev_player["bottom"] < obj.aabb["top"] < player["bottom"]) or obj.aabb["top"] == player["bottom"]) and not (on_right_edge or on_left_edge):
-                        game.max_height = min(game.max_height, obj.aabb["top"] - game.player.height)
-                        game.y_vel = max(game.y_vel, 0) if game.gravity > 0 else min(game.y_vel, 0)
-                        game.sliding = 1
-                        this_sliding = True
-                    elif ((prev_player_y <= prev_y and y < player_y) or abs(y - player_y) < 1e-2) and not on_right_edge or on_left_edge:
-                        game.max_height = min(game.max_height, obj.aabb["top"] - game.player.height + next_y*obj.real_height)
-                        game.y_vel = max(game.y_vel, slope_vel) if game.gravity > 0 else min(game.y_vel, slope_vel)
-                        game.sliding = 1
-                        this_sliding = True
+                    this_sliding = check_up_slope_slide(game, obj, player, prev_player, on_right)
 
                 elif obj.real_shape in ("right slope", "left slope") and obj.real_rotation == 180:
-                    prev_player_y = (prev_player["top"] - obj.aabb["top"]) / obj.real_height
-                    player_y = (player["top"] - obj.aabb["top"]) / obj.real_height
-
-                    if obj.real_shape == "right slope":
-                        prev_y = (prev_player["right"] - obj.real_x) / obj.real_width
-                        y = (player["right"] - obj.real_x) / obj.real_width
-                        next_y = (player["right"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        slope_vel = -obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
-                    else:
-                        prev_y = 1-(prev_player["left"] - obj.real_x) / obj.real_width
-                        y = 1-(player["left"] - obj.real_x) / obj.real_width
-                        next_y = 1-(player["left"] + min(game.speed, game.player.width) - obj.real_x) / obj.real_width
-                        slope_vel = obj.real_height / (obj.real_width * game.gravity) if game.gravity != 0 else 0
-
-                    if ((player["top"] < obj.aabb["bottom"] < prev_player["top"]) or obj.aabb["bottom"] == player["top"]) and not (on_left_edge or on_right_edge):
-                        game.min_height = max(game.min_height, obj.aabb["bottom"])
-                        game.y_vel = min(game.y_vel, 0) if game.gravity > 0 else max(game.y_vel, 0)
-                        game.sliding = -1
-                        this_sliding = True
-                    elif ((prev_player_y >= prev_y and y > player_y) or abs(y - player_y) < 1e-2) and not on_right_edge or on_left_edge:
-                        game.min_height = max(game.min_height, obj.aabb["top"] + next_y*obj.real_height)
-                        game.y_vel = min(game.y_vel, slope_vel) if game.gravity > 0 else max(game.y_vel, slope_vel)
-                        game.sliding = -1
-                        this_sliding = True
+                    this_sliding = check_down_slope_slide(game, obj, player, prev_player, on_right)
 
                 if this_sliding and not prev_this_sliding:
                     begun_sliding = True
                     if game.gamemode == "wave":
                         game.add_wave_part()
 
-                if not this_sliding and not on_right_edge and not begun_sliding:
+                if not (this_sliding or on_right):
                     if not game.noclip:
                         game.dead = FIXED_STEP
                         py.mixer.music.pause()

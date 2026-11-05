@@ -27,10 +27,98 @@
   "background": [],
   "objects": [
     {
-      "x": 520.0,
-      "y": 560,
-      "width": 160,
-      "height": 160,
+      "x": 800,
+      "y": 640,
+      "width": 120,
+      "height": 80,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 800,
+      "y": 440,
+      "width": 120,
+      "height": 80,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 920,
+      "y": 640,
+      "width": 120,
+      "height": 80,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 920,
+      "y": 440,
+      "width": 120,
+      "height": 80,
+      "rotation": 0,
+      "shape": "square",
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "objects",
+      "modifier": null,
+      "group_id": 0,
+      "triggers": []
+    },
+    {
+      "x": 720.0,
+      "y": 640.0,
+      "width": 80,
+      "height": 80,
       "rotation": 0,
       "shape": "left slope",
       "color": [
@@ -49,152 +137,10 @@
       "triggers": []
     },
     {
-      "x": 720,
-      "y": 580.0,
+      "x": 720.0,
+      "y": 440.0,
       "width": 80,
-      "height": 20.0,
-      "rotation": 0,
-      "shape": "square",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": null,
-      "group_id": 0,
-      "triggers": [
-        1
-      ]
-    },
-    {
-      "x": 780.0,
-      "y": 540.0,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "trigger",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": {
-        "attribute": "y",
-        "value": 10,
-        "transition": 2.0
-      },
-      "group_id": 0,
-      "triggers": 1
-    },
-    {
-      "x": 780.0,
-      "y": 523.0,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "trigger",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": {
-        "attribute": "x",
-        "value": 960,
-        "transition": 2.0
-      },
-      "group_id": 0,
-      "triggers": 1
-    },
-    {
-      "x": 1760,
-      "y": 590.0,
-      "width": 160,
-      "height": 40,
-      "rotation": 0,
-      "shape": "square",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": null,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1880,
-      "y": 470,
-      "width": 20,
-      "height": 120.0,
-      "rotation": 0,
-      "shape": "teleport",
-      "color": [
-        255,
-        128,
-        0
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": 0,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1880,
-      "y": 0,
-      "width": 20,
-      "height": 120,
-      "rotation": 0,
-      "shape": "gravity",
-      "color": [
-        255,
-        255,
-        0
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": -1.0,
-      "group_id": 0,
-      "triggers": []
-    },
-    {
-      "x": 1960.0,
-      "y": 0.0,
-      "width": 160,
-      "height": 160,
+      "height": 80,
       "rotation": 180,
       "shape": "right slope",
       "color": [
@@ -213,12 +159,12 @@
       "triggers": []
     },
     {
-      "x": 2160,
-      "y": 120.0,
-      "width": 80,
-      "height": 20.0,
+      "x": 1040.0,
+      "y": 640.0,
+      "width": 240,
+      "height": 80,
       "rotation": 0,
-      "shape": "square",
+      "shape": "right slope",
       "color": [
         255,
         255,
@@ -232,17 +178,15 @@
       "layer": "objects",
       "modifier": null,
       "group_id": 0,
-      "triggers": [
-        2
-      ]
+      "triggers": []
     },
     {
-      "x": 2220.0,
-      "y": 160,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "trigger",
+      "x": 1040.0,
+      "y": 440.0,
+      "width": 240,
+      "height": 80,
+      "rotation": 180,
+      "shape": "left slope",
       "color": [
         255,
         255,
@@ -254,43 +198,40 @@
         0
       ],
       "layer": "objects",
-      "modifier": {
-        "attribute": "x",
-        "value": 960,
-        "transition": 2.0
-      },
+      "modifier": null,
       "group_id": 0,
-      "triggers": 2
-    },
-    {
-      "x": 2220.0,
-      "y": 169.0,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "trigger",
-      "color": [
-        255,
-        255,
-        255
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "objects",
-      "modifier": {
-        "attribute": "y",
-        "value": -10,
-        "transition": 2.0
-      },
-      "group_id": 0,
-      "triggers": 2
+      "triggers": []
     }
   ],
   "decoration": [],
   "checkpoints": [
+    {
+      "x": 360,
+      "y": 680,
+      "width": 40,
+      "height": 40,
+      "rotation": 0,
+      "shape": "checkpoint",
+      "color": [
+        0,
+        255,
+        255
+      ],
+      "outline": [
+        0,
+        0,
+        0
+      ],
+      "layer": "checkpoints",
+      "modifier": {
+        "gamemode": "wave",
+        "speed": 2,
+        "gravity": 1,
+        "size": 1
+      },
+      "group_id": 0,
+      "triggers": []
+    },
     {
       "x": 360,
       "y": 680,
@@ -317,38 +258,11 @@
       },
       "group_id": 0,
       "triggers": []
-    },
-    {
-      "x": 1840,
-      "y": 0,
-      "width": 40,
-      "height": 40,
-      "rotation": 0,
-      "shape": "checkpoint",
-      "color": [
-        0,
-        255,
-        0
-      ],
-      "outline": [
-        0,
-        0,
-        0
-      ],
-      "layer": "checkpoints",
-      "modifier": {
-        "gamemode": "cube",
-        "speed": 2,
-        "gravity": -1.0,
-        "size": 1
-      },
-      "group_id": 0,
-      "triggers": []
     }
   ],
   "victors": {
     "rolf": [
-      130,
+      281,
       0,
       0,
       0,
